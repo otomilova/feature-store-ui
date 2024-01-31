@@ -162,7 +162,7 @@ const CreateFeatureTableForm = ({ changeable, id }) => {
 						colorScheme='blue'
 						variant='outline'
 						onClick={() => {
-							navigate('/features')
+							navigate('/feature-tables')
 						}}
 					>
 						Cancel
