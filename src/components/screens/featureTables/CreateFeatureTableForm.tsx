@@ -120,68 +120,54 @@ const CreateFeatureTableForm = ({ changeable, id }) => {
 			id={id}
 			key={1}
 		>
-			<Flex direction='column' width='600px'>
+			<Flex direction='column' width='700px'>
 				<CustomInput
 					changeable={changeable}
 					inputName={table}
 					errors={errors}
 					register={register}
 				/>
+
+				<CustomSelect
+					isMulti={true}
+					control={control}
+					options={entities}
+					selectName={entitie}
+					color='purple'
+				/>
+				<CustomTextarea
+					textareaName={description}
+					errors={errors}
+					register={register}
+				/>
+
+				<FeaturesInput
+					register={register}
+					control={control}
+					tags={tags}
+					setTags={setTags}
+				/>
+
+				<MultiSelect
+					control={control}
+					options={labelOptions}
+					selectName={labels}
+				/>
 			</Flex>
-			<Flex direction='column'></Flex>
 
-			<CustomSelect
-				isMulti={true}
-				control={control}
-				options={entities}
-				selectName={entitie}
-				color='purple'
-			/>
-			<CustomTextarea
-				textareaName={description}
-				errors={errors}
-				register={register}
-			/>
-
-			<MultiSelect
-				control={control}
-				options={features}
-				selectName={feature}
-				color='blue'
-			/>
-
-			<FeaturesInput
-				register={register}
-				control={control}
-				tags={tags}
-				setTags={setTags}
-			/>
-
-			<MultiSelect
-				control={control}
-				options={labelOptions}
-				selectName={labels}
-			/>
-
-			<Center>
+			<Center mt='30px'>
 				<Flex gap='15px'>
 					<Button
 						form={id}
 						colorScheme='blue'
 						variant='outline'
-						mt='60px'
 						onClick={() => {
 							navigate('/features')
 						}}
 					>
 						Cancel
 					</Button>
-					<Button
-						type='submit'
-						colorScheme='button'
-						mt='60px'
-						onClick={() => {}}
-					>
+					<Button type='submit' colorScheme='button' onClick={() => {}}>
 						{changeable ? 'Apply Changes' : 'Create Feature Table'}
 					</Button>
 				</Flex>

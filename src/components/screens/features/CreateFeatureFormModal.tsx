@@ -52,14 +52,7 @@ const featuresTypes = [
 	}
 ]
 
-const CreateFeatureForm = ({
-														 changeable,
-														 id,
-														 onClose,
-														 setTags,
-														 tags,
-
-													 }) => {
+const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 	const {
 		control,
 		register,
@@ -92,9 +85,8 @@ const CreateFeatureForm = ({
 			onSubmit={handleSubmit(onSubmit)}
 			onKeyDown={e => checkKeyDown(e)}
 			id={id}
-
 		>
-			<Flex gap='30px' direction='row'>
+			<Flex gap='30px' direction='row' alignItems='end'>
 				<Flex direction='column'>
 					<CustomInput
 						changeable={changeable}
@@ -116,13 +108,6 @@ const CreateFeatureForm = ({
 				textareaName={description}
 				errors={errors}
 				register={register}
-			/>
-
-			<CustomSelect
-				changeable={changeable}
-				control={control}
-				options={featureTables}
-				selectName={table}
 			/>
 
 			<MultiSelect

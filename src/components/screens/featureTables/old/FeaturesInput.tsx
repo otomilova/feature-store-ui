@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {
 	Button,
+	Center,
 	Flex,
 	FormControl,
 	FormErrorMessage,
@@ -79,12 +80,12 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
-				<FormControl mb='20px' mt='15px'>
+				<FormControl mb='20px'>
 					<FormLabel htmlFor='features'>
 						<Heading fontSize='14px'>Features</Heading>
 					</FormLabel>
 					<Flex
-						maxWidth='600px'
+						maxWidth='700px'
 						border='1px solid'
 						borderColor='inherit'
 						borderRadius='0.375rem'
@@ -138,7 +139,13 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 						>
 							<ModalOverlay />
 							<ModalContent>
-								<ModalHeader>Add new Feature</ModalHeader>
+								<ModalHeader>
+									<Center>
+										<Heading as='h2' size='l' color='brand.600'>
+											Create Feature
+										</Heading>
+									</Center>
+								</ModalHeader>
 								<ModalCloseButton />
 								<ModalBody pb={6}>
 									<CreateFeatureFormModal

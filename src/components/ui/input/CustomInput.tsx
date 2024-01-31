@@ -20,7 +20,7 @@ const CustomInput = ({ inputName, changeable, errors, register }) => {
 	// 	}, 1200)
 	// }
 	return (
-		<FormControl isInvalid={!!errors && errors[inputName]} mb='20px' mt='15px'>
+		<FormControl isInvalid={!!errors && errors[inputName]} mb='20px'>
 			<FormLabel htmlFor={inputName}>
 				<Heading fontSize='14px' color='brand.600'>
 					{inputName}
@@ -28,7 +28,7 @@ const CustomInput = ({ inputName, changeable, errors, register }) => {
 			</FormLabel>
 			<Input
 				isDisabled={changeable}
-				//w='400px'
+				minW='290px'
 				border='1px solid'
 				borderColor='inherit'
 				bgColor='white'

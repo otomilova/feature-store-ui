@@ -39,25 +39,28 @@ function FeatureTableCreate() {
 				w='77%'
 				bgColor='brand.300'
 				m='55px'
-				h='80%'
+				mt='30px'
+				h='85%'
 				borderRadius='20px'
 				boxShadow='md'
 				p='25'
 			>
-				<Center pt='10px'>
-					<Flex direction='row' gap='12px' alignItems='center' mb='20px'>
+				<Center pt='0px' mb='10px'>
+					<Flex direction='row' gap='12px' alignItems='center'>
 						<FiLayers size={12} />
 						<Heading as='h2' size='l' color='brand.600'>
 							Create Feature Table
 						</Heading>
 					</Flex>
 				</Center>
-				<Flex gap='30px' direction='row'>
-					<CreateFeatureTableForm
-						changeable={changeable}
-						id={'featureTableForm'}
-					/>
-				</Flex>
+				<Center>
+					<Flex gap='30px' direction='row'>
+						<CreateFeatureTableForm
+							changeable={changeable}
+							id={'featureTableForm'}
+						/>
+					</Flex>
+				</Center>
 			</Box>
 		</Box>
 	)

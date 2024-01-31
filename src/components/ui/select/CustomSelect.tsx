@@ -35,8 +35,8 @@ const CustomSelect = ({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
-				<FormControl mb='20px' mt='15px' isInvalid={!!error} id={selectName}>
-					<FormLabel width='300px'>
+				<FormControl mb='20px' isInvalid={!!error} id={selectName}>
+					<FormLabel minW='200px'>
 						<Heading fontSize='14px'>{selectName}</Heading>
 					</FormLabel>
 

@@ -20,11 +20,7 @@ const CustomTextarea = ({ textareaName, changeable, errors, register, id }) => {
 	// 	}, 1200)
 	// }
 	return (
-		<FormControl
-			isInvalid={!!errors && errors[textareaName]}
-			mb='20px'
-			mt='15px'
-		>
+		<FormControl isInvalid={!!errors && errors[textareaName]} mb='20px'>
 			<FormLabel htmlFor={textareaName}>
 				<Heading fontSize='14px'>{textareaName}</Heading>
 			</FormLabel>
