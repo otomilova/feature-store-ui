@@ -2,7 +2,7 @@ import HeaderMenu from './details/HeaderMenu'
 import HeaderHeading from './details/HeaderHeading'
 import * as React from 'react'
 import { useContext, useEffect } from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import NavBar from './details/NavBar'
 import { ProjectContext } from '../../ProjectProvider'
 
@@ -27,14 +27,15 @@ const Header: React.FC = ({ data }) => {
 
 	//const [projectName, setProjectName] = useState('Choose project')
 	return (
-		<Flex
-			direction='column'
+		<Box
+			display='block'
 			m='0'
 			boxShadow='lg'
 			bg='white'
-			height='100vh'
+			h='100vh'
 			width='330px'
-			//position='fixed'
+			//position='sticky'
+			//overflow='auto'
 			//TODO: fix header (when content enlarges header doesnt fit full page)
 		>
 			<HeaderHeading />
@@ -48,7 +49,7 @@ const Header: React.FC = ({ data }) => {
 			{/*	{project}*/}
 			{/*	{data}*/}
 			{/*</Button>*/}
-		</Flex>
+		</Box>
 	)
 }
 

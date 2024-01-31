@@ -56,7 +56,12 @@ const theme = extendTheme({
 	fonts: {
 		body: 'Inter'
 	},
-	colors: { ...colors }
+	colors: { ...colors },
+	styles: {
+		root: {
+			overscrollBehavior: 'none'
+		}
+	}
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
