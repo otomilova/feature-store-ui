@@ -28,14 +28,13 @@ const Header: React.FC = ({ data }) => {
 	//const [projectName, setProjectName] = useState('Choose project')
 	return (
 		<Box
-			display='block'
 			m='0'
 			boxShadow='lg'
 			bg='white'
 			h='100vh'
 			width='330px'
-			//position='sticky'
-			//overflow='auto'
+			//position='fixed'
+			//overflow='hidden'
 			//TODO: fix header (when content enlarges header doesnt fit full page)
 		>
 			<HeaderHeading />

@@ -37,7 +37,9 @@ const CustomSelect = ({
 			}) => (
 				<FormControl mb='20px' isInvalid={!!error} id={selectName}>
 					<FormLabel minW='200px'>
-						<Heading fontSize='14px'>{selectName}</Heading>
+						<Heading fontSize='14px' color='brand.600'>
+							{selectName}
+						</Heading>
 					</FormLabel>
 
 					<Select

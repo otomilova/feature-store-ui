@@ -82,7 +82,9 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 			}) => (
 				<FormControl mb='20px'>
 					<FormLabel htmlFor='features'>
-						<Heading fontSize='14px'>Features</Heading>
+						<Heading fontSize='14px' color='brand.600'>
+							Features
+						</Heading>
 					</FormLabel>
 					<Flex
 						maxWidth='700px'

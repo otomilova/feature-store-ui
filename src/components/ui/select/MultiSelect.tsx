@@ -27,9 +27,11 @@ const MultiSelect = ({ control, options, selectName, color }) => {
 			}) => (
 				<FormControl>
 					<FormLabel>
-						<Heading fontSize='14px'>{selectName}</Heading>
+						<Heading fontSize='14px' color='brand.600'>
+							{selectName}
+						</Heading>
 					</FormLabel>
-					<Box bg='white'>
+					<Box bg='white' borderRadius='0.375rem'>
 						<CreatableSelect
 							colorScheme={color}
 							isMulti
