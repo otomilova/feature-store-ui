@@ -48,7 +48,7 @@ const entities = [
 	}
 ]
 
-const CreateFeatureTableForm = ({ changeable, id }) => {
+const CreateFeatureTableForm = ({ changeable, id, defaultValue }) => {
 	const {
 		control,
 		register,
@@ -152,6 +152,7 @@ const CreateFeatureTableForm = ({ changeable, id }) => {
 					control={control}
 					options={labelOptions}
 					selectName={labels}
+					defaultValue={defaultValue}
 				/>
 			</Flex>
 

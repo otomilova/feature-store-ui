@@ -50,25 +50,31 @@ function FeatureTableOverview() {
 			>
 				<Center pt='10px'>
 					<Flex direction='row' gap='12px' alignItems='center'>
-						<FiLayers size={12} />
-						<Heading as='h2' size='l'>
+						<FiLayers size={12} color='344054' />
+						<Heading as='h2' size='l' color='brand.600'>
 							Feature Table Overview
 						</Heading>
 					</Flex>
 				</Center>
-				<Heading size='sm' mb='20px' mt='15px'>
+				<Heading size='sm' mb='20px' mt='15px' color='brand.600'>
 					driver_hourly_stats_fresh
 				</Heading>
 				<Divider />
-				<Heading size='16px' mt='15px'>
+				<Heading size='16px' mt='15px' color='brand.600'>
 					Entity
 				</Heading>
-				<Text mb='20px'>Driver</Text>
-				<Heading size='16px'>Description</Heading>
-				<Text mb='20px'>Text to be filled in</Text>
+				<Text mb='20px' color='brand.600'>
+					Driver
+				</Text>
+				<Heading size='16px' color='brand.600'>
+					Description
+				</Heading>
+				<Text mb='20px' color='brand.600'>
+					Text to be filled in
+				</Text>
 				<Divider />
 
-				<Heading size='16px' mt='15px' mb='5px'>
+				<Heading size='16px' mt='15px' mb='5px' color='brand.600'>
 					Features
 				</Heading>
 				<Flex gap='10px' mb='20px'>
@@ -81,7 +87,7 @@ function FeatureTableOverview() {
 				</Flex>
 				<Divider />
 
-				<Heading size='16px' mt='15px' mb='5px'>
+				<Heading size='16px' mt='15px' mb='5px' color='brand.600'>
 					Labels
 				</Heading>
 				<Flex gap='10px' mb='20px'>
@@ -95,7 +101,7 @@ function FeatureTableOverview() {
 				<Divider />
 				<Center>
 					<Button
-						colorScheme='blue'
+						colorScheme='button'
 						mt='60px'
 						onClick={() => {
 							let id = 1

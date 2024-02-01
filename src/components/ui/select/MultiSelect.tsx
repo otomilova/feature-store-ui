@@ -3,7 +3,7 @@ import { Box, FormControl, FormLabel, Heading } from '@chakra-ui/react'
 import { CreatableSelect } from 'chakra-react-select'
 import { Controller } from 'react-hook-form'
 
-const MultiSelect = ({ control, options, selectName, color }) => {
+const MultiSelect = ({ control, options, selectName, color, defaultValue }) => {
 	//const { control, handleSubmit, reset } = useForm({ defaultValues })
 	//
 	// const [isLoading, setLoading] = useBoolean(false)
@@ -33,6 +33,7 @@ const MultiSelect = ({ control, options, selectName, color }) => {
 					</FormLabel>
 					<Box bg='white' borderRadius='0.375rem'>
 						<CreatableSelect
+							defaultValue={defaultValue}
 							colorScheme={color}
 							isMulti
 							name={selectName}
