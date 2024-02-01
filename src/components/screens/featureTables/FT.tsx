@@ -2,6 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 // import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
+import '../../../assets/styles/ag-theme-custom.css'
 import { AgGridReact } from 'ag-grid-react/lib/agGridReact'
 import {
 	Box,
@@ -215,11 +216,11 @@ export function FT() {
 	// }
 
 	return (
-		<Box mt='25px' mr='25px' w='100%'>
+		<Box mt='25px' mr='85px' w='100%'>
 			<Center mb='12px'>
 				<Flex direction='row' gap='12px' alignItems='center' marginBottom='0px'>
-					<FiLayers size={12} />
-					<Heading as='h2' size='l' marginBottom='0px'>
+					<FiLayers size={12} color='344054' />
+					<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
 						Feature Tables
 					</Heading>
 				</Flex>
@@ -238,7 +239,7 @@ export function FT() {
 					/>
 				</InputGroup>
 				<Button
-					colorScheme='blue'
+					colorScheme='button'
 					leftIcon={<FiPlusCircle />}
 					size='sm'
 					onClick={() => navigate('/feature-table/create')}
