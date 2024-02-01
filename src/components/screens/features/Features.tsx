@@ -140,11 +140,11 @@ export function Features() {
 	// }
 
 	return (
-		<Box mt='25px' mr='25px' w='100%'>
+		<Box mt='25px' mr='85px' w='100%'>
 			<Center mb='12px'>
 				<Flex direction='row' gap='12px' alignItems='center' marginBottom='0px'>
-					<FiGrid size={12} />
-					<Heading as='h2' size='l' marginBottom='0px'>
+					<FiGrid size={12} color='344054' />
+					<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
 						Features
 					</Heading>
 				</Flex>
@@ -163,7 +163,7 @@ export function Features() {
 					/>
 				</InputGroup>
 				<Button
-					colorScheme='blue'
+					colorScheme='button'
 					leftIcon={<FiPlusCircle />}
 					size='sm'
 					onClick={() => navigate('/feature/create')}

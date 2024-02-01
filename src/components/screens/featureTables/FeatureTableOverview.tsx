@@ -27,7 +27,7 @@ function FeatureTableOverview() {
 					<BreadcrumbLink
 						as={Link}
 						to='/feature-tables'
-						color='mainBlue'
+						color='brand.500'
 						textDecor='underline'
 					>
 						FEATURE TABLES
@@ -35,7 +35,9 @@ function FeatureTableOverview() {
 				</BreadcrumbItem>
 
 				<BreadcrumbItem isCurrentPage>
-					<BreadcrumbLink href='#'>FEATURE TABLE OVERVIEW</BreadcrumbLink>
+					<BreadcrumbLink href='#' color='brand.600'>
+						FEATURE TABLE OVERVIEW
+					</BreadcrumbLink>
 				</BreadcrumbItem>
 			</Breadcrumb>
 			<Box
