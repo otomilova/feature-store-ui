@@ -14,7 +14,14 @@ import CreateFeatureTableForm from './CreateFeatureTableForm'
 
 const changeable = true
 
-function FeatureTableEdit() {
+const defaultValue1 = [
+	{
+		value: 'driver_performance',
+		label: 'driver_performance'
+	}
+]
+
+function FeatureTableEdit({ action }) {
 	return (
 		<Box mt='25px' w='100%'>
 			<Breadcrumb fontSize='14px' spacing='8px'>
@@ -25,7 +32,18 @@ function FeatureTableEdit() {
 						color='brand.500'
 						textDecor='underline'
 					>
-						FEATURES
+						FEATURE TABLES
+					</BreadcrumbLink>
+				</BreadcrumbItem>
+
+				<BreadcrumbItem>
+					<BreadcrumbLink
+						as={Link}
+						to='/feature-table/1'
+						color='brand.500'
+						textDecor='underline'
+					>
+						FEATURE TABLE OVERVIEW
 					</BreadcrumbLink>
 				</BreadcrumbItem>
 
@@ -48,20 +66,25 @@ function FeatureTableEdit() {
 				<Center pt='10px'>
 					<Flex direction='row' gap='12px' alignItems='center' mb='20px'>
 						<FiLayers size={12} color='344054' />
+
 						<Heading as='h2' size='l' color='brand.600'>
-							Edit Feature Table: driver_performance
+							{action === 'edit'
+								? 'Edit Feature Table: driver_performance'
+								: 'Create Feature Table'}
 						</Heading>
 					</Flex>
 				</Center>
 				<Flex gap='30px' direction='row'>
 					<CreateFeatureTableForm
 						changeable={changeable}
+						action={action}
 						defaultValue={[
 							{
 								value: 'driver_performance',
 								label: 'driver_performance'
 							}
 						]}
+						id={'featureTableForm'}
 					/>
 				</Flex>
 			</Box>

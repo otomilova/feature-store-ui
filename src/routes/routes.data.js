@@ -1,11 +1,11 @@
-import Home from '../components/screens/home/Home.tsx'
 import { FT } from '../components/screens/featureTables/FT.tsx'
 import { Features } from '../components/screens/features/Features.tsx'
+import App from '../components/App.js'
 
 export const routes = [
 	{
 		path: '/',
-		component: Home
+		component: App
 	},
 	{
 		path: 'feature-tables',

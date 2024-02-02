@@ -48,7 +48,8 @@ const entities = [
 	}
 ]
 
-const CreateFeatureTableForm = ({ changeable, id, defaultValue }) => {
+const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
+	const isEditable = action === 'edit'
 	const {
 		control,
 		register,
@@ -111,7 +112,6 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue }) => {
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
-	//TODO:
 
 	return (
 		<form
@@ -122,7 +122,7 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue }) => {
 		>
 			<Flex direction='column' width='700px'>
 				<CustomInput
-					changeable={changeable}
+					changeable={isEditable}
 					inputName={table}
 					errors={errors}
 					register={register}
