@@ -1,16 +1,8 @@
 import React from 'react'
-import {
-	Box,
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
-	Center,
-	Flex,
-	Heading
-} from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Box, Center, Flex, Heading } from '@chakra-ui/react'
 import { FiLayers } from 'react-icons/fi'
 import CreateFeatureTableForm from './CreateFeatureTableForm'
+import Nav from '../../ui/breadcrumb/Nav'
 
 const changeable = true
 
@@ -22,37 +14,41 @@ const defaultValue1 = [
 ]
 
 function FeatureTableEdit({ action }) {
+	const crumbs =
+		action === 'edit'
+			? [
+					{
+						name: 'FEATURE TABLES',
+						link: '/feature-tables'
+					},
+					{
+						name: 'FEATURE TABLE OVERVIEW',
+						link: '/feature-table/1'
+					},
+					{
+						name:
+							action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
+						link: '#',
+						isActive: true
+					}
+			  ]
+			: [
+					{
+						name: 'FEATURE TABLES',
+						link: '/feature-tables'
+					},
+					{
+						name:
+							action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
+						link: '#',
+						isActive: true
+					}
+			  ]
+
 	return (
 		<Box mt='25px' w='100%'>
-			<Breadcrumb fontSize='14px' spacing='8px'>
-				<BreadcrumbItem>
-					<BreadcrumbLink
-						as={Link}
-						to='/feature-tables'
-						color='brand.500'
-						textDecor='underline'
-					>
-						FEATURE TABLES
-					</BreadcrumbLink>
-				</BreadcrumbItem>
+			<Nav crumbs={crumbs} />
 
-				<BreadcrumbItem>
-					<BreadcrumbLink
-						as={Link}
-						to='/feature-table/1'
-						color='brand.500'
-						textDecor='underline'
-					>
-						FEATURE TABLE OVERVIEW
-					</BreadcrumbLink>
-				</BreadcrumbItem>
-
-				<BreadcrumbItem isCurrentPage>
-					<BreadcrumbLink href='#' color='brand.600'>
-						EDIT FEATURE TABLE
-					</BreadcrumbLink>
-				</BreadcrumbItem>
-			</Breadcrumb>
 			<Box
 				w='77%'
 				bgColor='brand.300'

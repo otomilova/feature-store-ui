@@ -1,9 +1,6 @@
 import React from 'react'
 import {
 	Box,
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
 	Button,
 	Center,
 	Divider,
@@ -12,8 +9,9 @@ import {
 	Tag,
 	Text
 } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { FiLayers } from 'react-icons/fi'
+import Nav from '../../ui/breadcrumb/Nav'
 
 const labels = ['driver', 'driver-performance']
 const features = ['driver', 'driver-performance']
@@ -22,24 +20,21 @@ function FeatureTableOverview() {
 	const navigate = useNavigate()
 	return (
 		<Box mt='25px' w='100%'>
-			<Breadcrumb fontSize='14px' spacing='8px'>
-				<BreadcrumbItem>
-					<BreadcrumbLink
-						as={Link}
-						to='/feature-tables'
-						color='brand.500'
-						textDecor='underline'
-					>
-						FEATURE TABLES
-					</BreadcrumbLink>
-				</BreadcrumbItem>
+			<Nav
+				crumbs={[
+					{
+						name: 'FEATURE TABLES',
+						link: '/feature-tables'
+					},
+					{
+						name: 'FEATURE TABLE OVERVIEW',
+						link: '/feature-table/1',
+						isActive: true
+					},
 
-				<BreadcrumbItem isCurrentPage>
-					<BreadcrumbLink href='#' color='brand.600'>
-						FEATURE TABLE OVERVIEW
-					</BreadcrumbLink>
-				</BreadcrumbItem>
-			</Breadcrumb>
+				]}
+			/>
+
 			<Box
 				bgColor='#F5F5F5'
 				m='55px'
