@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { FiPlus } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-import CreateFeatureFormModal from '../../features/CreateFeatureFormModal'
+import CreateFeatureFormModal from '../features/CreateFeatureFormModal'
 import { Controller } from 'react-hook-form'
 
 const FeaturesInput = ({ register, control, tags, setTags }) => {

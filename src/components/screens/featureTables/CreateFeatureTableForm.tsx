@@ -7,7 +7,7 @@ import MultiSelect from '../../ui/select/MultiSelect'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
-import FeaturesInput from './old/FeaturesInput'
+import FeaturesInput from './FeaturesInput'
 
 const table = 'Feature Table'
 const feature = 'Features'
