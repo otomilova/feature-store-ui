@@ -17,13 +17,13 @@ const Router = () => {
 				<Route element={<App />}>
 					<Route path='/' element={<Home />} />
 					<Route path='feature-tables' element={<FT />} />
-					<Route path='feature-table/:id' element={<FeatureTableOverview />} />
+					<Route path='feature-tables/:id' element={<FeatureTableOverview />} />
 					<Route
-						path='feature-table/:id/edit'
+						path='feature-tables/:id/edit'
 						element={<FeatureTableEdit action='edit' />}
 					/>
 					<Route
-						path='feature-table/create'
+						path='feature-tables/create'
 						element={<FeatureTableEdit action='create' />}
 					/>
 					<Route path='feature/:id' element={<FeatureOverview />} />

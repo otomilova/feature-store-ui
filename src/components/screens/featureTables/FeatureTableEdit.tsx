@@ -23,7 +23,7 @@ function FeatureTableEdit({ action }) {
 					},
 					{
 						name: 'FEATURE TABLE OVERVIEW',
-						link: '/feature-table/1'
+						link: '/feature-tables/1'
 					},
 					{
 						name:

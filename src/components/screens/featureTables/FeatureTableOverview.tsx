@@ -28,10 +28,9 @@ function FeatureTableOverview() {
 					},
 					{
 						name: 'FEATURE TABLE OVERVIEW',
-						link: '/feature-table/1',
+						link: '/feature-tables/1',
 						isActive: true
-					},
-
+					}
 				]}
 			/>
 
@@ -100,7 +99,7 @@ function FeatureTableOverview() {
 						mt='60px'
 						onClick={() => {
 							let id = 1
-							navigate(`/feature-table/${id}/edit`)
+							navigate(`/feature-tables/${id}/edit`)
 						}}
 					>
 						Edit Feature Table

@@ -15,7 +15,7 @@ import {
 	InputLeftElement
 } from '@chakra-ui/react'
 import { FiGrid, FiPlusCircle, FiSearch } from 'react-icons/fi'
-import { LabelsColumn } from '../featureTables/old/LabelsColumn'
+import { LabelsColumn } from '../featureTables/LabelsColumn.tsx'
 import { useNavigate } from 'react-router-dom'
 
 export function Features() {

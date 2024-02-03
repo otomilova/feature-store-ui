@@ -16,8 +16,8 @@ import {
 	InputLeftElement
 } from '@chakra-ui/react'
 import { FiLayers, FiPlusCircle, FiSearch } from 'react-icons/fi'
-import { LabelsColumn } from './old/LabelsColumn'
 import { useNavigate } from 'react-router-dom'
+import { LabelsColumn } from './LabelsColumn.tsx'
 
 export function FT() {
 	const navigate = useNavigate()
@@ -242,7 +242,7 @@ export function FT() {
 					colorScheme='button'
 					leftIcon={<FiPlusCircle />}
 					size='sm'
-					onClick={() => navigate('/feature-table/create')}
+					onClick={() => navigate('/feature-tables/create')}
 				>
 					Create new
 				</Button>
@@ -255,7 +255,7 @@ export function FT() {
 				fontFamily='Inter'
 			>
 				<AgGridReact
-					onRowClicked={() => navigate('/feature-table/1')}
+					onRowClicked={() => navigate('/feature-tables/1')}
 					// onRowClicked={e => alert(e.rowIndex)}
 					rowData={rowData}
 					columnDefs={colDefs}
