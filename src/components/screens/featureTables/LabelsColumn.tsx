@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Tag } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
 export function LabelsColumn() {
 	return (
@@ -14,8 +14,8 @@ export function LabelsColumn() {
 				alert('Feature Table Overview')
 			}}
 		>
-			<Tag size='sm'>driver</Tag>
-			<Tag size='sm'>driver_performance</Tag>
+			{/*<Tag size='sm'>driver</Tag>*/}
+			{/*<Tag size='sm'>driver_performance</Tag>*/}
 		</Flex>
 	)
 }

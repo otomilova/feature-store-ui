@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 // import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
@@ -18,6 +19,8 @@ import {
 import { FiLayers, FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import { LabelsColumn } from './LabelsColumn.tsx'
+import { useFeatureTables } from './useFeatureTables.js'
+import Loader from '../../ui/Loader'
 
 export function FT() {
 	const navigate = useNavigate()
@@ -29,170 +32,195 @@ export function FT() {
 		)
 	}, [])
 
-	const [rowData, setRowData] = useState([
-		{
-			'#': '1',
-			Name: 'driver_hourly_stats_fresh',
-			Entity: 'Driver',
-			Labels: 'driver-performance'
-		},
-		{
-			'#': '2',
-			Name: 'driver_hourly_stats',
-			Entity: 'Driver',
-			Labels: 'driver-performance'
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
-		},
-		{
-			'#': '3',
-			Name: 'driver_hourly',
-			Entity: 'Driver',
-			Labels: [
-				'driver-performance',
-				'driver-performance',
-				'driver-performance',
-				'driver-performance'
-			]
+	const { data: featureTables, isLoading } = useFeatureTables()
+	const FTRows = featureTables?.map((table, index) => {
+		const t = {
+			'#': index + 1,
+			Name: table.data.name,
+			Entities: table.data.entities[0]
+			// Labels: ''
 		}
-	])
+
+		return t
+	})
+
+	const [rowData, setRowData] = useState([])
+	useEffect(() => setRowData(FTRows), [FTRows])
+
+	// const [rowData, setRowData] = useState([
+	// 	{
+	// 		'#': '1',
+	// 		Name: 'driver_hourly_stats_fresh',
+	// 		Entity: 'Driver',
+	// 		Labels: 'driver-performance'
+	// 	},
+	// 	{
+	// 		'#': '2',
+	// 		Name: 'driver_hourly_stats',
+	// 		Entity: 'Driver',
+	// 		Labels: 'driver-performance'
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	},
+	// 	{
+	// 		'#': '3',
+	// 		Name: 'driver_hourly',
+	// 		Entity: 'Driver',
+	// 		Labels: [
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance',
+	// 			'driver-performance'
+	// 		]
+	// 	}
+	// ])
 
 	// Column Definitions: Defines & controls grid columns.
 	const [colDefs, setColDefs] = useState([
-		{ field: '#', resizable: false, width: 50, maxWidth: 50 },
+		{
+			field: '#',
+			resizable: false,
+			width: 50,
+			maxWidth: 50
+		},
 		{ field: 'Name', resizable: false, width: 120 },
-		{ field: 'Entity', resizable: false, width: 150, maxWidth: 150 },
-		{ field: 'Labels', resizable: false, cellRenderer: 'LabelsColumn' }
+		{
+			field: 'Entities',
+			resizable: false,
+			width: 150,
+			maxWidth: 150
+		}
+		// { field: 'Labels', resizable: false, cellRenderer: 'LabelsColumn' }
 	])
 	const components = useMemo(() => {
 		return {
@@ -217,55 +245,66 @@ export function FT() {
 
 	return (
 		<Box mt='25px' mr='85px' w='100%'>
-			<Center mb='12px'>
-				<Flex direction='row' gap='12px' alignItems='center' marginBottom='0px'>
-					<FiLayers size={12} color='344054' />
-					<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
-						Feature Tables
-					</Heading>
-				</Flex>
-			</Center>
-			<HStack mb={5}>
-				<InputGroup size='sm'>
-					<InputLeftElement pointerEvents='none'>
-						<FiSearch color='CBD5E0' />
-					</InputLeftElement>
-					<Input
-						type='search'
-						placeholder='Search'
-						w='330px'
-						id='filter-text-box'
-						onInput={onFilterTextBoxChanged}
-					/>
-				</InputGroup>
-				<Button
-					colorScheme='button'
-					leftIcon={<FiPlusCircle />}
-					size='sm'
-					onClick={() => navigate('/feature-tables/create')}
-				>
-					Create new
-				</Button>
-			</HStack>
-			{/* The AG Grid component */}
-			<Box
-				className='ag-theme-quartz'
-				width='100%'
-				height='85%'
-				fontFamily='Inter'
-			>
-				<AgGridReact
-					onRowClicked={() => navigate('/feature-tables/1')}
-					// onRowClicked={e => alert(e.rowIndex)}
-					rowData={rowData}
-					columnDefs={colDefs}
-					pagination={true}
-					ref={gridRef}
-					autoSizeStrategy={autoSizeStrategy}
-					components={components}
-					// rowHeight='150px'
-				/>
-			</Box>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<>
+					<Center mb='12px'>
+						<Flex
+							direction='row'
+							gap='12px'
+							alignItems='center'
+							marginBottom='0px'
+						>
+							<FiLayers size={12} color='344054' />
+							<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
+								Feature Tables
+							</Heading>
+						</Flex>
+					</Center>
+					<HStack mb={5}>
+						<InputGroup size='sm'>
+							<InputLeftElement pointerEvents='none'>
+								<FiSearch color='CBD5E0' />
+							</InputLeftElement>
+							<Input
+								type='search'
+								placeholder='Search'
+								w='330px'
+								id='filter-text-box'
+								onInput={onFilterTextBoxChanged}
+							/>
+						</InputGroup>
+						<Button
+							colorScheme='button'
+							leftIcon={<FiPlusCircle />}
+							size='sm'
+							onClick={() => navigate('/feature-tables/create')}
+						>
+							Create new
+						</Button>
+					</HStack>
+					{/* The AG Grid component */}
+					<Box
+						className='ag-theme-quartz'
+						width='100%'
+						height='85%'
+						fontFamily='Inter'
+					>
+						<AgGridReact
+							onRowClicked={() => navigate('/feature-tables/1')}
+							// onRowClicked={e => alert(e.rowIndex)}
+							rowData={rowData}
+							columnDefs={colDefs}
+							pagination={true}
+							ref={gridRef}
+							autoSizeStrategy={autoSizeStrategy}
+							components={components}
+							// rowHeight='150px'
+						/>
+					</Box>
+				</>
+			)}
 		</Box>
 	)
 }
