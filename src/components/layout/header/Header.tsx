@@ -6,26 +6,18 @@ import { Box } from '@chakra-ui/react'
 import NavBar from './details/NavBar'
 import { ProjectContext } from '../../ProjectProvider'
 
-const Header: React.FC = ({ data }) => {
+const Header: React.FC = ({ localData }) => {
 	const { project, setProject } = useContext(ProjectContext)
-	// const [project, setProject] = useState('')
-	// useEffect(() => {
-	// 	console.log('MY_APP_STATE', banner)
-	// }, [banner])
-	// const data = window.localStorage.getItem('MY_APP_STATE')
 
 	useEffect(() => {
-		if (data) setProject(data)
+		if (localData) setProject(localData)
 		else setProject('Choose project')
 	}, [])
+
 	useEffect(() => {
 		window.localStorage.setItem('MY_APP_STATE', project)
 	}, [project])
-	// const theme1 = useContext(ThemeContext)
-	// const useTheme = () => useContext(ThemeContext)
-	// const { theme, setTheme } = useTheme()
 
-	//const [projectName, setProjectName] = useState('Choose project')
 	return (
 		<Box
 			m='0'
@@ -40,14 +32,6 @@ const Header: React.FC = ({ data }) => {
 			<HeaderHeading />
 			<HeaderMenu project={project} setProject={setProject} />
 			{project === 'Choose project' ? null : <NavBar />}
-			{/*<Button*/}
-			{/*	onClick={() => {*/}
-			{/*		setProject(project === 'true' ? 'false' : 'true')*/}
-			{/*	}}*/}
-			{/*>*/}
-			{/*	{project}*/}
-			{/*	{data}*/}
-			{/*</Button>*/}
 		</Box>
 	)
 }

@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 
 const App: React.FC = () => {
 	// const { project, setProject } = useContext(ProjectContext)
-	const data = window.localStorage.getItem('MY_APP_STATE')
+	const localData = window.localStorage.getItem('MY_APP_STATE')
 	return (
 		<ProjectProvider>
 			<Box display='flex' gap='110px' bgColor='brand.200'>
-				<Header data={data} />
+				<Header localData={localData} />
 				{/*{data === 'Choose project' ? (*/}
 				{/*	<div>No data to display. Please choose project</div>*/}
 				{/*) : (*/}

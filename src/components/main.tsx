@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '../assets/styles/index.css'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import Router from '../routes/Routes.jsx'
+import Router from '../routes/Routes'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const colors = {
 	brand: {
@@ -64,10 +65,20 @@ const theme = extendTheme({
 	}
 })
 
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false
+		}
+	}
+})
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<ChakraProvider resetCSS theme={theme}>
-			<Router />
+			<QueryClientProvider client={queryClient}>
+				<Router />
+			</QueryClientProvider>
 		</ChakraProvider>
 	</React.StrictMode>
 )
