@@ -6,7 +6,7 @@ export function LabelsColumn() {
 		<Flex
 			mt='10px'
 			fontFamily='Inter'
-			w='400px'
+			w='10px'
 			direction='row'
 			wrap='wrap'
 			gap='5px'

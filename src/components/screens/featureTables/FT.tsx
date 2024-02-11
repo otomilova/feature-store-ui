@@ -33,19 +33,25 @@ export function FT() {
 	}, [])
 
 	const { data: featureTables, isLoading } = useFeatureTables()
-	const FTRows = featureTables?.map((table, index) => {
-		const t = {
-			'#': index + 1,
-			Name: table.data.name,
-			Entities: table.data.entities[0]
-			// Labels: ''
-		}
+	const FTRows = useMemo(
+		() =>
+			featureTables?.map((table, index) => {
+				const t = {
+					'#': index + 1,
+					Name: table.data.name,
+					Entities: table.data.entities,
+					Labels: ''
+				}
 
-		return t
-	})
+				return t
+			}),
+		[featureTables]
+	)
 
 	const [rowData, setRowData] = useState([])
-	useEffect(() => setRowData(FTRows), [FTRows])
+	useEffect(() => {
+		setRowData(FTRows)
+	}, [FTRows])
 
 	// const [rowData, setRowData] = useState([
 	// 	{
@@ -211,16 +217,26 @@ export function FT() {
 			field: '#',
 			resizable: false,
 			width: 50,
-			maxWidth: 50
+			maxWidth: 50,
+			cellDataType: 'text'
 		},
-		{ field: 'Name', resizable: false, width: 120 },
+		{
+			field: 'Name',
+			resizable: false,
+			width: 100
+		},
 		{
 			field: 'Entities',
 			resizable: false,
-			width: 150,
-			maxWidth: 150
+			width: 50,
+			maxWidth: 1000
+		},
+		{
+			field: 'Labels',
+			resizable: false,
+			width: 50,
+			cellRenderer: 'LabelsColumn'
 		}
-		// { field: 'Labels', resizable: false, cellRenderer: 'LabelsColumn' }
 	])
 	const components = useMemo(() => {
 		return {
