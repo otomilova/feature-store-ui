@@ -106,7 +106,9 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
 		data.features = tags
 		alert(JSON.stringify(data, null, 2))
 		console.log(data)
-		//navigate('/features')
+		// const d: ApplyFeatureTableRequestType = createrequest(data)
+		// ftservice.apply(d)
+		navigate('/features')
 	}
 
 	const checkKeyDown = e => {

@@ -6,6 +6,7 @@ import CustomSelect from '../../ui/select/CustomSelect'
 import MultiSelect from '../../ui/select/MultiSelect'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
+import { ValueTypes } from '../../types/types.d.ts'
 
 const table = 'Feature Table'
 const type = 'Type'
@@ -33,24 +34,9 @@ const featureTables = [
 	}
 ]
 
-const featuresTypes = [
-	{
-		label: 'FLOAT',
-		value: 'FLOAT'
-	},
-	{
-		label: 'INT',
-		value: 'INT'
-	},
-	{
-		label: 'INT64',
-		value: 'INT64'
-	},
-	{
-		label: 'STRING_LIST',
-		value: 'STRING_LIST'
-	}
-]
+const keys = Object.keys(ValueTypes).map(type => {
+	return { value: type, label: type }
+})
 
 const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 	const {
@@ -98,7 +84,7 @@ const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 					<CustomSelect
 						changeable={changeable}
 						control={control}
-						options={featuresTypes}
+						options={keys}
 						selectName={type}
 					/>
 				</Flex>
