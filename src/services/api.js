@@ -199,7 +199,7 @@ const mock = new MockAdapter($axios)
 mock.onGet(`/projects`).reply(200, {
 	projects: ['taxi', 'taxi_stage', 'taxi_dev']
 })
-mock.onGet(`/feature-tables`).reply(200, {
+mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
 	featureTables: featureTables
 })
 

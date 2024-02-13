@@ -2,10 +2,10 @@ import { $axios } from './api.js'
 
 //const USERS = '/users'
 
-export const getFeatureTables = async () => {
+export const getFeatureTables = async project => {
 	try {
-		return $axios.get(`/feature-tables`)
-		//return $axios.get(`/feature-tables/?project=${taxi}`) todo: project
+		//return $axios.get(`/feature-tables`)
+		return $axios.get(`/feature-tables/?project=${project}`)
 	} catch (err) {
 		console.error(err.toJSON())
 	}

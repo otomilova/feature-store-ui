@@ -21,8 +21,10 @@ import { useNavigate } from 'react-router-dom'
 import { LabelsColumn } from './LabelsColumn.tsx'
 import { useFeatureTables } from './useFeatureTables.js'
 import Loader from '../../ui/Loader'
+import { useProject } from '../../hooks/useProject.js'
 
 export function FT() {
+	const { project } = useProject()
 	const navigate = useNavigate()
 	const gridRef = useRef()
 	const onFilterTextBoxChanged = useCallback(() => {
@@ -32,7 +34,7 @@ export function FT() {
 		)
 	}, [])
 
-	const { data: featureTables, isLoading } = useFeatureTables()
+	const { data: featureTables, isLoading } = useFeatureTables(project)
 	const FTRows = useMemo(
 		() =>
 			featureTables?.map((table, index) => {
