@@ -308,7 +308,9 @@ export function FT() {
 						fontFamily='Inter'
 					>
 						<AgGridReact
-							onRowClicked={() => navigate('/feature-tables/1')}
+							onRowClicked={e => {
+								navigate(`/feature-tables/${e.data.Name}`)
+							}}
 							// onRowClicked={e => alert(e.rowIndex)}
 							rowData={rowData}
 							columnDefs={colDefs}

@@ -17,7 +17,10 @@ const Router = () => {
 				<Route element={<App />}>
 					<Route path='/' element={<Home />} />
 					<Route path='feature-tables' element={<FT />} />
-					<Route path='feature-tables/:id' element={<FeatureTableOverview />} />
+					<Route
+						path='feature-tables/:name'
+						element={<FeatureTableOverview />}
+					/>
 					<Route
 						path='feature-tables/:id/edit'
 						element={<FeatureTableEdit action='edit' />}

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import getFeatureTables from '../../../services/featureTables.service.js'
+import { getFeatureTables } from '../../../services/featureTables.service.js'
 
 export const useFeatureTables = () => {
 	return useQuery({

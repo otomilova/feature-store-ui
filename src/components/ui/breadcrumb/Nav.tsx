@@ -7,7 +7,7 @@ const Nav = ({ crumbs }) => {
 		<Breadcrumb fontSize='14px' spacing='8px'>
 			{crumbs.map(crumb => {
 				return (
-					<BreadcrumbItem isCurrentPage={!!crumb.isActive}>
+					<BreadcrumbItem isCurrentPage={!!crumb.isActive} key={crumb.name}>
 						<BreadcrumbLink
 							as={Link}
 							to={crumb.link}
