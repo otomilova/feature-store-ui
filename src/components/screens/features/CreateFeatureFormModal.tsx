@@ -6,13 +6,17 @@ import CustomSelect from '../../ui/select/CustomSelect'
 import MultiSelect from '../../ui/select/MultiSelect'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
-import { ValueTypes } from '../../types/types.d.ts'
+import { ValueTypes } from '../../../types/types.d.ts'
 
 const table = 'Feature Table'
 const type = 'Type'
 const labels = 'Labels'
 const name = 'Feature Name'
 const description = 'Description'
+
+function extractValue(obj: Record<string, string>): string {
+	return obj.value
+}
 
 const labelOptions = [
 	{ value: 'conv_performance', label: 'conv_performance' },
@@ -53,6 +57,8 @@ const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 	const onSubmit = data => {
 		//alert(JSON.stringify(data, null, 2))
 		//console.log(JSON.stringify(data, null, 2))
+		data.Type = extractValue(data.Type)
+		debugger
 
 		setTags([...tags, data])
 		//navigate('/feature-table/create')

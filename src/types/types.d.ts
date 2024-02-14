@@ -19,7 +19,7 @@ export enum ValueTypes {
 	VARIABLE = 'VARIABLE'
 }
 
-export interface ApplyFeatureTableRequestType {
+export interface IApplyFeatureTableRequest {
 	project: string
 	data: {
 		name: string

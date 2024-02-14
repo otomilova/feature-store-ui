@@ -8,34 +8,16 @@ import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
 import FeaturesInput from './FeaturesInput'
+import { useProject } from '../../hooks/useProject.js'
+import { IApplyFeatureTableRequest } from '../../../types/types'
 
 const table = 'Feature Table'
 const feature = 'Features'
 const entitie = 'Entities'
 const type = 'Type'
-const labels = 'Labels'
+const label = 'Labels'
 const name = 'Feature Name'
 const description = 'Description'
-
-const labelOptions = [
-	{ value: 'conv_performance', label: 'conv_performance' },
-	{ value: 'driver_performance', label: 'driver_performance' }
-]
-
-const features = [
-	{
-		label: 'driver_hourly_stats_fresh',
-		value: 'driver_hourly_stats_fresh'
-	},
-	{
-		label: 'driver_hourly_stats',
-		value: 'driver_hourly_stats'
-	},
-	{
-		label: 'transformed_conv_rate',
-		value: 'transformed_conv_rate'
-	}
-]
 
 const entities = [
 	{
@@ -48,8 +30,9 @@ const entities = [
 	}
 ]
 
-const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
+const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 	const isEditable = action === 'edit'
+
 	const {
 		control,
 		register,
@@ -62,33 +45,13 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
 	})
 
 	const navigate = useNavigate()
+	const { project } = useProject()
 
-	const [tags, setTags] = useState([
+	const [features, setFeatures] = useState([
 		{
 			'Feature Name': 'driver',
-			Type: {
-				label: 'INT',
-				value: 'INT'
-			},
+			Type: 'INT',
 			Description: 'driver-desc',
-			'Feature Table': {
-				label: 'driver_hourly_stats',
-				value: 'driver_hourly_stats'
-			},
-			Labels: [
-				{
-					value: 'driver_performance',
-					label: 'driver_performance'
-				}
-			]
-		},
-		{
-			'Feature Name': 'driver-performance',
-			Type: {
-				label: 'INT',
-				value: 'INT'
-			},
-			Description: 'driver-performance-desc',
 			'Feature Table': {
 				label: 'driver_hourly_stats',
 				value: 'driver_hourly_stats'
@@ -102,13 +65,23 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
 		}
 	])
 
-	const onSubmit = data => {
-		data.features = tags
+	const [labels, setLabels] = useState([
+		{ value: 'conv_performance', label: 'conv_performance' },
+		{ value: 'driver_performance', label: 'driver_performance' }
+	])
+
+	const onSubmit = formData => {
+		const data: IApplyFeatureTableRequest = {}
+		//const data = {}
+		data['project'] = project
+		formData.Features = features
+		formData.Labels = labels
+		data['data'] = formData
 		alert(JSON.stringify(data, null, 2))
 		console.log(data)
 		// const d: ApplyFeatureTableRequestType = createrequest(data)
 		// ftservice.apply(d)
-		navigate('/features')
+		//navigate('/features')
 	}
 
 	const checkKeyDown = e => {
@@ -146,14 +119,15 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
 				<FeaturesInput
 					register={register}
 					control={control}
-					tags={tags}
-					setTags={setTags}
+					tags={features}
+					setTags={setFeatures}
 				/>
 
 				<MultiSelect
 					control={control}
-					options={labelOptions}
-					selectName={labels}
+					labels={labels}
+					setLabels={setLabels}
+					selectName={label}
 					defaultValue={defaultValue}
 				/>
 			</Flex>
@@ -171,7 +145,8 @@ const CreateFeatureTableForm = ({ changeable, id, defaultValue, action }) => {
 						Cancel
 					</Button>
 					<Button type='submit' colorScheme='button' onClick={() => {}}>
-						{changeable ? 'Apply Changes' : 'Create Feature Table'}
+						{isEditable ? 'Apply Changes' : 'Create Feature Table'}
+						{/*//delete changeable, use action*/}
 					</Button>
 				</Flex>
 			</Center>

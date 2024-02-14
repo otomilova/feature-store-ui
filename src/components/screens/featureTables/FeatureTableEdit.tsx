@@ -4,15 +4,6 @@ import { FiLayers } from 'react-icons/fi'
 import CreateFeatureTableForm from './CreateFeatureTableForm'
 import Nav from '../../ui/breadcrumb/Nav'
 
-const changeable = true
-
-const defaultValue1 = [
-	{
-		value: 'driver_performance',
-		label: 'driver_performance'
-	}
-]
-
 function FeatureTableEdit({ action }) {
 	const crumbs =
 		action === 'edit'
@@ -72,7 +63,7 @@ function FeatureTableEdit({ action }) {
 				</Center>
 				<Flex gap='30px' direction='row'>
 					<CreateFeatureTableForm
-						changeable={changeable}
+						// changeable={changeable}
 						action={action}
 						defaultValue={[
 							{

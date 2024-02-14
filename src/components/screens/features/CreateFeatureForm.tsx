@@ -6,7 +6,7 @@ import CustomSelect from '../../ui/select/CustomSelect'
 import MultiSelect from '../../ui/select/MultiSelect'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
-import { ValueTypes } from '../../types/types.d.ts'
+import { ValueTypes } from '../../../types/types.d.ts'
 
 const table = 'Feature Table'
 const type = 'Type'

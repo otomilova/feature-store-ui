@@ -1,22 +1,13 @@
 import React from 'react'
-import {
-	Box,
-	Button,
-	Center,
-	Divider,
-	Flex,
-	Heading,
-	Tag,
-	Text
-} from '@chakra-ui/react'
+import { Box, Button, Center, Divider, Flex, Heading, Tag, Text } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FiLayers } from 'react-icons/fi'
 import Nav from '../../ui/breadcrumb/Nav'
 import { useFeatureTableByName } from './useFeatureTableByName.js'
 import Loader from '../../ui/Loader'
 
-const labels = ['driver', 'driver-performance']
-const features = ['driver', 'driver-performance']
+// const labels = ['driver', 'driver-performance']
+// const features = ['driver', 'driver-performance']
 
 function FeatureTableOverview() {
 	const { name } = useParams()

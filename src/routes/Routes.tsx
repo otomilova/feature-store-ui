@@ -22,7 +22,7 @@ const Router = () => {
 						element={<FeatureTableOverview />}
 					/>
 					<Route
-						path='feature-tables/:id/edit'
+						path='feature-tables/:name/edit'
 						element={<FeatureTableEdit action='edit' />}
 					/>
 					<Route
