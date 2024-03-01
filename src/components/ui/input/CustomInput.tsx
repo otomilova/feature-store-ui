@@ -7,21 +7,10 @@ import {
 	Input
 } from '@chakra-ui/react'
 
-const CustomInput = ({ inputName, changeable, errors, register }) => {
-	//const { control, handleSubmit, reset } = useForm({ defaultValues })
-	//
-	// const [isLoading, setLoading] = useBoolean(false)
-	//
-	// const submit = async data => {
-	// 	setLoading.on()
-	// 	setTimeout(() => {
-	// 		setLoading.off()
-	// 		alert(JSON.stringify(data, null, 2))
-	// 	}, 1200)
-	// }
+const CustomInput = ({ inputName, inputId, changeable, errors, register }) => {
 	return (
-		<FormControl isInvalid={!!errors && errors[inputName]} mb='20px'>
-			<FormLabel htmlFor={inputName}>
+		<FormControl isInvalid={!!errors && errors[inputId]} mb='20px'>
+			<FormLabel htmlFor={inputId}>
 				<Heading fontSize='14px' color='brand.600'>
 					{inputName}
 				</Heading>
@@ -32,15 +21,15 @@ const CustomInput = ({ inputName, changeable, errors, register }) => {
 				border='1px solid'
 				borderColor='inherit'
 				bgColor='white'
-				id={inputName}
+				id={inputId}
 				placeholder={inputName}
-				{...register(inputName, {
+				{...register(inputId, {
 					required: 'This is required',
 					minLength: { value: 4, message: 'Minimum length should be 4' }
 				})}
 			/>
 			<FormErrorMessage>
-				{!!errors && errors[inputName] && errors[inputName].message}
+				{!!errors && errors[inputId] && errors[inputId].message}
 			</FormErrorMessage>
 		</FormControl>
 	)

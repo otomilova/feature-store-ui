@@ -36,3 +36,21 @@ export interface IApplyFeatureTableRequest {
 		multiRecord: boolean
 	}
 }
+
+export interface IFeatureTableFormData {
+	featureTable: string
+	description: string
+	entities: {
+		label: string
+		value: string
+	}[]
+	features: {
+		//TODO: add features object and values
+		label: string
+		value: string
+	}[]
+	labels: {
+		label: string
+		value: string
+	}[]
+}

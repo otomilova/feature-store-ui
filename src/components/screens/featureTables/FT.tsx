@@ -14,7 +14,8 @@ import {
 	HStack,
 	Input,
 	InputGroup,
-	InputLeftElement
+	InputLeftElement,
+	useToast
 } from '@chakra-ui/react'
 import { FiLayers, FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
@@ -260,7 +261,7 @@ export function FT() {
 	// const autoSizeStrategy = {
 	// 	type: 'fitCellContents'
 	// }
-
+	const toast = useToast()
 	return (
 		<Box mt='25px' mr='85px' w='100%'>
 			{isLoading ? (
@@ -297,7 +298,17 @@ export function FT() {
 							colorScheme='button'
 							leftIcon={<FiPlusCircle />}
 							size='sm'
-							onClick={() => navigate('/feature-tables/create')}
+							onClick={() => {
+								navigate('/feature-tables/create')
+								toast({
+									position: 'top-right',
+									title: 'Account created.',
+									description: "We've created your account for you.",
+									status: 'success',
+									duration: 4000,
+									isClosable: true
+								})
+							}}
 						>
 							Create new
 						</Button>

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -7,11 +8,17 @@ import MultiSelect from '../../ui/select/MultiSelect'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import { ValueTypes } from '../../../types/types.d.ts'
+import {
+	DESCRIPTION,
+	FEATURE_TITLES,
+	LABELS,
+	TYPE
+} from '../../../utils/constants'
 
 const table = 'Feature Table'
 const type = 'Type'
-const labels = 'Labels'
-const name = 'Feature Name'
+const labelsTitle = 'Labels'
+
 const description = 'Description'
 
 function extractValue(obj: Record<string, string>): string {
@@ -42,7 +49,13 @@ const keys = Object.keys(ValueTypes).map(type => {
 	return { value: type, label: type }
 })
 
-const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
+const CreateFeatureForm = ({
+	changeable,
+	id,
+	onClose,
+	setFeatures,
+	features
+}) => {
 	const {
 		control,
 		register,
@@ -57,16 +70,15 @@ const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 	const onSubmit = data => {
 		//alert(JSON.stringify(data, null, 2))
 		//console.log(JSON.stringify(data, null, 2))
-		data.Type = extractValue(data.Type)
-		debugger
-
-		setTags([...tags, data])
+		data.type = extractValue(data.type)
+		setFeatures([...features, data])
 		//navigate('/feature-table/create')
 		reset()
 		onClose()
 	}
 
 	const navigate = useNavigate()
+	const [labels, setLabels] = useState([])
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
@@ -82,22 +94,25 @@ const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 				<Flex direction='column'>
 					<CustomInput
 						changeable={changeable}
-						inputName={name}
+						inputName={FEATURE_TITLES.title}
+						inputId={FEATURE_TITLES.id}
 						errors={errors}
 						register={register}
 					/>
 				</Flex>
 				<Flex direction='column'>
 					<CustomSelect
+						selectName={TYPE.title}
+						selectId={TYPE.id}
 						changeable={changeable}
 						control={control}
 						options={keys}
-						selectName={type}
 					/>
 				</Flex>
 			</Flex>
 			<CustomTextarea
-				textareaName={description}
+				textareaName={DESCRIPTION.title}
+				textareaId={DESCRIPTION.id}
 				errors={errors}
 				register={register}
 			/>
@@ -105,7 +120,10 @@ const CreateFeatureForm = ({ changeable, id, onClose, setTags, tags }) => {
 			<MultiSelect
 				control={control}
 				options={labelOptions}
-				selectName={labels}
+				selectName={LABELS.title}
+				selectId={LABELS.id}
+				setTags={setLabels}
+				tags={labels}
 			/>
 
 			<Center>

@@ -22,68 +22,38 @@ import { FiPlus } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import CreateFeatureFormModal from '../features/CreateFeatureFormModal'
 import { Controller } from 'react-hook-form'
+import { MODAL_FEATURE } from '../../../utils/constants'
 
-const FeaturesInput = ({ register, control, tags, setTags }) => {
+const FeaturesInput = ({
+	register,
+	control,
+	features,
+	setFeatures,
+	inputName,
+	inputId
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const finalRef = React.useRef(null)
 	const initialRef = React.useRef(null)
 	const navigate = useNavigate()
-	// const [tags, setTags] = useState([
-	// 	{
-	// 		'Feature Name': 'driver',
-	// 		Type: {
-	// 			label: 'INT',
-	// 			value: 'INT'
-	// 		},
-	// 		Description: 'driver-desc',
-	// 		'Feature Table': {
-	// 			label: 'driver_hourly_stats',
-	// 			value: 'driver_hourly_stats'
-	// 		},
-	// 		Labels: [
-	// 			{
-	// 				value: 'driver_performance',
-	// 				label: 'driver_performance'
-	// 			}
-	// 		]
-	// 	},
-	// 	{
-	// 		'Feature Name': 'driver-performance',
-	// 		Type: {
-	// 			label: 'INT',
-	// 			value: 'INT'
-	// 		},
-	// 		Description: 'driver-performance-desc',
-	// 		'Feature Table': {
-	// 			label: 'driver_hourly_stats',
-	// 			value: 'driver_hourly_stats'
-	// 		},
-	// 		Labels: [
-	// 			{
-	// 				value: 'driver_performance',
-	// 				label: 'driver_performance'
-	// 			}
-	// 		]
-	// 	}
-	// ])
 
 	function removeTag(index) {
-		setTags(tags.filter((el, i) => i !== index))
+		setFeatures(features.filter((el, i) => i !== index))
 	}
 
 	return (
 		<Controller
 			control={control}
-			name='Features'
+			name={inputId}
 			//rules={{ required: `Please select ${selectName}` }}
 			render={({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
 				<FormControl mb='20px'>
-					<FormLabel htmlFor='features'>
+					<FormLabel htmlFor={inputId}>
 						<Heading fontSize='14px' color='brand.600'>
-							Features
+							{inputName}
 						</Heading>
 					</FormLabel>
 					<Flex
@@ -97,21 +67,18 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 						gap='5px'
 						id='features'
 						placeholder=''
-						//{...register('features')}
 						bgColor='white'
 						wrap='wrap'
 					>
-						{tags.map((tag, index) => (
+						{features.map((feature, index) => (
 							<Tag
-								//p='5px'
-								//m='0px'
 								size='md'
 								bgColor='#EBF1FF'
 								border='1px solid #70A0FF'
 								color='#1963D3'
 								key={index}
 							>
-								<TagLabel>{tag['Feature Name']}</TagLabel>
+								<TagLabel>{feature.featureName}</TagLabel>
 								<TagCloseButton onClick={() => removeTag(index)} />
 							</Tag>
 						))}
@@ -126,9 +93,6 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 						>
 							Add Feature
 						</Button>
-						{/*<Box ref={finalRef} tabIndex={-1} aria-label='Focus moved to this box'>*/}
-						{/*	Some other content that'll receive focus on close.*/}
-						{/*</Box>*/}
 						<Modal
 							size='xl'
 							isCentered={true}
@@ -151,19 +115,12 @@ const FeaturesInput = ({ register, control, tags, setTags }) => {
 								<ModalCloseButton />
 								<ModalBody pb={6}>
 									<CreateFeatureFormModal
-										id={'modalFeature'}
+										id={MODAL_FEATURE.id}
 										onClose={onClose}
-										setTags={setTags}
-										tags={tags}
+										setFeatures={setFeatures}
+										features={features}
 									/>
 								</ModalBody>
-
-								{/*<ModalFooter>*/}
-								{/*	<Button colorScheme='button' mr={3}>*/}
-								{/*		Save*/}
-								{/*	</Button>*/}
-								{/*	<Button onClick={onClose}>Cancel</Button>*/}
-								{/*</ModalFooter>*/}
 							</ModalContent>
 						</Modal>
 					</Flex>

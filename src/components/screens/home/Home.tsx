@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import * as React from 'react'
 import { useContext } from 'react'
-import { ProjectContext } from '../../ProjectProvider'
+import { ProjectContext } from '../../../providers/ProjectProvider'
 import { Navigate } from 'react-router-dom'
 
 const Home: React.FC = () => {

@@ -5,28 +5,17 @@ import { Controller } from 'react-hook-form'
 
 const MultiSelect = ({
 	control,
-	labels,
 	selectName,
+	selectId,
 	color,
 	defaultValue,
-	setLabels
+	setTags,
+	tags
 }) => {
-	//const { control, handleSubmit, reset } = useForm({ defaultValues })
-	//
-	// const [isLoading, setLoading] = useBoolean(false)
-	//
-	// const submit = async data => {
-	// 	setLoading.on()
-	// 	setTimeout(() => {
-	// 		setLoading.off()
-	// 		alert(JSON.stringify(data, null, 2))
-	// 	}, 1200)
-	// }
-
 	return (
 		<Controller
 			control={control}
-			name={selectName}
+			name={selectId}
 			//rules={{ required: `Please select ${selectName}` }}
 			render={({
 				field: { onChange, onBlur, value, name, ref },
@@ -40,15 +29,15 @@ const MultiSelect = ({
 					</FormLabel>
 					<Box bg='white' borderRadius='0.375rem'>
 						<CreatableSelect
-							defaultValue={labels}
+							defaultValue={tags}
 							colorScheme={color}
 							isMulti
-							name={selectName}
+							name={selectId}
 							//options={labels}
 							placeholder={`Select some ${selectName}`}
 							closeMenuOnSelect={false}
 							ref={ref}
-							onChange={choice => setLabels(...labels, choice)}
+							onChange={choice => setTags(choice)}
 							onBlur={onBlur}
 						/>
 					</Box>

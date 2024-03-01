@@ -9,15 +9,18 @@ import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
 import FeaturesInput from './FeaturesInput'
 import { useProject } from '../../hooks/useProject.js'
-import { IApplyFeatureTableRequest } from '../../../types/types'
-
-const table = 'Feature Table'
-const feature = 'Features'
-const entitie = 'Entities'
-const type = 'Type'
-const label = 'Labels'
-const name = 'Feature Name'
-const description = 'Description'
+import {
+	IApplyFeatureTableRequest,
+	IFeatureTableFormData
+} from '../../../types/types'
+import {
+	DESCRIPTION,
+	ENTITIES,
+	FEATURE_TABLE_TITLES,
+	FEATURES_TITLES,
+	LABELS
+} from '../../../utils/constants'
+import { makeRequestFromFTFormData } from '../../../utils/helpers'
 
 const entities = [
 	{
@@ -32,7 +35,6 @@ const entities = [
 
 const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 	const isEditable = action === 'edit'
-
 	const {
 		control,
 		register,
@@ -49,14 +51,14 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 
 	const [features, setFeatures] = useState([
 		{
-			'Feature Name': 'driver',
-			Type: 'INT',
-			Description: 'driver-desc',
-			'Feature Table': {
+			featureName: 'driver',
+			type: 'INT',
+			description: 'driver-desc',
+			featureTable: {
 				label: 'driver_hourly_stats',
 				value: 'driver_hourly_stats'
 			},
-			Labels: [
+			labels: [
 				{
 					value: 'driver_performance',
 					label: 'driver_performance'
@@ -70,15 +72,19 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 		{ value: 'driver_performance', label: 'driver_performance' }
 	])
 
-	const onSubmit = formData => {
-		const data: IApplyFeatureTableRequest = {}
+	const onSubmit = (formData: IFeatureTableFormData) => {
+		console.log(formData)
+		formData.features = features
+		formData.labels = labels
+		const request: IApplyFeatureTableRequest =
+			makeRequestFromFTFormData(formData)
 		//const data = {}
-		data['project'] = project
-		formData.Features = features
-		formData.Labels = labels
-		data['data'] = formData
-		alert(JSON.stringify(data, null, 2))
-		console.log(data)
+		//request.project = project
+
+		//request['data'] = formData
+
+		alert(JSON.stringify(request, null, 2))
+		console.log(request)
 		// const d: ApplyFeatureTableRequestType = createrequest(data)
 		// ftservice.apply(d)
 		//navigate('/features')
@@ -98,7 +104,8 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 			<Flex direction='column' width='700px'>
 				<CustomInput
 					changeable={isEditable}
-					inputName={table}
+					inputName={FEATURE_TABLE_TITLES.title}
+					inputId={FEATURE_TABLE_TITLES.id}
 					errors={errors}
 					register={register}
 				/>
@@ -107,11 +114,13 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 					isMulti={true}
 					control={control}
 					options={entities}
-					selectName={entitie}
+					selectName={ENTITIES.title}
+					selectId={ENTITIES.id}
 					color='purple'
 				/>
 				<CustomTextarea
-					textareaName={description}
+					textareaName={DESCRIPTION.title}
+					textareaId={DESCRIPTION.id}
 					errors={errors}
 					register={register}
 				/>
@@ -119,15 +128,18 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 				<FeaturesInput
 					register={register}
 					control={control}
-					tags={features}
-					setTags={setFeatures}
+					features={features}
+					setFeatures={setFeatures}
+					inputName={FEATURES_TITLES.title}
+					inputId={FEATURES_TITLES.id}
 				/>
 
 				<MultiSelect
 					control={control}
-					labels={labels}
-					setLabels={setLabels}
-					selectName={label}
+					tags={labels}
+					setTags={setLabels}
+					selectName={LABELS.title}
+					selectId={LABELS.id}
 					defaultValue={defaultValue}
 				/>
 			</Flex>

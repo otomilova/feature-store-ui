@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useContext, useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
 import NavBar from './details/NavBar'
-import { ProjectContext } from '../../ProjectProvider'
+import { ProjectContext } from '../../../providers/ProjectProvider'
 
 const Header: React.FC = ({ localData }) => {
 	const { project, setProject } = useContext(ProjectContext)

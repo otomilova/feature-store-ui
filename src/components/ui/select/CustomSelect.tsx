@@ -12,30 +12,20 @@ const CustomSelect = ({
 	control,
 	options,
 	selectName,
+	selectId,
 	changeable,
 	isMulti
 }) => {
-	//const { control, handleSubmit, reset } = useForm({ defaultValues })
-	//
-	// const [isLoading, setLoading] = useBoolean(false)
-	//
-	// const submit = async data => {
-	// 	setLoading.on()
-	// 	setTimeout(() => {
-	// 		setLoading.off()
-	// 		alert(JSON.stringify(data, null, 2))
-	// 	}, 1200)
-	// }
 	return (
 		<Controller
 			control={control}
-			name={selectName}
-			rules={{ required: `Please select ${selectName}` }}
+			name={selectId}
+			rules={{ required: `Please select ${selectId}` }}
 			render={({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
-				<FormControl mb='20px' isInvalid={!!error} id={selectName}>
+				<FormControl mb='20px' isInvalid={!!error} id={selectId}>
 					<FormLabel minW='200px'>
 						<Heading fontSize='14px' color='brand.600'>
 							{selectName}
@@ -62,7 +52,6 @@ const CustomSelect = ({
 								display: 'none'
 							})
 						}}
-						// isMulti
 						name={name}
 						ref={ref}
 						onChange={onChange}

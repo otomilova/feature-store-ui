@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import * as React from 'react'
-import ProjectProvider from './ProjectProvider'
+import ProjectProvider from '../providers/ProjectProvider'
 import Header from './layout/header/Header'
 import { Outlet } from 'react-router-dom'
 

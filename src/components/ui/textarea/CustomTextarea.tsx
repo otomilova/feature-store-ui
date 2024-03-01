@@ -7,7 +7,14 @@ import {
 	Textarea
 } from '@chakra-ui/react'
 
-const CustomTextarea = ({ textareaName, changeable, errors, register, id }) => {
+const CustomTextarea = ({
+	textareaName,
+	textareaId,
+	changeable,
+	errors,
+	register,
+	id
+}) => {
 	//const { control, handleSubmit, reset } = useForm({ defaultValues })
 	//
 	// const [isLoading, setLoading] = useBoolean(false)
@@ -20,8 +27,8 @@ const CustomTextarea = ({ textareaName, changeable, errors, register, id }) => {
 	// 	}, 1200)
 	// }
 	return (
-		<FormControl isInvalid={!!errors && errors[textareaName]} mb='20px'>
-			<FormLabel htmlFor={textareaName}>
+		<FormControl isInvalid={!!errors && errors[textareaId]} mb='20px'>
+			<FormLabel htmlFor={textareaId}>
 				<Heading fontSize='14px' color='brand.600'>
 					{textareaName}
 				</Heading>
@@ -29,13 +36,13 @@ const CustomTextarea = ({ textareaName, changeable, errors, register, id }) => {
 			<Textarea
 				bgColor='white'
 				placeholder='Text to be filled in'
-				{...register(textareaName, {
+				{...register(textareaId, {
 					//required: 'This is required',
 					minLength: { value: 4, message: 'Minimum length should be 4' }
 				})}
 			></Textarea>
 			<FormErrorMessage>
-				{!!errors && errors[textareaName] && errors[textareaName].message}
+				{!!errors && errors[textareaId] && errors[textareaId].message}
 			</FormErrorMessage>
 		</FormControl>
 	)
