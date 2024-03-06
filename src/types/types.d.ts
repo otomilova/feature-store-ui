@@ -24,33 +24,63 @@ export interface IApplyFeatureTableRequest {
 	data: {
 		name: string
 		entities: string[]
-		features: {
+		features?: {
 			name: string
 			valueType: ValueTypes
-			description: string
-			labels: string[]
+			description?: string
+			labels?: string[]
 		}[]
-		description: string
-		labels: string[]
-		ttlMinutes: number
-		multiRecord: boolean
+		description?: string
+		labels?: string[]
+		ttlMinutes?: number
+		multiRecord?: boolean
 	}
 }
 
 export interface IFeatureTableFormData {
 	featureTable: string
-	description: string
-	entities: {
+	description?: string
+	entities?: {
 		label: string
 		value: string
 	}[]
-	features: {
-		//TODO: add features object and values
+	features?: {
+		featureName: string
+		type: ValueTypes
+		description?: string
+		labels?: {
+			label: string
+			value: string
+		}[]
+		featureTable?: {
+			label: string
+			value: string
+		}
+	}[]
+	labels?: {
 		label: string
 		value: string
 	}[]
-	labels: {
-		label: string
-		value: string
-	}[]
+}
+
+export interface IFeatureTablesResponseEntry {
+	data: {
+		name: string
+		description?: string
+		entities?: string[]
+		features?: {
+			name: string
+			valueType: ValueTypes
+		}[]
+		labels?: {
+			name: string
+			valueType: ValueTypes
+		}[]
+	}
+	metadata: {
+		createdTimestamp?: string
+		lastUpdatedTimestamp?: string
+		revision?: string
+		hash?: string
+	}
 }

@@ -207,3 +207,5 @@ mock
 	.onGet(`/feature-tables/sessions`) //todo add name as path param
 	//.reply(200, featureTables.filter(table => table.data.name === name)[0])
 	.reply(200, featureTables.filter(table => table.data.name === 'sessions')[0])
+
+mock.onPost('/feature-tables/apply').reply(200)

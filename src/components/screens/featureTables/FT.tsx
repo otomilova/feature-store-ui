@@ -300,14 +300,6 @@ export function FT() {
 							size='sm'
 							onClick={() => {
 								navigate('/feature-tables/create')
-								toast({
-									position: 'top-right',
-									title: 'Account created.',
-									description: "We've created your account for you.",
-									status: 'success',
-									duration: 4000,
-									isClosable: true
-								})
 							}}
 						>
 							Create new

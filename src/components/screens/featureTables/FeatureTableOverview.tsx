@@ -106,8 +106,8 @@ function FeatureTableOverview() {
 								colorScheme='button'
 								mt='60px'
 								onClick={() => {
-									let id = 1
-									navigate(`/feature-tables/${id}/edit`)
+									let name = 'sessions'
+									navigate(`/feature-tables/${name}/edit`)
 								}}
 							>
 								Edit Feature Table

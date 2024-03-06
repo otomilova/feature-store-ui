@@ -1,3 +1,5 @@
+import { ValueTypes } from '../types/types.d.ts'
+
 export const FEATURE_TABLE_TITLES = {
 	title: 'Feature Table',
 	id: 'featureTable'
@@ -46,3 +48,7 @@ export const TYPE = {
 export const MODAL_FEATURE = {
 	id: 'modalFeature'
 }
+
+export const SELECT_TYPE_OPTIONS = Object.keys(ValueTypes).map(type => {
+	return { value: type, label: type }
+})

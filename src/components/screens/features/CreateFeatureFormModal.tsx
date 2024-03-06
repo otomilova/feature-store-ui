@@ -12,42 +12,30 @@ import {
 	DESCRIPTION,
 	FEATURE_TITLES,
 	LABELS,
+	SELECT_TYPE_OPTIONS,
 	TYPE
 } from '../../../utils/constants'
-
-const table = 'Feature Table'
-const type = 'Type'
-const labelsTitle = 'Labels'
-
-const description = 'Description'
-
-function extractValue(obj: Record<string, string>): string {
-	return obj.value
-}
+import { extractValue } from '../../../utils/helpers.ts'
 
 const labelOptions = [
 	{ value: 'conv_performance', label: 'conv_performance' },
 	{ value: 'driver_performance', label: 'driver_performance' }
 ]
 
-const featureTables = [
-	{
-		label: 'driver_hourly_stats_fresh',
-		value: 'driver_hourly_stats_fresh'
-	},
-	{
-		label: 'driver_hourly_stats',
-		value: 'driver_hourly_stats'
-	},
-	{
-		label: 'transformed_conv_rate',
-		value: 'transformed_conv_rate'
-	}
-]
-
-const keys = Object.keys(ValueTypes).map(type => {
-	return { value: type, label: type }
-})
+// const featureTables = [
+// 	{
+// 		label: 'driver_hourly_stats_fresh',
+// 		value: 'driver_hourly_stats_fresh'
+// 	},
+// 	{
+// 		label: 'driver_hourly_stats',
+// 		value: 'driver_hourly_stats'
+// 	},
+// 	{
+// 		label: 'transformed_conv_rate',
+// 		value: 'transformed_conv_rate'
+// 	}
+// ]
 
 const CreateFeatureForm = ({
 	changeable,
@@ -70,7 +58,7 @@ const CreateFeatureForm = ({
 	const onSubmit = data => {
 		//alert(JSON.stringify(data, null, 2))
 		//console.log(JSON.stringify(data, null, 2))
-		data.type = extractValue(data.type)
+		data.type = ValueTypes[extractValue(data.type)]
 		setFeatures([...features, data])
 		//navigate('/feature-table/create')
 		reset()
@@ -106,7 +94,7 @@ const CreateFeatureForm = ({
 						selectId={TYPE.id}
 						changeable={changeable}
 						control={control}
-						options={keys}
+						options={SELECT_TYPE_OPTIONS}
 					/>
 				</Flex>
 			</Flex>
