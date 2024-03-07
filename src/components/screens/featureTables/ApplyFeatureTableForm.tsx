@@ -36,15 +36,13 @@ const entities = [
 	}
 ]
 
-const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
+const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 	const isEditable = action === 'edit'
 	const {
 		control,
 		register,
-		setValue,
 		handleSubmit,
-		formState: { errors },
-		reset
+		formState: { errors }
 	} = useForm({
 		mode: 'onChange'
 	})
@@ -72,7 +70,7 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 		{ value: 'driver_performance', label: 'driver_performance' }
 	])
 
-	const { mutate, error, isLoading, data, isSuccess } = useApplyFeatureTable()
+	const { mutate, isPending } = useApplyFeatureTable()
 	const onSubmit = (formData: IFeatureTableFormData) => {
 		formData.features = features
 		formData.labels = labels
@@ -87,11 +85,8 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
-
 	return (
 		<>
-			//TODO: fix Loader
-			{isLoading && <Loader />}
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				onKeyDown={e => checkKeyDown(e)}
@@ -99,6 +94,7 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 				key={1}
 			>
 				<Flex direction='column' width='700px'>
+					{isPending && <Loader rows={12} />}
 					<CustomInput
 						changeable={isEditable}
 						inputName={FEATURE_TABLE_TITLES.title}
@@ -153,8 +149,7 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 						>
 							Cancel
 						</Button>
-						<Button type='submit' colorScheme='button' onClick={() => {
-						}}>
+						<Button type='submit' colorScheme='button' onClick={() => {}}>
 							{isEditable ? 'Apply Changes' : 'Create Feature Table'}
 							{/*//delete changeable, use action*/}
 						</Button>
@@ -165,4 +160,4 @@ const CreateFeatureTableForm = ({ id, defaultValue, action }) => {
 	)
 }
 
-export default CreateFeatureTableForm
+export default ApplyFeatureTableForm

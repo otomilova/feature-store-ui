@@ -11,7 +11,7 @@ export const useApplyFeatureTable = () => {
 	const location = useLocation().pathname
 	const path = location.substring(0, location.lastIndexOf('/'))
 	const queryClient = useQueryClient()
-	const { data, error, isLoading, isSuccess, mutate } = useMutation({
+	const { data, error, isPending, isSuccess, mutate } = useMutation({
 		mutationFn: (request: IApplyFeatureTableRequest) =>
 			applyFeatureTable(request),
 		mutationKey: ['apply feature table'],
@@ -21,8 +21,16 @@ export const useApplyFeatureTable = () => {
 			toast({
 				position: 'top-right',
 				title: 'Success!',
-				//description: "You've applied Feature Table.",
 				status: 'success',
+				duration: 4000,
+				isClosable: true
+			})
+		},
+		onError: () => {
+			toast({
+				position: 'top-right',
+				title: 'Error!',
+				status: 'error',
 				duration: 4000,
 				isClosable: true
 			})
@@ -32,7 +40,7 @@ export const useApplyFeatureTable = () => {
 		data,
 		isSuccess,
 		mutate,
-		isLoading,
+		isPending,
 		error
 	}
 }

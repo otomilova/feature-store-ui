@@ -4,7 +4,7 @@ import { Features } from '../components/screens/features/Features.tsx'
 import { Entities } from '../components/screens/entities/Entities'
 import App from '../components/App.tsx'
 import Home from '../components/screens/home/Home.tsx'
-import FeatureTableEdit from '../components/screens/featureTables/FeatureTableEdit.tsx'
+import ApplyFeatureTable from '../components/screens/featureTables/ApplyFeatureTable.tsx'
 import FeatureOverview from '../components/screens/features/FeatureOverview.tsx'
 import FeatureCreate from '../components/screens/features/FeatureCreate.tsx'
 import FeatureEdit from '../components/screens/features/FeatureEdit.tsx'
@@ -23,11 +23,11 @@ const Router = () => {
 					/>
 					<Route
 						path='feature-tables/:name/edit'
-						element={<FeatureTableEdit action='edit' />}
+						element={<ApplyFeatureTable action='edit' />}
 					/>
 					<Route
 						path='feature-tables/create'
-						element={<FeatureTableEdit action='create' />}
+						element={<ApplyFeatureTable action='create' />}
 					/>
 					<Route path='feature/:id' element={<FeatureOverview />} />
 					<Route path='feature/:id/edit' element={<FeatureEdit />} />

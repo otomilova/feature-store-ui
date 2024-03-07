@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, Center, Flex, Heading } from '@chakra-ui/react'
 import { FiLayers } from 'react-icons/fi'
-import CreateFeatureTableForm from './CreateFeatureTableForm'
+import ApplyFeatureTableForm from './ApplyFeatureTableForm'
 import Nav from '../../ui/breadcrumb/Nav'
 
-function FeatureTableEdit({ action }) {
+function ApplyFeatureTable({ action }) {
 	const crumbs =
 		action === 'edit'
 			? [
@@ -62,7 +62,7 @@ function FeatureTableEdit({ action }) {
 					</Flex>
 				</Center>
 				<Flex gap='30px' direction='row'>
-					<CreateFeatureTableForm
+					<ApplyFeatureTableForm
 						// changeable={changeable}
 						action={action}
 						defaultValue={[
@@ -79,4 +79,4 @@ function FeatureTableEdit({ action }) {
 	)
 }
 
-export default FeatureTableEdit
+export default ApplyFeatureTable

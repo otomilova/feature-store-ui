@@ -1,5 +1,5 @@
 import { $axios } from './api.js'
-import { IApplyFeatureTableRequest, IFeatureTablesResponseEntry } from '../types/types.d.ts'
+import { IApplyFeatureTableRequest, IFeatureTablesResponseEntry } from '../types/types.d.ts' //const USERS = '/users'
 
 //const USERS = '/users'
 
@@ -22,7 +22,7 @@ export const getFeatureTableByName = async (name: string) => {
 	}
 }
 
-export const applyFeatureTable = async (request: IApplyFeatureTableRequest) => {
+export const applyFeatureTable = (request: IApplyFeatureTableRequest) => {
 	try {
 		return $axios.post(`/feature-tables/apply`, request)
 	} catch (err) {

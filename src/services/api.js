@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-const API_URL = `${import.meta.env.VITE_SERVER_URL}/api`
+const API_URL = `${import.meta.env.SERVER_URL}/api`
 
 export const $axios = axios.create({
 	baseURL: API_URL,
