@@ -16,17 +16,22 @@ const CustomInput = ({ inputName, inputId, changeable, errors, register }) => {
 				</Heading>
 			</FormLabel>
 			<Input
-				isDisabled={changeable}
+				isDisabled={!changeable}
 				minW='290px'
 				border='1px solid'
 				borderColor='inherit'
 				bgColor='white'
 				id={inputId}
 				placeholder={inputName}
-				{...register(inputId, {
-					required: 'This is required',
-					minLength: { value: 4, message: 'Minimum length should be 4' }
-				})}
+				{...register(
+					inputId,
+					changeable
+						? {
+								required: 'This is required',
+								minLength: { value: 4, message: 'Minimum length should be 4' }
+						  }
+						: {}
+				)}
 			/>
 			<FormErrorMessage>
 				{!!errors && errors[inputId] && errors[inputId].message}

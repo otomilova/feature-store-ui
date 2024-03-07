@@ -34,24 +34,7 @@ const featureTables = [
 					valueType: 'INT32'
 				}
 			],
-			labels: [
-				{
-					name: 'net_id',
-					valueType: 'INT64'
-				},
-				{
-					name: 'country_code',
-					valueType: 'STRING'
-				},
-				{
-					name: 'reg',
-					valueType: 'INT64'
-				},
-				{
-					name: 'castle_level',
-					valueType: 'INT32'
-				}
-			]
+			labels: ['label1', 'label2']
 		},
 		metadata: {
 			createdTimestamp: '2023-05-04T11:59:56Z',

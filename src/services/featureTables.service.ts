@@ -5,7 +5,6 @@ import { IApplyFeatureTableRequest, IFeatureTablesResponseEntry } from '../types
 
 export const getFeatureTables = async (project: string) => {
 	try {
-		//return $axios.get(`/feature-tables`)
 		return $axios.get<IFeatureTablesResponseEntry[]>(
 			`/feature-tables/?project=${project}`
 		)
@@ -24,7 +23,7 @@ export const getFeatureTableByName = async (name: string) => {
 
 export const applyFeatureTable = (request: IApplyFeatureTableRequest) => {
 	try {
-		return $axios.post(`/feature-tables/apply`, request)
+		return $axios.post<void>(`/feature-tables/apply`, request)
 	} catch (err) {
 		console.error(err.toJSON())
 	}

@@ -15,27 +15,7 @@ import {
 	SELECT_TYPE_OPTIONS,
 	TYPE
 } from '../../../utils/constants'
-import { extractValue } from '../../../utils/helpers.ts'
-
-const labelOptions = [
-	{ value: 'conv_performance', label: 'conv_performance' },
-	{ value: 'driver_performance', label: 'driver_performance' }
-]
-
-// const featureTables = [
-// 	{
-// 		label: 'driver_hourly_stats_fresh',
-// 		value: 'driver_hourly_stats_fresh'
-// 	},
-// 	{
-// 		label: 'driver_hourly_stats',
-// 		value: 'driver_hourly_stats'
-// 	},
-// 	{
-// 		label: 'transformed_conv_rate',
-// 		value: 'transformed_conv_rate'
-// 	}
-// ]
+import { extractValueFromSelectObj } from '../../../utils/helpers.ts'
 
 const CreateFeatureForm = ({
 	changeable,
@@ -47,7 +27,6 @@ const CreateFeatureForm = ({
 	const {
 		control,
 		register,
-		setValue,
 		handleSubmit,
 		formState: { errors },
 		reset
@@ -56,11 +35,8 @@ const CreateFeatureForm = ({
 	})
 
 	const onSubmit = data => {
-		//alert(JSON.stringify(data, null, 2))
-		//console.log(JSON.stringify(data, null, 2))
-		data.type = ValueTypes[extractValue(data.type)]
+		data.type = ValueTypes[extractValueFromSelectObj(data.type)]
 		setFeatures([...features, data])
-		//navigate('/feature-table/create')
 		reset()
 		onClose()
 	}
@@ -107,7 +83,6 @@ const CreateFeatureForm = ({
 
 			<MultiSelect
 				control={control}
-				options={labelOptions}
 				selectName={LABELS.title}
 				selectId={LABELS.id}
 				setTags={setLabels}

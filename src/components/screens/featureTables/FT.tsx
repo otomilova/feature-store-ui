@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-// import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
@@ -14,15 +13,16 @@ import {
 	HStack,
 	Input,
 	InputGroup,
-	InputLeftElement,
-	useToast
+	InputLeftElement
 } from '@chakra-ui/react'
 import { FiLayers, FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import { LabelsColumn } from './LabelsColumn.tsx'
-import { useFeatureTables } from './useFeatureTables.js'
+import { useFeatureTables } from './useFeatureTables'
 import Loader from '../../ui/Loader'
 import { useProject } from '../../hooks/useProject.js'
+import { IFeatureTablesResponseEntry } from '../../../types/types'
+import { FEATURE_TABLES_TITLES, FTColumnState } from '../../../utils/constants'
 
 export function FT() {
 	const { project } = useProject()
@@ -35,7 +35,11 @@ export function FT() {
 		)
 	}, [])
 
-	const { data: featureTables, isLoading } = useFeatureTables(project)
+	const {
+		data: featureTables,
+		isLoading
+	}: { featureTables: IFeatureTablesResponseEntry[]; isLoading: boolean } =
+		useFeatureTables(project)
 	const FTRows = useMemo(
 		() =>
 			featureTables?.map((table, index) => {
@@ -56,191 +60,8 @@ export function FT() {
 		setRowData(FTRows)
 	}, [FTRows])
 
-	// const [rowData, setRowData] = useState([
-	// 	{
-	// 		'#': '1',
-	// 		Name: 'driver_hourly_stats_fresh',
-	// 		Entity: 'Driver',
-	// 		Labels: 'driver-performance'
-	// 	},
-	// 	{
-	// 		'#': '2',
-	// 		Name: 'driver_hourly_stats',
-	// 		Entity: 'Driver',
-	// 		Labels: 'driver-performance'
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	},
-	// 	{
-	// 		'#': '3',
-	// 		Name: 'driver_hourly',
-	// 		Entity: 'Driver',
-	// 		Labels: [
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance',
-	// 			'driver-performance'
-	// 		]
-	// 	}
-	// ])
-
 	// Column Definitions: Defines & controls grid columns.
-	const [colDefs, setColDefs] = useState([
-		{
-			field: '#',
-			resizable: false,
-			width: 50,
-			maxWidth: 50,
-			cellDataType: 'text'
-		},
-		{
-			field: 'Name',
-			resizable: false,
-			width: 100
-		},
-		{
-			field: 'Entities',
-			resizable: false,
-			width: 50,
-			maxWidth: 1000
-		},
-		{
-			field: 'Labels',
-			resizable: false,
-			width: 50,
-			cellRenderer: 'LabelsColumn'
-		}
-	])
+	const [colDefs, setColDefs] = useState(FTColumnState)
 	const components = useMemo(() => {
 		return {
 			LabelsColumn: LabelsColumn
@@ -261,7 +82,7 @@ export function FT() {
 	// const autoSizeStrategy = {
 	// 	type: 'fitCellContents'
 	// }
-	const toast = useToast()
+
 	return (
 		<Box mt='25px' mr='85px' w='100%'>
 			{isLoading ? (
@@ -277,7 +98,7 @@ export function FT() {
 						>
 							<FiLayers size={12} color='344054' />
 							<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
-								Feature Tables
+								{FEATURE_TABLES_TITLES.title}
 							</Heading>
 						</Flex>
 					</Center>

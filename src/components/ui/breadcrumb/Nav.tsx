@@ -13,7 +13,6 @@ const Nav = ({ crumbs }) => {
 							to={crumb.link}
 							color={crumb.isActive ? 'brand.600' : 'brand.500'}
 							textDecor={crumb.isActive ? 'none' : 'underline'}
-							//cursor={crumb.isActive ? 'text' : 'pointer'}
 							pointerEvents={crumb.isActive ? 'none' : 'initial'}
 						>
 							{crumb.name}

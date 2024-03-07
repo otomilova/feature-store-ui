@@ -34,7 +34,7 @@ const CustomSelect = ({
 
 					<Select
 						isMulti={isMulti}
-						isDisabled={changeable}
+						isDisabled={!changeable}
 						chakraStyles={{
 							dropdownIndicator: provided => ({
 								...provided,

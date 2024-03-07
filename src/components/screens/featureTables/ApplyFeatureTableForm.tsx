@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -10,8 +10,7 @@ import FeaturesInput from './FeaturesInput'
 import { useProject } from '../../hooks/useProject.js'
 import {
 	IApplyFeatureTableRequest,
-	IFeatureTableFormData,
-	ValueTypes
+	IFeatureTableFormData
 } from '../../../types/types.d.ts'
 import {
 	DESCRIPTION,
@@ -36,13 +35,22 @@ const entities = [
 	}
 ]
 
-const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
-	const isEditable = action === 'edit'
+const ApplyFeatureTableForm = ({
+	id,
+	action,
+	featureTableFormData
+}: {
+	id: string
+	action: string
+	featureTableFormData: IFeatureTableFormData | undefined
+}) => {
+	const isCreate = action === 'create'
 	const {
 		control,
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors },
+		setValue
 	} = useForm({
 		mode: 'onChange'
 	})
@@ -51,24 +59,13 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 
 	const { project } = useProject()
 
-	const [features, setFeatures] = useState([
-		{
-			featureName: 'driver',
-			type: ValueTypes.INT32,
-			description: 'driver-desc',
-			labels: [
-				{
-					value: 'driver_performance',
-					label: 'driver_performance'
-				}
-			]
-		}
-	])
+	const [features, setFeatures] = useState(
+		featureTableFormData ? featureTableFormData.features : []
+	)
 
-	const [labels, setLabels] = useState([
-		{ value: 'conv_performance', label: 'conv_performance' },
-		{ value: 'driver_performance', label: 'driver_performance' }
-	])
+	const [labels, setLabels] = useState(
+		featureTableFormData ? featureTableFormData.labels : []
+	)
 
 	const { mutate, isPending } = useApplyFeatureTable()
 	const onSubmit = (formData: IFeatureTableFormData) => {
@@ -85,6 +82,14 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
+
+	useEffect(() => {
+		if (featureTableFormData) {
+			setValue(FEATURE_TABLE_TITLES.id, featureTableFormData.featureTable)
+			setValue(ENTITIES.id, featureTableFormData.entities)
+			setValue(DESCRIPTION.id, featureTableFormData.description)
+		}
+	}, [])
 	return (
 		<>
 			<form
@@ -96,7 +101,7 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 				<Flex direction='column' width='700px'>
 					{isPending && <Loader rows={12} />}
 					<CustomInput
-						changeable={isEditable}
+						changeable={isCreate}
 						inputName={FEATURE_TABLE_TITLES.title}
 						inputId={FEATURE_TABLE_TITLES.id}
 						errors={errors}
@@ -104,6 +109,7 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 					/>
 
 					<CustomSelect
+						changeable={true}
 						isMulti={true}
 						control={control}
 						options={entities}
@@ -133,7 +139,6 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 						setTags={setLabels}
 						selectName={LABELS.title}
 						selectId={LABELS.id}
-						defaultValue={defaultValue}
 					/>
 				</Flex>
 
@@ -150,8 +155,7 @@ const ApplyFeatureTableForm = ({ id, defaultValue, action }) => {
 							Cancel
 						</Button>
 						<Button type='submit' colorScheme='button' onClick={() => {}}>
-							{isEditable ? 'Apply Changes' : 'Create Feature Table'}
-							{/*//delete changeable, use action*/}
+							{isCreate ? 'Create Feature Table' : 'Apply Changes'}
 						</Button>
 					</Flex>
 				</Center>

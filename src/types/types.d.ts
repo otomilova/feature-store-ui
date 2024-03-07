@@ -71,11 +71,10 @@ export interface IFeatureTablesResponseEntry {
 		features?: {
 			name: string
 			valueType: ValueTypes
+			description?: string
+			labels?: string[]
 		}[]
-		labels?: {
-			name: string
-			valueType: ValueTypes
-		}[]
+		labels?: string[]
 	}
 	metadata: {
 		createdTimestamp?: string

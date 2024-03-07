@@ -19,13 +19,11 @@ import {
 	useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from 'react-icons/fi'
-import { useNavigate } from 'react-router-dom'
 import CreateFeatureFormModal from '../features/CreateFeatureFormModal'
 import { Controller } from 'react-hook-form'
 import { MODAL_FEATURE } from '../../../utils/constants'
 
 const FeaturesInput = ({
-	register,
 	control,
 	features,
 	setFeatures,
@@ -35,7 +33,6 @@ const FeaturesInput = ({
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const finalRef = React.useRef(null)
 	const initialRef = React.useRef(null)
-	const navigate = useNavigate()
 
 	function removeTag(index) {
 		setFeatures(features.filter((el, i) => i !== index))
@@ -46,10 +43,7 @@ const FeaturesInput = ({
 			control={control}
 			name={inputId}
 			//rules={{ required: `Please select ${selectName}` }}
-			render={({
-				field: { onChange, onBlur, value, name, ref },
-				fieldState: { error }
-			}) => (
+			render={() => (
 				<FormControl mb='20px'>
 					<FormLabel htmlFor={inputId}>
 						<Heading fontSize='14px' color='brand.600'>
@@ -115,6 +109,7 @@ const FeaturesInput = ({
 								<ModalCloseButton />
 								<ModalBody pb={6}>
 									<CreateFeatureFormModal
+										changeable={true}
 										id={MODAL_FEATURE.id}
 										onClose={onClose}
 										setFeatures={setFeatures}
@@ -125,9 +120,7 @@ const FeaturesInput = ({
 						</Modal>
 					</Flex>
 
-					<FormErrorMessage>
-						{/*{errors?.features && errors?.features?.message}*/}
-					</FormErrorMessage>
+					<FormErrorMessage></FormErrorMessage>
 				</FormControl>
 			)}
 		/>

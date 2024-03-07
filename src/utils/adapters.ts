@@ -1,7 +1,9 @@
 import {
 	IApplyFeatureTableRequest,
-	IFeatureTableFormData
+	IFeatureTableFormData,
+	IFeatureTablesResponseEntry
 } from '../types/types'
+import { createSelectObjFromString } from './helpers'
 
 export function makeRequestFromFTFormData(
 	formData: IFeatureTableFormData,
@@ -30,4 +32,34 @@ export function makeRequestFromFTFormData(
 	}
 
 	return request
+}
+
+export function makeFTFormDataFromResponse(
+	response: IFeatureTablesResponseEntry
+) {
+	const features = response.data.features?.map(feature => {
+		return {
+			featureName: feature.name,
+			type: feature.valueType,
+			description: feature.description,
+			labels: feature.labels?.map(label => createSelectObjFromString(label)),
+			featureTable: createSelectObjFromString(response.data.name)
+		}
+	})
+	const entities = response.data.entities?.map(entity =>
+		createSelectObjFromString(entity)
+	)
+
+	const labels = response.data.labels?.map(label =>
+		createSelectObjFromString(label)
+	)
+
+	const data: IFeatureTableFormData = {
+		featureTable: response.data.name,
+		description: response.data.description,
+		entities: entities,
+		features: features,
+		labels: labels
+	}
+	return data
 }

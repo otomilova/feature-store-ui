@@ -8,7 +8,6 @@ const MultiSelect = ({
 	selectName,
 	selectId,
 	color,
-	defaultValue,
 	setTags,
 	tags
 }) => {
@@ -33,7 +32,6 @@ const MultiSelect = ({
 							colorScheme={color}
 							isMulti
 							name={selectId}
-							//options={labels}
 							placeholder={`Select some ${selectName}`}
 							closeMenuOnSelect={false}
 							ref={ref}

@@ -52,3 +52,30 @@ export const MODAL_FEATURE = {
 export const SELECT_TYPE_OPTIONS = Object.keys(ValueTypes).map(type => {
 	return { value: type, label: type }
 })
+
+export const FTColumnState = [
+	{
+		field: '#',
+		resizable: false,
+		width: 50,
+		maxWidth: 50,
+		cellDataType: 'text'
+	},
+	{
+		field: 'Name',
+		resizable: false,
+		width: 100
+	},
+	{
+		field: 'Entities',
+		resizable: false,
+		width: 50,
+		maxWidth: 1000
+	},
+	{
+		field: 'Labels',
+		resizable: false,
+		width: 50,
+		cellRenderer: 'LabelsColumn'
+	}
+]
