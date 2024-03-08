@@ -22,7 +22,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 	const crumbs = createCrumbsForApplyFT(action, name)
 
 	return (
-		<Box mt='25px' w='100%'>
+		<Box mt='25px' w='100%' h='85vh'>
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -30,11 +30,12 @@ function ApplyFeatureTable({ action }: { action: string }) {
 					<Nav crumbs={crumbs} />
 
 					<Box
+						overflow='scroll'
 						w='77%'
 						bgColor='brand.300'
 						m='55px'
 						mt='30px'
-						h='85%'
+						h='85vh'
 						borderRadius='20px'
 						boxShadow='md'
 						p='25'

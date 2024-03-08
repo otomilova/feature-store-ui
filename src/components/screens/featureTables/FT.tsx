@@ -46,8 +46,8 @@ export function FT() {
 				const t = {
 					'#': index + 1,
 					Name: table.data.name,
-					Entities: table.data.entities,
-					Labels: ''
+					Entities: table.data.entities?.join(', '),
+					Labels: table.data.labels
 				}
 
 				return t
@@ -84,7 +84,7 @@ export function FT() {
 	// }
 
 	return (
-		<Box mt='25px' mr='85px' w='100%'>
+		<Box mt='25px' w='100%'>
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -102,7 +102,7 @@ export function FT() {
 							</Heading>
 						</Flex>
 					</Center>
-					<HStack mb={5}>
+					<HStack mb={5} mr='108px'>
 						<InputGroup size='sm'>
 							<InputLeftElement pointerEvents='none'>
 								<FiSearch color='CBD5E0' />
@@ -129,7 +129,7 @@ export function FT() {
 					{/* The AG Grid component */}
 					<Box
 						className='ag-theme-quartz'
-						width='100%'
+						width='90%'
 						height='85%'
 						fontFamily='Inter'
 					>

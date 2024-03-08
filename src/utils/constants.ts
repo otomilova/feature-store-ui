@@ -76,6 +76,8 @@ export const FTColumnState = [
 		field: 'Labels',
 		resizable: false,
 		width: 50,
+		autoHeight: true,
 		cellRenderer: 'LabelsColumn'
+		//cellDataType: 'object'
 	}
 ]

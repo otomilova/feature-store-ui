@@ -40,11 +40,12 @@ function FeatureTableOverview() {
 					<Box
 						bgColor='#F5F5F5'
 						w='80%'
-						m='55px'
-						h='80%'
+						m='35px'
+						h='85vh'
 						borderRadius='20px'
 						boxShadow='md'
-						p='25'
+						p='40px'
+						pt='10px'
 					>
 						<Center pt='10px'>
 							<Flex direction='row' gap='12px' alignItems='center'>
@@ -54,10 +55,23 @@ function FeatureTableOverview() {
 								</Heading>
 							</Flex>
 						</Center>
-						<Heading size='sm' mb='20px' mt='15px' color='brand.600'>
+						<Heading size='sm' mb='5px' mt='10px' color='brand.600'>
 							{featureTable.data.name}
 						</Heading>
 						<Divider />
+						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
+							Multi Record
+						</Heading>
+						<Text mb='10px' color='brand.600'>
+							{featureTable.data?.multiRecord ? 'true' : 'false'}
+						</Text>
+						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
+							ttlMinutes
+						</Heading>
+						<Text mb='10px' color='brand.600'>
+							{featureTable.data?.ttlMinutes}
+						</Text>
+
 						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
 							{ENTITIES.title}
 						</Heading>
@@ -96,7 +110,7 @@ function FeatureTableOverview() {
 						<Heading size='16px' mt='15px' mb='5px' color='brand.600'>
 							{LABELS.title}
 						</Heading>
-						<Flex gap='10px' mb='20px'>
+						<Flex gap='10px' mb='20px' wrap='wrap'>
 							{featureTable.data.labels?.map(label => {
 								return (
 									<Tag colorScheme='blue' size='md' key={label}>
@@ -109,7 +123,8 @@ function FeatureTableOverview() {
 						<Center>
 							<Button
 								colorScheme='button'
-								mt='60px'
+								mt='20px'
+								mb='10px'
 								onClick={() => {
 									navigate(`/feature-tables/${name}/edit`)
 								}}

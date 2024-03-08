@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { Button, Center, Checkbox, Flex, HStack } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
@@ -55,7 +55,7 @@ const ApplyFeatureTableForm = ({
 		handleSubmit,
 		formState: { errors },
 		setValue
-	} = useForm<IFeatureTableFormData>({
+	} = useForm({
 		mode: 'onChange'
 	})
 
@@ -72,9 +72,7 @@ const ApplyFeatureTableForm = ({
 	)
 
 	const { mutate, isPending } = useApplyFeatureTable()
-	const onSubmit: SubmitHandler<IFeatureTableFormData> = (
-		formData: IFeatureTableFormData
-	) => {
+	const onSubmit = (formData: IFeatureTableFormData) => {
 		formData.features = features
 		formData.labels = labels
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
@@ -94,6 +92,8 @@ const ApplyFeatureTableForm = ({
 			setValue(FEATURE_TABLE_TITLES.id, featureTableFormData.featureTable)
 			setValue(ENTITIES.id, featureTableFormData.entities)
 			setValue(DESCRIPTION.id, featureTableFormData.description)
+			setValue('ttlMinutes', featureTableFormData.ttlMinutes)
+			setValue('multiRecord', featureTableFormData.multiRecord)
 		}
 	}, [])
 	return (

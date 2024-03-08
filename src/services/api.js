@@ -34,7 +34,9 @@ const featureTables = [
 					valueType: 'INT32'
 				}
 			],
-			labels: ['label1', 'label2']
+			labels: ['label1', 'label2'],
+			ttlMinutes: 456,
+			multiRecord: true
 		},
 		metadata: {
 			createdTimestamp: '2023-05-04T11:59:56Z',

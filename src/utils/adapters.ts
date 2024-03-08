@@ -62,7 +62,8 @@ export function makeFTFormDataFromResponse(
 		entities: entities,
 		features: features,
 		labels: labels,
-		multiRecord: response.data.multiRecord
+		multiRecord: response.data.multiRecord,
+		ttlMinutes: response.data.ttlMinutes.toString()
 	}
 	return data
 }
