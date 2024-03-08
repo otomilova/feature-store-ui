@@ -3,25 +3,24 @@ import { FiLayers } from 'react-icons/fi'
 import ApplyFeatureTableForm from './ApplyFeatureTableForm'
 import Nav from '../../ui/breadcrumb/Nav'
 import { useFeatureTableByName } from './useFeatureTableByName'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { makeFTFormDataFromResponse } from '../../../utils/adapters'
 import { IFeatureTableFormData } from '../../../types/types'
 import Loader from '../../ui/Loader'
-import { createCrumbsForApplyFT } from '../../../utils/helpers'
+import { createCrumbsForApplyFT, getBacklink } from '../../../utils/helpers'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { name }: { name: string } = useParams()
 	const {
 		data: featureTable,
 		isLoading,
-		isSuccess,
-		path
+		isSuccess
 	} = useFeatureTableByName(name)
 	const featureTableFormData: IFeatureTableFormData | undefined = isSuccess
 		? makeFTFormDataFromResponse(featureTable)
 		: undefined
 	const crumbs = createCrumbsForApplyFT(action, name)
-
+	const backlink = getBacklink(useLocation().pathname)
 	return (
 		<Box mt='25px' w='100%' h='85vh'>
 			{isLoading ? (
@@ -55,7 +54,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 						<Flex gap='30px' direction='row'>
 							<ApplyFeatureTableForm
 								featureTableFormData={featureTableFormData}
-								path={path}
+								backlink={backlink}
 								action={action}
 								defaultValue={[
 									{
