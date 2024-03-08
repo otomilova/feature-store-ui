@@ -7,7 +7,14 @@ import {
 	Input
 } from '@chakra-ui/react'
 
-const CustomInput = ({ inputName, inputId, changeable, errors, register }) => {
+const CustomInput = ({
+	inputName,
+	inputId,
+	changeable,
+	errors,
+	register,
+	validation
+}) => {
 	return (
 		<FormControl isInvalid={!!errors && errors[inputId]} mb='20px'>
 			<FormLabel htmlFor={inputId}>
@@ -23,15 +30,7 @@ const CustomInput = ({ inputName, inputId, changeable, errors, register }) => {
 				bgColor='white'
 				id={inputId}
 				placeholder={inputName}
-				{...register(
-					inputId,
-					changeable
-						? {
-								required: 'This is required',
-								minLength: { value: 4, message: 'Minimum length should be 4' }
-						  }
-						: {}
-				)}
+				{...register(inputId, changeable ? validation : {})}
 			/>
 			<FormErrorMessage>
 				{!!errors && errors[inputId] && errors[inputId].message}

@@ -61,6 +61,8 @@ export interface IFeatureTableFormData {
 		label: string
 		value: string
 	}[]
+	ttlMinutes?: string
+	multiRecord?: boolean
 }
 
 export interface IFeatureTablesResponseEntry {
@@ -75,6 +77,8 @@ export interface IFeatureTablesResponseEntry {
 			labels?: string[]
 		}[]
 		labels?: string[]
+		ttlMinutes?: number
+		multiRecord?: boolean
 	}
 	metadata: {
 		createdTimestamp?: string

@@ -53,7 +53,6 @@ function ApplyFeatureTable({ action }: { action: string }) {
 						<Flex gap='30px' direction='row'>
 							<ApplyFeatureTableForm
 								featureTableFormData={featureTableFormData}
-								// changeable={changeable}
 								action={action}
 								defaultValue={[
 									{

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { Button, Center, Flex } from '@chakra-ui/react'
+import { Button, Center, Checkbox, Flex, HStack } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
@@ -23,6 +23,10 @@ import { makeRequestFromFTFormData } from '../../../utils/adapters'
 import { useApplyFeatureTable } from './useApplyFeatureTable'
 import Loader from '../../ui/Loader'
 import MultiSelect from '../../ui/select/MultiSelect'
+import {
+	INPUT_NUMBER_VALIDATION,
+	INPUT_VALIDATION
+} from '../../../utils/validation'
 
 const entities = [
 	{
@@ -51,7 +55,7 @@ const ApplyFeatureTableForm = ({
 		handleSubmit,
 		formState: { errors },
 		setValue
-	} = useForm({
+	} = useForm<IFeatureTableFormData>({
 		mode: 'onChange'
 	})
 
@@ -68,7 +72,9 @@ const ApplyFeatureTableForm = ({
 	)
 
 	const { mutate, isPending } = useApplyFeatureTable()
-	const onSubmit = (formData: IFeatureTableFormData) => {
+	const onSubmit: SubmitHandler<IFeatureTableFormData> = (
+		formData: IFeatureTableFormData
+	) => {
 		formData.features = features
 		formData.labels = labels
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
@@ -100,14 +106,31 @@ const ApplyFeatureTableForm = ({
 			>
 				<Flex direction='column' width='700px'>
 					{isPending && <Loader rows={12} />}
-					<CustomInput
-						changeable={isCreate}
-						inputName={FEATURE_TABLE_TITLES.title}
-						inputId={FEATURE_TABLE_TITLES.id}
-						errors={errors}
-						register={register}
-					/>
-
+					<HStack gap='15px'>
+						<CustomInput
+							changeable={isCreate}
+							inputName={FEATURE_TABLE_TITLES.title}
+							inputId={FEATURE_TABLE_TITLES.id}
+							errors={errors}
+							register={register}
+							validation={INPUT_VALIDATION}
+						/>
+						<CustomInput
+							changeable={true}
+							inputName='TTL(minutes)'
+							inputId='ttlMinutes'
+							errors={errors}
+							register={register}
+							validation={INPUT_NUMBER_VALIDATION}
+						/>
+						<Checkbox
+							isDisabled={!isCreate}
+							colorScheme='button'
+							{...register('multiRecord')}
+						>
+							MultiRecord
+						</Checkbox>
+					</HStack>
 					<CustomSelect
 						changeable={true}
 						isMulti={true}

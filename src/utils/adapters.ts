@@ -27,7 +27,9 @@ export function makeRequestFromFTFormData(
 			entities: entities,
 			features: features,
 			description: formData.description,
-			labels: labels
+			labels: labels,
+			multiRecord: formData.multiRecord,
+			ttlMinutes: +formData.ttlMinutes
 		}
 	}
 
@@ -59,7 +61,8 @@ export function makeFTFormDataFromResponse(
 		description: response.data.description,
 		entities: entities,
 		features: features,
-		labels: labels
+		labels: labels,
+		multiRecord: response.data.multiRecord
 	}
 	return data
 }

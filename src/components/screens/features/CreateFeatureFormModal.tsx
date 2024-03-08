@@ -16,6 +16,7 @@ import {
 	TYPE
 } from '../../../utils/constants'
 import { extractValueFromSelectObj } from '../../../utils/helpers.ts'
+import { INPUT_VALIDATION } from '../../../utils/validation'
 
 const CreateFeatureForm = ({
 	changeable,
@@ -62,6 +63,7 @@ const CreateFeatureForm = ({
 						inputId={FEATURE_TITLES.id}
 						errors={errors}
 						register={register}
+						validation={INPUT_VALIDATION}
 					/>
 				</Flex>
 				<Flex direction='column'>
