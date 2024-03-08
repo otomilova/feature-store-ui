@@ -4,12 +4,12 @@ import { IApplyFeatureTableRequest } from '../../../types/types'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useToast } from '@chakra-ui/react'
+import { getBacklink } from '../../../utils/helpers'
 
 export const useApplyFeatureTable = () => {
 	const toast = useToast()
 	const navigate = useNavigate()
-	const location = useLocation().pathname
-	const path = location.substring(0, location.lastIndexOf('/'))
+	const path = getBacklink(useLocation().pathname)
 	const queryClient = useQueryClient()
 	const { data, error, isPending, isSuccess, mutate } = useMutation({
 		mutationFn: (request: IApplyFeatureTableRequest) =>
@@ -41,6 +41,7 @@ export const useApplyFeatureTable = () => {
 		isSuccess,
 		mutate,
 		isPending,
-		error
+		error,
+		path
 	}
 }

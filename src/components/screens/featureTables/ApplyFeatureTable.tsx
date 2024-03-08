@@ -14,7 +14,8 @@ function ApplyFeatureTable({ action }: { action: string }) {
 	const {
 		data: featureTable,
 		isLoading,
-		isSuccess
+		isSuccess,
+		path
 	} = useFeatureTableByName(name)
 	const featureTableFormData: IFeatureTableFormData | undefined = isSuccess
 		? makeFTFormDataFromResponse(featureTable)
@@ -54,6 +55,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 						<Flex gap='30px' direction='row'>
 							<ApplyFeatureTableForm
 								featureTableFormData={featureTableFormData}
+								path={path}
 								action={action}
 								defaultValue={[
 									{

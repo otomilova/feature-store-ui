@@ -57,3 +57,7 @@ export function createCrumbsForFTOverview(name: string) {
 		}
 	]
 }
+
+export function getBacklink(location) {
+	return location.substring(0, location.lastIndexOf('/'))
+}

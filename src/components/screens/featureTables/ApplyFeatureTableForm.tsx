@@ -42,11 +42,13 @@ const entities = [
 const ApplyFeatureTableForm = ({
 	id,
 	action,
-	featureTableFormData
+	featureTableFormData,
+	path
 }: {
 	id: string
 	action: string
 	featureTableFormData: IFeatureTableFormData | undefined
+	path: string | undefined
 }) => {
 	const isCreate = action === 'create'
 	const {
@@ -172,7 +174,7 @@ const ApplyFeatureTableForm = ({
 							colorScheme='blue'
 							variant='outline'
 							onClick={() => {
-								navigate('/feature-tables')
+								navigate(path ? path : '/feature-tables')
 							}}
 						>
 							Cancel
