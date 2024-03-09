@@ -9,7 +9,7 @@ import { getBacklink } from '../../../utils/helpers'
 export const useApplyFeatureTable = () => {
 	const toast = useToast()
 	const navigate = useNavigate()
-	const path = getBacklink(useLocation().pathname)
+	const backlink = getBacklink(useLocation().pathname)
 	const queryClient = useQueryClient()
 	const { data, error, isPending, isSuccess, mutate } = useMutation({
 		mutationFn: (request: IApplyFeatureTableRequest) =>
@@ -17,7 +17,7 @@ export const useApplyFeatureTable = () => {
 		mutationKey: ['apply feature table'],
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['get feature tables'] })
-			navigate(path)
+			navigate(backlink)
 			toast({
 				position: 'top-right',
 				title: 'Success!',
@@ -41,7 +41,6 @@ export const useApplyFeatureTable = () => {
 		isSuccess,
 		mutate,
 		isPending,
-		error,
-		path
+		error
 	}
 }

@@ -11,6 +11,7 @@ import { createCrumbsForApplyFT, getBacklink } from '../../../utils/helpers'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { name }: { name: string } = useParams()
+	const backlink = getBacklink(useLocation().pathname)
 	const {
 		data: featureTable,
 		isLoading,
@@ -20,7 +21,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 		? makeFTFormDataFromResponse(featureTable)
 		: undefined
 	const crumbs = createCrumbsForApplyFT(action, name)
-	const backlink = getBacklink(useLocation().pathname)
+
 	return (
 		<Box mt='25px' w='100%' h='85vh'>
 			{isLoading ? (

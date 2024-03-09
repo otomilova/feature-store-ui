@@ -137,7 +137,6 @@ export function FT() {
 							onRowClicked={e => {
 								navigate(`/feature-tables/${e.data.Name}`)
 							}}
-							// onRowClicked={e => alert(e.rowIndex)}
 							rowData={rowData}
 							columnDefs={colDefs}
 							pagination={true}
