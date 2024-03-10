@@ -1,12 +1,20 @@
-import { Box, Center, Flex, Menu, MenuButton, MenuDivider, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
+import {
+	Box,
+	Center,
+	Flex,
+	Menu,
+	MenuButton,
+	MenuDivider,
+	MenuItem,
+	MenuList,
+	useDisclosure
+} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import * as React from 'react'
 import ProjectDrawer from './ProjectDrawer'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useProjects } from '../useProjects.js'
-import Loader from '../../../ui/Loader' //const projects = ['Project 1', 'Project 2', 'Project 3']
-
-//const projects = ['Project 1', 'Project 2', 'Project 3']
+import Loader from '../../../ui/Loader'
 
 const HeaderMenu: React.FC = ({ project, setProject }) => {
 	const { data: projects, isLoading } = useProjects()

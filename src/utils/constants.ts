@@ -67,18 +67,18 @@ export const FTColumnState = [
 	{
 		field: 'Name',
 		resizable: false,
-		width: 100
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
 	},
 	{
 		field: 'Entities',
 		resizable: false,
-		width: 50,
-		maxWidth: 1000
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+		//maxWidth: 1000
 	},
 	{
 		field: 'Labels',
 		resizable: false,
-		width: 50,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' },
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn'
 		//cellDataType: 'object'
