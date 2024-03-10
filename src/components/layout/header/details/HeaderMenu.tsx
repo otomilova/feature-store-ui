@@ -1,4 +1,4 @@
-import { Box, Menu, MenuButton, MenuDivider, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
+import { Box, Center, Flex, Menu, MenuButton, MenuDivider, MenuItem, MenuList, useDisclosure } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import * as React from 'react'
 import ProjectDrawer from './ProjectDrawer'
@@ -22,22 +22,38 @@ const HeaderMenu: React.FC = ({ project, setProject }) => {
 				<>
 					<Menu autoSelect={true}>
 						<MenuButton
-							px={8}
+							px={2}
 							py={2}
+							width={{ md: '100px', lg: '120px', xl: '150px', '2xl': '180px' }}
 							transition='all 0.2s'
 							borderRadius='md'
 							borderWidth='1px'
 							_hover={{ bg: 'gray.400' }}
 							_expanded={{ bg: 'blue.400' }}
 							_focus={{ boxShadow: 'outline' }}
-							fontSize={16}
+							fontSize={{ md: '12px', lg: '12px', xl: '16px', '2xl': '16px' }}
 						>
-							{project} <ChevronDownIcon />
+							<Center>
+								<Flex orientation='row' gap='8px'>
+									{project}
+									<Center>
+										<ChevronDownIcon />
+									</Center>
+								</Flex>
+							</Center>
 						</MenuButton>
-						<MenuList>
+						<MenuList
+							minWidth='80px'
+							width={{ md: '100px', lg: '140px', xl: '180px', '2xl': '230px' }}
+						>
 							{projects.map(project => (
 								<MenuItem
-									fontSize={16}
+									fontSize={{
+										md: '12px',
+										lg: '12px',
+										xl: '16px',
+										'2xl': '16px'
+									}}
 									key={project}
 									closeOnSelect={true}
 									onClick={() => {
@@ -52,7 +68,12 @@ const HeaderMenu: React.FC = ({ project, setProject }) => {
 							))}
 
 							<MenuDivider />
-							<MenuItem onClick={onOpen}>Create new project...</MenuItem>
+							<MenuItem
+								fontSize={{ md: '12px', lg: '12px', xl: '16px', '2xl': '16px' }}
+								onClick={onOpen}
+							>
+								Create new project...
+							</MenuItem>
 						</MenuList>
 					</Menu>
 					<ProjectDrawer isOpen={isOpen} onClose={onClose} />

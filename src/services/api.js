@@ -182,7 +182,13 @@ const featureTables = [
 
 const mock = new MockAdapter($axios)
 mock.onGet(`/projects`).reply(200, {
-	projects: ['taxi', 'taxi_stage', 'taxi_dev']
+	projects: [
+		'taxi',
+		'taxi_stage',
+		'taxi_dev',
+		'vikings_stage',
+		'Choose project'
+	]
 })
 mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
 	featureTables: featureTables

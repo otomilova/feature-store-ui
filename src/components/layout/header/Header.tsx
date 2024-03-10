@@ -24,7 +24,8 @@ const Header: React.FC = ({ localData }) => {
 			boxShadow='lg'
 			bg='white'
 			h='100vh'
-			width='330px'
+			width={{ md: '200px', lg: '220px', xl: '280px', '2xl': '330px' }}
+			//width='330px'
 			//position='fixed'
 			//overflow='hidden'
 			//TODO: fix header (when content enlarges header doesnt fit full page)

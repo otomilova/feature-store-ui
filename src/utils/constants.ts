@@ -7,12 +7,14 @@ export const FEATURE_TABLE_TITLES = {
 
 export const FEATURE_TABLES_TITLES = {
 	title: 'Feature Tables',
-	id: 'featureTables'
+	id: 'featureTables',
+	slug: `feature-tables`
 }
 
 export const FEATURES_TITLES = {
 	title: 'Features',
-	id: 'features'
+	id: 'features',
+	slug: `features`
 }
 
 export const FEATURE_TITLES = {
@@ -37,7 +39,8 @@ export const LABELS = {
 
 export const ENTITIES = {
 	title: 'Entities',
-	id: 'entities'
+	id: 'entities',
+	slug: `entities`
 }
 
 export const TYPE = {
@@ -81,3 +84,5 @@ export const FTColumnState = [
 		//cellDataType: 'object'
 	}
 ]
+
+export const tabs = [FEATURE_TABLES_TITLES, ENTITIES, FEATURES_TITLES]

@@ -2,12 +2,12 @@ import React from 'react'
 import { Box, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react'
 import { FiGrid, FiHexagon, FiLayers } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
-
-const tabs = [
-	{ name: 'Feature Tables', icon: <FiLayers size={9} /> },
-	{ name: 'Entities', icon: <FiHexagon size={9} /> },
-	{ name: 'Features', icon: <FiGrid size={9} /> }
-]
+import {
+	ENTITIES,
+	FEATURE_TABLES_TITLES,
+	FEATURES_TITLES,
+	tabs
+} from '../../../../utils/constants'
 
 function makeTab(index) {
 	return (
@@ -20,57 +20,22 @@ function makeTab(index) {
 				defaultIndex={index}
 			>
 				<TabList alignContent='start' alignItems='start'>
-					<Tab
-						as={Link}
-						to={`feature-tables`}
-						key='featureTables'
-						alignContent='start'
-						textAlign='left'
-						gap='10px'
-					>
-						<FiLayers size={9} />
-						{/*<Icon as={} boxSize={2} />*/}
-						Feature Tables
-					</Tab>
-					<Tab
-						as={Link}
-						to={`entities`}
-						key='entities'
-						alignContent='start'
-						textAlign='left'
-						gap='10px'
-					>
-						<FiHexagon size={9} />
-						{/*<Icon as={} boxSize={2} />*/}
-						Entities
-					</Tab>
-					<Tab
-						as={Link}
-						to={`features`}
-						key='features'
-						alignContent='start'
-						textAlign='left'
-						gap='10px'
-					>
-						<FiGrid size={9} />
-						{/*<Icon as={} boxSize={2} />*/}
-						Features
-					</Tab>
-					{/*{tabs.map(tab => (*/}
-					{/*	<Link to={`feature-tables`}>*/}
-					{/*		<Tab*/}
-					{/*			key={tab.name}*/}
-					{/*			alignContent='start'*/}
-					{/*			textAlign='left'*/}
-					{/*			gap='10px'*/}
-					{/*		>*/}
-					{/*			{tab.icon}*/}
-					{/*			/!*<Icon as={} boxSize={2} />*!/*/}
-
-					{/*			{tab.name}*/}
-					{/*		</Tab>*/}
-					{/*	</Link>*/}
-					{/*))}*/}
+					{tabs.map(tab => {
+						return (
+							<Tab
+								as={Link}
+								to={tab.slug}
+								key={tab.id}
+								alignContent='start'
+								textAlign='left'
+								gap='10px'
+								fontSize={{ md: '12px', lg: '14px', xl: '16px', '2xl': '18px' }}
+							>
+								{makeIcon(tab.title)}
+								{tab.title}
+							</Tab>
+						)
+					})}
 				</TabList>
 				<TabIndicator
 					mt='-1.5px'
@@ -100,6 +65,15 @@ const NavBar: React.FC = () => {
 
 export default NavBar
 
-//FiHexagon entities
-// 	<FiLayers /> tables
-// 	<FiGrid /> features
+function makeIcon(component: string, size: number = 9) {
+	switch (component) {
+		case FEATURE_TABLES_TITLES.title:
+			return <FiLayers size={size} />
+		case FEATURES_TITLES.title:
+			return <FiGrid size={size} />
+		case ENTITIES.title:
+			return <FiHexagon size={size} />
+		default:
+			return <FiHexagon size={size} />
+	}
+}
