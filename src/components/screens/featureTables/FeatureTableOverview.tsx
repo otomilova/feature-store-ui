@@ -31,6 +31,8 @@ function FeatureTableOverview() {
 	const { name } = useParams()
 	const { data: featureTable, isLoading } = useFeatureTableByName(name)
 	const navigate = useNavigate()
+	//console.table(featureTable)
+
 	return (
 		<Box
 			mt='2em'
@@ -77,11 +79,11 @@ function FeatureTableOverview() {
 							mt='0.5em'
 							color='brand.600'
 						>
-							{featureTable.data.name}
+							{featureTable.featureTable}
 						</Heading>
 						<Divider />
 
-						{featureTable.data?.multiRecord && (
+						{featureTable.multiRecord && (
 							<>
 								<HStack mt='1em'>
 									<Heading
@@ -94,13 +96,13 @@ function FeatureTableOverview() {
 									<Checkbox
 										cursor='default'
 										colorScheme='button'
-										isChecked={featureTable.data?.multiRecord}
+										isChecked={featureTable.multiRecord}
 									/>
 								</HStack>
 							</>
 						)}
 
-						{featureTable.data?.ttlMinutes && (
+						{featureTable.ttlMinutes && (
 							<>
 								<Heading
 									fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
@@ -112,7 +114,7 @@ function FeatureTableOverview() {
 								</Heading>
 								<HStack>
 									<Badge variant='outline' colorScheme='gray'>
-										{featureTable.data?.ttlMinutes}
+										{featureTable.ttlMinutes}
 									</Badge>
 									<Text color='brand.600'>minutes</Text>
 								</HStack>
@@ -128,15 +130,15 @@ function FeatureTableOverview() {
 							{ENTITIES.title}
 						</Heading>
 						<Flex gap='10px'>
-							{featureTable.data.entities.map(entity => {
+							{featureTable.entities?.map(entity => {
 								return (
 									<Tag
-										key={entity}
+										key={entity.value}
 										size={{ md: 'md', lg: 'md', xl: 'lg' }}
 										colorScheme='facebook'
 									>
 										{' '}
-										{entity}{' '}
+										{entity.value}{' '}
 									</Tag>
 								)
 							})}
@@ -150,7 +152,7 @@ function FeatureTableOverview() {
 							{DESCRIPTION.title}
 						</Heading>
 						<Text mb='1.2em' color='brand.600'>
-							{featureTable.data?.description}
+							{featureTable.description}
 						</Text>
 						<Divider />
 
@@ -163,7 +165,7 @@ function FeatureTableOverview() {
 							{FEATURES_TITLES.title}
 						</Heading>
 						<Flex gap='10px' mb='1.2em'>
-							{featureTable.data.features.map(feature => {
+							{featureTable.features?.map(feature => {
 								return (
 									<Tag
 										colorScheme='purple'
@@ -183,17 +185,86 @@ function FeatureTableOverview() {
 							mb='0.3em'
 							color='brand.600'
 						>
+							Sources
+						</Heading>
+						<Flex gap='10px' mb='1.2em'>
+							{featureTable.sources?.map(source => {
+								return (
+									<Tag
+										colorScheme='cyan'
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										key={source.name}
+									>
+										{source.name}
+									</Tag>
+								)
+							})}
+						</Flex>
+						<Divider />
+
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1.2em'
+							mb='0.3em'
+							color='brand.600'
+						>
+							Tasks
+						</Heading>
+						<Flex gap='10px' mb='1.2em'>
+							{featureTable.tasks?.map(task => {
+								return (
+									<Tag
+										colorScheme='cyan'
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										key={task.name}
+									>
+										{task.name}
+									</Tag>
+								)
+							})}
+						</Flex>
+						<Divider />
+
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1.2em'
+							mb='0.3em'
+							color='brand.600'
+						>
+							Sinks
+						</Heading>
+						<Flex gap='10px' mb='1.2em'>
+							{featureTable.sinks?.map(sink => {
+								return (
+									<Tag
+										colorScheme='cyan'
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										key={sink.name}
+									>
+										{sink.name}
+									</Tag>
+								)
+							})}
+						</Flex>
+						<Divider />
+
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1.2em'
+							mb='0.3em'
+							color='brand.600'
+						>
 							{LABELS.title}
 						</Heading>
 						<Flex gap='10px' mb='1.2em' wrap='wrap'>
-							{featureTable.data.labels?.map(label => {
+							{featureTable.labels?.map(label => {
 								return (
 									<Tag
 										colorScheme='blue'
 										size={{ md: 'md', lg: 'md', xl: 'lg' }}
-										key={label}
+										key={label.value}
 									>
-										{label}
+										{label.value}
 									</Tag>
 								)
 							})}
