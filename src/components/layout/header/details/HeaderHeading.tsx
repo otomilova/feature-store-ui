@@ -5,7 +5,12 @@ const HeaderHeading: React.FC = () => {
 	return (
 		<Heading
 			as='h1'
-			fontSize={{ md: '18px', lg: '18px', xl: '24px', '2xl': '28px' }}
+			fontSize={{
+				sm: '18px',
+				md: '24px',
+				lg: '28px',
+				xl: '32px'
+			}}
 			color='gray'
 			m={5}
 		>

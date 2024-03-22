@@ -18,11 +18,12 @@ import {
 import { FiLayers, FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import { LabelsColumn } from './LabelsColumn.tsx'
-import { useFeatureTables } from './useFeatureTables'
+import { useFeatureTables } from './hooks/useFeatureTables'
 import Loader from '../../ui/Loader'
 import { useProject } from '../../hooks/useProject.js'
 import { IFeatureTablesResponseEntry } from '../../../types/types'
 import { FEATURE_TABLES_TITLES, FTColumnState } from '../../../utils/constants'
+import { motion } from 'framer-motion'
 
 export function FT() {
 	const { project } = useProject()
@@ -71,67 +72,75 @@ export function FT() {
 	const autoSizeStrategy = {
 		type: 'fitGridWidth',
 		defaultMinWidth: 100
-		// columnLimits: [
-		// 	{
-		// 		colId: 'name',
-		// 		minWidth: 200
-		// 	}
-		// ]
 	}
 
-	// const autoSizeStrategy = {
-	// 	type: 'fitCellContents'
-	// }
-
 	return (
-		<Box mt='25px' w='100%'>
+		<Box
+			mt='25px'
+			w='100%'
+			mb='20px'
+			as={motion.div}
+			initial={{ opacity: 0, transition: { duration: 0.1 } }}
+			animate={{ opacity: 1, transition: { duration: 0 } }}
+			exit={{ opacity: 0, transition: { duration: 0.2 } }}
+		>
 			{isLoading ? (
 				<Loader />
 			) : (
 				<>
-					<Center mb='12px'>
-						<Flex
-							direction='row'
-							gap='12px'
-							alignItems='center'
-							marginBottom='0px'
-						>
-							<FiLayers size={12} color='344054' />
-							<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
-								{FEATURE_TABLES_TITLES.title}
-							</Heading>
-						</Flex>
-					</Center>
-					<HStack mb={5} mr='108px'>
-						<InputGroup size='sm'>
-							<InputLeftElement pointerEvents='none'>
-								<FiSearch color='CBD5E0' />
-							</InputLeftElement>
-							<Input
-								type='search'
-								placeholder='Search'
-								w='330px'
-								id='filter-text-box'
-								onInput={onFilterTextBoxChanged}
-							/>
-						</InputGroup>
-						<Button
-							colorScheme='button'
-							leftIcon={<FiPlusCircle />}
-							size='sm'
-							onClick={() => {
-								navigate('/feature-tables/create')
-							}}
-						>
-							Create new
-						</Button>
-					</HStack>
+					<Box mr={{ md: '135px', lg: '200px', xl: '335px' }}>
+						<Center mb='12px'>
+							<Flex
+								direction='row'
+								gap='12px'
+								alignItems='center'
+								marginBottom='0px'
+							>
+								<FiLayers size='0.9em' color='344054' />
+								<Heading
+									as='h2'
+									size={{ md: 'md', lg: 'md', xl: 'lg' }}
+									marginBottom='0px'
+									color='brand.600'
+								>
+									{FEATURE_TABLES_TITLES.title}
+								</Heading>
+							</Flex>
+						</Center>
+						<HStack mb={5}>
+							<InputGroup size={{ md: 'sm', lg: 'md', xl: 'lg' }}>
+								<InputLeftElement pointerEvents='none'>
+									<FiSearch color='CBD5E0' />
+								</InputLeftElement>
+								<Input
+									type='search'
+									placeholder='Search'
+									size={{ md: 'sm', lg: 'md', xl: 'lg' }}
+									w={{ md: '330px', lg: '380px', xl: '480px' }}
+									id='filter-text-box'
+									onInput={onFilterTextBoxChanged}
+								/>
+							</InputGroup>
+							<Button
+								colorScheme='button'
+								leftIcon={<FiPlusCircle />}
+								size={{ md: 'sm', lg: 'md', xl: 'lg' }}
+								onClick={() => {
+									navigate('/feature-tables/create')
+								}}
+							>
+								Create new
+							</Button>
+						</HStack>
+					</Box>
 					{/* The AG Grid component */}
 					<Box
 						className='ag-theme-quartz'
-						width='90%'
+						width='100%'
 						height='85%'
 						fontFamily='Inter'
+						fontSize={{ md: '16px', lg: '18px', xl: '18px' }}
+						pr={{ md: '135px', lg: '200px', xl: '335px' }}
 					>
 						<AgGridReact
 							onRowClicked={e => {
@@ -143,7 +152,13 @@ export function FT() {
 							ref={gridRef}
 							autoSizeStrategy={autoSizeStrategy}
 							components={components}
-							// rowHeight='150px'
+							rowHeight={{ md: '25', lg: '30', xl: '40' }}
+							defaultColDef={{
+								cellStyle: params => ({
+									display: 'flex',
+									alignItems: 'center'
+								})
+							}}
 						/>
 					</Box>
 				</>

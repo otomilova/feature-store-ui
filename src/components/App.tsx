@@ -9,7 +9,12 @@ const App: React.FC = () => {
 	const localData = window.localStorage.getItem('MY_APP_STATE')
 	return (
 		<ProjectProvider>
-			<Box display='flex' gap='110px' bgColor='brand.200'>
+			<Box
+				display='flex'
+				gap={{ sm: '5em', md: '8em', lg: '10em', xl: '15em' }}
+				bgColor='brand.200'
+			>
+				{/*<Box display='flex' gap='110px' bgColor='brand.200'>*/}
 				<Header localData={localData} />
 				{/*{data === 'Choose project' ? (*/}
 				{/*	<div>No data to display. Please choose project</div>*/}

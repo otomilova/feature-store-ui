@@ -7,7 +7,11 @@ export function LabelsColumn({ value }) {
 			{/*{value?.join(' ,')}*/}
 			{value?.map(label => {
 				return (
-					<Tag colorScheme='blue' size='sm' key={label}>
+					<Tag
+						colorScheme='blue'
+						size={{ md: 'sm', lg: 'md', xl: 'lg' }}
+						key={label}
+					>
 						{label}
 					</Tag>
 				)

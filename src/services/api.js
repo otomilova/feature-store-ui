@@ -36,7 +36,46 @@ const featureTables = [
 			],
 			labels: ['label1', 'label2'],
 			ttlMinutes: 456,
-			multiRecord: true
+			multiRecord: true,
+			job: {
+				sources: [
+					{
+						options: {
+							path: 'vikings.fact_vikings_krd_1_sessions'
+						},
+						alias: 'sessions',
+						columns: [
+							'userid',
+							'platf as i_platf',
+							'cast(netid as int) as i_netid',
+							'deviceadvertisingid',
+							'advertisingvendorid',
+							'countvisited'
+						],
+						format: 'hive'
+					}
+				],
+				tasks: [
+					{
+						query:
+							'select distinct userid, i_platf, i_netid, i_advid from \\n(select userid, i_platf, i_netid, \\ncase\\nwhen i_netid = 7 then advertisingvendorid\\nwhen i_netid = 22 then deviceadvertisingid\\nend as i_advid\\nfrom sessions\\nwhere i_netid in (7, 22) and countvisited = 1) a\\nwhere i_advid is not null\\n',
+						alias: 'final_result'
+					}
+				],
+				sinks: [
+					{
+						input: 'final_result',
+						options: {
+							project: 'vikings',
+							feature_table: 'sessions'
+						},
+						partitionBy: [''],
+						columns: [''],
+						mode: '',
+						format: ''
+					}
+				]
+			}
 		},
 		metadata: {
 			createdTimestamp: '2023-05-04T11:59:56Z',

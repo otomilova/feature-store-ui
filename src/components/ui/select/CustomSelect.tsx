@@ -13,7 +13,7 @@ const CustomSelect = ({
 	options,
 	selectName,
 	selectId,
-	changeable,
+	changeable = true,
 	isMulti
 }) => {
 	return (

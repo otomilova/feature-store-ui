@@ -30,6 +30,26 @@ export interface IApplyFeatureTableRequest {
 			description?: string
 			labels?: string[]
 		}[]
+		job: {
+			sources?: {
+				options: object
+				alias: string
+				columns: string[]
+				format: string
+			}[]
+			tasks?: {
+				query: string
+				alias: string
+			}[]
+			sinks?: {
+				input: string
+				options: object
+				partitionBy?: string[]
+				columns?: string[]
+				mode?: string
+				format: string
+			}[]
+		}
 		description?: string
 		labels?: string[]
 		ttlMinutes?: number
@@ -45,7 +65,7 @@ export interface IFeatureTableFormData {
 		value: string
 	}[]
 	features?: {
-		featureName: string
+		name: string
 		type: ValueTypes
 		description?: string
 		labels?: {
@@ -57,6 +77,28 @@ export interface IFeatureTableFormData {
 			value: string
 		}
 	}[]
+	sources?: {
+		options: object[]
+		alias: string
+		name: string
+		columns: string
+		format: string
+	}[]
+	tasks?: {
+		query: string
+		alias: string
+		name: string
+	}[]
+	sinks?: {
+		input: string
+		name: string
+		options: object[]
+		partitionBy?: string
+		columns?: string
+		mode?: string
+		format: string
+	}[]
+
 	labels?: {
 		label: string
 		value: string
@@ -79,6 +121,26 @@ export interface IFeatureTablesResponseEntry {
 		labels?: string[]
 		ttlMinutes?: number
 		multiRecord?: boolean
+		job?: {
+			sources?: {
+				options: object
+				alias: string
+				columns?: string[]
+				format: string
+			}[]
+			tasks?: {
+				query: string
+				alias: string
+			}[]
+			sinks?: {
+				input: string
+				options: object
+				partitionBy?: string[]
+				columns?: string[]
+				mode?: string
+				format: string
+			}[]
+		}
 	}
 	metadata: {
 		createdTimestamp?: string

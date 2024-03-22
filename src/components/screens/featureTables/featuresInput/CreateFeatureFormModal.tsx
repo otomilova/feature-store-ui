@@ -3,28 +3,22 @@ import { useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import CustomSelect from '../../ui/select/CustomSelect'
-import MultiSelect from '../../ui/select/MultiSelect'
-import CustomInput from '../../ui/input/CustomInput'
-import CustomTextarea from '../../ui/textarea/CustomTextarea'
-import { ValueTypes } from '../../../types/types.d.ts'
+import CustomSelect from '../../../ui/select/CustomSelect'
+import MultiSelect from '../../../ui/select/MultiSelect'
+import CustomInput from '../../../ui/input/CustomInput'
+import CustomTextarea from '../../../ui/textarea/CustomTextarea'
+import { ValueTypes } from '../../../../types/types.d.ts'
 import {
 	DESCRIPTION,
 	FEATURE_TITLES,
 	LABELS,
 	SELECT_TYPE_OPTIONS,
 	TYPE
-} from '../../../utils/constants'
-import { extractValueFromSelectObj } from '../../../utils/helpers.ts'
-import { INPUT_VALIDATION } from '../../../utils/validation'
+} from '../../../../utils/constants'
+import { extractValueFromSelectObj } from '../../../../utils/helpers.ts'
+import { INPUT_VALIDATION } from '../../../../utils/validation'
 
-const CreateFeatureForm = ({
-	changeable,
-	id,
-	onClose,
-	setFeatures,
-	features
-}) => {
+const CreateFeatureForm = ({ id, onClose, setFeatures, features }) => {
 	const {
 		control,
 		register,
@@ -50,15 +44,14 @@ const CreateFeatureForm = ({
 
 	return (
 		<form
-			key={2}
+			key={5}
 			onSubmit={handleSubmit(onSubmit)}
 			onKeyDown={e => checkKeyDown(e)}
 			id={id}
 		>
 			<Flex gap='30px' direction='row' alignItems='end'>
-				<Flex direction='column'>
+				<Flex direction='column' width='100%'>
 					<CustomInput
-						changeable={changeable}
 						inputName={FEATURE_TITLES.title}
 						inputId={FEATURE_TITLES.id}
 						errors={errors}
@@ -70,7 +63,6 @@ const CreateFeatureForm = ({
 					<CustomSelect
 						selectName={TYPE.title}
 						selectId={TYPE.id}
-						changeable={changeable}
 						control={control}
 						options={SELECT_TYPE_OPTIONS}
 					/>
@@ -113,7 +105,7 @@ const CreateFeatureForm = ({
 							handleSubmit(onSubmit)()
 						}}
 					>
-						{changeable ? 'Apply Changes' : 'Create Feature'}
+						Create Feature
 					</Button>
 				</Flex>
 			</Center>

@@ -13,7 +13,9 @@ const CustomTextarea = ({
 	changeable,
 	errors,
 	register,
-	id
+	id,
+	placeholder = 'Text to be filled in',
+	validation
 }) => {
 	//const { control, handleSubmit, reset } = useForm({ defaultValues })
 	//
@@ -35,11 +37,8 @@ const CustomTextarea = ({
 			</FormLabel>
 			<Textarea
 				bgColor='white'
-				placeholder='Text to be filled in'
-				{...register(textareaId, {
-					//required: 'This is required',
-					minLength: { value: 4, message: 'Minimum length should be 4' }
-				})}
+				placeholder={placeholder}
+				{...register(textareaId, validation ? validation : { minLength: 4 })}
 			></Textarea>
 			<FormErrorMessage>
 				{!!errors && errors[textareaId] && errors[textareaId].message}

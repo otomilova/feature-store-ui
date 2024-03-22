@@ -58,6 +58,15 @@ const theme = extendTheme({
 		body: 'Inter'
 	},
 	colors: { ...colors },
+	breakpoints: {
+		base: '0px',
+		sm: '1024px',
+		md: '1440px',
+		lg: '1960px',
+		xl: '2560px'
+		// '2xl': '1536px',
+		// '3xl': '1920px'
+	},
 	styles: {
 		root: {
 			overscrollBehavior: 'none'

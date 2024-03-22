@@ -29,7 +29,12 @@ function makeTab(index) {
 								alignContent='start'
 								textAlign='left'
 								gap='10px'
-								fontSize={{ md: '12px', lg: '14px', xl: '16px', '2xl': '18px' }}
+								fontSize={{
+									sm: '14px',
+									md: '16px',
+									lg: '18px',
+									xl: '22px'
+								}}
 							>
 								{makeIcon(tab.title)}
 								{tab.title}
@@ -65,7 +70,7 @@ const NavBar: React.FC = () => {
 
 export default NavBar
 
-function makeIcon(component: string, size: number = 9) {
+function makeIcon(component: string, size = '0.7em') {
 	switch (component) {
 		case FEATURE_TABLES_TITLES.title:
 			return <FiLayers size={size} />

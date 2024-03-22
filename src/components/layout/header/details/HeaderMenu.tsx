@@ -32,14 +32,24 @@ const HeaderMenu: React.FC = ({ project, setProject }) => {
 						<MenuButton
 							px={2}
 							py={2}
-							width={{ md: '100px', lg: '120px', xl: '150px', '2xl': '180px' }}
+							width={{
+								sm: '120px',
+								md: '150px',
+								lg: '180px',
+								xl: '200px'
+							}}
 							transition='all 0.2s'
 							borderRadius='md'
 							borderWidth='1px'
 							_hover={{ bg: 'gray.400' }}
 							_expanded={{ bg: 'blue.400' }}
 							_focus={{ boxShadow: 'outline' }}
-							fontSize={{ md: '12px', lg: '12px', xl: '16px', '2xl': '16px' }}
+							fontSize={{
+								sm: '12px',
+								md: '16px',
+								lg: '16px',
+								xl: '18px'
+							}}
 						>
 							<Center>
 								<Flex orientation='row' gap='8px'>
@@ -52,15 +62,20 @@ const HeaderMenu: React.FC = ({ project, setProject }) => {
 						</MenuButton>
 						<MenuList
 							minWidth='80px'
-							width={{ md: '100px', lg: '140px', xl: '180px', '2xl': '230px' }}
+							width={{
+								sm: '140px',
+								md: '180px',
+								lg: '230px',
+								xl: '250px'
+							}}
 						>
 							{projects.map(project => (
 								<MenuItem
 									fontSize={{
-										md: '12px',
-										lg: '12px',
-										xl: '16px',
-										'2xl': '16px'
+										sm: '12px',
+										md: '16px',
+										lg: '16px',
+										xl: '18px'
 									}}
 									key={project}
 									closeOnSelect={true}
@@ -77,7 +92,12 @@ const HeaderMenu: React.FC = ({ project, setProject }) => {
 
 							<MenuDivider />
 							<MenuItem
-								fontSize={{ md: '12px', lg: '12px', xl: '16px', '2xl': '16px' }}
+								fontSize={{
+									sm: '12px',
+									md: '16px',
+									lg: '16px',
+									xl: '18px'
+								}}
 								onClick={onOpen}
 							>
 								Create new project...

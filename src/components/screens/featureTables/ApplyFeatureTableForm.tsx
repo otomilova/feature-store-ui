@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import CustomInput from '../../ui/input/CustomInput'
 import CustomTextarea from '../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../ui/select/CustomSelect'
-import FeaturesInput from './FeaturesInput'
 import { useProject } from '../../hooks/useProject.js'
 import {
 	IApplyFeatureTableRequest,
@@ -16,17 +15,22 @@ import {
 	DESCRIPTION,
 	ENTITIES,
 	FEATURE_TABLE_TITLES,
+	FEATURE_TITLES,
 	FEATURES_TITLES,
-	LABELS
+	LABELS,
+	SINKS,
+	SOURCES,
+	TASKS
 } from '../../../utils/constants'
 import { makeRequestFromFTFormData } from '../../../utils/adapters'
-import { useApplyFeatureTable } from './useApplyFeatureTable'
+import { useApplyFeatureTable } from './hooks/useApplyFeatureTable'
 import Loader from '../../ui/Loader'
 import MultiSelect from '../../ui/select/MultiSelect'
 import {
 	INPUT_NUMBER_VALIDATION,
 	INPUT_VALIDATION
 } from '../../../utils/validation'
+import ItemInput from './featuresInput/ItemInput'
 
 const entities = [
 	{
@@ -69,19 +73,36 @@ const ApplyFeatureTableForm = ({
 		featureTableFormData ? featureTableFormData.features : []
 	)
 
+	const [sources, setSources] = useState(
+		featureTableFormData ? featureTableFormData.sources : []
+	)
+
+	const [tasks, setTasks] = useState(
+		featureTableFormData ? featureTableFormData.tasks : []
+	)
+
+	const [sinks, setSinks] = useState(
+		featureTableFormData ? featureTableFormData.sinks : []
+	)
+
 	const [labels, setLabels] = useState(
 		featureTableFormData ? featureTableFormData.labels : []
 	)
 
 	const { mutate, isPending } = useApplyFeatureTable()
+
 	const onSubmit = (formData: IFeatureTableFormData) => {
 		formData.features = features
 		formData.labels = labels
+		formData.sources = sources
+		formData.tasks = tasks
+		formData.sinks = sinks
+		//console.table(formData)
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
 			formData,
 			project
 		)
-		console.log(request)
+		//console.log(request)
 		mutate(request)
 	}
 
@@ -149,13 +170,53 @@ const ApplyFeatureTableForm = ({
 						register={register}
 					/>
 
-					<FeaturesInput
+					{/*<FeaturesInput*/}
+					{/*	register={register}*/}
+					{/*	control={control}*/}
+					{/*	features={features}*/}
+					{/*	setFeatures={setFeatures}*/}
+					{/*	inputName={FEATURES_TITLES.title}*/}
+					{/*	inputId={FEATURES_TITLES.id}*/}
+					{/*/>*/}
+
+					<ItemInput
 						register={register}
 						control={control}
-						features={features}
-						setFeatures={setFeatures}
+						items={features}
+						setItems={setFeatures}
 						inputName={FEATURES_TITLES.title}
 						inputId={FEATURES_TITLES.id}
+						id={FEATURE_TITLES.modal_id}
+					/>
+
+					<ItemInput
+						register={register}
+						control={control}
+						items={sources}
+						setItems={setSources}
+						inputName={SOURCES.title}
+						inputId={SOURCES.id}
+						id={SOURCES.modal_id}
+					/>
+
+					<ItemInput
+						register={register}
+						control={control}
+						items={tasks}
+						setItems={setTasks}
+						inputName={TASKS.title}
+						inputId={TASKS.id}
+						id={TASKS.modal_id}
+					/>
+
+					<ItemInput
+						register={register}
+						control={control}
+						items={sinks}
+						setItems={setSinks}
+						inputName={SINKS.title}
+						inputId={SINKS.id}
+						id={SINKS.modal_id}
 					/>
 
 					<MultiSelect

@@ -10,7 +10,7 @@ import {
 const CustomInput = ({
 	inputName,
 	inputId,
-	changeable,
+	changeable = true,
 	errors,
 	register,
 	validation
@@ -24,7 +24,8 @@ const CustomInput = ({
 			</FormLabel>
 			<Input
 				isDisabled={!changeable}
-				minW='290px'
+				minW='230px'
+				//minW='290px'
 				border='1px solid'
 				borderColor='inherit'
 				bgColor='white'

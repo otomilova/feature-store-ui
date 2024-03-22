@@ -4,7 +4,15 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 
 const Nav = ({ crumbs }) => {
 	return (
-		<Breadcrumb fontSize='14px' spacing='8px'>
+		<Breadcrumb
+			fontSize={{
+				sm: '14px',
+				md: '14px',
+				lg: '14px',
+				xl: '18px'
+			}}
+			spacing='8px'
+		>
 			{crumbs.map(crumb => {
 				return (
 					<BreadcrumbItem isCurrentPage={!!crumb.isActive} key={crumb.name}>

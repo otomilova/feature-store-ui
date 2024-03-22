@@ -3,7 +3,11 @@ import {
 	IFeatureTableFormData,
 	IFeatureTablesResponseEntry
 } from '../types/types'
-import { createSelectObjFromString } from './helpers'
+import {
+	createFormOptionFromResponse,
+	createRequestOptionsFromForm,
+	createSelectObjFromString
+} from './helpers'
 
 export function makeRequestFromFTFormData(
 	formData: IFeatureTableFormData,
@@ -11,7 +15,7 @@ export function makeRequestFromFTFormData(
 ) {
 	const features = formData.features?.map(feature => {
 		return {
-			name: feature.featureName,
+			name: feature.name,
 			valueType: feature.type,
 			description: feature.description,
 			labels: feature.labels?.map(label => label.value)
@@ -20,12 +24,48 @@ export function makeRequestFromFTFormData(
 	const entities = formData.entities.map(entity => entity.value)
 	const labels = formData.labels?.map(label => label.value)
 
+	const sources = formData.sources?.map(source => {
+		return {
+			options: createRequestOptionsFromForm(source.options),
+			alias: source.alias,
+			columns: source.columns.split(',').map(column => column.trim()),
+			format: source.format
+		}
+	})
+
+	const tasks = formData.tasks?.map(task => {
+		return {
+			query: task.query,
+			alias: task.alias
+		}
+	})
+
+	const sinks = formData.sinks?.map(sink => {
+		return {
+			options: createRequestOptionsFromForm(sink.options),
+			input: sink.input,
+			columns: sink.columns
+				? sink.columns.split(',').map(column => column.trim())
+				: [],
+			format: sink.format,
+			mode: sink.mode,
+			partitionBy: sink.partitionBy
+				? sink.partitionBy?.split(',').map(column => column.trim())
+				: []
+		}
+	})
+
 	const request: IApplyFeatureTableRequest = {
 		project: project,
 		data: {
 			name: formData.featureTable,
 			entities: entities,
 			features: features,
+			job: {
+				sources: sources,
+				tasks: tasks,
+				sinks: sinks
+			},
 			description: formData.description,
 			labels: labels,
 			multiRecord: formData.multiRecord,
@@ -41,7 +81,7 @@ export function makeFTFormDataFromResponse(
 ) {
 	const features = response.data.features?.map(feature => {
 		return {
-			featureName: feature.name,
+			name: feature.name,
 			type: feature.valueType,
 			description: feature.description,
 			labels: feature.labels?.map(label => createSelectObjFromString(label)),
@@ -56,11 +96,44 @@ export function makeFTFormDataFromResponse(
 		createSelectObjFromString(label)
 	)
 
+	const sources = response.data.job?.sources?.map(source => {
+		return {
+			options: createFormOptionFromResponse(source.options),
+			alias: source.alias,
+			name: source.alias,
+			columns: source.columns?.join(', '),
+			format: source.format
+		}
+	})
+
+	const tasks = response.data.job?.tasks?.map(task => {
+		return {
+			query: task.query,
+			alias: task.alias,
+			name: task.alias
+		}
+	})
+
+	const sinks = response.data.job?.sinks?.map(sink => {
+		return {
+			input: sink.input,
+			name: sink.input,
+			options: createFormOptionFromResponse(sink.options),
+			partitionBy: sink.partitionBy?.join(', '),
+			columns: sink.columns?.join(', '),
+			mode: sink.mode,
+			format: sink.format
+		}
+	})
+
 	const data: IFeatureTableFormData = {
 		featureTable: response.data.name,
 		description: response.data.description,
 		entities: entities,
 		features: features,
+		sources: sources,
+		tasks: tasks,
+		sinks: sinks,
 		labels: labels,
 		multiRecord: response.data.multiRecord,
 		ttlMinutes: response.data.ttlMinutes.toString()

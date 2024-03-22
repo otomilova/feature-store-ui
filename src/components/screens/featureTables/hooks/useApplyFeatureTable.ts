@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { applyFeatureTable } from '../../../services/featureTables.service'
-import { IApplyFeatureTableRequest } from '../../../types/types'
+import { applyFeatureTable } from '../../../../services/featureTables.service'
+import { IApplyFeatureTableRequest } from '../../../../types/types'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useToast } from '@chakra-ui/react'
-import { getBacklink } from '../../../utils/helpers'
+import { getBacklink } from '../../../../utils/helpers'
 
 export const useApplyFeatureTable = () => {
 	const toast = useToast()

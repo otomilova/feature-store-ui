@@ -12,6 +12,22 @@ export function createSelectObjFromString(value: string): {
 	}
 }
 
+export function createRequestOptionsFromForm(options: object[]): object {
+	return options.reduce((acc, curr) => {
+		acc[curr.key] = curr.value
+		return acc
+	}, {})
+}
+
+export function createFormOptionFromResponse(options: object): object[] {
+	return Object.keys(options).map(key => {
+		return {
+			key: key,
+			value: options[key]
+		}
+	})
+}
+
 export function createCrumbsForApplyFT(action: string, name: string) {
 	return action === 'edit'
 		? [

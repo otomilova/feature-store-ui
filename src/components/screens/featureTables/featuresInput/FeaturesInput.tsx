@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
 	Button,
 	Center,
@@ -19,9 +19,9 @@ import {
 	useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from 'react-icons/fi'
-import CreateFeatureFormModal from '../features/CreateFeatureFormModal'
+import CreateFeatureFormModal from './CreateFeatureFormModal'
 import { Controller } from 'react-hook-form'
-import { MODAL_FEATURE } from '../../../utils/constants'
+import { MODAL_FEATURE } from '../../../../utils/constants'
 
 const FeaturesInput = ({
 	control,
@@ -42,7 +42,6 @@ const FeaturesInput = ({
 		<Controller
 			control={control}
 			name={inputId}
-			//rules={{ required: `Please select ${selectName}` }}
 			render={() => (
 				<FormControl mb='20px'>
 					<FormLabel htmlFor={inputId}>
@@ -109,7 +108,6 @@ const FeaturesInput = ({
 								<ModalCloseButton />
 								<ModalBody pb={6}>
 									<CreateFeatureFormModal
-										changeable={true}
 										id={MODAL_FEATURE.id}
 										onClose={onClose}
 										setFeatures={setFeatures}

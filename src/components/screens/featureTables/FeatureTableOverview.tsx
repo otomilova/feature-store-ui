@@ -1,18 +1,21 @@
 import React from 'react'
 import {
+	Badge,
 	Box,
 	Button,
 	Center,
+	Checkbox,
 	Divider,
 	Flex,
 	Heading,
+	HStack,
 	Tag,
 	Text
 } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FiLayers } from 'react-icons/fi'
 import Nav from '../../ui/breadcrumb/Nav'
-import { useFeatureTableByName } from './useFeatureTableByName'
+import { useFeatureTableByName } from './hooks/useFeatureTableByName'
 import Loader from '../../ui/Loader'
 import {
 	DESCRIPTION,
@@ -22,15 +25,23 @@ import {
 	LABELS
 } from '../../../utils/constants'
 import { createCrumbsForFTOverview } from '../../../utils/helpers'
+import { motion } from 'framer-motion'
 
 function FeatureTableOverview() {
 	const { name } = useParams()
 	const { data: featureTable, isLoading } = useFeatureTableByName(name)
 	const navigate = useNavigate()
 	return (
-		<Box mt='25px' w='100%'>
+		<Box
+			mt='2em'
+			w='100%'
+			as={motion.div}
+			initial={{ opacity: 0, transition: { duration: 0.1 } }}
+			animate={{ opacity: 1, transition: { duration: 0 } }}
+			exit={{ opacity: 0, transition: { duration: 0.2 } }}
+		>
 			{isLoading ? (
-				<Box w='80%'>
+				<Box w='90vh'>
 					<Loader rows={24} />
 				</Box>
 			) : (
@@ -39,67 +50,126 @@ function FeatureTableOverview() {
 
 					<Box
 						bgColor='#F5F5F5'
-						w='80%'
-						m='35px'
-						h='85vh'
+						w='90vh'
+						m='3em'
+						mt={{ md: '2em', lg: '3em', xl: '4em' }}
 						borderRadius='20px'
 						boxShadow='md'
 						p='40px'
-						pt='10px'
+						pt='0.7em'
+						pb={{ md: '30px', lg: '40px', xl: '60px' }}
 					>
 						<Center pt='10px'>
 							<Flex direction='row' gap='12px' alignItems='center'>
-								<FiLayers size={12} color='344054' />
-								<Heading as='h2' size='l' color='brand.600'>
+								<FiLayers size='0.9em' color='344054' />
+								<Heading
+									as='h2'
+									fontSize={{ md: '20px', lg: '22px', xl: '24px' }}
+									color='brand.600'
+								>
 									{FEATURE_TABLE_TITLES.title} Overview
 								</Heading>
 							</Flex>
 						</Center>
-						<Heading size='sm' mb='5px' mt='10px' color='brand.600'>
+						<Heading
+							fontSize={{ md: '18px', lg: '20px', xl: '22px' }}
+							mb='0.5em'
+							mt='0.5em'
+							color='brand.600'
+						>
 							{featureTable.data.name}
 						</Heading>
 						<Divider />
-						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
-							Multi Record
-						</Heading>
-						<Text mb='10px' color='brand.600'>
-							{featureTable.data?.multiRecord ? 'true' : 'false'}
-						</Text>
-						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
-							ttlMinutes
-						</Heading>
-						<Text mb='10px' color='brand.600'>
-							{featureTable.data?.ttlMinutes}
-						</Text>
 
-						<Heading size='16px' mt='15px' color='brand.600' mb='5px'>
+						{featureTable.data?.multiRecord && (
+							<>
+								<HStack mt='1em'>
+									<Heading
+										fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+										color='brand.600'
+									>
+										Multi record
+									</Heading>
+
+									<Checkbox
+										cursor='default'
+										colorScheme='button'
+										isChecked={featureTable.data?.multiRecord}
+									/>
+								</HStack>
+							</>
+						)}
+
+						{featureTable.data?.ttlMinutes && (
+							<>
+								<Heading
+									fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+									color='brand.600'
+									mt='1em'
+									mb='0.3em'
+								>
+									Time to live
+								</Heading>
+								<HStack>
+									<Badge variant='outline' colorScheme='gray'>
+										{featureTable.data?.ttlMinutes}
+									</Badge>
+									<Text color='brand.600'>minutes</Text>
+								</HStack>
+							</>
+						)}
+
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1em'
+							color='brand.600'
+							mb='0.3em'
+						>
 							{ENTITIES.title}
 						</Heading>
-						<Flex gap='10px' mb='20px'>
+						<Flex gap='10px'>
 							{featureTable.data.entities.map(entity => {
 								return (
-									<Tag key={entity} size='md' colorScheme='facebook'>
+									<Tag
+										key={entity}
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										colorScheme='facebook'
+									>
 										{' '}
 										{entity}{' '}
 									</Tag>
 								)
 							})}
 						</Flex>
-						<Heading size='16px' color='brand.600'>
+						<Heading
+							mt='1em'
+							mb='0.3em'
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							color='brand.600'
+						>
 							{DESCRIPTION.title}
 						</Heading>
-						<Text mb='20px' color='brand.600'>
+						<Text mb='1.2em' color='brand.600'>
 							{featureTable.data?.description}
 						</Text>
 						<Divider />
 
-						<Heading size='16px' mt='15px' mb='5px' color='brand.600'>
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1.2em'
+							mb='0.3em'
+							color='brand.600'
+						>
 							{FEATURES_TITLES.title}
 						</Heading>
-						<Flex gap='10px' mb='20px'>
+						<Flex gap='10px' mb='1.2em'>
 							{featureTable.data.features.map(feature => {
 								return (
-									<Tag colorScheme='purple' size='md' key={feature.name}>
+									<Tag
+										colorScheme='purple'
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										key={feature.name}
+									>
 										{feature.name}
 									</Tag>
 								)
@@ -107,13 +177,22 @@ function FeatureTableOverview() {
 						</Flex>
 						<Divider />
 
-						<Heading size='16px' mt='15px' mb='5px' color='brand.600'>
+						<Heading
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mt='1.2em'
+							mb='0.3em'
+							color='brand.600'
+						>
 							{LABELS.title}
 						</Heading>
-						<Flex gap='10px' mb='20px' wrap='wrap'>
+						<Flex gap='10px' mb='1.2em' wrap='wrap'>
 							{featureTable.data.labels?.map(label => {
 								return (
-									<Tag colorScheme='blue' size='md' key={label}>
+									<Tag
+										colorScheme='blue'
+										size={{ md: 'md', lg: 'md', xl: 'lg' }}
+										key={label}
+									>
 										{label}
 									</Tag>
 								)
@@ -122,9 +201,10 @@ function FeatureTableOverview() {
 						<Divider />
 						<Center>
 							<Button
+								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								colorScheme='button'
-								mt='20px'
-								mb='10px'
+								mt='1.2em'
+								mb='0.8em'
 								onClick={() => {
 									navigate(`/feature-tables/${name}/edit`)
 								}}

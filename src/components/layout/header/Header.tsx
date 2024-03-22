@@ -24,7 +24,12 @@ const Header: React.FC = ({ localData }) => {
 			boxShadow='lg'
 			bg='white'
 			h='100vh'
-			width={{ md: '200px', lg: '220px', xl: '280px', '2xl': '330px' }}
+			width={{
+				sm: '220px',
+				md: '280px',
+				lg: '330px',
+				xl: '360px'
+			}}
 			//width='330px'
 			//position='fixed'
 			//overflow='hidden'

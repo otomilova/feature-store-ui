@@ -19,7 +19,8 @@ export const FEATURES_TITLES = {
 
 export const FEATURE_TITLES = {
 	title: 'Feature Name',
-	id: 'featureName'
+	id: 'name',
+	modal_id: 'modalFeature'
 }
 
 export const DESCRIPTION = {
@@ -48,8 +49,22 @@ export const TYPE = {
 	id: 'type'
 }
 
-export const MODAL_FEATURE = {
-	id: 'modalFeature'
+export const SOURCES = {
+	title: 'Sources',
+	id: 'sources',
+	modal_id: 'modalSource'
+}
+
+export const TASKS = {
+	title: 'Tasks',
+	id: 'tasks',
+	modal_id: 'modalTasks'
+}
+
+export const SINKS = {
+	title: 'Sinks',
+	id: 'sinks',
+	modal_id: 'modalSinks'
 }
 
 export const SELECT_TYPE_OPTIONS = Object.keys(ValueTypes).map(type => {
@@ -73,7 +88,6 @@ export const FTColumnState = [
 		field: 'Entities',
 		resizable: false,
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
-		//maxWidth: 1000
 	},
 	{
 		field: 'Labels',
