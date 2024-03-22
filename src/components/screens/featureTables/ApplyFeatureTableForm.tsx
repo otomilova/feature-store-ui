@@ -30,7 +30,7 @@ import {
 	INPUT_NUMBER_VALIDATION,
 	INPUT_VALIDATION
 } from '../../../utils/validation'
-import ItemInput from './featuresInput/ItemInput'
+import ItemInput from './ItemModal/ItemInput'
 
 const entities = [
 	{

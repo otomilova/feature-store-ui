@@ -1,41 +1,26 @@
-import React from 'react'
+import * as React from 'react'
 import {
 	Button,
-	Center,
 	Flex,
 	FormControl,
 	FormErrorMessage,
 	FormLabel,
 	Heading,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalHeader,
-	ModalOverlay,
 	Tag,
 	TagCloseButton,
 	TagLabel,
 	useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from 'react-icons/fi'
-import CreateFeatureFormModal from './CreateFeatureFormModal'
-import { Controller } from 'react-hook-form'
-import { MODAL_FEATURE } from '../../../../utils/constants'
 
-const FeaturesInput = ({
-	control,
-	features,
-	setFeatures,
-	inputName,
-	inputId
-}) => {
+import { Controller } from 'react-hook-form'
+import ModalComponent from './ModalComponent'
+
+const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const finalRef = React.useRef(null)
-	const initialRef = React.useRef(null)
 
 	function removeTag(index) {
-		setFeatures(features.filter((el, i) => i !== index))
+		setItems(items.filter((el, i) => i !== index))
 	}
 
 	return (
@@ -63,7 +48,7 @@ const FeaturesInput = ({
 						bgColor='white'
 						wrap='wrap'
 					>
-						{features.map((feature, index) => (
+						{items.map((item, index) => (
 							<Tag
 								size='md'
 								bgColor='#EBF1FF'
@@ -71,7 +56,7 @@ const FeaturesInput = ({
 								color='#1963D3'
 								key={index}
 							>
-								<TagLabel>{feature.featureName}</TagLabel>
+								<TagLabel>{item.name}</TagLabel>
 								<TagCloseButton onClick={() => removeTag(index)} />
 							</Tag>
 						))}
@@ -84,38 +69,16 @@ const FeaturesInput = ({
 							leftIcon={<FiPlus />}
 							onClick={onOpen}
 						>
-							Add Feature
+							Add {inputName.slice(0, -1)}
 						</Button>
-						<Modal
-							size='xl'
-							isCentered={true}
-							blockScrollOnMount={true}
-							closeOnOverlayClick={false}
-							initialFocusRef={initialRef}
-							finalFocusRef={finalRef}
+						<ModalComponent
 							isOpen={isOpen}
 							onClose={onClose}
-						>
-							<ModalOverlay />
-							<ModalContent>
-								<ModalHeader>
-									<Center>
-										<Heading as='h2' size='l' color='brand.600'>
-											Create Feature
-										</Heading>
-									</Center>
-								</ModalHeader>
-								<ModalCloseButton />
-								<ModalBody pb={6}>
-									<CreateFeatureFormModal
-										id={MODAL_FEATURE.id}
-										onClose={onClose}
-										setFeatures={setFeatures}
-										features={features}
-									/>
-								</ModalBody>
-							</ModalContent>
-						</Modal>
+							inputName={inputName}
+							id={id}
+							items={items}
+							setItems={setItems}
+						/>
 					</Flex>
 
 					<FormErrorMessage></FormErrorMessage>
@@ -125,4 +88,4 @@ const FeaturesInput = ({
 	)
 }
 
-export default FeaturesInput
+export default ItemInput
