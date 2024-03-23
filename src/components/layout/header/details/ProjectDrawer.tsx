@@ -24,6 +24,7 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 	const firstField = React.useRef()
 	return (
 		<Drawer
+			size='md'
 			isOpen={isOpen}
 			placement='left'
 			initialFocusRef={firstField}
@@ -53,10 +54,18 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 				</DrawerBody>
 
 				<DrawerFooter borderTopWidth='1px'>
-					<Button variant='outline' mr={3} onClick={onClose}>
+					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
+						variant='outline'
+						mr={3}
+						onClick={onClose}
+						colorScheme='button'
+					>
 						Cancel
 					</Button>
-					<Button colorScheme='blue'>Submit</Button>
+					<Button colorScheme='button' size={{ md: 'md', lg: 'md', xl: 'lg' }}>
+						Submit
+					</Button>
 				</DrawerFooter>
 			</DrawerContent>
 		</Drawer>

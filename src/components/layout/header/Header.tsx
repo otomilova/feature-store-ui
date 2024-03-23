@@ -30,10 +30,6 @@ const Header: React.FC = ({ localData }) => {
 				lg: '330px',
 				xl: '360px'
 			}}
-			//width='330px'
-			//position='fixed'
-			//overflow='hidden'
-			//TODO: fix header (when content enlarges header doesnt fit full page)
 		>
 			<HeaderHeading />
 			<HeaderMenu project={project} setProject={setProject} />

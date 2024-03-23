@@ -25,14 +25,19 @@ const CustomSelect = ({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
-				<FormControl mb='20px' isInvalid={!!error} id={selectId}>
+				<FormControl mb='1.2em' isInvalid={!!error} id={selectId}>
 					<FormLabel minW='200px'>
-						<Heading fontSize='14px' color='brand.600'>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							mb='0.1em'
+							color='brand.600'
+						>
 							{selectName}
 						</Heading>
 					</FormLabel>
 
 					<Select
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						isMulti={isMulti}
 						isDisabled={!changeable}
 						chakraStyles={{

@@ -30,7 +30,7 @@ import {
 	INPUT_NUMBER_VALIDATION,
 	INPUT_VALIDATION
 } from '../../../utils/validation'
-import ItemInput from './ItemModal/ItemInput'
+import ItemInput from '../../ui/input/ItemInput'
 
 const entities = [
 	{
@@ -47,8 +47,10 @@ const ApplyFeatureTableForm = ({
 	id,
 	action,
 	featureTableFormData,
+	isLoading,
 	backlink
 }: {
+	isLoading: boolean
 	id: string
 	action: string
 	featureTableFormData: IFeatureTableFormData | undefined
@@ -97,12 +99,10 @@ const ApplyFeatureTableForm = ({
 		formData.sources = sources
 		formData.tasks = tasks
 		formData.sinks = sinks
-		//console.table(formData)
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
 			formData,
 			project
 		)
-		//console.log(request)
 		mutate(request)
 	}
 
@@ -147,6 +147,7 @@ const ApplyFeatureTableForm = ({
 							validation={INPUT_NUMBER_VALIDATION}
 						/>
 						<Checkbox
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							isDisabled={!isCreate}
 							colorScheme='button'
 							{...register('multiRecord')}
@@ -169,15 +170,6 @@ const ApplyFeatureTableForm = ({
 						errors={errors}
 						register={register}
 					/>
-
-					{/*<FeaturesInput*/}
-					{/*	register={register}*/}
-					{/*	control={control}*/}
-					{/*	features={features}*/}
-					{/*	setFeatures={setFeatures}*/}
-					{/*	inputName={FEATURES_TITLES.title}*/}
-					{/*	inputId={FEATURES_TITLES.id}*/}
-					{/*/>*/}
 
 					<ItemInput
 						register={register}
@@ -228,9 +220,10 @@ const ApplyFeatureTableForm = ({
 					/>
 				</Flex>
 
-				<Center mt='30px'>
+				<Center mt='2em'>
 					<Flex gap='15px'>
 						<Button
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							form={id}
 							colorScheme='blue'
 							variant='outline'
@@ -240,7 +233,13 @@ const ApplyFeatureTableForm = ({
 						>
 							Cancel
 						</Button>
-						<Button type='submit' colorScheme='button' onClick={() => {}}>
+						<Button
+							isLoading={isLoading}
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
+							type='submit'
+							colorScheme='button'
+							//onClick={() => {}}
+						>
 							{isCreate ? 'Create Feature Table' : 'Apply Changes'}
 						</Button>
 					</Flex>

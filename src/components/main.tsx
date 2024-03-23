@@ -14,10 +14,7 @@ const colors = {
 		300: '#F5F5F5', //background form
 		400: '#98A2B3', //borders?dividers?
 		500: '#1963D3', //accent color
-		600: '#344054', //text
-		700: '',
-		800: '',
-		900: ''
+		600: '#344054' //text
 	},
 	button: {
 		500: '#1963D3', //default
@@ -26,33 +23,7 @@ const colors = {
 }
 
 const theme = extendTheme({
-	components: {
-		// Button: {
-		// 	baseStyle: {
-		// 		bg: '#1963D3',
-		// 		_hover: '#124CA4',
-		// 		textColor: 'white'
-		// 	},
-		// 	variants: {
-		// 		// Make a variant, we'll call it `base` here and leave it empty
-		// 		base: {}
-		// 		// secondary: {
-		// 		// 	//...define other variants
-		// 		// }
-		// 	},
-		// 	defaultProps: {
-		// 		// Then here we set the base variant as the default
-		// 		variant: 'base'
-		// 	}
-		// }
-	},
-	// Divider: {
-	// 	variants: {
-	// 		solid: (props: StyleFunctionProps) => ({
-	// 			//borderColor: '#98A2B3'
-	// 		})
-	// 	}
-	// }
+
 
 	fonts: {
 		body: 'Inter'
@@ -62,10 +33,8 @@ const theme = extendTheme({
 		base: '0px',
 		sm: '1024px',
 		md: '1440px',
-		lg: '1960px',
+		lg: '1920px',
 		xl: '2560px'
-		// '2xl': '1536px',
-		// '3xl': '1920px'
 	},
 	styles: {
 		root: {

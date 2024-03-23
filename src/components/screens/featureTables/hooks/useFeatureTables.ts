@@ -5,6 +5,7 @@ export const useFeatureTables = (project: string) => {
 	return useQuery({
 		queryKey: ['get feature tables'],
 		queryFn: () => getFeatureTables(project),
-		select: ({ data }) => data.featureTables
+		select: ({ data }) => data.featureTables,
+		enabled: project !== 'Choose project'
 	})
 }

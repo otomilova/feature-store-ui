@@ -10,7 +10,11 @@ const OptionsInput = ({ register, control }) => {
 	})
 	return (
 		<Flex align='start' m='0' mb='1em' direction='column' w='100%'>
-			<Heading fontSize='14px' mb='0.6em' color='brand.600'>
+			<Heading
+				fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+				mb='0.6em'
+				color='brand.600'
+			>
 				Options
 			</Heading>
 			{fields.map((field, index) => (

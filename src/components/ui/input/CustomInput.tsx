@@ -16,17 +16,21 @@ const CustomInput = ({
 	validation
 }) => {
 	return (
-		<FormControl isInvalid={!!errors && errors[inputId]} mb='20px'>
+		<FormControl isInvalid={!!errors && errors[inputId]} mb='1.2em'>
 			<FormLabel htmlFor={inputId}>
-				<Heading fontSize='14px' color='brand.600'>
+				<Heading
+					fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+					mb='0.3em'
+					color='brand.600'
+				>
 					{inputName}
 				</Heading>
 			</FormLabel>
 			<Input
+				size={{ md: 'md', lg: 'md', xl: 'lg' }}
 				isDisabled={!changeable}
 				minW='230px'
-				//minW='290px'
-				border='1px solid'
+				//border='1px solid'
 				borderColor='inherit'
 				bgColor='white'
 				id={inputId}

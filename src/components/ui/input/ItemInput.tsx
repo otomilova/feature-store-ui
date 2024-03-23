@@ -14,7 +14,7 @@ import {
 import { FiPlus } from 'react-icons/fi'
 
 import { Controller } from 'react-hook-form'
-import ModalComponent from './ModalComponent'
+import ModalComponent from '../../screens/featureTables/ItemModal/ModalComponent'
 
 const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
@@ -28,9 +28,13 @@ const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 			control={control}
 			name={inputId}
 			render={() => (
-				<FormControl mb='20px'>
+				<FormControl mb='1.2em'>
 					<FormLabel htmlFor={inputId}>
-						<Heading fontSize='14px' color='brand.600'>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							mb='0.3em'
+							color='brand.600'
+						>
 							{inputName}
 						</Heading>
 					</FormLabel>
@@ -50,7 +54,7 @@ const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 					>
 						{items.map((item, index) => (
 							<Tag
-								size='md'
+								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								bgColor='#EBF1FF'
 								border='1px solid #70A0FF'
 								color='#1963D3'
@@ -65,7 +69,7 @@ const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 							bgColor='white'
 							textColor='gray'
 							variant='outline'
-							fontSize='14px'
+							size={{ md: 'xs', lg: 'sm', xl: 'sm' }}
 							leftIcon={<FiPlus />}
 							onClick={onOpen}
 						>

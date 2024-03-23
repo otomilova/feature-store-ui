@@ -36,7 +36,7 @@ function FeatureTableOverview() {
 	return (
 		<Box
 			mt='2em'
-			w='100%'
+			h='85vh'
 			as={motion.div}
 			initial={{ opacity: 0, transition: { duration: 0.1 } }}
 			animate={{ opacity: 1, transition: { duration: 0 } }}
@@ -51,9 +51,12 @@ function FeatureTableOverview() {
 					<Nav crumbs={createCrumbsForFTOverview(name)} />
 
 					<Box
+						overflow={{ md: 'scroll', lg: 'scroll', xl: 'hidden' }}
 						bgColor='#F5F5F5'
-						w='90vh'
+						w='95vh'
 						m='3em'
+						h={{ md: '85vh', lg: '85vh', xl: 'auto' }}
+						// h='90vh'
 						mt={{ md: '2em', lg: '3em', xl: '4em' }}
 						borderRadius='20px'
 						boxShadow='md'
@@ -274,8 +277,7 @@ function FeatureTableOverview() {
 							<Button
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								colorScheme='button'
-								mt='1.2em'
-								mb='0.8em'
+								mt='1.8em'
 								onClick={() => {
 									navigate(`/feature-tables/${name}/edit`)
 								}}

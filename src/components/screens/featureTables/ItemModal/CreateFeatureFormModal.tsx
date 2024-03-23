@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import CustomSelect from '../../../ui/select/CustomSelect'
 import MultiSelect from '../../../ui/select/MultiSelect'
@@ -36,7 +35,6 @@ const CreateFeatureForm = ({ id, onClose, setFeatures, features }) => {
 		onClose()
 	}
 
-	const navigate = useNavigate()
 	const [labels, setLabels] = useState([])
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
@@ -83,24 +81,21 @@ const CreateFeatureForm = ({ id, onClose, setFeatures, features }) => {
 				tags={labels}
 			/>
 
-			<Center>
+			<Center mt='2em'>
 				<Flex gap='15px'>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						onClick={onClose}
 						colorScheme='blue'
 						variant='outline'
-						mt='60px'
-						// onClick={() => {
-						// 	navigate('/features')
-						// }}
 					>
 						Cancel
 					</Button>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						form={id}
 						type='button'
 						colorScheme='button'
-						mt='60px'
 						onClick={() => {
 							handleSubmit(onSubmit)()
 						}}

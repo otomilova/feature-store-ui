@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import OptionsInput from '../../../ui/input/OptionsInput'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
@@ -27,15 +26,12 @@ const CreateSinkForm = ({ id, onClose, setSinks, sinks }) => {
 	})
 
 	const onSubmit = data => {
-		//data.type = ValueTypes[extractValueFromSelectObj(data.type)]
 		data.name = data.input
 		setSinks([...sinks, data])
-		//console.table(sinks)
 		reset()
 		onClose()
 	}
 
-	const navigate = useNavigate()
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
@@ -93,24 +89,21 @@ const CreateSinkForm = ({ id, onClose, setSinks, sinks }) => {
 				register={register}
 				validation={INPUT_VALIDATION_1}
 			/>
-			<Center>
+			<Center mt='2em'>
 				<Flex gap='15px'>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						onClick={onClose}
 						colorScheme='blue'
 						variant='outline'
-						mt='60px'
-						// onClick={() => {
-						// 	navigate('/features')
-						// }}
 					>
 						Cancel
 					</Button>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						form={id}
 						type='button'
 						colorScheme='button'
-						mt='60px'
 						onClick={() => {
 							handleSubmit(onSubmit)()
 						}}

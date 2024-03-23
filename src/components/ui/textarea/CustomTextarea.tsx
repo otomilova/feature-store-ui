@@ -10,32 +10,24 @@ import {
 const CustomTextarea = ({
 	textareaName,
 	textareaId,
-	changeable,
 	errors,
 	register,
-	id,
 	placeholder = 'Text to be filled in',
 	validation
 }) => {
-	//const { control, handleSubmit, reset } = useForm({ defaultValues })
-	//
-	// const [isLoading, setLoading] = useBoolean(false)
-	//
-	// const submit = async data => {
-	// 	setLoading.on()
-	// 	setTimeout(() => {
-	// 		setLoading.off()
-	// 		alert(JSON.stringify(data, null, 2))
-	// 	}, 1200)
-	// }
 	return (
-		<FormControl isInvalid={!!errors && errors[textareaId]} mb='20px'>
+		<FormControl isInvalid={!!errors && errors[textareaId]} mb='1.2em'>
 			<FormLabel htmlFor={textareaId}>
-				<Heading fontSize='14px' color='brand.600'>
+				<Heading
+					fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+					mb='0.3em'
+					color='brand.600'
+				>
 					{textareaName}
 				</Heading>
 			</FormLabel>
 			<Textarea
+				size={{ md: 'md', lg: 'md', xl: 'lg' }}
 				bgColor='white'
 				placeholder={placeholder}
 				{...register(textareaId, validation ? validation : { minLength: 4 })}

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
@@ -19,16 +18,12 @@ const CreateTaskForm = ({ id, onClose, setTasks, tasks }) => {
 
 	const onSubmit = data => {
 		console.table(data)
-		//data.type = ValueTypes[extractValueFromSelectObj(data.type)]
 		data.name = data.alias
 		setTasks([...tasks, data])
-		//console.table(tasks)
 
 		reset()
 		onClose()
 	}
-
-	const navigate = useNavigate()
 
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
@@ -60,24 +55,21 @@ const CreateTaskForm = ({ id, onClose, setTasks, tasks }) => {
 				/>
 			</Flex>
 
-			<Center>
+			<Center mt='1em'>
 				<Flex gap='15px'>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						onClick={onClose}
 						colorScheme='blue'
 						variant='outline'
-						mt='60px'
-						// onClick={() => {
-						// 	navigate('/features')
-						// }}
 					>
 						Cancel
 					</Button>
 					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
 						form={id}
 						type='button'
 						colorScheme='button'
-						mt='60px'
 						onClick={() => {
 							handleSubmit(onSubmit)()
 						}}

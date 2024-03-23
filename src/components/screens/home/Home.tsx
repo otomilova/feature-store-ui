@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Center, Heading } from '@chakra-ui/react'
 import * as React from 'react'
 import { useContext } from 'react'
 import { ProjectContext } from '../../../providers/ProjectProvider'
@@ -9,18 +9,14 @@ const Home: React.FC = () => {
 	return (
 		<Box>
 			{project === 'Choose project' ? (
-				<div>No data to display. Please choose project</div>
+				<Center mt={5}>
+					<Heading as='h4' color='brand.600' size='lg'>
+						No data to display. Please choose project
+					</Heading>
+				</Center>
 			) : (
 				<Navigate to='/feature-tables' />
 			)}
-
-			{/*<Button*/}
-			{/*	onClick={() => {*/}
-			{/*		setTheme(theme === 'dark' ? 'light' : 'dark')*/}
-			{/*	}}*/}
-			{/*>*/}
-			{/*	{theme}*/}
-			{/*</Button>*/}
 		</Box>
 	)
 }
