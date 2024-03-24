@@ -1,6 +1,4 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { FT } from '../components/screens/featureTables/FT.tsx'
-import { Features } from '../components/screens/features/Features.tsx'
 import { Entities } from '../components/screens/entities/Entities'
 import App from '../components/App.tsx'
 import Home from '../components/screens/home/Home.tsx'
@@ -10,6 +8,8 @@ import FeatureCreate from '../components/screens/features/FeatureCreate.tsx'
 import FeatureEdit from '../components/screens/features/FeatureEdit.tsx'
 import FeatureTableOverview from '../components/screens/featureTables/FeatureTableOverview.tsx'
 import { AnimatePresence } from 'framer-motion'
+import { FeatureTables } from '../components/screens/featureTables/FeatureTables.tsx'
+import { Features } from '../components/screens/features/Features.tsx'
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
@@ -18,7 +18,7 @@ const AnimatedRoutes = () => {
 			<Routes location={location} key={location.pathname}>
 				<Route element={<App />}>
 					<Route path='/' element={<Home />} />
-					<Route path='feature-tables' element={<FT />} />
+					<Route path='feature-tables' element={<FeatureTables />} />
 					<Route
 						path='feature-tables/:name'
 						element={<FeatureTableOverview />}

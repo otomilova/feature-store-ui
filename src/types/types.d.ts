@@ -149,3 +149,14 @@ export interface IFeatureTablesResponseEntry {
 		hash?: string
 	}
 }
+
+export interface IFeature {
+	name: string
+	valueType: ValueTypes
+	featureTableName: string
+	description?: string
+	labels?: {
+		label: string
+		value: string
+	}
+}

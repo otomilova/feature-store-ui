@@ -15,7 +15,7 @@ import {
 	InputLeftElement
 } from '@chakra-ui/react'
 import { FiHexagon, FiPlusCircle, FiSearch } from 'react-icons/fi'
-import { LabelsColumn } from '../featureTables/LabelsColumn.tsx'
+import { LabelsColumn } from '../../ui/table/LabelsColumn.tsx'
 
 export function Entities() {
 	const gridRef = useRef()

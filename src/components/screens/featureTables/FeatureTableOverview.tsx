@@ -56,7 +56,6 @@ function FeatureTableOverview() {
 						w='95vh'
 						m='3em'
 						h={{ md: '85vh', lg: '85vh', xl: 'auto' }}
-						// h='90vh'
 						mt={{ md: '2em', lg: '3em', xl: '4em' }}
 						borderRadius='20px'
 						boxShadow='md'

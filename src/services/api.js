@@ -19,7 +19,9 @@ const featureTables = [
 			features: [
 				{
 					name: 'net_id',
-					valueType: 'INT64'
+					valueType: 'INT64',
+					description: 'Net ID',
+					labels: ['Flabel1', 'Flabel2']
 				},
 				{
 					name: 'country_code',

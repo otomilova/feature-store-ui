@@ -94,8 +94,41 @@ export const FTColumnState = [
 		resizable: false,
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' },
 		autoHeight: true,
-		cellRenderer: 'LabelsColumn'
-		//cellDataType: 'object'
+		cellRenderer: 'LabelsColumn',
+		valueFormatter: value => value
+	}
+]
+
+export const FeaturesColumnState = [
+	{
+		field: '#',
+		resizable: false,
+		width: 50,
+		maxWidth: 50,
+		cellDataType: 'text'
+	},
+	{
+		field: 'Name',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: 'Type',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: 'Feature Table',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: 'Labels',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' },
+		autoHeight: true,
+		cellRenderer: 'LabelsColumn',
+		valueFormatter: value => value
 	}
 ]
 
