@@ -74,6 +74,20 @@ export function createCrumbsForFTOverview(name: string) {
 	]
 }
 
+export function createCrumbsForFeaturesOverview(name: string) {
+	return [
+		{
+			name: 'FEATURES',
+			link: '/features'
+		},
+		{
+			name: 'FEATURE OVERVIEW',
+			link: `/features/${name}`,
+			isActive: true
+		}
+	]
+}
+
 export function getBacklink(location) {
 	return location.substring(0, location.lastIndexOf('/'))
 }

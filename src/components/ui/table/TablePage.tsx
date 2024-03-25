@@ -10,11 +10,11 @@ import {
 	InputGroup,
 	InputLeftElement
 } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
 import Loader from '../Loader'
 import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import TableComponent from './TableComponent'
+import TransitionContainer from '../TransitionContainer'
 
 const TablePage: React.FC = ({
 	rows,
@@ -35,15 +35,7 @@ const TablePage: React.FC = ({
 	}, [])
 
 	return (
-		<Box
-			mt='25px'
-			w='100%'
-			mb='20px'
-			as={motion.div}
-			initial={{ opacity: 0, transition: { duration: 0.1 } }}
-			animate={{ opacity: 1, transition: { duration: 0 } }}
-			exit={{ opacity: 0, transition: { duration: 0.2 } }}
-		>
+		<TransitionContainer mt='25px' w='100%' mb='20px'>
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -104,7 +96,7 @@ const TablePage: React.FC = ({
 					/>
 				</>
 			)}
-		</Box>
+		</TransitionContainer>
 	)
 }
 

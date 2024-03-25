@@ -6,7 +6,7 @@ import { useFeatureTableByName } from './hooks/useFeatureTableByName.ts'
 import { useLocation, useParams } from 'react-router-dom'
 import Loader from '../../ui/Loader'
 import { createCrumbsForApplyFT, getBacklink } from '../../../utils/helpers'
-import { motion } from 'framer-motion'
+import TransitionContainer from '../../ui/TransitionContainer'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { name }: { name: string } = useParams()
@@ -15,15 +15,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 	const crumbs = createCrumbsForApplyFT(action, name)
 
 	return (
-		<Box
-			mt='1.5em'
-			w='100vh'
-			h='85vh'
-			as={motion.div}
-			initial={{ opacity: 0, transition: { duration: 0.1 } }}
-			animate={{ opacity: 1, transition: { duration: 0 } }}
-			exit={{ opacity: 0, transition: { duration: 0.2 } }}
-		>
+		<TransitionContainer mt='1.5em' w='100%' h='85vh'>
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -77,7 +69,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 					</Box>
 				</>
 			)}
-		</Box>
+		</TransitionContainer>
 	)
 }
 

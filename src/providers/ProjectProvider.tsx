@@ -7,12 +7,10 @@ type ContextType = {
 }
 export const ProjectContext = createContext({
 	project: 'Choose project',
-	setProject: (project: string) => {
-	}
+	setProject: (project: string) => {}
 })
 
 const ProjectProvider: React.FC = ({ children }) => {
-
 	const [project, setProject] =
 		useState<ContextType['project']>('Choose project')
 

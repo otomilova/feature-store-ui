@@ -68,6 +68,7 @@ const NavBar: React.FC = () => {
 	}, [])
 
 	const { pathname } = useLocation()
+
 	return (
 		<Box m={5}>
 			{(pathname === '/' ||
