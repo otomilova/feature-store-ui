@@ -31,7 +31,7 @@ const AnimatedRoutes = () => {
 						path='feature-tables/create'
 						element={<ApplyFeatureTable action='create' />}
 					/>
-					<Route path='features/:id' element={<FeatureOverview />} />
+					<Route path='features/:name' element={<FeatureOverview />} />
 					<Route path='features/:id/edit' element={<FeatureEdit />} />
 					<Route path='features/create' element={<FeatureCreate />} />
 					<Route path='features' element={<Features />} />

@@ -71,10 +71,10 @@ const featureTables = [
 							project: 'vikings',
 							feature_table: 'sessions'
 						},
-						partitionBy: [''],
-						columns: [''],
-						mode: '',
-						format: ''
+						partitionBy: ['123'],
+						columns: ['sdfg'],
+						mode: 'dfg',
+						format: 'cfv'
 					}
 				]
 			}

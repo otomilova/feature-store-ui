@@ -12,11 +12,24 @@ import {
 	Tag,
 	Text
 } from '@chakra-ui/react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom'
 import { FiGrid } from 'react-icons/fi'
+import { useProject } from '../../hooks/useProject.js'
+import { IFeature } from '../../../types/types'
+import { useFeatures } from './hooks/useFeatures'
 
 function FeatureOverview() {
+	const { project } = useProject()
+	const { name } = useParams()
 	const navigate = useNavigate()
+	const {
+		data: features,
+		isLoading
+	}: { features: IFeature[]; isLoading: boolean } = useFeatures(project)
+
+	//const feature = features.filter(feature => feature.name === name)
+	//console.log(feature)
+
 	return (
 		<Box mt='25px' w='100%'>
 			<Breadcrumb fontSize='14px' spacing='8px'>

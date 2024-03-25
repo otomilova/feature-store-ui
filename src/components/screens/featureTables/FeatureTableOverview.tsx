@@ -26,13 +26,13 @@ import {
 } from '../../../utils/constants'
 import { createCrumbsForFTOverview } from '../../../utils/helpers'
 import { motion } from 'framer-motion'
+import PopoverComponent from '../../ui/popover/PopoverComponent'
 
 function FeatureTableOverview() {
 	const { name } = useParams()
 	const { data: featureTable, isLoading } = useFeatureTableByName(name)
 	const navigate = useNavigate()
-	//console.table(featureTable)
-
+	console.log(featureTable)
 	return (
 		<Box
 			mt='2em'
@@ -169,13 +169,16 @@ function FeatureTableOverview() {
 						<Flex gap='10px' mb='1.2em'>
 							{featureTable.features?.map(feature => {
 								return (
-									<Tag
-										colorScheme='purple'
-										size={{ md: 'md', lg: 'md', xl: 'lg' }}
-										key={feature.name}
-									>
-										{feature.name}
-									</Tag>
+									<PopoverComponent item={feature} key={feature.name}>
+										<Tag
+											_hover={{ bgColor: 'purple.300', cursor: 'pointer' }}
+											colorScheme='purple'
+											size={{ md: 'md', lg: 'md', xl: 'lg' }}
+											key={feature.name}
+										>
+											{feature.name}
+										</Tag>
+									</PopoverComponent>
 								)
 							})}
 						</Flex>
@@ -192,13 +195,16 @@ function FeatureTableOverview() {
 						<Flex gap='10px' mb='1.2em'>
 							{featureTable.sources?.map(source => {
 								return (
-									<Tag
-										colorScheme='cyan'
-										size={{ md: 'md', lg: 'md', xl: 'lg' }}
-										key={source.name}
-									>
-										{source.name}
-									</Tag>
+									<PopoverComponent item={source} key={source.name}>
+										<Tag
+											_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
+											colorScheme='cyan'
+											size={{ md: 'md', lg: 'md', xl: 'lg' }}
+											key={source.name}
+										>
+											{source.name}
+										</Tag>
+									</PopoverComponent>
 								)
 							})}
 						</Flex>
@@ -215,13 +221,16 @@ function FeatureTableOverview() {
 						<Flex gap='10px' mb='1.2em'>
 							{featureTable.tasks?.map(task => {
 								return (
-									<Tag
-										colorScheme='cyan'
-										size={{ md: 'md', lg: 'md', xl: 'lg' }}
-										key={task.name}
-									>
-										{task.name}
-									</Tag>
+									<PopoverComponent item={task} key={task.name}>
+										<Tag
+											_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
+											colorScheme='cyan'
+											size={{ md: 'md', lg: 'md', xl: 'lg' }}
+											key={task.name}
+										>
+											{task.name}
+										</Tag>
+									</PopoverComponent>
 								)
 							})}
 						</Flex>
@@ -238,13 +247,16 @@ function FeatureTableOverview() {
 						<Flex gap='10px' mb='1.2em'>
 							{featureTable.sinks?.map(sink => {
 								return (
-									<Tag
-										colorScheme='cyan'
-										size={{ md: 'md', lg: 'md', xl: 'lg' }}
-										key={sink.name}
-									>
-										{sink.name}
-									</Tag>
+									<PopoverComponent item={sink} key={sink.name}>
+										<Tag
+											_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
+											colorScheme='cyan'
+											size={{ md: 'md', lg: 'md', xl: 'lg' }}
+											key={sink.name}
+										>
+											{sink.name}
+										</Tag>
+									</PopoverComponent>
 								)
 							})}
 						</Flex>
