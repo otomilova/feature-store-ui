@@ -29,7 +29,6 @@ export function Entities() {
 	console.log(entities)
 	const entitiesInFTs = featureTables?.reduce((acc, ft) => {
 		const entitiesInFt = ft.data.entities
-		debugger
 		entitiesInFt.forEach(entity => {
 			if (acc.has(entity)) acc.set(entity, acc.get(entity) + 1)
 			else acc.set(entity, 1)
@@ -61,7 +60,7 @@ export function Entities() {
 			isLoading={isLoading}
 			title='Entities'
 			Icon={EntitiesIcon}
-			allowedCreate={false}
+			allowedCreate={true}
 			path='entities'
 		/>
 	)

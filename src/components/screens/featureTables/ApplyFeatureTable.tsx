@@ -7,11 +7,17 @@ import { useLocation, useParams } from 'react-router-dom'
 import Loader from '../../ui/Loader'
 import { createCrumbsForApplyFT, getBacklink } from '../../../utils/helpers'
 import TransitionContainer from '../../ui/TransitionContainer'
+import { IEntityResponseEntry } from '../../../types/types'
+import { useEntities } from '../entities/hooks/useEntities'
+import { useProject } from '../../hooks/useProject.js'
 
 function ApplyFeatureTable({ action }: { action: string }) {
+	const { project } = useProject()
 	const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
 	const { data: featureTableFormData, isLoading } = useFeatureTableByName(name)
+	const { data: entities }: { entities: IEntityResponseEntry[] } =
+		useEntities(project)
 	const crumbs = createCrumbsForApplyFT(action, name)
 
 	return (
@@ -53,6 +59,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 						</Center>
 						<Flex gap='30px' direction='row'>
 							<ApplyFeatureTableForm
+								entities={entities}
 								featureTableFormData={featureTableFormData}
 								isLoading={isLoading}
 								backlink={backlink}

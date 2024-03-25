@@ -32,29 +32,20 @@ import {
 } from '../../../utils/validation'
 import ItemInput from '../../ui/input/ItemInput'
 
-const entities = [
-	{
-		label: 'driver',
-		value: 'driver'
-	},
-	{
-		label: 'pilot',
-		value: 'pilot'
-	}
-]
-
 const ApplyFeatureTableForm = ({
 	id,
 	action,
 	featureTableFormData,
 	isLoading,
-	backlink
+	backlink,
+	entities
 }: {
 	isLoading: boolean
 	id: string
 	action: string
 	featureTableFormData: IFeatureTableFormData | undefined
 	backlink: string | undefined
+	entities: string[]
 }) => {
 	const isCreate = action === 'create'
 	const {
@@ -65,6 +56,13 @@ const ApplyFeatureTableForm = ({
 		setValue
 	} = useForm({
 		mode: 'onChange'
+	})
+
+	const entitiesOptions = entities?.map(entity => {
+		return {
+			label: entity['data'].name,
+			value: entity['data'].name
+		}
 	})
 
 	const navigate = useNavigate()
@@ -159,7 +157,7 @@ const ApplyFeatureTableForm = ({
 						changeable={true}
 						isMulti={true}
 						control={control}
-						options={entities}
+						options={entitiesOptions}
 						selectName={ENTITIES.title}
 						selectId={ENTITIES.id}
 						color='purple'
