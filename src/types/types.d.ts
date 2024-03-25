@@ -160,3 +160,16 @@ export interface IFeature {
 		value: string
 	}
 }
+
+export interface IEntityResponseEntry {
+	data: {
+		name: string
+		valueType: ValueTypes
+		description: string
+		labels: string[]
+	}
+	metadata: {
+		createdTimestamp?: string
+		lastUpdatedTimestamp?: string
+	}
+}

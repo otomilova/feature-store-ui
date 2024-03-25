@@ -10,6 +10,151 @@ export const $axios = axios.create({
 	}
 })
 
+const entities = [
+	{
+		data: {
+			name: 'userid',
+			valueType: 'STRING',
+			description: 'User Identifier',
+			labels: ['vikings']
+		},
+		metadata: {
+			createdTimestamp: '2023-03-24T12:51:22Z',
+			lastUpdatedTimestamp: '2023-03-24T12:51:22Z'
+		}
+	},
+	{
+		data: {
+			name: 'comp_groupid',
+			valueType: 'INT64',
+			description:
+				'Identifier of competition group. Each competition belongs to one or more groups.',
+			labels: [
+				'matchmaking',
+				'vikings',
+				'competitions',
+				'groups',
+				'users',
+				'teams',
+				'names'
+			]
+		},
+		metadata: {
+			createdTimestamp: '2023-05-17T17:52:21Z',
+			lastUpdatedTimestamp: '2023-05-17T17:52:21Z'
+		}
+	},
+	{
+		data: {
+			name: 'internalTrasactionId',
+			valueType: 'STRING',
+			description: 'Internal Transaction Id',
+			labels: ['vikings']
+		},
+		metadata: {
+			createdTimestamp: '2023-05-29T08:00:45Z',
+			lastUpdatedTimestamp: '2023-05-29T08:00:45Z'
+		}
+	},
+	{
+		data: {
+			name: 'trasaction',
+			valueType: 'STRING',
+			description: 'Transaction Id',
+			labels: ['vikings']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-03T14:05:02Z',
+			lastUpdatedTimestamp: '2023-06-03T14:05:02Z'
+		}
+	},
+	{
+		data: {
+			name: 'competitionid',
+			valueType: 'INT64',
+			description: 'Competition identifier',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-09T06:55:06Z',
+			lastUpdatedTimestamp: '2023-06-09T06:55:06Z'
+		}
+	},
+	{
+		data: {
+			name: 'competitiontimer',
+			valueType: 'INT64',
+			description: 'Competition instance identifier',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-15T09:57:41Z',
+			lastUpdatedTimestamp: '2023-06-15T09:57:41Z'
+		}
+	},
+	{
+		data: {
+			name: 'transaction',
+			valueType: 'STRING',
+			description: 'Transaction Identifier',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-19T09:32:40Z',
+			lastUpdatedTimestamp: '2023-06-19T09:34:47Z'
+		}
+	},
+	{
+		data: {
+			name: 'advertisingid',
+			valueType: 'STRING',
+			description:
+				'Advertising identifier of the device (advertisingVendorId (idfv) - ios, deviceAdvertisingId - android)',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-21T08:02:28Z',
+			lastUpdatedTimestamp: '2023-06-21T08:02:28Z'
+		}
+	},
+	{
+		data: {
+			name: 'clanid',
+			valueType: 'INT64',
+			description: 'Clan Identifier',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-08-24T09:56:33Z',
+			lastUpdatedTimestamp: '2023-08-24T09:56:33Z'
+		}
+	},
+	{
+		data: {
+			name: 'banktransactionid',
+			valueType: 'STRING',
+			description: 'Bank Transaction Identifier',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-06-19T09:32:40Z',
+			lastUpdatedTimestamp: '2023-06-19T09:34:47Z'
+		}
+	},
+	{
+		data: {
+			name: 'feature_name',
+			valueType: 'STRING',
+			description: 'Name of feature (used to get statistics of the feature)',
+			labels: ['vikings', 'matchmaking']
+		},
+		metadata: {
+			createdTimestamp: '2023-10-04T10:06:17Z',
+			lastUpdatedTimestamp: '2023-10-04T10:06:17Z'
+		}
+	}
+]
+
 const featureTables = [
 	{
 		data: {
@@ -233,6 +378,10 @@ mock.onGet(`/projects`).reply(200, {
 })
 mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
 	featureTables: featureTables
+})
+
+mock.onGet(/entities\/?.*project.*/).reply(200, {
+	entities: entities
 })
 
 mock

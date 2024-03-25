@@ -1,137 +1,68 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import * as React from 'react'
+import { useMemo } from 'react'
 // import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
-import { AgGridReact } from 'ag-grid-react/lib/agGridReact'
+import { useProject } from '../../hooks/useProject.js'
 import {
-	Box,
-	Button,
-	Center,
-	Flex,
-	Heading,
-	HStack,
-	Input,
-	InputGroup,
-	InputLeftElement
-} from '@chakra-ui/react'
-import { FiHexagon, FiPlusCircle, FiSearch } from 'react-icons/fi'
-import { LabelsColumn } from '../../ui/table/LabelsColumn.tsx'
+	IEntityResponseEntry,
+	IFeatureTablesResponseEntry
+} from '../../../types/types'
+import TablePage from '../../ui/table/TablePage'
+import { EntitiesIcon } from '../../ui/icons/EntitiesIcon'
+import { EntitiesColumnState } from '../../../utils/constants'
+import { useEntities } from './hooks/useEntities'
+import { useFeatureTables } from '../featureTables/hooks/useFeatureTables'
 
 export function Entities() {
-	const gridRef = useRef()
-	const onFilterTextBoxChanged = useCallback(() => {
-		gridRef.current.api.setGridOption(
-			'quickFilterText',
-			document.getElementById('filter-text-box').value
-		)
-	}, [])
+	const { project } = useProject()
 
-	const [rowData, setRowData] = useState([
-		{
-			'#': '1',
-			Name: 'driver',
-			Type: 'INVALID',
-			"# of FT's": '3',
-			Labels: 'driver-performance'
-		},
-		{
-			'#': '2',
-			Name: '_dummy',
-			Type: 'INVALID',
-			"# of FT's": '2',
-			Labels: 'driver-performance'
-		},
-		{
-			'#': '3',
-			Name: 'driver_old',
-			Type: 'INVALID',
-			"# of FT's": '1',
-			Labels: 'driver-performance'
-		}
-	])
+	const {
+		data: entities,
+		isLoading
+	}: { entities: IEntityResponseEntry[]; isLoading: boolean } =
+		useEntities(project)
 
-	// Column Definitions: Defines & controls grid columns.
-	const [colDefs, setColDefs] = useState([
-		{ field: '#', resizable: false, width: 50, maxWidth: 50 },
-		{ field: 'Name', resizable: false, width: 100 },
-		{
-			field: 'Type',
-			resizable: false,
-			width: 120,
-			cellStyle: {
-				color: '#6B7280',
-				fontWeight: '400'
-			}
-		},
-		{ field: "# of FT's", resizable: false, width: 100 },
-		{ field: 'Labels', resizable: false, cellRenderer: 'LabelsColumn' }
-	])
+	const { data: featureTables }: { entities: IFeatureTablesResponseEntry[] } =
+		useFeatureTables(project)
 
-	const components = useMemo(() => {
-		return {
-			LabelsColumn: LabelsColumn
-		}
-	}, [])
+	console.log(entities)
+	const entitiesInFTs = featureTables?.reduce((acc, ft) => {
+		const entitiesInFt = ft.data.entities
+		debugger
+		entitiesInFt.forEach(entity => {
+			if (acc.has(entity)) acc.set(entity, acc.get(entity) + 1)
+			else acc.set(entity, 1)
+			return acc
+		})
+		return acc
+	}, new Map())
 
-	const autoSizeStrategy = {
-		type: 'fitGridWidth',
-		defaultMinWidth: 100
-		// columnLimits: [
-		// 	{
-		// 		colId: 'name',
-		// 		minWidth: 200
-		// 	}
-		// ]
-	}
+	const EntitiesRows = useMemo(
+		() =>
+			entities?.map((entity, index) => {
+				const t = {
+					'#': index + 1,
+					Name: entity.data.name,
+					Type: entity.data.valueType,
+					"# of FT's": entitiesInFTs.get(entity.data.name) || 0,
+					Labels: entity.data.labels
+				}
 
-	// const autoSizeStrategy = {
-	// 	type: 'fitCellContents'
-	// }
+				return t
+			}),
+		[entities]
+	)
 
 	return (
-		<Box mt='25px' mr='85px' w='100%'>
-			<Center mb='12px'>
-				<Flex direction='row' gap='12px' alignItems='center' marginBottom='0px'>
-					<FiHexagon size={12} color='344054' />
-					<Heading as='h2' size='l' marginBottom='0px' color='brand.600'>
-						Entities
-					</Heading>
-				</Flex>
-			</Center>
-			<HStack mb={5}>
-				<InputGroup size='sm'>
-					<InputLeftElement pointerEvents='none'>
-						<FiSearch color='CBD5E0' />
-					</InputLeftElement>
-					<Input
-						type='search'
-						placeholder='Search'
-						w='330px'
-						id='filter-text-box'
-						onInput={onFilterTextBoxChanged}
-					/>
-				</InputGroup>
-				<Button colorScheme='button' leftIcon={<FiPlusCircle />} size='sm'>
-					Create new
-				</Button>
-			</HStack>
-			{/* The AG Grid component */}
-			<Box
-				className='ag-theme-quartz'
-				width='100%'
-				height='85%'
-				fontFamily='Inter'
-			>
-				<AgGridReact
-					rowData={rowData}
-					columnDefs={colDefs}
-					pagination={true}
-					ref={gridRef}
-					autoSizeStrategy={autoSizeStrategy}
-					components={components}
-					// rowHeight='150px'
-				/>
-			</Box>
-		</Box>
+		<TablePage
+			rows={EntitiesRows}
+			columns={EntitiesColumnState}
+			isLoading={isLoading}
+			title='Entities'
+			Icon={EntitiesIcon}
+			allowedCreate={false}
+			path='entities'
+		/>
 	)
 }

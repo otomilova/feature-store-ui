@@ -132,4 +132,37 @@ export const FeaturesColumnState = [
 	}
 ]
 
+export const EntitiesColumnState = [
+	{
+		field: '#',
+		resizable: false,
+		width: 50,
+		maxWidth: 50,
+		cellDataType: 'text'
+	},
+	{
+		field: 'Name',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: 'Type',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: "# of FT's",
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
+	},
+	{
+		field: 'Labels',
+		resizable: false,
+		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' },
+		autoHeight: true,
+		cellRenderer: 'LabelsColumn',
+		valueFormatter: value => value
+	}
+]
+
 export const tabs = [FEATURE_TABLES_TITLES, ENTITIES, FEATURES_TITLES]

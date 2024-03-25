@@ -4,8 +4,6 @@ import App from '../components/App.tsx'
 import Home from '../components/screens/home/Home.tsx'
 import ApplyFeatureTable from '../components/screens/featureTables/ApplyFeatureTable.tsx'
 import FeatureOverview from '../components/screens/features/featureOverview/FeatureOverview.tsx'
-import FeatureCreate from '../components/screens/features/FeatureCreate.tsx'
-import FeatureEdit from '../components/screens/features/FeatureEdit.tsx'
 import FeatureTableOverview from '../components/screens/featureTables/FeatureTableOverview/FeatureTableOverview.tsx'
 import { AnimatePresence } from 'framer-motion'
 import { FeatureTables } from '../components/screens/featureTables/FeatureTables.tsx'
@@ -32,8 +30,6 @@ const AnimatedRoutes = () => {
 						element={<ApplyFeatureTable action='create' />}
 					/>
 					<Route path='features/:name' element={<FeatureOverview />} />
-					<Route path='features/:id/edit' element={<FeatureEdit />} />
-					<Route path='features/create' element={<FeatureCreate />} />
 					<Route path='features' element={<Features />} />
 					<Route path='entities' element={<Entities />} />
 				</Route>
