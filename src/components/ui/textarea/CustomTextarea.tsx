@@ -27,6 +27,7 @@ const CustomTextarea = ({
 				</Heading>
 			</FormLabel>
 			<Textarea
+				id={textareaId}
 				size={{ md: 'md', lg: 'md', xl: 'lg' }}
 				bgColor='white'
 				placeholder={placeholder}

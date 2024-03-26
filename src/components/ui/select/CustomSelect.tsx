@@ -26,7 +26,7 @@ const CustomSelect = ({
 				fieldState: { error }
 			}) => (
 				<FormControl mb='1.2em' isInvalid={!!error} id={selectId}>
-					<FormLabel minW='200px'>
+					<FormLabel minW='200px' htmlFor={selectId}>
 						<Heading
 							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
 							mb='0.1em'

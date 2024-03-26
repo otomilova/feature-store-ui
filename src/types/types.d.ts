@@ -173,3 +173,26 @@ export interface IEntityResponseEntry {
 		lastUpdatedTimestamp?: string
 	}
 }
+
+export interface IApplyEntityRequest {
+	project: string
+	data: {
+		name: string
+		valueType: ValueTypes
+		description?: string
+		labels?: string[]
+	}
+}
+
+export interface IEntityFormData {
+	entityName: string
+	type: {
+		label: string
+		value: string
+	}
+	description?: string
+	labels?: {
+		label: string
+		value: string
+	}[]
+}

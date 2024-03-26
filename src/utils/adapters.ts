@@ -1,12 +1,16 @@
 import {
+	IApplyEntityRequest,
 	IApplyFeatureTableRequest,
+	IEntityFormData,
 	IFeatureTableFormData,
-	IFeatureTablesResponseEntry
-} from '../types/types'
+	IFeatureTablesResponseEntry,
+	ValueTypes
+} from '../types/types.d.ts'
 import {
 	createFormOptionFromResponse,
 	createRequestOptionsFromForm,
-	createSelectObjFromString
+	createSelectObjFromString,
+	extractValueFromSelectObj
 } from './helpers'
 
 export function makeRequestFromFTFormData(
@@ -139,4 +143,23 @@ export function makeFTFormDataFromResponse(
 		ttlMinutes: response.data.ttlMinutes.toString()
 	}
 	return data
+}
+
+export function makeRequestFromEntityFormData(
+	formData: IEntityFormData,
+	project: string
+) {
+	const labels = formData.labels?.map(label => label.value)
+	const valueType = ValueTypes[extractValueFromSelectObj(formData.type)]
+	const request: IApplyEntityRequest = {
+		project: project,
+		data: {
+			name: formData.entityName,
+			valueType: valueType,
+			description: formData.description,
+			labels: labels
+		}
+	}
+
+	return request
 }

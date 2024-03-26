@@ -1,15 +1,15 @@
 import { Box, Center, Flex, Heading } from '@chakra-ui/react'
 import { FiLayers } from 'react-icons/fi'
 import ApplyFeatureTableForm from './ApplyFeatureTableForm'
-import Nav from '../../ui/breadcrumb/Nav'
-import { useFeatureTableByName } from './hooks/useFeatureTableByName.ts'
+import Nav from '../../../ui/breadcrumb/Nav'
+import { useFeatureTableByName } from '../hooks/useFeatureTableByName.ts'
 import { useLocation, useParams } from 'react-router-dom'
-import Loader from '../../ui/Loader'
-import { createCrumbsForApplyFT, getBacklink } from '../../../utils/helpers'
-import TransitionContainer from '../../ui/TransitionContainer'
-import { IEntityResponseEntry } from '../../../types/types'
-import { useEntities } from '../entities/hooks/useEntities'
-import { useProject } from '../../hooks/useProject.js'
+import Loader from '../../../ui/Loader'
+import { createCrumbsForApplyFT, getBacklink } from '../../../../utils/helpers'
+import TransitionContainer from '../../../ui/TransitionContainer'
+import { IEntityResponseEntry } from '../../../../types/types'
+import { useEntities } from '../../entities/hooks/useEntities'
+import { useProject } from '../../../hooks/useProject.js'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { project } = useProject()

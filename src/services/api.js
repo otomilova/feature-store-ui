@@ -289,7 +289,7 @@ const featureTables = [
 	{
 		data: {
 			name: 'user_profiles',
-			entities: ['userid'],
+			entities: ['userid', 'taxiid'],
 			features: [
 				{
 					name: 'driver_level',
@@ -315,7 +315,7 @@ const featureTables = [
 	{
 		data: {
 			name: 'segmentation',
-			entities: ['userid'],
+			entities: ['userid', 'routeid'],
 			features: [
 				{
 					name: 'city_id',
@@ -354,3 +354,4 @@ mock
 	.reply(200, featureTables.filter(table => table.data.name === 'sessions')[0])
 
 mock.onPost('/feature-tables/apply').reply(200)
+mock.onPost('/entities/apply').reply(200)

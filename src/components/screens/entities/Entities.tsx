@@ -29,7 +29,7 @@ export function Entities() {
 	}: { featureTables: IFeatureTablesResponseEntry[] } =
 		useFeatureTables(project)
 
-	const entitiesInFTs = calcEntitiesInFTs(entities, featureTables)
+	//const entitiesInFTs = calcEntitiesInFTs(entities, featureTables)
 
 	const EntitiesRows = useMemo(
 		() =>
@@ -38,7 +38,9 @@ export function Entities() {
 					'#': index + 1,
 					Name: entity.data.name,
 					Type: entity.data.valueType,
-					"# of FT's": entitiesInFTs.get(entity.data.name) || 0,
+					"# of FT's":
+						calcEntitiesInFTs(entities, featureTables).get(entity.data.name) ||
+						0,
 					Labels: entity.data.labels
 				}
 

@@ -15,13 +15,14 @@ const MultiSelect = ({
 		<Controller
 			control={control}
 			name={selectId}
+			id={selectId}
 			//rules={{ required: `Please select ${selectName}` }}
 			render={({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }
 			}) => (
 				<FormControl>
-					<FormLabel>
+					<FormLabel htmlFor={selectId}>
 						<Heading
 							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
 							mb='0.3em'
@@ -32,6 +33,7 @@ const MultiSelect = ({
 					</FormLabel>
 					<Box bg='white' borderRadius='0.375rem'>
 						<CreatableSelect
+							id={selectId}
 							size={{ md: 'md', lg: 'lg', xl: 'lg' }}
 							defaultValue={tags}
 							colorScheme={color}

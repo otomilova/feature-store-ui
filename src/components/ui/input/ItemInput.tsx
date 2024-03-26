@@ -25,6 +25,7 @@ const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 
 	return (
 		<Controller
+			id={inputId}
 			control={control}
 			name={inputId}
 			render={() => (

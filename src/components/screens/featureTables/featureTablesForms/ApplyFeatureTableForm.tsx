@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 import { Button, Center, Checkbox, Flex, HStack } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import CustomInput from '../../ui/input/CustomInput'
-import CustomTextarea from '../../ui/textarea/CustomTextarea'
-import CustomSelect from '../../ui/select/CustomSelect'
-import { useProject } from '../../hooks/useProject.js'
+import CustomInput from '../../../ui/input/CustomInput'
+import CustomTextarea from '../../../ui/textarea/CustomTextarea'
+import CustomSelect from '../../../ui/select/CustomSelect'
+import { useProject } from '../../../hooks/useProject.js'
 import {
 	IApplyFeatureTableRequest,
 	IFeatureTableFormData
-} from '../../../types/types.d.ts'
+} from '../../../../types/types.d.ts'
 import {
 	DESCRIPTION,
 	ENTITIES,
@@ -21,16 +21,16 @@ import {
 	SINKS,
 	SOURCES,
 	TASKS
-} from '../../../utils/constants'
-import { makeRequestFromFTFormData } from '../../../utils/adapters'
-import { useApplyFeatureTable } from './hooks/useApplyFeatureTable'
-import Loader from '../../ui/Loader'
-import MultiSelect from '../../ui/select/MultiSelect'
+} from '../../../../utils/constants'
+import { makeRequestFromFTFormData } from '../../../../utils/adapters'
+import { useApplyFeatureTable } from '../hooks/useApplyFeatureTable'
+import Loader from '../../../ui/Loader'
+import MultiSelect from '../../../ui/select/MultiSelect'
 import {
 	INPUT_NUMBER_VALIDATION,
 	INPUT_VALIDATION
-} from '../../../utils/validation'
-import ItemInput from '../../ui/input/ItemInput'
+} from '../../../../utils/validation'
+import ItemInput from '../../../ui/input/ItemInput'
 
 const ApplyFeatureTableForm = ({
 	id,
@@ -97,6 +97,7 @@ const ApplyFeatureTableForm = ({
 		formData.sources = sources
 		formData.tasks = tasks
 		formData.sinks = sinks
+		console.log(formData)
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
 			formData,
 			project
