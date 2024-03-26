@@ -13,6 +13,7 @@ import { EntitiesIcon } from '../../ui/icons/EntitiesIcon'
 import { EntitiesColumnState } from '../../../utils/constants'
 import { useEntities } from './hooks/useEntities'
 import { useFeatureTables } from '../featureTables/hooks/useFeatureTables'
+import { calcEntitiesInFTs } from '../../../utils/helpers'
 
 export function Entities() {
 	const { project } = useProject()
@@ -23,19 +24,12 @@ export function Entities() {
 	}: { entities: IEntityResponseEntry[]; isLoading: boolean } =
 		useEntities(project)
 
-	const { data: featureTables }: { entities: IFeatureTablesResponseEntry[] } =
+	const {
+		data: featureTables
+	}: { featureTables: IFeatureTablesResponseEntry[] } =
 		useFeatureTables(project)
 
-	console.log(entities)
-	const entitiesInFTs = featureTables?.reduce((acc, ft) => {
-		const entitiesInFt = ft.data.entities
-		entitiesInFt.forEach(entity => {
-			if (acc.has(entity)) acc.set(entity, acc.get(entity) + 1)
-			else acc.set(entity, 1)
-			return acc
-		})
-		return acc
-	}, new Map())
+	const entitiesInFTs = calcEntitiesInFTs(entities, featureTables)
 
 	const EntitiesRows = useMemo(
 		() =>

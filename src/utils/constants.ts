@@ -136,28 +136,32 @@ export const EntitiesColumnState = [
 	{
 		field: '#',
 		resizable: false,
-		width: 50,
-		maxWidth: 50,
+		width: 70,
+		maxWidth: 70,
 		cellDataType: 'text'
 	},
 	{
 		field: 'Name',
 		resizable: false,
+		//width: 200
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
 	},
 	{
 		field: 'Type',
 		resizable: false,
+		//width: 160
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
 	},
 	{
 		field: "# of FT's",
 		resizable: false,
+		//width: 130
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' }
 	},
 	{
 		field: 'Labels',
 		resizable: false,
+		//width: 150,
 		width: { md: '40px', lg: '50px', xl: '60px', '2xl': '80px' },
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',

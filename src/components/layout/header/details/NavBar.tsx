@@ -75,7 +75,8 @@ const NavBar: React.FC = () => {
 				pathname === '/feature-tables' ||
 				pathname.includes('/feature-tables/')) &&
 				makeTab(0)}
-			{pathname === '/entities' && makeTab(1)}
+			{(pathname === '/entities' || pathname.includes('/entities/')) &&
+				makeTab(1)}
 			{(pathname === '/features' || pathname.includes('/features/')) &&
 				makeTab(2)}
 		</Box>

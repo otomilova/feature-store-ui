@@ -16,7 +16,7 @@ const entities = [
 			name: 'userid',
 			valueType: 'STRING',
 			description: 'User Identifier',
-			labels: ['vikings']
+			labels: ['user']
 		},
 		metadata: {
 			createdTimestamp: '2023-03-24T12:51:22Z',
@@ -25,19 +25,11 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'comp_groupid',
+			name: 'dist_groupid',
 			valueType: 'INT64',
 			description:
-				'Identifier of competition group. Each competition belongs to one or more groups.',
-			labels: [
-				'matchmaking',
-				'vikings',
-				'competitions',
-				'groups',
-				'users',
-				'teams',
-				'names'
-			]
+				'Identifier of distance group. Each distance belongs to one or more groups.',
+			labels: ['distances', 'drivers', 'groups']
 		},
 		metadata: {
 			createdTimestamp: '2023-05-17T17:52:21Z',
@@ -46,10 +38,10 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'internalTrasactionId',
+			name: 'internalTransactionId',
 			valueType: 'STRING',
 			description: 'Internal Transaction Id',
-			labels: ['vikings']
+			labels: ['drivers']
 		},
 		metadata: {
 			createdTimestamp: '2023-05-29T08:00:45Z',
@@ -58,10 +50,10 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'trasaction',
+			name: 'transaction',
 			valueType: 'STRING',
 			description: 'Transaction Id',
-			labels: ['vikings']
+			labels: ['drivers']
 		},
 		metadata: {
 			createdTimestamp: '2023-06-03T14:05:02Z',
@@ -70,10 +62,10 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'competitionid',
+			name: 'routeid',
 			valueType: 'INT64',
-			description: 'Competition identifier',
-			labels: ['vikings', 'matchmaking']
+			description: 'Route identifier',
+			labels: ['drivers', 'routes']
 		},
 		metadata: {
 			createdTimestamp: '2023-06-09T06:55:06Z',
@@ -82,35 +74,24 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'competitiontimer',
+			name: 'drivetimer',
 			valueType: 'INT64',
-			description: 'Competition instance identifier',
-			labels: ['vikings', 'matchmaking']
+			description: 'Drive timer instance identifier',
+			labels: ['driver']
 		},
 		metadata: {
 			createdTimestamp: '2023-06-15T09:57:41Z',
 			lastUpdatedTimestamp: '2023-06-15T09:57:41Z'
 		}
 	},
-	{
-		data: {
-			name: 'transaction',
-			valueType: 'STRING',
-			description: 'Transaction Identifier',
-			labels: ['vikings', 'matchmaking']
-		},
-		metadata: {
-			createdTimestamp: '2023-06-19T09:32:40Z',
-			lastUpdatedTimestamp: '2023-06-19T09:34:47Z'
-		}
-	},
+
 	{
 		data: {
 			name: 'advertisingid',
 			valueType: 'STRING',
 			description:
 				'Advertising identifier of the device (advertisingVendorId (idfv) - ios, deviceAdvertisingId - android)',
-			labels: ['vikings', 'matchmaking']
+			labels: ['drivers', 'advertising']
 		},
 		metadata: {
 			createdTimestamp: '2023-06-21T08:02:28Z',
@@ -119,34 +100,23 @@ const entities = [
 	},
 	{
 		data: {
-			name: 'clanid',
+			name: 'taxiid',
 			valueType: 'INT64',
-			description: 'Clan Identifier',
-			labels: ['vikings', 'matchmaking']
+			description: 'Taxi Identifier',
+			labels: ['drivers', 'taxi']
 		},
 		metadata: {
 			createdTimestamp: '2023-08-24T09:56:33Z',
 			lastUpdatedTimestamp: '2023-08-24T09:56:33Z'
 		}
 	},
-	{
-		data: {
-			name: 'banktransactionid',
-			valueType: 'STRING',
-			description: 'Bank Transaction Identifier',
-			labels: ['vikings', 'matchmaking']
-		},
-		metadata: {
-			createdTimestamp: '2023-06-19T09:32:40Z',
-			lastUpdatedTimestamp: '2023-06-19T09:34:47Z'
-		}
-	},
+
 	{
 		data: {
 			name: 'feature_name',
 			valueType: 'STRING',
 			description: 'Name of feature (used to get statistics of the feature)',
-			labels: ['vikings', 'matchmaking']
+			labels: ['drivers', 'taxi']
 		},
 		metadata: {
 			createdTimestamp: '2023-10-04T10:06:17Z',
@@ -169,7 +139,7 @@ const featureTables = [
 					labels: ['Flabel1', 'Flabel2']
 				},
 				{
-					name: 'country_code',
+					name: 'taxi_code',
 					valueType: 'STRING'
 				},
 				{
@@ -177,7 +147,7 @@ const featureTables = [
 					valueType: 'INT64'
 				},
 				{
-					name: 'castle_level',
+					name: 'driver_level',
 					valueType: 'INT32'
 				}
 			],
@@ -188,7 +158,7 @@ const featureTables = [
 				sources: [
 					{
 						options: {
-							path: 'vikings.fact_vikings_krd_1_sessions'
+							path: 'drivers_sessions'
 						},
 						alias: 'sessions',
 						columns: [
@@ -213,7 +183,7 @@ const featureTables = [
 					{
 						input: 'final_result',
 						options: {
-							project: 'vikings',
+							project: 'drivers',
 							feature_table: 'sessions'
 						},
 						partitionBy: ['123'],
@@ -269,7 +239,7 @@ const featureTables = [
 					valueType: 'STRING'
 				},
 				{
-					name: 'country_code',
+					name: 'taxi_code',
 					valueType: 'STRING'
 				},
 				{
@@ -322,11 +292,11 @@ const featureTables = [
 			entities: ['userid'],
 			features: [
 				{
-					name: 'hero_level',
+					name: 'driver_level',
 					valueType: 'INT32'
 				},
 				{
-					name: 'country_code',
+					name: 'taxi_code',
 					valueType: 'STRING'
 				},
 				{
@@ -348,11 +318,11 @@ const featureTables = [
 			entities: ['userid'],
 			features: [
 				{
-					name: 'city_skinids',
+					name: 'city_id',
 					valueType: 'INT32_LIST'
 				},
 				{
-					name: 'hero_skinids',
+					name: 'driver_id',
 					valueType: 'INT32_LIST'
 				}
 			]
@@ -368,13 +338,7 @@ const featureTables = [
 
 const mock = new MockAdapter($axios)
 mock.onGet(`/projects`).reply(200, {
-	projects: [
-		'taxi',
-		'taxi_stage',
-		'taxi_dev',
-		'vikings_stage',
-		'Choose project'
-	]
+	projects: ['taxi', 'taxi_stage', 'taxi_dev', 'drivers', 'Choose project']
 })
 mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
 	featureTables: featureTables

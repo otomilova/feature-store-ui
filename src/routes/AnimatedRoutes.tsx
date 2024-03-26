@@ -8,6 +8,7 @@ import FeatureTableOverview from '../components/screens/featureTables/FeatureTab
 import { AnimatePresence } from 'framer-motion'
 import { FeatureTables } from '../components/screens/featureTables/FeatureTables.tsx'
 import { Features } from '../components/screens/features/Features.tsx'
+import EntityOverview from '../components/screens/entities/entityOverview/EntityOverview.tsx'
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
@@ -32,6 +33,7 @@ const AnimatedRoutes = () => {
 					<Route path='features/:name' element={<FeatureOverview />} />
 					<Route path='features' element={<Features />} />
 					<Route path='entities' element={<Entities />} />
+					<Route path='entities/:name' element={<EntityOverview />} />
 				</Route>
 			</Routes>
 		</AnimatePresence>
