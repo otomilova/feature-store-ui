@@ -9,7 +9,7 @@ import { createCrumbsForApplyFT, getBacklink } from '../../../../utils/helpers'
 import TransitionContainer from '../../../ui/TransitionContainer'
 import { IEntityResponseEntry } from '../../../../types/types'
 import { useEntities } from '../../entities/hooks/useEntities'
-import { useProject } from '../../../hooks/useProject.js'
+import { useProject } from '../../../hooks/useProject'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { project } = useProject()

@@ -24,12 +24,7 @@ export interface IApplyFeatureTableRequest {
 	data: {
 		name: string
 		entities: string[]
-		features?: {
-			name: string
-			valueType: ValueTypes
-			description?: string
-			labels?: string[]
-		}[]
+		features?: IFeature[]
 		job: {
 			sources?: {
 				options: object
@@ -112,12 +107,7 @@ export interface IFeatureTablesResponseEntry {
 		name: string
 		description?: string
 		entities?: string[]
-		features?: {
-			name: string
-			valueType: ValueTypes
-			description?: string
-			labels?: string[]
-		}[]
+		features?: IFeature[]
 		labels?: string[]
 		ttlMinutes?: number
 		multiRecord?: boolean
@@ -155,10 +145,7 @@ export interface IFeature {
 	valueType: ValueTypes
 	featureTableName: string
 	description?: string
-	labels?: {
-		label: string
-		value: string
-	}
+	labels?: string[]
 }
 
 export interface IEntityResponseEntry {

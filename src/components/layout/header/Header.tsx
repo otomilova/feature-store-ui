@@ -6,7 +6,11 @@ import { Box } from '@chakra-ui/react'
 import NavBar from './details/NavBar'
 import { ProjectContext } from '../../../providers/ProjectProvider'
 
-const Header: React.FC = ({ localData }) => {
+interface HeaderProps {
+	localData?: string
+}
+
+const Header: React.FC = ({ localData }: HeaderProps) => {
 	const { project, setProject } = useContext(ProjectContext)
 
 	useEffect(() => {

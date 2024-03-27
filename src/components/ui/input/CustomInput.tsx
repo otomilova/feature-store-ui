@@ -16,7 +16,7 @@ const CustomInput = ({
 	validation,
 	placeholder = inputName,
 	...rest
-}) => {
+}: CustomInputProps) => {
 	return (
 		<FormControl isInvalid={!!errors && errors[inputId]} mb='1.2em'>
 			<FormLabel htmlFor={inputId}>

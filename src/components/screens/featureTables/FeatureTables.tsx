@@ -4,7 +4,7 @@ import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
 import { useFeatureTables } from './hooks/useFeatureTables.ts'
-import { useProject } from '../../hooks/useProject.js'
+import { useProject } from '../../hooks/useProject'
 import { IFeatureTablesResponseEntry } from '../../../types/types.d.ts'
 import {
 	FEATURE_TABLES_TITLES,

@@ -4,8 +4,21 @@ import { useForm } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
+import { IFeatureTableFormData } from '../../../../types/types'
 
-const CreateTaskForm = ({ id, onClose, setTasks, tasks }) => {
+interface CreateTaskFormProps {
+	id: string
+	onClose: () => void
+	setTasks: (tasks: Array<Pick<IFeatureTableFormData, 'tasks'>>) => void
+	tasks: Array<Pick<IFeatureTableFormData, 'tasks'>>
+}
+
+const CreateTaskForm = ({
+	id,
+	onClose,
+	setTasks,
+	tasks
+}: CreateTaskFormProps) => {
 	const {
 		control,
 		register,

@@ -14,7 +14,7 @@ import {
 import { FiPlus } from 'react-icons/fi'
 
 import { Controller } from 'react-hook-form'
-import ModalComponent from '../../screens/featureTables/ItemModal/ModalComponent'
+import ModalComponent from '../../screens/featureTables/itemModal/ModalComponent'
 
 const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()

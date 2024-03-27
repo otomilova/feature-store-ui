@@ -23,8 +23,6 @@ const colors = {
 }
 
 const theme = extendTheme({
-
-
 	fonts: {
 		body: 'Inter'
 	},

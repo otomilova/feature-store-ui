@@ -5,8 +5,21 @@ import OptionsInput from '../../../ui/input/OptionsInput'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
+import { IFeatureTableFormData } from '../../../../types/types'
 
-const CreateSinkForm = ({ id, onClose, setSinks, sinks }) => {
+interface CreateSinkFormProps {
+	id: string
+	onClose: () => void
+	setSinks: (sinks: Array<Pick<IFeatureTableFormData, 'sinks'>>) => void
+	sinks: Array<Pick<IFeatureTableFormData, 'sinks'>>
+}
+
+const CreateSinkForm = ({
+	id,
+	onClose,
+	setSinks,
+	sinks
+}: CreateSinkFormProps) => {
 	const {
 		control,
 		register,

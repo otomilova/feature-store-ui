@@ -6,15 +6,23 @@ import {
 	Divider,
 	Flex,
 	Heading,
-	Link as ChakraLink,
 	Tag,
 	Text
 } from '@chakra-ui/react'
 import { DESCRIPTION, LABELS } from '../../../../utils/constants'
 import { Link, useNavigate } from 'react-router-dom'
 import { FeaturesIcon } from '../../../ui/icons/FeaturesIcon'
+import { IFeature } from '../../../../types/types'
 
-const FeatureOverviewContent = ({ name, feature }) => {
+interface FeatureOverviewContentProps {
+	feature: IFeature
+	name: string
+}
+
+const FeatureOverviewContent = ({
+	name,
+	feature
+}: FeatureOverviewContentProps) => {
 	const navigate = useNavigate()
 
 	return (
@@ -74,9 +82,13 @@ const FeatureOverviewContent = ({ name, feature }) => {
 			</Heading>
 
 			<Link to={`/feature-tables/${feature.featureTableName}`}>
-				<ChakraLink mb='1.2em' color='brand.600'>
+				<Text
+					mb='1.2em'
+					color='brand.500'
+					_hover={{ textDecoration: 'underline' }}
+				>
 					{feature.featureTableName}
-				</ChakraLink>
+				</Text>
 			</Link>
 
 			<Heading

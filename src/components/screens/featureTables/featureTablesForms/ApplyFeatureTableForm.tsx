@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
 import CustomSelect from '../../../ui/select/CustomSelect'
-import { useProject } from '../../../hooks/useProject.js'
+import { useProject } from '../../../hooks/useProject'
 import {
 	IApplyFeatureTableRequest,
 	IFeatureTableFormData
@@ -32,6 +32,15 @@ import {
 } from '../../../../utils/validation'
 import ItemInput from '../../../ui/input/ItemInput'
 
+interface ApplyFeatureTableFormProps {
+	id: string
+	action: string
+	isLoading: boolean
+	backlink: string | undefined
+	entities: string[]
+	featureTableFormData: IFeatureTableFormData | undefined
+}
+
 const ApplyFeatureTableForm = ({
 	id,
 	action,
@@ -39,14 +48,7 @@ const ApplyFeatureTableForm = ({
 	isLoading,
 	backlink,
 	entities
-}: {
-	isLoading: boolean
-	id: string
-	action: string
-	featureTableFormData: IFeatureTableFormData | undefined
-	backlink: string | undefined
-	entities: string[]
-}) => {
+}: ApplyFeatureTableFormProps) => {
 	const isCreate = action === 'create'
 	const {
 		control,

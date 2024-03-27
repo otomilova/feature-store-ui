@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useId, useRef } from 'react'
 import {
 	Box,
 	Button,
@@ -10,11 +10,21 @@ import {
 	InputGroup,
 	InputLeftElement
 } from '@chakra-ui/react'
-import Loader from '../Loader'
 import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import TableComponent from './TableComponent'
 import TransitionContainer from '../TransitionContainer'
+import SpinnerLoader from '../SpinnerLoader'
+
+interface TablePageProps {
+	isLoading: boolean
+	Icon: () => JSX.Element
+	rows: never
+	columns: never
+	title: string
+	path: string
+	allowedCreate: boolean
+}
 
 const TablePage: React.FC = ({
 	rows,
@@ -23,21 +33,23 @@ const TablePage: React.FC = ({
 	Icon,
 	title,
 	path,
-	allowedCreate
-}) => {
+	allowedCreate = false
+}: TablePageProps) => {
 	const navigate = useNavigate()
 	const gridRef = useRef()
 	const onFilterTextBoxChanged = useCallback(() => {
 		gridRef.current.api.setGridOption(
 			'quickFilterText',
-			document.getElementById('filter-text-box').value
+			document.getElementById(`${filterInputId}`).value
 		)
 	}, [])
+
+	const filterInputId = useId()
 
 	return (
 		<TransitionContainer mt='25px' w='100%' mb='20px'>
 			{isLoading ? (
-				<Loader />
+				<SpinnerLoader />
 			) : (
 				<>
 					<Box mr={{ md: '135px', lg: '200px', xl: '335px' }}>
@@ -70,7 +82,7 @@ const TablePage: React.FC = ({
 									placeholder='Search'
 									size={{ md: 'sm', lg: 'md', xl: 'lg' }}
 									w={{ md: '330px', lg: '380px', xl: '480px' }}
-									id='filter-text-box'
+									id={filterInputId}
 									onInput={onFilterTextBoxChanged}
 								/>
 							</InputGroup>

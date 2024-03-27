@@ -16,7 +16,12 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useProjects } from '../useProjects.js'
 import Loader from '../../../ui/Loader'
 
-const HeaderMenu: React.FC = ({ project, setProject }) => {
+interface HeaderMenuProps {
+	project: string
+	setProject: (project: string) => void
+}
+
+const HeaderMenu: React.FC = ({ project, setProject }: HeaderMenuProps) => {
 	const { data: projects, isLoading } = useProjects()
 
 	const { pathname } = useLocation()

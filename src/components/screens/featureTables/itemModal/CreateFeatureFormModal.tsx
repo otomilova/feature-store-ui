@@ -6,7 +6,7 @@ import CustomSelect from '../../../ui/select/CustomSelect'
 import MultiSelect from '../../../ui/select/MultiSelect'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
-import { ValueTypes } from '../../../../types/types.d.ts'
+import { IFeatureTableFormData, ValueTypes } from '../../../../types/types.d.ts'
 import {
 	DESCRIPTION,
 	FEATURE_TITLES,
@@ -17,7 +17,21 @@ import {
 import { extractValueFromSelectObj } from '../../../../utils/helpers.ts'
 import { INPUT_VALIDATION } from '../../../../utils/validation'
 
-const CreateFeatureForm = ({ id, onClose, setFeatures, features }) => {
+interface CreateFeatureFormProps {
+	id: string
+	onClose: () => void
+	setFeatures: (
+		features: Array<Pick<IFeatureTableFormData, 'features'>>
+	) => void
+	features: Array<Pick<IFeatureTableFormData, 'features'>>
+}
+
+const CreateFeatureForm = ({
+	id,
+	onClose,
+	setFeatures,
+	features
+}: CreateFeatureFormProps) => {
 	const {
 		control,
 		register,

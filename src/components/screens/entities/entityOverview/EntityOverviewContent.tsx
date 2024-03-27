@@ -12,8 +12,19 @@ import {
 import { DESCRIPTION, LABELS } from '../../../../utils/constants'
 import { useNavigate } from 'react-router-dom'
 import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
+import { IEntityResponseEntry } from '../../../../types/types'
 
-const EntityOverviewContent = ({ name, entity, entitiesInFTs }) => {
+interface EntityOverviewContentProps {
+	name: string
+	entity: IEntityResponseEntry
+	entitiesInFTs: Map<string, number>
+}
+
+const EntityOverviewContent = ({
+	name,
+	entity,
+	entitiesInFTs
+}: EntityOverviewContentProps) => {
 	const navigate = useNavigate()
 
 	return (

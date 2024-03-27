@@ -14,6 +14,15 @@ import CreateSourceFormModal from './CreateSourceFormModal'
 import CreateTaskFormModal from './CreateTaskFormModal'
 import CreateSinkFormModal from './CreateSinkFormModal'
 
+interface ModalProps {
+	isOpen: boolean
+	onClose: () => void
+	id: string
+	inputName: string
+	items: string[]
+	setItems: (items: string[]) => void
+}
+
 const ModalComponent: React.FC = ({
 	inputName,
 	isOpen,
@@ -21,7 +30,7 @@ const ModalComponent: React.FC = ({
 	id,
 	items,
 	setItems
-}) => {
+}: ModalProps) => {
 	const finalRef = React.useRef(null)
 	const initialRef = React.useRef(null)
 

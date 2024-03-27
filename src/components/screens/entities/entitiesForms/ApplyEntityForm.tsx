@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
-import { useProject } from '../../../hooks/useProject.js'
+import { useProject } from '../../../hooks/useProject'
 import {
 	IApplyEntityRequest,
 	IEntityFormData
@@ -22,21 +22,17 @@ import CustomSelect from '../../../ui/select/CustomSelect'
 import { useApplyEntity } from '../hooks/useApplyEntity'
 import Loader from '../../../ui/Loader'
 
-const ApplyEntityForm = ({
-	id,
-
-	backlink
-}: {
+interface ApplyEntityFormProps {
 	id: string
-
 	backlink: string | undefined
-}) => {
+}
+
+const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 	const {
 		control,
 		register,
 		handleSubmit,
-		formState: { errors },
-		setValue
+		formState: { errors }
 	} = useForm({
 		mode: 'onChange'
 	})

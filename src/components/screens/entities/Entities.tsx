@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 // import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
-import { useProject } from '../../hooks/useProject.js'
+import { useProject } from '../../hooks/useProject'
 import {
 	IEntityResponseEntry,
 	IFeatureTablesResponseEntry

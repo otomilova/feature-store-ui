@@ -3,10 +3,10 @@ import { Box } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import Nav from '../../../ui/breadcrumb/Nav'
 import { useFeatureTableByName } from '../hooks/useFeatureTableByName'
-import Loader from '../../../ui/Loader'
 import { createCrumbsForFTOverview } from '../../../../utils/helpers'
 import FTOverviewContent from './FTOverviewContent'
 import TransitionContainer from '../../../ui/TransitionContainer'
+import SpinnerLoader from '../../../ui/SpinnerLoader'
 
 function FeatureTableOverview() {
 	const { name } = useParams()
@@ -16,7 +16,7 @@ function FeatureTableOverview() {
 		<TransitionContainer mt='2em' h='85vh' w='100%'>
 			{isLoading ? (
 				<Box w='90vh'>
-					<Loader rows={24} />
+					<SpinnerLoader />
 				</Box>
 			) : (
 				<>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { MutableRefObject, useEffect, useMemo, useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import { LabelsColumn } from './LabelsColumn'
 import { AgGridReact } from 'ag-grid-react'
@@ -7,7 +7,19 @@ import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
 
-const TableComponent: React.FC = ({ rows, columns, path, gridRef }) => {
+interface TableComponentProps {
+	rows: never
+	columns: never
+	path: string
+	gridRef: MutableRefObject<undefined>
+}
+
+const TableComponent: React.FC = ({
+	rows,
+	columns,
+	path,
+	gridRef
+}: TableComponentProps) => {
 	const navigate = useNavigate()
 
 	const [rowData, setRowData] = useState([])

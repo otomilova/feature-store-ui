@@ -1,7 +1,7 @@
 import { Center, Heading } from '@chakra-ui/react'
 import * as React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useProject } from '../../hooks/useProject.js'
+import { useProject } from '../../hooks/useProject'
 
 const Home: React.FC = () => {
 	const { project } = useProject()

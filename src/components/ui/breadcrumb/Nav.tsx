@@ -2,7 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 
-const Nav = ({ crumbs }) => {
+interface ICrumbs {
+	name: string
+	link: string
+	isActive?: boolean
+}
+
+const Nav = ({ crumbs }: ICrumbs[]) => {
 	return (
 		<Breadcrumb
 			fontSize={{

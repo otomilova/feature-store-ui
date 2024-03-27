@@ -5,8 +5,21 @@ import CustomTextarea from '../../../ui/textarea/CustomTextarea'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
 import OptionsInput from '../../../ui/input/OptionsInput'
 import CustomInput from '../../../ui/input/CustomInput'
+import { IFeatureTableFormData } from '../../../../types/types'
 
-const CreateSourceFormModal = ({ id, onClose, setSources, sources }) => {
+interface CreateSourceFormModalProps {
+	id: string
+	onClose: () => void
+	sources: Array<Pick<IFeatureTableFormData, 'sources'>>
+	setSources: (sources: Array<Pick<IFeatureTableFormData, 'sources'>>) => void
+}
+
+const CreateSourceFormModal = ({
+	id,
+	onClose,
+	setSources,
+	sources
+}: CreateSourceFormModalProps) => {
 	const {
 		control,
 		register,

@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
-import { useProject } from '../../hooks/useProject.js'
+import { useProject } from '../../hooks/useProject'
 import { IFeature } from '../../../types/types'
 import { FEATURES_TITLES, FeaturesColumnState } from '../../../utils/constants'
 import { useFeatures } from './hooks/useFeatures.ts'

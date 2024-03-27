@@ -27,7 +27,6 @@ interface ProjectDrawerProps {
 const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 	const firstField = React.useRef()
 	const {
-		control,
 		register,
 		handleSubmit,
 		formState: { errors },
@@ -79,7 +78,6 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 									register={register}
 									validation={INPUT_VALIDATION}
 									placeholder='Please enter project name'
-									//ref={firstField}
 								/>
 							</Box>
 

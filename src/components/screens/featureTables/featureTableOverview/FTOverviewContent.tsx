@@ -22,8 +22,14 @@ import {
 import PopoverComponent from '../../../ui/popover/PopoverComponent'
 import { useNavigate } from 'react-router-dom'
 import { FTIcon } from '../../../ui/icons/FTIcon'
+import { IFeatureTableFormData } from '../../../../types/types'
 
-const FtOverviewContent = ({ name, featureTable }) => {
+interface FTOverviewContentProps {
+	name: string
+	featureTable: IFeatureTableFormData
+}
+
+const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 	const navigate = useNavigate()
 	return (
 		<Box
