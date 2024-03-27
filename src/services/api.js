@@ -355,3 +355,4 @@ mock
 
 mock.onPost('/feature-tables/apply').reply(200)
 mock.onPost('/entities/apply').reply(200)
+mock.onPost('/projects/apply').reply(200)

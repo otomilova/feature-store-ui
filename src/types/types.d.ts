@@ -196,3 +196,8 @@ export interface IEntityFormData {
 		value: string
 	}[]
 }
+
+export interface IApplyProjectRequest {
+	name: string
+	description?: string
+}

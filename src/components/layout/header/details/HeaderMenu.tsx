@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import * as React from 'react'
-import ProjectDrawer from './ProjectDrawer'
+import ProjectDrawer from './projectDrawer/ProjectDrawer'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useProjects } from '../useProjects.js'
 import Loader from '../../../ui/Loader'

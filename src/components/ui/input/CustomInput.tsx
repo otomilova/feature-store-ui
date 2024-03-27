@@ -13,7 +13,9 @@ const CustomInput = ({
 	changeable = true,
 	errors,
 	register,
-	validation
+	validation,
+	placeholder = inputName,
+	...rest
 }) => {
 	return (
 		<FormControl isInvalid={!!errors && errors[inputId]} mb='1.2em'>
@@ -27,6 +29,7 @@ const CustomInput = ({
 				</Heading>
 			</FormLabel>
 			<Input
+				{...rest}
 				size={{ md: 'md', lg: 'md', xl: 'lg' }}
 				isDisabled={!changeable}
 				minW='230px'
@@ -34,7 +37,7 @@ const CustomInput = ({
 				borderColor='inherit'
 				bgColor='white'
 				id={inputId}
-				placeholder={inputName}
+				placeholder={placeholder}
 				{...register(inputId, changeable ? validation : {})}
 			/>
 			<FormErrorMessage>
