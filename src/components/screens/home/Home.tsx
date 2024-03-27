@@ -1,15 +1,15 @@
-import { Box, Center, Heading } from '@chakra-ui/react'
+import { Center, Heading } from '@chakra-ui/react'
 import * as React from 'react'
-import { useContext } from 'react'
-import { ProjectContext } from '../../../providers/ProjectProvider'
 import { Navigate } from 'react-router-dom'
+import { useProject } from '../../hooks/useProject.js'
 
 const Home: React.FC = () => {
-	const { project, setProject } = useContext(ProjectContext)
+	const { project } = useProject()
+
 	return (
-		<Box>
+		<Center>
 			{project === 'Choose project' ? (
-				<Center mt={5}>
+				<Center>
 					<Heading as='h4' color='brand.600' size='lg'>
 						No data to display. Please choose project
 					</Heading>
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
 			) : (
 				<Navigate to='/feature-tables' />
 			)}
-		</Box>
+		</Center>
 	)
 }
 

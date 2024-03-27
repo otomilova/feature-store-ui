@@ -12,9 +12,9 @@ import {
 const PopoverPortal = ({ item, children }) => {
 	return (
 		<Portal>
-			<PopoverContent _focus={{ boxShadow: 'none' }}>
+			<PopoverContent _focus={{ boxShadow: 'md' }}>
 				<PopoverArrow />
-				<PopoverHeader>
+				<PopoverHeader borderColor='brand.500'>
 					<Heading size='xs'>{item.name}</Heading>
 				</PopoverHeader>
 				<PopoverCloseButton />

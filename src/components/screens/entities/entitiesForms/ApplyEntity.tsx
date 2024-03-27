@@ -1,23 +1,23 @@
 import { Box, Center, Flex, Heading } from '@chakra-ui/react'
 import ApplyEntityForm from './ApplyEntityForm'
 import { useLocation, useParams } from 'react-router-dom'
-import { getBacklink } from '../../../../utils/helpers'
+import {
+	createCrumbsForApplyEntity,
+	getBacklink
+} from '../../../../utils/helpers'
 import TransitionContainer from '../../../ui/TransitionContainer'
 import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
+import Nav from '../../../ui/breadcrumb/Nav'
 
 function ApplyEntity() {
 	const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
 
-	//const crumbs = createCrumbsForApplyFT(action, name)
+	const crumbs = createCrumbsForApplyEntity(name)
 
 	return (
 		<TransitionContainer mt='1.5em' w='100%' h='85vh'>
-			{/*{isLoading ? (*/}
-			{/*	<Loader />*/}
-			{/*) : (*/}
-			{/*	<>*/}
-			{/*<Nav crumbs={crumbs} />*/}
+			<Nav crumbs={crumbs} />
 
 			<Box
 				overflow={{ md: 'scroll', lg: 'scroll', xl: 'hidden' }}

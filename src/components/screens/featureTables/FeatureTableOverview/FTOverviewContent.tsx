@@ -147,8 +147,11 @@ const FtOverviewContent = ({ name, featureTable }) => {
 					return (
 						<PopoverComponent item={feature} key={feature.name}>
 							<Tag
-								_hover={{ bgColor: 'purple.300', cursor: 'pointer' }}
-								colorScheme='purple'
+								//_hover={{ bgColor: 'purple.300', cursor: 'pointer' }}
+								//colorScheme='purple'
+								bgColor='#EBF1FF'
+								border='1px solid #70A0FF'
+								color='#1963D3'
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								key={feature.name}
 							>

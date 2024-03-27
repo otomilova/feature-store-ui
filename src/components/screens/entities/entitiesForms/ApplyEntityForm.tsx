@@ -57,7 +57,6 @@ const ApplyEntityForm = ({
 			project
 		)
 		mutate(request)
-		//console.log(request)
 	}
 
 	const checkKeyDown = e => {
@@ -125,7 +124,6 @@ const ApplyEntityForm = ({
 							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							type='submit'
 							colorScheme='button'
-							//onClick={() => {}}
 						>
 							Create Entity
 						</Button>

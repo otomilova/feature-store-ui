@@ -107,6 +107,21 @@ export function createCrumbsForEntitiesOverview(name: string) {
 	]
 }
 
+export function createCrumbsForApplyEntity(name: string) {
+	return [
+		{
+			name: 'ENTITIES',
+			link: '/entities'
+		},
+		
+		{
+			name: 'CREATE ENTITY',
+			link: `/entities/create`,
+			isActive: true
+		}
+	]
+}
+
 export function getBacklink(location) {
 	return location.substring(0, location.lastIndexOf('/'))
 }

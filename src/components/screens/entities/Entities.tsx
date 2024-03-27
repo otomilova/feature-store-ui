@@ -29,8 +29,6 @@ export function Entities() {
 	}: { featureTables: IFeatureTablesResponseEntry[] } =
 		useFeatureTables(project)
 
-	//const entitiesInFTs = calcEntitiesInFTs(entities, featureTables)
-
 	const EntitiesRows = useMemo(
 		() =>
 			entities?.map((entity, index) => {
