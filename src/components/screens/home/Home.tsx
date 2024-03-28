@@ -7,9 +7,14 @@ const Home: React.FC = () => {
 	const { project } = useProject()
 
 	return (
-		<Center>
+		<Center width='100%' height='100%'>
 			{project === 'Choose project' ? (
-				<Center>
+				<Center
+					position='absolute'
+					top='40%'
+					left='52%'
+					transform='translate(-50%, -50%)'
+				>
 					<Heading as='h4' color='brand.600' size='lg'>
 						No data to display. Please choose project
 					</Heading>

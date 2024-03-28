@@ -30,7 +30,7 @@ const HeaderMenu: React.FC = ({ project, setProject }: HeaderMenuProps) => {
 	return (
 		<Box m={5}>
 			{isLoading ? (
-				<Loader />
+				<Loader rows={1} />
 			) : (
 				<>
 					<Menu autoSelect={true}>
