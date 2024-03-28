@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const colors = {
 	brand: {
-		//dividers #C6CBD2?
 		50: '#CBD5E0', //borders input
 		100: '#F7F7F9', //borders
 		200: '#FBFBFB', //background

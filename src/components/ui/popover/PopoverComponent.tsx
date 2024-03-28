@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	Flex,
 	Heading,
@@ -82,7 +81,7 @@ const PopoverComponent = ({ children, item }) => {
 						<Flex gap='0.5em'>
 							{item.labels.map(label => {
 								return (
-									<Tag colorScheme='gray' size='sm' key={label.value}>
+									<Tag colorScheme='twitter' size='sm' key={label.value}>
 										{label.value}
 									</Tag>
 								)

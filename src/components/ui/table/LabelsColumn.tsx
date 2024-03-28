@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, Tag } from '@chakra-ui/react'
 
 export function LabelsColumn({ value }: string[]) {
@@ -7,7 +6,7 @@ export function LabelsColumn({ value }: string[]) {
 			{value?.map(label => {
 				return (
 					<Tag
-						colorScheme='blue'
+						colorScheme='twitter'
 						size={{ md: 'sm', lg: 'md', xl: 'lg' }}
 						key={label}
 					>

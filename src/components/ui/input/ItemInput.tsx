@@ -16,7 +16,15 @@ import { FiPlus } from 'react-icons/fi'
 import { Controller } from 'react-hook-form'
 import ModalComponent from '../../screens/featureTables/itemModal/ModalComponent'
 
-const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
+const ItemInput = ({
+	control,
+	items,
+	setItems,
+	inputName,
+	inputId,
+	id,
+	...props
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	function removeTag(index) {
@@ -56,9 +64,7 @@ const ItemInput = ({ control, items, setItems, inputName, inputId, id }) => {
 						{items.map((item, index) => (
 							<Tag
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
-								bgColor='#EBF1FF'
-								border='1px solid #70A0FF'
-								color='#1963D3'
+								{...props}
 								key={index}
 							>
 								<TagLabel>{item.name}</TagLabel>

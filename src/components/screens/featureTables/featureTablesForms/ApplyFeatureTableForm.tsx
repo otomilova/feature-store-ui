@@ -24,13 +24,13 @@ import {
 } from '../../../../utils/constants'
 import { makeRequestFromFTFormData } from '../../../../utils/adapters'
 import { useApplyFeatureTable } from '../hooks/useApplyFeatureTable'
-import Loader from '../../../ui/Loader'
 import MultiSelect from '../../../ui/select/MultiSelect'
 import {
 	INPUT_NUMBER_VALIDATION,
 	INPUT_VALIDATION
 } from '../../../../utils/validation'
 import ItemInput from '../../../ui/input/ItemInput'
+import SpinnerLoader from '../../../ui/SpinnerLoader'
 
 interface ApplyFeatureTableFormProps {
 	id: string
@@ -128,8 +128,8 @@ const ApplyFeatureTableForm = ({
 				id={id}
 				key={1}
 			>
+				{isPending && <SpinnerLoader />}
 				<Flex direction='column' width='700px'>
-					{isPending && <Loader rows={12} />}
 					<HStack gap='15px'>
 						<CustomInput
 							changeable={isCreate}
@@ -173,6 +173,10 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						_hover={{ bgColor: '#C3D5FF', cursor: 'pointer' }}
+						colorScheme='blue'
+						variant='outline'
+						bgColor='#EBF1FF'
 						register={register}
 						control={control}
 						items={features}
@@ -183,6 +187,10 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+						colorScheme='green'
+						variant='outline'
+						bgColor='green.50'
 						register={register}
 						control={control}
 						items={sources}
@@ -193,6 +201,10 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+						colorScheme='green'
+						variant='outline'
+						bgColor='green.50'
 						register={register}
 						control={control}
 						items={tasks}
@@ -203,6 +215,10 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+						colorScheme='green'
+						variant='outline'
+						bgColor='green.50'
 						register={register}
 						control={control}
 						items={sinks}
@@ -213,6 +229,7 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<MultiSelect
+						color='twitter'
 						control={control}
 						tags={labels}
 						setTags={setLabels}
@@ -239,7 +256,6 @@ const ApplyFeatureTableForm = ({
 							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							type='submit'
 							colorScheme='button'
-							//onClick={() => {}}
 						>
 							{isCreate ? 'Create Feature Table' : 'Apply Changes'}
 						</Button>

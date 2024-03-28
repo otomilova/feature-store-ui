@@ -1,4 +1,4 @@
-import React, { useCallback, useId, useRef } from 'react'
+import { useCallback, useId, useRef } from 'react'
 import {
 	Box,
 	Button,
@@ -13,8 +13,8 @@ import {
 import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import TableComponent from './TableComponent'
-import TransitionContainer from '../TransitionContainer'
 import SpinnerLoader from '../SpinnerLoader'
+import TransitionContainer from '../TransitionContainer'
 
 interface TablePageProps {
 	isLoading: boolean
@@ -47,11 +47,11 @@ const TablePage: React.FC = ({
 	const filterInputId = useId()
 
 	return (
-		<TransitionContainer mt='25px' w='100%' mb='20px'>
+		<>
 			{isLoading ? (
 				<SpinnerLoader />
 			) : (
-				<>
+				<TransitionContainer mt='25px' w='100%' mb='20px'>
 					<Box mr={{ md: '135px', lg: '200px', xl: '335px' }}>
 						<Center mb='12px'>
 							<Flex
@@ -106,9 +106,9 @@ const TablePage: React.FC = ({
 						columns={columns}
 						path={path}
 					/>
-				</>
+				</TransitionContainer>
 			)}
-		</TransitionContainer>
+		</>
 	)
 }
 

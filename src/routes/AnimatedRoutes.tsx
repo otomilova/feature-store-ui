@@ -14,7 +14,7 @@ import ApplyEntity from '../components/screens/entities/entitiesForms/ApplyEntit
 const AnimatedRoutes = () => {
 	const location = useLocation()
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode='wait'>
 			<Routes location={location} key={location.pathname}>
 				<Route element={<App />}>
 					<Route path='/' element={<Home />} />

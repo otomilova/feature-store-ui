@@ -20,7 +20,7 @@ import MultiSelect from '../../../ui/select/MultiSelect'
 import { INPUT_VALIDATION } from '../../../../utils/validation'
 import CustomSelect from '../../../ui/select/CustomSelect'
 import { useApplyEntity } from '../hooks/useApplyEntity'
-import Loader from '../../../ui/Loader'
+import SpinnerLoader from '../../../ui/SpinnerLoader'
 
 interface ApplyEntityFormProps {
 	id: string
@@ -68,7 +68,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 				key={1}
 			>
 				<Flex direction='column' width='700px'>
-					{isPending && <Loader rows={12} />}
+					{isPending && <SpinnerLoader />}
 
 					<CustomInput
 						inputName='Entity Name'

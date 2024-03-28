@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	Badge,
 	Box,
@@ -153,11 +152,10 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					return (
 						<PopoverComponent item={feature} key={feature.name}>
 							<Tag
-								//_hover={{ bgColor: 'purple.300', cursor: 'pointer' }}
-								//colorScheme='purple'
+								_hover={{ bgColor: '#C3D5FF', cursor: 'pointer' }}
+								colorScheme='blue'
+								variant='outline'
 								bgColor='#EBF1FF'
-								border='1px solid #70A0FF'
-								color='#1963D3'
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								key={feature.name}
 							>
@@ -182,8 +180,10 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					return (
 						<PopoverComponent item={source} key={source.name}>
 							<Tag
-								_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
-								colorScheme='cyan'
+								_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+								colorScheme='green'
+								variant='outline'
+								bgColor='green.50'
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								key={source.name}
 							>
@@ -208,8 +208,10 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					return (
 						<PopoverComponent item={task} key={task.name}>
 							<Tag
-								_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
-								colorScheme='cyan'
+								_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+								colorScheme='green'
+								variant='outline'
+								bgColor='green.50'
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								key={task.name}
 							>
@@ -234,8 +236,10 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					return (
 						<PopoverComponent item={sink} key={sink.name}>
 							<Tag
-								_hover={{ bgColor: 'cyan.300', cursor: 'pointer' }}
-								colorScheme='cyan'
+								_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+								colorScheme='green'
+								variant='outline'
+								bgColor='green.50'
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								key={sink.name}
 							>
@@ -259,7 +263,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				{featureTable.labels?.map(label => {
 					return (
 						<Tag
-							colorScheme='blue'
+							colorScheme='twitter'
 							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							key={label.value}
 						>
