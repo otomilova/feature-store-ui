@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { Box, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react'
 import { FiGrid, FiHexagon, FiLayers } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
@@ -27,16 +27,18 @@ const NavBar: React.FC = () => {
 		return (
 			<>
 				<Tabs
-					position='relative'
+					width='150px'
 					orientation='vertical'
 					align='start'
-					isFitted='true'
+					isFitted
 					defaultIndex={index}
 				>
 					<TabList alignContent='start' alignItems='start'>
 						{tabs.map(tab => {
 							return (
 								<Tab
+									justifyContent='stretch'
+									width='150px'
 									as={Link}
 									to={tab.slug}
 									key={tab.id}
@@ -49,6 +51,7 @@ const NavBar: React.FC = () => {
 										lg: '18px',
 										xl: '22px'
 									}}
+									_hover={{ color: 'white', bg: 'brand.500' }}
 								>
 									{makeIcon(tab.title)}
 									{tab.title}

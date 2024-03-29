@@ -11,7 +11,7 @@ import {
 	FTColumnState
 } from '../../../utils/constants.ts'
 import TablePage from '../../ui/table/TablePage.tsx'
-import { FTIcon } from '../../ui/icons/FTIcon.tsx'
+import FTIcon from '../../ui/icons/FTIcon'
 
 export function FeatureTables() {
 	const { project } = useProject()
@@ -43,9 +43,10 @@ export function FeatureTables() {
 			columns={FTColumnState}
 			isLoading={isLoading}
 			title={FEATURE_TABLES_TITLES.title}
-			Icon={FTIcon}
 			allowedCreate={true}
 			path='feature-tables'
-		/>
+		>
+			<FTIcon />
+		</TablePage>
 	)
 }

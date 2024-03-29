@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	Box,
 	Button,
@@ -11,8 +10,8 @@ import {
 } from '@chakra-ui/react'
 import { DESCRIPTION, LABELS } from '../../../../utils/constants'
 import { Link, useNavigate } from 'react-router-dom'
-import { FeaturesIcon } from '../../../ui/icons/FeaturesIcon'
 import { IFeature } from '../../../../types/types'
+import FeaturesIcon from '../../../ui/icons/FeaturesIcon'
 
 interface FeatureOverviewContentProps {
 	feature: IFeature
@@ -41,7 +40,7 @@ const FeatureOverviewContent = ({
 		>
 			<Center pt='10px'>
 				<Flex direction='row' gap='12px' alignItems='center'>
-					{FeaturesIcon()}
+					<FeaturesIcon />
 					<Heading
 						as='h2'
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}

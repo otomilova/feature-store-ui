@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-// import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
 import { useProject } from '../../hooks/useProject'
@@ -9,11 +8,11 @@ import {
 	IFeatureTablesResponseEntry
 } from '../../../types/types'
 import TablePage from '../../ui/table/TablePage'
-import { EntitiesIcon } from '../../ui/icons/EntitiesIcon'
 import { EntitiesColumnState } from '../../../utils/constants'
 import { useEntities } from './hooks/useEntities'
 import { useFeatureTables } from '../featureTables/hooks/useFeatureTables'
 import { calcEntitiesInFTs } from '../../../utils/helpers'
+import EntitiesIcon from '../../ui/icons/EntitiesIcon'
 
 export function Entities() {
 	const { project } = useProject()
@@ -53,9 +52,10 @@ export function Entities() {
 			columns={EntitiesColumnState}
 			isLoading={isLoading}
 			title='Entities'
-			Icon={EntitiesIcon}
 			allowedCreate={true}
 			path='entities'
-		/>
+		>
+			<EntitiesIcon />
+		</TablePage>
 	)
 }

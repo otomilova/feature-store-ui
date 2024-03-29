@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	Box,
 	Button,
@@ -11,8 +10,8 @@ import {
 } from '@chakra-ui/react'
 import { DESCRIPTION, LABELS } from '../../../../utils/constants'
 import { useNavigate } from 'react-router-dom'
-import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 import { IEntityResponseEntry } from '../../../../types/types'
+import EntitiesIcon from '../../../ui/icons/EntitiesIcon'
 
 interface EntityOverviewContentProps {
 	name: string
@@ -43,7 +42,7 @@ const EntityOverviewContent = ({
 		>
 			<Center pt='10px'>
 				<Flex direction='row' gap='12px' alignItems='center'>
-					{EntitiesIcon()}
+					<EntitiesIcon />
 					<Heading
 						as='h2'
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}

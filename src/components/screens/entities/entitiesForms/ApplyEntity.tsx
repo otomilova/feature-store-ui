@@ -6,8 +6,8 @@ import {
 	getBacklink
 } from '../../../../utils/helpers'
 import TransitionContainer from '../../../ui/TransitionContainer'
-import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 import Nav from '../../../ui/breadcrumb/Nav'
+import EntitiesIcon from '../../../ui/icons/EntitiesIcon'
 
 function ApplyEntity() {
 	const { name }: { name: string } = useParams()
@@ -35,7 +35,7 @@ function ApplyEntity() {
 			>
 				<Center pt='10px'>
 					<Flex direction='row' gap='12px' alignItems='center' mb='1.5em'>
-						{EntitiesIcon()}
+						<EntitiesIcon />
 
 						<Heading
 							as='h2'
@@ -50,8 +50,6 @@ function ApplyEntity() {
 					<ApplyEntityForm backlink={backlink} id={'entityForm'} />
 				</Flex>
 			</Box>
-			{/*	</>*/}
-			{/*)}*/}
 		</TransitionContainer>
 	)
 }

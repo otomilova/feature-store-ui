@@ -1,5 +1,4 @@
 import { Box, Center, Flex, Heading } from '@chakra-ui/react'
-import { FiLayers } from 'react-icons/fi'
 import ApplyFeatureTableForm from './ApplyFeatureTableForm'
 import Nav from '../../../ui/breadcrumb/Nav'
 import { useFeatureTableByName } from '../hooks/useFeatureTableByName.ts'
@@ -10,6 +9,7 @@ import TransitionContainer from '../../../ui/TransitionContainer'
 import { IEntityResponseEntry } from '../../../../types/types'
 import { useEntities } from '../../entities/hooks/useEntities'
 import { useProject } from '../../../hooks/useProject'
+import FTIcon from '../../../ui/icons/FTIcon'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { project } = useProject()
@@ -44,7 +44,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 					>
 						<Center pt='10px'>
 							<Flex direction='row' gap='12px' alignItems='center' mb='1.5em'>
-								<FiLayers size={12} color='344054' />
+								<FTIcon />
 
 								<Heading
 									as='h2'

@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useMemo, useState } from 'react'
+import { MutableRefObject, useLayoutEffect, useMemo, useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import { LabelsColumn } from './LabelsColumn'
 import { AgGridReact } from 'ag-grid-react'
@@ -23,22 +23,28 @@ const TableComponent: React.FC = ({
 	const navigate = useNavigate()
 
 	const [rowData, setRowData] = useState([])
-	useEffect(() => {
+	useLayoutEffect(() => {
 		setRowData(rows)
 	}, [rows])
 
 	// Column Definitions: Defines & controls grid columns.
-	const [colDefs, setColDefs] = useState(columns)
+	const [colDefs, setColDefs] = useState([columns])
+	useLayoutEffect(() => {
+		setColDefs(columns)
+	}, [columns])
+
+	//const [colDefs, setColDefs] = useState(columns)
 	const components = useMemo(() => {
 		return {
 			LabelsColumn: LabelsColumn
 		}
-	}, [columns])
+	}, [LabelsColumn])
 
 	const autoSizeStrategy = {
-		type: 'fitGridWidth',
-		defaultMinWidth: 100
+		//type: 'fitGridWidth'
+		//defaultMinWidth: 100
 	}
+
 	return (
 		<Box
 			className='ag-theme-quartz'
@@ -60,7 +66,7 @@ const TableComponent: React.FC = ({
 				components={components}
 				rowHeight={{ md: '25', lg: '30', xl: '40' }}
 				defaultColDef={{
-					cellStyle: params => ({
+					cellStyle: () => ({
 						display: 'flex',
 						alignItems: 'center'
 					})

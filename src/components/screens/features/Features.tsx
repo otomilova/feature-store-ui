@@ -8,7 +8,7 @@ import { IFeature } from '../../../types/types'
 import { FEATURES_TITLES, FeaturesColumnState } from '../../../utils/constants'
 import { useFeatures } from './hooks/useFeatures.ts'
 import TablePage from '../../ui/table/TablePage'
-import { FeaturesIcon } from '../../ui/icons/FeaturesIcon'
+import FeaturesIcon from '../../ui/icons/FeaturesIcon'
 
 export function Features() {
 	const { project } = useProject()
@@ -33,16 +33,16 @@ export function Features() {
 			}),
 		[features]
 	)
-
 	return (
 		<TablePage
 			rows={FeaturesRows}
 			columns={FeaturesColumnState}
 			isLoading={isLoading}
 			title={FEATURES_TITLES.title}
-			Icon={FeaturesIcon}
 			allowedCreate={false}
 			path='features'
-		/>
+		>
+			<FeaturesIcon />
+		</TablePage>
 	)
 }

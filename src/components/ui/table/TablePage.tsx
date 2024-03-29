@@ -18,7 +18,6 @@ import TransitionContainer from '../TransitionContainer'
 
 interface TablePageProps {
 	isLoading: boolean
-	Icon: () => JSX.Element
 	rows: never
 	columns: never
 	title: string
@@ -30,10 +29,10 @@ const TablePage: React.FC = ({
 	rows,
 	columns,
 	isLoading,
-	Icon,
 	title,
 	path,
-	allowedCreate = false
+	allowedCreate = false,
+	children
 }: TablePageProps) => {
 	const navigate = useNavigate()
 	const gridRef = useRef()
@@ -47,11 +46,11 @@ const TablePage: React.FC = ({
 	const filterInputId = useId()
 
 	return (
-		<>
+		<TransitionContainer mt='25px' w='100%' mb='20px'>
 			{isLoading ? (
 				<SpinnerLoader />
 			) : (
-				<TransitionContainer mt='25px' w='100%' mb='20px'>
+				<>
 					<Box mr={{ md: '135px', lg: '200px', xl: '335px' }}>
 						<Center mb='12px'>
 							<Flex
@@ -60,8 +59,7 @@ const TablePage: React.FC = ({
 								alignItems='center'
 								marginBottom='0px'
 							>
-								{Icon()}
-
+								{children}
 								<Heading
 									as='h2'
 									size={{ md: 'md', lg: 'md', xl: 'lg' }}
@@ -106,9 +104,9 @@ const TablePage: React.FC = ({
 						columns={columns}
 						path={path}
 					/>
-				</TransitionContainer>
+				</>
 			)}
-		</>
+		</TransitionContainer>
 	)
 }
 

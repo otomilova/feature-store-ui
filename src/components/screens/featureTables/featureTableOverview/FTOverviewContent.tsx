@@ -20,8 +20,9 @@ import {
 } from '../../../../utils/constants'
 import PopoverComponent from '../../../ui/popover/PopoverComponent'
 import { useNavigate } from 'react-router-dom'
-import { FTIcon } from '../../../ui/icons/FTIcon'
+
 import { IFeatureTableFormData } from '../../../../types/types'
+import FTIcon from '../../../ui/icons/FTIcon'
 
 interface FTOverviewContentProps {
 	name: string
@@ -46,7 +47,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 		>
 			<Center pt='10px'>
 				<Flex direction='row' gap='12px' alignItems='center'>
-					{FTIcon()}
+					<FTIcon />
 					<Heading
 						as='h2'
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}
