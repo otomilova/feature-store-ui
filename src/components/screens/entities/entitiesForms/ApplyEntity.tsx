@@ -7,7 +7,7 @@ import {
 } from '../../../../utils/helpers'
 import TransitionContainer from '../../../ui/TransitionContainer'
 import Nav from '../../../ui/breadcrumb/Nav'
-import EntitiesIcon from '../../../ui/icons/EntitiesIcon'
+import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 
 function ApplyEntity() {
 	const { name }: { name: string } = useParams()
@@ -20,22 +20,21 @@ function ApplyEntity() {
 			<Nav crumbs={crumbs} />
 
 			<Box
-				overflow={{ md: 'scroll', lg: 'scroll', xl: 'hidden' }}
 				w='fit-content'
 				bgColor='brand.300'
 				m='55px'
 				mt={{ md: '2em', lg: '3em', xl: '5em' }}
-				h={{ md: '85vh', lg: '85vh', xl: 'auto' }}
+				h='auto'
 				borderRadius='20px'
 				boxShadow='md'
-				pr={{ md: '35px', lg: '35px', xl: '65px' }}
-				pl={{ md: '35px', lg: '35px', xl: '65px' }}
-				pb={{ md: '35px', lg: '35px', xl: '65px' }}
+				pr='3em'
+				pl='3em'
+				pb='3em'
 				pt='25px'
 			>
 				<Center pt='10px'>
 					<Flex direction='row' gap='12px' alignItems='center' mb='1.5em'>
-						<EntitiesIcon />
+						{EntitiesIcon()}
 
 						<Heading
 							as='h2'

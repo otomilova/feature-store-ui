@@ -11,7 +11,7 @@ import {
 import { DESCRIPTION, LABELS } from '../../../../utils/constants'
 import { useNavigate } from 'react-router-dom'
 import { IEntityResponseEntry } from '../../../../types/types'
-import EntitiesIcon from '../../../ui/icons/EntitiesIcon'
+import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 
 interface EntityOverviewContentProps {
 	name: string
@@ -28,21 +28,20 @@ const EntityOverviewContent = ({
 
 	return (
 		<Box
-			overflow={{ md: 'scroll', lg: 'scroll', xl: 'hidden' }}
 			bgColor='#F5F5F5'
-			w='95vh'
+			w={{ md: '95vh', lg: '85vh', xl: '75vh' }}
 			m='3em'
-			h={{ md: 'auto', lg: 'auto', xl: 'auto' }}
+			h='auto'
 			mt={{ md: '2em', lg: '3em', xl: '4em' }}
 			borderRadius='20px'
 			boxShadow='md'
 			p='40px'
 			pt='0.7em'
-			pb={{ md: '30px', lg: '40px', xl: '60px' }}
+			pb='2em'
 		>
 			<Center pt='10px'>
 				<Flex direction='row' gap='12px' alignItems='center'>
-					<EntitiesIcon />
+					{EntitiesIcon()}
 					<Heading
 						as='h2'
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}
@@ -70,7 +69,11 @@ const EntityOverviewContent = ({
 				Type
 			</Heading>
 
-			<Text mb='1.2em' color='brand.600'>
+			<Text
+				mb='1.2em'
+				color='brand.600'
+				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+			>
 				{entity.data.valueType}
 			</Text>
 
@@ -82,7 +85,11 @@ const EntityOverviewContent = ({
 				Number of FT's
 			</Heading>
 
-			<Text mb='1.2em' color='brand.600'>
+			<Text
+				mb='1.2em'
+				color='brand.600'
+				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+			>
 				{entitiesInFTs.get(entity.data.name) || 0}
 			</Text>
 
@@ -94,7 +101,11 @@ const EntityOverviewContent = ({
 			>
 				{DESCRIPTION.title}
 			</Heading>
-			<Text mb='1.2em' color='brand.600'>
+			<Text
+				mb='1.2em'
+				color='brand.600'
+				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+			>
 				{entity.data.description}
 			</Text>
 			<Divider />

@@ -1,8 +1,13 @@
 import { Icon } from '@chakra-ui/icons'
 import { FiGrid } from 'react-icons/fi'
 
-const FeaturesIcon = (size = '0.9em', color = 'brand.600') => {
-	return <Icon as={FiGrid} boxSize={size} color={color} />
+export function FeaturesIcon(color = 'brand.600') {
+	return (
+		<Icon
+			as={FiGrid}
+			w={{ md: '4', lg: '5', xl: '5' }}
+			h={{ md: '4', lg: '5', xl: '5' }}
+			color={color}
+		/>
+	)
 }
-
-export default FeaturesIcon

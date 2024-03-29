@@ -15,11 +15,11 @@ interface TableComponentProps {
 }
 
 const TableComponent: React.FC = ({
-	rows,
-	columns,
-	path,
-	gridRef
-}: TableComponentProps) => {
+																		rows,
+																		columns,
+																		path,
+																		gridRef
+																	}: TableComponentProps) => {
 	const navigate = useNavigate()
 
 	const [rowData, setRowData] = useState([])
@@ -27,22 +27,21 @@ const TableComponent: React.FC = ({
 		setRowData(rows)
 	}, [rows])
 
-	// Column Definitions: Defines & controls grid columns.
-	const [colDefs, setColDefs] = useState([columns])
+
+	const [colDefs, setColDefs] = useState([])
 	useLayoutEffect(() => {
 		setColDefs(columns)
 	}, [columns])
 
-	//const [colDefs, setColDefs] = useState(columns)
 	const components = useMemo(() => {
 		return {
 			LabelsColumn: LabelsColumn
 		}
-	}, [LabelsColumn])
+	}, [columns])
 
 	const autoSizeStrategy = {
-		//type: 'fitGridWidth'
-		//defaultMinWidth: 100
+		//type: 'fitGridWidth',
+		//defaultMinWidth: 300
 	}
 
 	return (

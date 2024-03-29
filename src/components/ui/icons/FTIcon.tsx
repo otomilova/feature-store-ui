@@ -1,8 +1,13 @@
 import { Icon } from '@chakra-ui/icons'
 import { FiLayers } from 'react-icons/fi'
 
-const FTIcon = (size = '0.9em', color = 'brand.600') => {
-	return <Icon as={FiLayers} boxSize={size} color={color} />
+export function FTIcon(color = 'brand.600') {
+	return (
+		<Icon
+			as={FiLayers}
+			w={{ md: '4', lg: '5', xl: '5' }}
+			h={{ md: '4', lg: '5', xl: '5' }}
+			color={color}
+		/>
+	)
 }
-
-export default FTIcon

@@ -9,6 +9,7 @@ import {
 	DrawerFooter,
 	DrawerHeader,
 	DrawerOverlay,
+	Heading,
 	Stack
 } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
@@ -65,7 +66,13 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 				<DrawerContent>
 					<DrawerCloseButton />
 					<DrawerHeader borderBottomWidth='1px'>
-						Create new project
+						<Heading
+							as='h2'
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
+							color='brand.600'
+						>
+							Create new project
+						</Heading>
 					</DrawerHeader>
 
 					<DrawerBody>

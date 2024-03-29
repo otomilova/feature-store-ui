@@ -1,9 +1,8 @@
-import { useCallback, useId, useRef } from 'react'
+import React, { useCallback, useId, useRef } from 'react'
 import {
 	Box,
 	Button,
 	Center,
-	Flex,
 	Heading,
 	HStack,
 	Input,
@@ -23,6 +22,7 @@ interface TablePageProps {
 	title: string
 	path: string
 	allowedCreate: boolean
+	Icon: () => JSX.Element
 }
 
 const TablePage: React.FC = ({
@@ -32,7 +32,7 @@ const TablePage: React.FC = ({
 	title,
 	path,
 	allowedCreate = false,
-	children
+	Icon
 }: TablePageProps) => {
 	const navigate = useNavigate()
 	const gridRef = useRef()
@@ -53,22 +53,16 @@ const TablePage: React.FC = ({
 				<>
 					<Box mr={{ md: '135px', lg: '200px', xl: '335px' }}>
 						<Center mb='12px'>
-							<Flex
-								direction='row'
-								gap='12px'
-								alignItems='center'
-								marginBottom='0px'
-							>
-								{children}
+							<HStack gap='12px'>
+								{Icon()}
 								<Heading
 									as='h2'
 									size={{ md: 'md', lg: 'md', xl: 'lg' }}
-									marginBottom='0px'
 									color='brand.600'
 								>
 									{title}
 								</Heading>
-							</Flex>
+							</HStack>
 						</Center>
 						<HStack mb={5}>
 							<InputGroup size={{ md: 'sm', lg: 'md', xl: 'lg' }}>

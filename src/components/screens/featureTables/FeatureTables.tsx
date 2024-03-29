@@ -6,12 +6,10 @@ import '../../../assets/styles/ag-theme-custom.css'
 import { useFeatureTables } from './hooks/useFeatureTables.ts'
 import { useProject } from '../../hooks/useProject'
 import { IFeatureTablesResponseEntry } from '../../../types/types.d.ts'
-import {
-	FEATURE_TABLES_TITLES,
-	FTColumnState
-} from '../../../utils/constants.ts'
+import { FEATURE_TABLES_TITLES } from '../../../utils/constants.ts'
 import TablePage from '../../ui/table/TablePage.tsx'
-import FTIcon from '../../ui/icons/FTIcon'
+import { FTColumnState } from '../../../utils/tableData'
+import { FTIcon } from '../../ui/icons/FTIcon'
 
 export function FeatureTables() {
 	const { project } = useProject()
@@ -45,8 +43,7 @@ export function FeatureTables() {
 			title={FEATURE_TABLES_TITLES.title}
 			allowedCreate={true}
 			path='feature-tables'
-		>
-			<FTIcon />
-		</TablePage>
+			Icon={FTIcon}
+		/>
 	)
 }

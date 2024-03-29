@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Box, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react'
+import { Box, Tab, TabList, Tabs } from '@chakra-ui/react'
 import { FiGrid, FiHexagon, FiLayers } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
 import {
@@ -27,7 +27,12 @@ const NavBar: React.FC = () => {
 		return (
 			<>
 				<Tabs
-					width='150px'
+					width={{
+						sm: '150px',
+						md: '150px',
+						lg: '180px',
+						xl: '200px'
+					}}
 					orientation='vertical'
 					align='start'
 					isFitted
@@ -38,7 +43,12 @@ const NavBar: React.FC = () => {
 							return (
 								<Tab
 									justifyContent='stretch'
-									width='150px'
+									width={{
+										sm: '150px',
+										md: '150px',
+										lg: '180px',
+										xl: '200px'
+									}}
 									as={Link}
 									to={tab.slug}
 									key={tab.id}
@@ -51,7 +61,12 @@ const NavBar: React.FC = () => {
 										lg: '18px',
 										xl: '22px'
 									}}
-									_hover={{ color: 'white', bg: 'brand.500' }}
+									_hover={{
+										textColor: 'white',
+										bg: 'brand.500',
+										borderColor: 'brand.500'
+									}}
+									_focus={{ boxShadow: 'none' }}
 								>
 									{makeIcon(tab.title)}
 									{tab.title}
@@ -59,12 +74,6 @@ const NavBar: React.FC = () => {
 							)
 						})}
 					</TabList>
-					<TabIndicator
-						mt='-1.5px'
-						height='2px'
-						bg='blue.500'
-						borderRadius='1px'
-					/>
 				</Tabs>
 			</>
 		)

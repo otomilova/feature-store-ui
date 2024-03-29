@@ -8,11 +8,11 @@ import {
 	IFeatureTablesResponseEntry
 } from '../../../types/types'
 import TablePage from '../../ui/table/TablePage'
-import { EntitiesColumnState } from '../../../utils/constants'
 import { useEntities } from './hooks/useEntities'
 import { useFeatureTables } from '../featureTables/hooks/useFeatureTables'
 import { calcEntitiesInFTs } from '../../../utils/helpers'
-import EntitiesIcon from '../../ui/icons/EntitiesIcon'
+import { EntitiesColumnState } from '../../../utils/tableData'
+import { EntitiesIcon } from '../../ui/icons/EntitiesIcon'
 
 export function Entities() {
 	const { project } = useProject()
@@ -54,8 +54,7 @@ export function Entities() {
 			title='Entities'
 			allowedCreate={true}
 			path='entities'
-		>
-			<EntitiesIcon />
-		</TablePage>
+			Icon={EntitiesIcon}
+		/>
 	)
 }

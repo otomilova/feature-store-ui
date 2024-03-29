@@ -102,7 +102,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 					/>
 				</Flex>
 
-				<Center mt='2em'>
+				<Center mt='3em'>
 					<Flex gap='15px'>
 						<Button
 							size={{ md: 'md', lg: 'md', xl: 'lg' }}

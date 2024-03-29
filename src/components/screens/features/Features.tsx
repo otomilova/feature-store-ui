@@ -5,10 +5,11 @@ import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
 import { useProject } from '../../hooks/useProject'
 import { IFeature } from '../../../types/types'
-import { FEATURES_TITLES, FeaturesColumnState } from '../../../utils/constants'
+import { FEATURES_TITLES } from '../../../utils/constants'
 import { useFeatures } from './hooks/useFeatures.ts'
 import TablePage from '../../ui/table/TablePage'
-import FeaturesIcon from '../../ui/icons/FeaturesIcon'
+import { FeaturesColumnState } from '../../../utils/tableData'
+import { FeaturesIcon } from '../../ui/icons/FeaturesIcon'
 
 export function Features() {
 	const { project } = useProject()
@@ -41,8 +42,7 @@ export function Features() {
 			title={FEATURES_TITLES.title}
 			allowedCreate={false}
 			path='features'
-		>
-			<FeaturesIcon />
-		</TablePage>
+			Icon={FeaturesIcon}
+		/>
 	)
 }

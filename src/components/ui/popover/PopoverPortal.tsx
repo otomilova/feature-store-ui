@@ -15,7 +15,12 @@ const PopoverPortal = ({ item, children }) => {
 			<PopoverContent _focus={{ boxShadow: 'md' }}>
 				<PopoverArrow />
 				<PopoverHeader borderColor='brand.500'>
-					<Heading size='xs'>{item.name}</Heading>
+					<Heading
+						fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+						color='brand.600'
+					>
+						{item.name}
+					</Heading>
 				</PopoverHeader>
 				<PopoverCloseButton />
 				<PopoverBody>{children}</PopoverBody>
