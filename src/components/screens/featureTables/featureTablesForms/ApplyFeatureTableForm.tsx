@@ -99,13 +99,11 @@ const ApplyFeatureTableForm = ({
 		formData.sources = sources
 		formData.tasks = tasks
 		formData.sinks = sinks
-		//console.log(formData)
 
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
 			formData,
 			project
 		)
-		//console.log(request)
 		mutate(request)
 	}
 

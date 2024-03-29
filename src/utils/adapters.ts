@@ -140,7 +140,7 @@ export function makeFTFormDataFromResponse(
 		sinks: sinks,
 		labels: labels,
 		multiRecord: response.data.multiRecord,
-		ttlMinutes: response.data.ttlMinutes.toString()
+		ttlMinutes: response.data.ttlMinutes?.toString()
 	}
 	return data
 }

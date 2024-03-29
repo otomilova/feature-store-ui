@@ -44,6 +44,7 @@ const CreateFeatureForm = ({
 
 	const onSubmit = data => {
 		data.type = ValueTypes[extractValueFromSelectObj(data.type)]
+		data.labels = labels
 		setFeatures([...features, data])
 		reset()
 		onClose()

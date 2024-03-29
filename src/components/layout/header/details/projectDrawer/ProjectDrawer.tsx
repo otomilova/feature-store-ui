@@ -39,7 +39,6 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 	const { mutateAsync, isPending } = useCreateProject()
 
 	const onSubmit = formData => {
-		console.log(formData)
 		mutateAsync(formData).then(() => {
 			setProject(formData.name)
 			onClose()

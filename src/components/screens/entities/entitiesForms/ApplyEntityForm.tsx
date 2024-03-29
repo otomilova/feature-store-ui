@@ -47,7 +47,6 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 
 	const onSubmit = (formData: IEntityFormData) => {
 		formData.labels = labels
-		console.log(formData)
 		const request: IApplyEntityRequest = makeRequestFromEntityFormData(
 			formData,
 			project
