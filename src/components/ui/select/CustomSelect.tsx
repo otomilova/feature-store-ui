@@ -33,7 +33,7 @@ const CustomSelect = ({
 						<HStack>
 							<Heading
 								fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
-								mb='0.1em'
+								mb='0.3em'
 								color='brand.600'
 							>
 								{selectName}
