@@ -4,10 +4,13 @@ import {
 	FormErrorMessage,
 	FormLabel,
 	Heading,
-	Input
+	HStack,
+	Input,
+	Text
 } from '@chakra-ui/react'
 
 const CustomInput = ({
+	isRequired = false,
 	inputName,
 	inputId,
 	changeable = true,
@@ -16,17 +19,24 @@ const CustomInput = ({
 	validation,
 	placeholder = inputName,
 	...rest
-}: CustomInputProps) => {
+}) => {
 	return (
 		<FormControl isInvalid={!!errors && errors[inputId]} mb='1.2em'>
 			<FormLabel htmlFor={inputId}>
-				<Heading
-					fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
-					mb='0.3em'
-					color='brand.600'
-				>
-					{inputName}
-				</Heading>
+				<HStack>
+					<Heading
+						fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+						mb='0.3em'
+						color='brand.600'
+					>
+						{inputName}
+						{isRequired && (
+							<Text textColor='red' as='sup' ml='0.2em' fontSize='12px'>
+								*
+							</Text>
+						)}
+					</Heading>
+				</HStack>
 			</FormLabel>
 			<Input
 				{...rest}

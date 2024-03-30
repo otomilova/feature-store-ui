@@ -64,6 +64,7 @@ const CreateSourceFormModal = ({
 			</Flex>
 
 			<CustomInput
+				isRequired
 				control={control}
 				inputName='Alias'
 				inputId='alias'
@@ -78,10 +79,10 @@ const CreateSourceFormModal = ({
 				errors={errors}
 				register={register}
 				placeholder={'Comma separated columns to select from source'}
-				validation={INPUT_VALIDATION_1}
 			/>
 
 			<CustomInput
+				isRequired
 				control={control}
 				inputName='Format'
 				inputId='format'

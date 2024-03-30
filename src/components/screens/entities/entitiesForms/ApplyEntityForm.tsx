@@ -71,6 +71,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 					{isPending && <SpinnerLoader />}
 
 					<CustomInput
+						isRequired
 						inputName='Entity Name'
 						inputId='entityName'
 						errors={errors}
@@ -79,6 +80,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 					/>
 
 					<CustomSelect
+						isRequired
 						changeable={true}
 						control={control}
 						options={SELECT_TYPE_OPTIONS}

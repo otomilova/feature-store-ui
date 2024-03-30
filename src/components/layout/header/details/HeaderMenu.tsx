@@ -74,7 +74,7 @@ const HeaderMenu: React.FC = ({ project, setProject }: HeaderMenuProps) => {
 								xl: '250px'
 							}}
 						>
-							{projects.map(project => (
+							{projects?.map(project => (
 								<MenuItem
 									fontSize={{
 										sm: '12px',

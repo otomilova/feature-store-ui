@@ -1,10 +1,9 @@
 import axios from 'axios'
-import MockAdapter from 'axios-mock-adapter'
 
-const API_URL = `${import.meta.env.SERVER_URL}/api`
+const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api/v1`
 
 export const $axios = axios.create({
-	baseURL: API_URL,
+	baseURL: SERVER_URL,
 	headers: {
 		'Content-Type': 'application/json'
 	}
@@ -336,23 +335,23 @@ const featureTables = [
 	}
 ]
 
-const mock = new MockAdapter($axios)
-mock.onGet(`/projects`).reply(200, {
-	projects: ['taxi', 'taxi_stage', 'taxi_dev', 'drivers', 'Choose project']
-})
-mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
-	featureTables: featureTables
-})
-
-mock.onGet(/entities\/?.*project.*/).reply(200, {
-	entities: entities
-})
-
-mock
-	.onGet(`/feature-tables/sessions`) //todo add name as path param
-	//.reply(200, featureTables.filter(table => table.data.name === name)[0])
-	.reply(200, featureTables.filter(table => table.data.name === 'sessions')[0])
-
-mock.onPost('/feature-tables/apply').reply(200)
-mock.onPost('/entities/apply').reply(200)
-mock.onPost('/projects/apply').reply(200)
+// const mock = new MockAdapter($axios)
+// mock.onGet(`/projects`).reply(200, {
+// 	projects: ['taxi', 'taxi_stage', 'taxi_dev', 'drivers', 'Choose project']
+// })
+// mock.onGet(/feature-tables\/?.*project.*/).reply(200, {
+// 	featureTables: featureTables
+// })
+//
+// mock.onGet(/entities\/?.*project.*/).reply(200, {
+// 	entities: entities
+// })
+//
+// mock
+// 	.onGet(`/feature-tables/sessions`) //todo add name as path param
+// 	//.reply(200, featureTables.filter(table => table.data.name === name)[0])
+// 	.reply(200, featureTables.filter(table => table.data.name === 'sessions')[0])
+//
+// mock.onPost('/feature-tables/apply').reply(200)
+// mock.onPost('/entities/apply').reply(200)
+// mock.onPost('/projects/apply').reply(200)

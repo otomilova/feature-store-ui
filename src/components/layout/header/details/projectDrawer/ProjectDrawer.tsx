@@ -15,9 +15,7 @@ import {
 import { useForm } from 'react-hook-form'
 import { INPUT_VALIDATION } from '../../../../../utils/validation'
 import CustomInput from '../../../../ui/input/CustomInput'
-import { DESCRIPTION } from '../../../../../utils/constants'
-import CustomTextarea from '../../../../ui/textarea/CustomTextarea'
-import { useApplyProject } from './useApplyProject'
+import { useCreateProject } from './useCreateProject'
 import { useProject } from '../../../../hooks/useProject'
 
 interface ProjectDrawerProps {
@@ -38,15 +36,15 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 
 	const { setProject } = useProject()
 
-	const { mutate, isPending } = useApplyProject()
+	const { mutateAsync, isPending } = useCreateProject()
 
 	const onSubmit = formData => {
 		console.log(formData)
-		mutate(formData)
-
-		onClose()
-		setProject(formData.name)
-		reset()
+		mutateAsync(formData).then(() => {
+			setProject(formData.name)
+			onClose()
+			reset()
+		})
 	}
 
 	return (
@@ -79,6 +77,7 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 						<Stack spacing='24px'>
 							<Box>
 								<CustomInput
+									isRequired
 									inputName='Name'
 									inputId='name'
 									errors={errors}
@@ -88,14 +87,14 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
 								/>
 							</Box>
 
-							<Box>
-								<CustomTextarea
-									textareaName={DESCRIPTION.title}
-									textareaId={DESCRIPTION.id}
-									errors={errors}
-									register={register}
-								/>
-							</Box>
+							{/*<Box>*/}
+							{/*	<CustomTextarea*/}
+							{/*		textareaName={DESCRIPTION.title}*/}
+							{/*		textareaId={DESCRIPTION.id}*/}
+							{/*		errors={errors}*/}
+							{/*		register={register}*/}
+							{/*	/>*/}
+							{/*</Box>*/}
 						</Stack>
 					</DrawerBody>
 

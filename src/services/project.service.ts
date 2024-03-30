@@ -1,5 +1,5 @@
 import { $axios } from './api.js'
-import { IApplyProjectRequest } from '../types/types.js'
+import { ICreateProjectRequest } from '../types/types.js'
 
 //const USERS = '/users'
 
@@ -11,9 +11,9 @@ export const getProjects = async () => {
 	}
 }
 
-export const applyProject = (request: IApplyProjectRequest) => {
+export const createProject = (request: ICreateProjectRequest) => {
 	try {
-		return $axios.post<void>(`/entities/apply`, request)
+		return $axios.post<void>(`/projects/create`, request)
 	} catch (err) {
 		console.error(err.toJSON())
 	}

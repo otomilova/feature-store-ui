@@ -65,6 +65,7 @@ const CreateSinkForm = ({
 				/>
 			</Flex>
 			<CustomInput
+				isRequired
 				control={control}
 				inputName='Input'
 				inputId='input'
@@ -85,7 +86,6 @@ const CreateSinkForm = ({
 				errors={errors}
 				register={register}
 				placeholder={'Comma separated columns to select from sink'}
-				validation={INPUT_VALIDATION_1}
 			/>
 			<CustomInput
 				control={control}
@@ -95,6 +95,7 @@ const CreateSinkForm = ({
 				register={register}
 			/>
 			<CustomInput
+				isRequired
 				control={control}
 				inputName='Format'
 				inputId='format'

@@ -3,12 +3,15 @@ import {
 	FormControl,
 	FormErrorMessage,
 	FormLabel,
-	Heading
+	Heading,
+	HStack,
+	Text
 } from '@chakra-ui/react'
 import { Select } from 'chakra-react-select'
 import { Controller } from 'react-hook-form'
 
 const CustomSelect = ({
+	isRequired = false,
 	control,
 	options,
 	selectName,
@@ -27,13 +30,20 @@ const CustomSelect = ({
 			}) => (
 				<FormControl mb='1.2em' isInvalid={!!error} id={selectId}>
 					<FormLabel minW='200px' htmlFor={selectId}>
-						<Heading
-							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
-							mb='0.1em'
-							color='brand.600'
-						>
-							{selectName}
-						</Heading>
+						<HStack>
+							<Heading
+								fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+								mb='0.1em'
+								color='brand.600'
+							>
+								{selectName}
+								{isRequired && (
+									<Text textColor='red' as='sup' ml='0.2em' fontSize='12px'>
+										*
+									</Text>
+								)}
+							</Heading>
+						</HStack>
 					</FormLabel>
 
 					<Select

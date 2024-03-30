@@ -2,16 +2,16 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { useToast } from '@chakra-ui/react'
 
-import { applyProject } from '../../../../../services/project.service'
-import { IApplyProjectRequest } from '../../../../../types/types'
+import { createProject } from '../../../../../services/project.service'
+import { ICreateProjectRequest } from '../../../../../types/types.d.ts'
 
-export const useApplyProject = () => {
+export const useCreateProject = () => {
 	const toast = useToast()
-	
+
 	const queryClient = useQueryClient()
-	const { data, error, isPending, isSuccess, mutate } = useMutation({
-		mutationFn: (request: IApplyProjectRequest) => applyProject(request),
-		mutationKey: ['apply project'],
+	const { data, error, isPending, isSuccess, mutateAsync } = useMutation({
+		mutationFn: (request: ICreateProjectRequest) => createProject(request),
+		mutationKey: ['create project'],
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['get projects'] })
 
@@ -36,7 +36,7 @@ export const useApplyProject = () => {
 	return {
 		data,
 		isSuccess,
-		mutate,
+		mutateAsync,
 		isPending,
 		error
 	}

@@ -29,7 +29,7 @@ export interface IApplyFeatureTableRequest {
 			sources?: {
 				options: object
 				alias: string
-				columns: string[]
+				columns?: string[]
 				format: string
 			}[]
 			tasks?: {
@@ -76,7 +76,7 @@ export interface IFeatureTableFormData {
 		options: object[]
 		alias: string
 		name: string
-		columns: string
+		columns?: string
 		format: string
 	}[]
 	tasks?: {
@@ -143,7 +143,7 @@ export interface IFeatureTablesResponseEntry {
 export interface IFeature {
 	name: string
 	valueType: ValueTypes
-	featureTableName: string
+	//featureTableName: string
 	description?: string
 	labels?: string[]
 }
@@ -184,7 +184,7 @@ export interface IEntityFormData {
 	}[]
 }
 
-export interface IApplyProjectRequest {
+export interface ICreateProjectRequest {
 	name: string
-	description?: string
+	//description?: string
 }

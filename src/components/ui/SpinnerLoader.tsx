@@ -8,6 +8,7 @@ const SpinnerLoader = () => {
 			top='40%'
 			left='52%'
 			transform='translate(-50%, -50%)'
+			zIndex='2'
 		>
 			<Spinner
 				thickness='4px'

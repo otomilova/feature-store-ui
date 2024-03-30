@@ -51,6 +51,7 @@ const CreateTaskForm = ({
 		>
 			<Flex direction='column'>
 				<CustomTextarea
+					isRequired
 					textareaName='Query'
 					textareaId='query'
 					errors={errors}
@@ -59,6 +60,7 @@ const CreateTaskForm = ({
 					validation={INPUT_VALIDATION_1}
 				/>
 				<CustomInput
+					isRequired
 					control={control}
 					inputName='Alias'
 					inputId='alias'

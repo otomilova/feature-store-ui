@@ -13,9 +13,11 @@ export const getFeatureTables = async (project: string) => {
 	}
 }
 
-export const getFeatureTableByName = async (name: string) => {
+export const getFeatureTableByName = async (name: string, project: string) => {
 	try {
-		return $axios.get<IFeatureTablesResponseEntry>(`/feature-tables/${name}`)
+		return $axios.get<IFeatureTablesResponseEntry>(
+			`/feature-tables/${name}/?project=${project}`
+		)
 	} catch (err) {
 		console.error(err.toJSON())
 	}

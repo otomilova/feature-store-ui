@@ -3,27 +3,29 @@ import ApplyFeatureTableForm from './ApplyFeatureTableForm'
 import Nav from '../../../ui/breadcrumb/Nav'
 import { useFeatureTableByName } from '../hooks/useFeatureTableByName.ts'
 import { useLocation, useParams } from 'react-router-dom'
-import Loader from '../../../ui/Loader'
 import { createCrumbsForApplyFT, getBacklink } from '../../../../utils/helpers'
 import TransitionContainer from '../../../ui/TransitionContainer'
 import { IEntityResponseEntry } from '../../../../types/types'
 import { useEntities } from '../../entities/hooks/useEntities'
 import { useProject } from '../../../hooks/useProject'
 import { FTIcon } from '../../../ui/icons/FTIcon'
+import SpinnerLoader from '../../../ui/SpinnerLoader'
 
 function ApplyFeatureTable({ action }: { action: string }) {
 	const { project } = useProject()
 	const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
-	const { data: featureTableFormData, isLoading } = useFeatureTableByName(name)
+	const { data: featureTableFormData, isLoading } = useFeatureTableByName(
+		name,
+		project
+	)
 	const { data: entities }: { entities: IEntityResponseEntry[] } =
 		useEntities(project)
 	const crumbs = createCrumbsForApplyFT(action, name)
-
 	return (
 		<TransitionContainer mt='1.5em' w='100%' h='85vh'>
-			{isLoading ? (
-				<Loader />
+			{(isLoading || !featureTableFormData) && action === 'edit' ? (
+				<SpinnerLoader />
 			) : (
 				<>
 					<Nav crumbs={crumbs} />

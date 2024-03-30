@@ -99,11 +99,13 @@ const ApplyFeatureTableForm = ({
 		formData.sources = sources
 		formData.tasks = tasks
 		formData.sinks = sinks
-		console.log(formData)
+		//console.log(formData)
+
 		const request: IApplyFeatureTableRequest = makeRequestFromFTFormData(
 			formData,
 			project
 		)
+		//console.log(request)
 		mutate(request)
 	}
 
@@ -120,6 +122,7 @@ const ApplyFeatureTableForm = ({
 			setValue('multiRecord', featureTableFormData.multiRecord)
 		}
 	}, [])
+
 	return (
 		<>
 			<form
@@ -132,6 +135,7 @@ const ApplyFeatureTableForm = ({
 				<Flex direction='column' width='700px'>
 					<HStack gap='15px'>
 						<CustomInput
+							isRequired
 							changeable={isCreate}
 							inputName={FEATURE_TABLE_TITLES.title}
 							inputId={FEATURE_TABLE_TITLES.id}
@@ -157,6 +161,7 @@ const ApplyFeatureTableForm = ({
 						</Checkbox>
 					</HStack>
 					<CustomSelect
+						isRequired
 						changeable={true}
 						isMulti={true}
 						control={control}
@@ -177,7 +182,6 @@ const ApplyFeatureTableForm = ({
 						colorScheme='blue'
 						variant='outline'
 						bgColor='#EBF1FF'
-						register={register}
 						control={control}
 						items={features}
 						setItems={setFeatures}
@@ -191,7 +195,6 @@ const ApplyFeatureTableForm = ({
 						colorScheme='green'
 						variant='outline'
 						bgColor='green.50'
-						register={register}
 						control={control}
 						items={sources}
 						setItems={setSources}
@@ -205,7 +208,6 @@ const ApplyFeatureTableForm = ({
 						colorScheme='green'
 						variant='outline'
 						bgColor='green.50'
-						register={register}
 						control={control}
 						items={tasks}
 						setItems={setTasks}
@@ -219,7 +221,6 @@ const ApplyFeatureTableForm = ({
 						colorScheme='green'
 						variant='outline'
 						bgColor='green.50'
-						register={register}
 						control={control}
 						items={sinks}
 						setItems={setSinks}

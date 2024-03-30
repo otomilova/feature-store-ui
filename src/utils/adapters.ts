@@ -32,7 +32,7 @@ export function makeRequestFromFTFormData(
 		return {
 			options: createRequestOptionsFromForm(source.options),
 			alias: source.alias,
-			columns: source.columns.split(',').map(column => column.trim()),
+			columns: source.columns?.split(',').map(column => column.trim()),
 			format: source.format
 		}
 	})
@@ -49,7 +49,7 @@ export function makeRequestFromFTFormData(
 			options: createRequestOptionsFromForm(sink.options),
 			input: sink.input,
 			columns: sink.columns
-				? sink.columns.split(',').map(column => column.trim())
+				? sink.columns?.split(',').map(column => column.trim())
 				: [],
 			format: sink.format,
 			mode: sink.mode,
@@ -121,7 +121,7 @@ export function makeFTFormDataFromResponse(
 	const sinks = response.data.job?.sinks?.map(sink => {
 		return {
 			input: sink.input,
-			name: sink.input,
+			name: sink.format,
 			options: createFormOptionFromResponse(sink.options),
 			partitionBy: sink.partitionBy?.join(', '),
 			columns: sink.columns?.join(', '),

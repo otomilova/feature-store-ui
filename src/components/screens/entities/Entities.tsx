@@ -35,9 +35,9 @@ export function Entities() {
 					'#': index + 1,
 					Name: entity.data.name,
 					Type: entity.data.valueType,
-					"# of FT's":
-						calcEntitiesInFTs(entities, featureTables).get(entity.data.name) ||
-						0,
+					"# of FT's": calcEntitiesInFTs(entities, featureTables)
+						? calcEntitiesInFTs(entities, featureTables).get(entity.data.name)
+						: 0 || 0,
 					Labels: entity.data.labels
 				}
 

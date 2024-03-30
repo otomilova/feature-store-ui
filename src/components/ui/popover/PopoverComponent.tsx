@@ -93,6 +93,24 @@ const PopoverComponent = ({ children, item }) => {
 					</>
 				)}
 
+				{item.alias && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Alias
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.alias}
+						</Text>
+					</>
+				)}
 				{item.partitionBy && (
 					<>
 						<Heading
@@ -165,6 +183,25 @@ const PopoverComponent = ({ children, item }) => {
 							color='brand.600'
 						>
 							{item.mode}
+						</Text>
+					</>
+				)}
+
+				{item.input && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Input
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.input}
 						</Text>
 					</>
 				)}

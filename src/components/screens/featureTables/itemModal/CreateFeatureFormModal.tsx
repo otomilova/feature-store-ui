@@ -64,6 +64,7 @@ const CreateFeatureForm = ({
 			<Flex gap='30px' direction='row' alignItems='end'>
 				<Flex direction='column' width='100%'>
 					<CustomInput
+						isRequired
 						inputName={FEATURE_TITLES.title}
 						inputId={FEATURE_TITLES.id}
 						errors={errors}
@@ -73,6 +74,7 @@ const CreateFeatureForm = ({
 				</Flex>
 				<Flex direction='column'>
 					<CustomSelect
+						isRequired
 						selectName={TYPE.title}
 						selectId={TYPE.id}
 						control={control}
