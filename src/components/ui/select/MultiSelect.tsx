@@ -40,7 +40,7 @@ const MultiSelect = ({
 							isMulti
 							name={selectId}
 							placeholder={`Select some ${selectName}`}
-							closeMenuOnSelect={false}
+							closeMenuOnSelect={true}
 							ref={ref}
 							onChange={choice => setTags(choice)}
 							onBlur={onBlur}
