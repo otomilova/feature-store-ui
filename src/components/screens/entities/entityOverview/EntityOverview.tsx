@@ -41,7 +41,6 @@ function EntityOverview() {
 				<>
 					<Nav crumbs={createCrumbsForEntitiesOverview(name)} />
 					<EntityOverviewContent
-						name={name}
 						entity={entity}
 						entitiesInFTs={entitiesInFTs}
 					/>

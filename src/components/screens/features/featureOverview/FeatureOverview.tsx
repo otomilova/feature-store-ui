@@ -26,7 +26,7 @@ function FeatureOverview() {
 			) : (
 				<>
 					<Nav crumbs={createCrumbsForFeaturesOverview(name)} />
-					<FeatureOverviewContent name={name} feature={feature} />
+					<FeatureOverviewContent feature={feature} />
 				</>
 			)}
 		</TransitionContainer>

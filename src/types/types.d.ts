@@ -1,5 +1,4 @@
 export enum ValueTypes {
-	INVALID = 'INVALID',
 	BYTES = 'BYTES',
 	BOOL = 'BOOL',
 	FLOAT = 'FLOAT',
@@ -143,7 +142,7 @@ export interface IFeatureTablesResponseEntry {
 export interface IFeature {
 	name: string
 	valueType: ValueTypes
-	//featureTableName: string
+	featureTableName?: string
 	description?: string
 	labels?: string[]
 }

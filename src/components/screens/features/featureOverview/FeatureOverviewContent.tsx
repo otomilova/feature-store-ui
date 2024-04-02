@@ -15,13 +15,9 @@ import { FeaturesIcon } from '../../../ui/icons/FeaturesIcon'
 
 interface FeatureOverviewContentProps {
 	feature: IFeature
-	name: string
 }
 
-const FeatureOverviewContent = ({
-	name,
-	feature
-}: FeatureOverviewContentProps) => {
+const FeatureOverviewContent = ({ feature }: FeatureOverviewContentProps) => {
 	const navigate = useNavigate()
 
 	return (
@@ -45,7 +41,7 @@ const FeatureOverviewContent = ({
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}
 						color='brand.600'
 					>
-						Feature Overview: {name}
+						Feature Overview
 					</Heading>
 				</Flex>
 			</Center>

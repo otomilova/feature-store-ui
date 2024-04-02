@@ -14,13 +14,11 @@ import { IEntityResponseEntry } from '../../../../types/types'
 import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 
 interface EntityOverviewContentProps {
-	name: string
 	entity: IEntityResponseEntry
 	entitiesInFTs: Map<string, number>
 }
 
 const EntityOverviewContent = ({
-	name,
 	entity,
 	entitiesInFTs
 }: EntityOverviewContentProps) => {
@@ -47,7 +45,7 @@ const EntityOverviewContent = ({
 						fontSize={{ md: '20px', lg: '22px', xl: '24px' }}
 						color='brand.600'
 					>
-						Entity Overview: {name}
+						Entity Overview
 					</Heading>
 				</Flex>
 			</Center>
