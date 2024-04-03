@@ -12,17 +12,33 @@ import { useFeatureTables } from '../featureTables/hooks/useFeatureTables'
 import { calcEntitiesInFTs } from '../../../utils/helpers'
 import { EntitiesColumnState } from '../../../utils/tableData'
 import { EntitiesIcon } from '../../ui/icons/EntitiesIcon'
+import SpinnerLoader from '../../ui/SpinnerLoader'
 
 export function Entities() {
 	const { project } = useProject()
 
 	const {
 		data: entities,
-		isLoading
-	}: { data: IEntityResponseEntry[]; isLoading: boolean } = useEntities(project)
+		isLoading,
+		isSuccess
+	}: {
+		data: IEntityResponseEntry[]
+		isLoading: boolean
+		isSuccess: boolean
+	} = useEntities(project)
 
-	const { data: featureTables }: { data: IFeatureTablesResponseEntry[] } =
-		useFeatureTables(project)
+	const {
+		data: featureTables,
+		isLoading: isLoading2,
+		isSuccess: isSuccess2
+	}: {
+		data: IFeatureTablesResponseEntry[]
+		isLoading: boolean
+		isSuccess: boolean
+	} = useFeatureTables(project)
+	useFeatureTables(project)
+
+	const entitiesInTFs = calcEntitiesInFTs(featureTables)
 
 	const EntitiesRows = useMemo(
 		() =>
@@ -31,26 +47,30 @@ export function Entities() {
 					'#': index + 1,
 					Name: entity.data.name,
 					Type: entity.data.valueType,
-					'# of usage': calcEntitiesInFTs(featureTables)
-						? calcEntitiesInFTs(featureTables).get(entity.data.name)
-						: 0 || 0,
+					'# of usage':
+						(entitiesInTFs ? entitiesInTFs.get(entity.data.name) : 0) || 0,
 					Labels: entity.data.labels
 				}
 
 				return t
 			}),
-		[entities]
+		[entities, featureTables]
 	)
 
 	return (
-		<TablePage
-			rows={EntitiesRows}
-			columns={EntitiesColumnState}
-			isLoading={isLoading}
-			title='Entities'
-			allowedCreate={true}
-			path='entities'
-			Icon={EntitiesIcon}
-		/>
+		<>
+			{isLoading && isLoading2 && <SpinnerLoader />}
+
+			{isSuccess && isSuccess2 && (
+				<TablePage
+					rows={EntitiesRows}
+					columns={EntitiesColumnState}
+					title='Entities'
+					allowedCreate={true}
+					path='entities'
+					Icon={EntitiesIcon}
+				/>
+			)}
+		</>
 	)
 }

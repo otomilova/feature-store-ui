@@ -9,14 +9,18 @@ import { useFeatures } from './hooks/useFeatures.ts'
 import TablePage from '../../ui/table/TablePage'
 import { FeaturesColumnState } from '../../../utils/tableData'
 import { FeaturesIcon } from '../../ui/icons/FeaturesIcon'
+import SpinnerLoader from '../../ui/SpinnerLoader'
 
 export function Features() {
 	const { project } = useProject()
 
 	const {
 		data: features,
-		isLoading
-	}: { data: IFeature[]; isLoading: boolean } = useFeatures(project)
+		isLoading,
+		isSuccess
+	}: { data: IFeature[]; isLoading: boolean; isSuccess: boolean } = useFeatures(
+		project
+	)
 
 	const FeaturesRows = useMemo(
 		() =>
@@ -34,14 +38,18 @@ export function Features() {
 		[features]
 	)
 	return (
-		<TablePage
-			rows={FeaturesRows}
-			columns={FeaturesColumnState}
-			isLoading={isLoading}
-			title={FEATURES_TITLES.title}
-			allowedCreate={false}
-			path='features'
-			Icon={FeaturesIcon}
-		/>
+		<>
+			{isLoading && <SpinnerLoader />}
+			{isSuccess && (
+				<TablePage
+					rows={FeaturesRows}
+					columns={FeaturesColumnState}
+					title={FEATURES_TITLES.title}
+					allowedCreate={false}
+					path='features'
+					Icon={FeaturesIcon}
+				/>
+			)}
+		</>
 	)
 }

@@ -9,16 +9,21 @@ import { FEATURE_TABLES_TITLES } from '../../../utils/constants.ts'
 import TablePage from '../../ui/table/TablePage.tsx'
 import { FTColumnState } from '../../../utils/tableData'
 import { FTIcon } from '../../ui/icons/FTIcon'
+import SpinnerLoader from '../../ui/SpinnerLoader'
 
 export function FeatureTables() {
 	const { project } = useProject()
 
 	const {
 		data: featureTables,
-		isLoading
-	}: { data: IFeatureTablesResponseEntry[]; isLoading: boolean } =
-		useFeatureTables(project)
-	
+		isLoading,
+		isSuccess
+	}: {
+		data: IFeatureTablesResponseEntry[]
+		isLoading: boolean
+		isSuccess: boolean
+	} = useFeatureTables(project)
+
 	const FTRows = useMemo(
 		() =>
 			featureTables?.map((table, index) => {
@@ -35,14 +40,18 @@ export function FeatureTables() {
 	)
 
 	return (
-		<TablePage
-			rows={FTRows}
-			columns={FTColumnState}
-			isLoading={isLoading}
-			title={FEATURE_TABLES_TITLES.title}
-			allowedCreate={true}
-			path='feature-tables'
-			Icon={FTIcon}
-		/>
+		<>
+			{isLoading && <SpinnerLoader />}
+			{isSuccess && (
+				<TablePage
+					rows={FTRows}
+					columns={FTColumnState}
+					title={FEATURE_TABLES_TITLES.title}
+					allowedCreate={true}
+					path='feature-tables'
+					Icon={FTIcon}
+				/>
+			)}
+		</>
 	)
 }
