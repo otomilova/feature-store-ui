@@ -10,7 +10,6 @@ import Nav from '../../../ui/breadcrumb/Nav'
 import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 
 function ApplyEntity() {
-	//const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
 
 	const crumbs = createCrumbsForApplyEntity()
