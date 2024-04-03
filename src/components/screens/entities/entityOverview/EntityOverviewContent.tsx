@@ -26,13 +26,14 @@ const EntityOverviewContent = ({
 
 	return (
 		<Box
-			bgColor='#F5F5F5'
+			boxShadow='xl'
+			border='2px solid'
+			borderColor='brand.50'
 			w={{ md: '95vh', lg: '85vh', xl: '75vh' }}
 			m='3em'
 			h='auto'
 			mt={{ md: '2em', lg: '3em', xl: '4em' }}
 			borderRadius='20px'
-			boxShadow='md'
 			p='40px'
 			pt='0.7em'
 			pb='2em'
@@ -57,7 +58,7 @@ const EntityOverviewContent = ({
 			>
 				{entity.data.name}
 			</Heading>
-			<Divider mb='1em' />
+			<Divider mb='1em' borderColor='brand.400' />
 
 			<Heading
 				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
@@ -80,7 +81,7 @@ const EntityOverviewContent = ({
 				color='brand.600'
 				mb='0.3em'
 			>
-				Number of FT's
+				Number of usage in Feature Tables
 			</Heading>
 
 			<Text
@@ -106,7 +107,7 @@ const EntityOverviewContent = ({
 			>
 				{entity.data.description}
 			</Text>
-			<Divider />
+			<Divider borderColor='brand.400' />
 
 			<Heading
 				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
@@ -129,7 +130,7 @@ const EntityOverviewContent = ({
 					)
 				})}
 			</Flex>
-			<Divider />
+			<Divider borderColor='brand.400' />
 			<Center>
 				<Button
 					onClick={() => {

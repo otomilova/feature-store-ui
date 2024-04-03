@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useProject } from '../../../hooks/useProject'
 import { IFeature } from '../../../../types/types'
@@ -15,7 +14,7 @@ function FeatureOverview() {
 	const {
 		data: features,
 		isLoading
-	}: { features: IFeature[]; isLoading: boolean } = useFeatures(project)
+	}: { data: IFeature[]; isLoading: boolean } = useFeatures(project)
 
 	const feature = features?.filter(feature => feature.name === name).pop()
 

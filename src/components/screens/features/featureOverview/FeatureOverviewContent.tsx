@@ -22,13 +22,14 @@ const FeatureOverviewContent = ({ feature }: FeatureOverviewContentProps) => {
 
 	return (
 		<Box
-			bgColor='#F5F5F5'
 			w={{ md: '95vh', lg: '85vh', xl: '75vh' }}
 			m='3em'
 			h='auto'
 			mt={{ md: '2em', lg: '3em', xl: '4em' }}
 			borderRadius='20px'
-			boxShadow='md'
+			boxShadow='xl'
+			border='2px solid'
+			borderColor='brand.50'
 			p='40px'
 			pt='0.7em'
 			pb='2em'
@@ -53,7 +54,7 @@ const FeatureOverviewContent = ({ feature }: FeatureOverviewContentProps) => {
 			>
 				{feature.name}
 			</Heading>
-			<Divider mb='1em' />
+			<Divider mb='1em' borderColor='brand.400' />
 
 			<Heading
 				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
@@ -105,7 +106,7 @@ const FeatureOverviewContent = ({ feature }: FeatureOverviewContentProps) => {
 			>
 				{feature.description}
 			</Text>
-			<Divider />
+			<Divider borderColor='brand.400' />
 
 			<Heading
 				fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
@@ -128,7 +129,7 @@ const FeatureOverviewContent = ({ feature }: FeatureOverviewContentProps) => {
 					)
 				})}
 			</Flex>
-			<Divider />
+			<Divider borderColor='brand.400' />
 			<Center>
 				<Button
 					onClick={() => {

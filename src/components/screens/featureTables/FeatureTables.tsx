@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useMemo } from 'react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
@@ -17,9 +16,9 @@ export function FeatureTables() {
 	const {
 		data: featureTables,
 		isLoading
-	}: { featureTables: IFeatureTablesResponseEntry[]; isLoading: boolean } =
+	}: { data: IFeatureTablesResponseEntry[]; isLoading: boolean } =
 		useFeatureTables(project)
-
+	
 	const FTRows = useMemo(
 		() =>
 			featureTables?.map((table, index) => {

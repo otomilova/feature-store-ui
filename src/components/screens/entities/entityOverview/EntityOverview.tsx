@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useProject } from '../../../hooks/useProject'
 import {
@@ -22,17 +21,16 @@ function EntityOverview() {
 	const {
 		data: entities,
 		isLoading
-	}: { entities: IEntityResponseEntry[]; isLoading: boolean } =
-		useEntities(project)
+	}: { data: IEntityResponseEntry[]; isLoading: boolean } = useEntities(project)
 
 	const {
 		data: featureTables,
 		isLoading: isLoadingFT
-	}: { featureTables: IFeatureTablesResponseEntry[] } =
+	}: { data: IFeatureTablesResponseEntry[]; isLoading: boolean } =
 		useFeatureTables(project)
 
 	const entity = entities?.filter(entity => entity.data.name === name).pop()
-	const entitiesInFTs = calcEntitiesInFTs(entities, featureTables)
+	const entitiesInFTs = calcEntitiesInFTs(featureTables)
 	return (
 		<TransitionContainer mt='2em' h='85vh' w='100%'>
 			{isLoading || isLoadingFT || !entity ? (
