@@ -42,7 +42,6 @@ const CustomInput = ({
 				size={{ md: 'md', lg: 'md', xl: 'lg' }}
 				isDisabled={!changeable}
 				minW='230px'
-				//border='1px solid'
 				borderColor='inherit'
 				bgColor='white'
 				id={inputId}

@@ -6,7 +6,7 @@ export const INPUT_NUMBER_VALIDATION = {
 }
 
 export const INPUT_VALIDATION = {
-	required: 'This is required',
+	required: 'This field is required',
 	minLength: { value: 4, message: 'Minimum length should be 4' }
 }
 
