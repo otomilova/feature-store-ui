@@ -7,7 +7,7 @@ export const useFeatures = (project: string) => {
 		queryFn: () => getFeatureTables(project),
 		select: ({ data }) =>
 			data.featureTables
-				.map(featureTable => {
+				?.map(featureTable => {
 					featureTable.data.features.forEach(feature => {
 						feature['featureTableName'] = featureTable.data.name
 					})
