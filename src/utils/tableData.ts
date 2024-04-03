@@ -1,3 +1,10 @@
+function getLabelString(labels: string[]) {
+	if (labels) {
+		return labels.join(', ')
+	}
+	return ''
+}
+
 export const FTColumnState = [
 	{
 		field: '#',
@@ -21,6 +28,9 @@ export const FTColumnState = [
 		flex: 4,
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
+		getQuickFilterText: params => {
+			return getLabelString(params.value?.value)
+		},
 		valueFormatter: value => value
 	}
 ]
@@ -53,6 +63,9 @@ export const FeaturesColumnState = [
 		flex: 6,
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
+		getQuickFilterText: params => {
+			return getLabelString(params.value?.value)
+		},
 		valueFormatter: value => value
 	}
 ]
@@ -85,6 +98,9 @@ export const EntitiesColumnState = [
 		flex: 6,
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
+		getQuickFilterText: params => {
+			return getLabelString(params.value?.value)
+		},
 		valueFormatter: value => value
 	}
 ]

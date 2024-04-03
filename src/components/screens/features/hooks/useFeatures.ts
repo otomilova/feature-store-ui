@@ -8,10 +8,10 @@ export const useFeatures = (project: string) => {
 		select: ({ data }) =>
 			data.featureTables
 				?.map(featureTable => {
-					featureTable.data.features.forEach(feature => {
+					featureTable.data.features?.forEach(feature => {
 						feature['featureTableName'] = featureTable.data.name
 					})
-					return featureTable.data.features
+					return featureTable.data.features ? featureTable.data.features : []
 				})
 				.reduce((acc, features) => {
 					return [...acc, ...features]
