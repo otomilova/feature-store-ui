@@ -56,8 +56,15 @@ const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 							}}
 						>
 							<Center>
-								<Flex orientation='row' gap='8px'>
+								<Flex
+									orientation='row'
+									gap='8px'
+									textOverflow='ellipsis'
+									overflow='hidden'
+									whiteSpace='nowrap'
+								>
 									{project}
+
 									<Center>
 										<ChevronDownIcon />
 									</Center>
@@ -75,6 +82,9 @@ const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 						>
 							{projects?.map(project => (
 								<MenuItem
+									textOverflow='ellipsis'
+									overflow='hidden'
+									whiteSpace='nowrap'
 									fontSize={{
 										sm: '12px',
 										md: '16px',
