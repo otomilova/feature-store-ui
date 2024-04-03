@@ -8,25 +8,24 @@ import 'ag-grid-community/styles/ag-theme-quartz.css'
 import '../../../assets/styles/ag-theme-custom.css'
 
 interface TableComponentProps {
-	rows: never
-	columns: never
+	rows: object[]
+	columns: object[]
 	path: string
 	gridRef: MutableRefObject<undefined>
 }
 
-const TableComponent: React.FC = ({
-																		rows,
-																		columns,
-																		path,
-																		gridRef
-																	}: TableComponentProps) => {
+const TableComponent = ({
+	rows,
+	columns,
+	path,
+	gridRef
+}: TableComponentProps) => {
 	const navigate = useNavigate()
 
 	const [rowData, setRowData] = useState([])
 	useLayoutEffect(() => {
 		setRowData(rows)
 	}, [rows])
-
 
 	const [colDefs, setColDefs] = useState([])
 	useLayoutEffect(() => {
