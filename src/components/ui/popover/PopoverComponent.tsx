@@ -60,7 +60,7 @@ const PopoverComponent = ({ children, item }) => {
 							Options
 						</Heading>
 						<Flex direction='column' m={0} mb='0.3em'>
-							{item.options.map(option => {
+							{item.options.map((option: { key: string; value: string }) => {
 								return (
 									<Flex direction='row' key={option.value} gap='0.5em' m={0}>
 										<Text
@@ -234,7 +234,7 @@ const PopoverComponent = ({ children, item }) => {
 							Labels
 						</Heading>
 						<Flex gap='0.5em'>
-							{item.labels.map(label => {
+							{item.labels.map((label: { label: string; value: string }) => {
 								return (
 									<Tag colorScheme='twitter' size='md' key={label.value}>
 										{label.value}

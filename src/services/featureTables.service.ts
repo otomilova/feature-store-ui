@@ -1,7 +1,8 @@
 import { $axios } from './api.js'
-import { IApplyFeatureTableRequest, IFeatureTablesResponseEntry } from '../types/types.d.ts' //const USERS = '/users'
-
-//const USERS = '/users'
+import {
+	IApplyFeatureTableRequest,
+	IFeatureTablesResponseEntry
+} from '../types/types.d.ts' //const USERS = '/users'
 
 export const getFeatureTables = async (project: string) => {
 	try {

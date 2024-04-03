@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, FormControl, FormLabel, Heading } from '@chakra-ui/react'
 import { CreatableSelect } from 'chakra-react-select'
 import { Controller } from 'react-hook-form'
@@ -16,7 +15,6 @@ const MultiSelect = ({
 			control={control}
 			name={selectId}
 			id={selectId}
-			//rules={{ required: `Please select ${selectName}` }}
 			render={({
 				field: { onChange, onBlur, value, name, ref },
 				fieldState: { error }

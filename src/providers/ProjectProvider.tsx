@@ -1,12 +1,12 @@
 import { createContext, useState } from 'react'
 
-type ContextType = {
+export type ContextType = {
 	project: string
 	setProject: (project: string) => void
 }
-export const ProjectContext = createContext({
-	// project: 'Choose project',
-	// setProject: (project: string) => {}
+export const ProjectContext = createContext<ContextType>({
+	project: 'Choose project',
+	setProject: (project: string) => {}
 })
 
 const ProjectProvider: React.FC = ({ children }) => {

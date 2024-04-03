@@ -10,10 +10,9 @@ import {
 	useDisclosure
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import * as React from 'react'
 import ProjectDrawer from './projectDrawer/ProjectDrawer'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useProjects } from '../useProjects.js'
+import { useProjects } from '../useProjects'
 import Loader from '../../../ui/Loader'
 
 interface HeaderMenuProps {
@@ -21,7 +20,7 @@ interface HeaderMenuProps {
 	setProject: (project: string) => void
 }
 
-const HeaderMenu: React.FC = ({ project, setProject }: HeaderMenuProps) => {
+const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 	const { data: projects, isLoading } = useProjects()
 
 	const { pathname } = useLocation()

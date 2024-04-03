@@ -75,7 +75,7 @@ export const EntitiesColumnState = [
 		flex: 4
 	},
 	{
-		field: "# of FT's",
+		field: '# of usage',
 		resizable: false,
 		flex: 5
 	},

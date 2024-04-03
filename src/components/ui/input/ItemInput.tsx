@@ -28,7 +28,7 @@ const ItemInput = ({
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	function removeTag(index) {
-		setItems(items.filter((el, i) => i !== index))
+		setItems(items?.filter((el, i) => i !== index))
 	}
 
 	return (
@@ -61,7 +61,7 @@ const ItemInput = ({
 						bgColor='white'
 						wrap='wrap'
 					>
-						{items.map((item, index) => (
+						{items?.map((item, index) => (
 							<Tag
 								size={{ md: 'md', lg: 'md', xl: 'lg' }}
 								{...props}
@@ -87,7 +87,7 @@ const ItemInput = ({
 							onClose={onClose}
 							inputName={inputName}
 							id={id}
-							items={items}
+							items={items ? items : []}
 							setItems={setItems}
 						/>
 					</Flex>

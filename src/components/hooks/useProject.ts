@@ -1,4 +1,7 @@
 import { useContext } from 'react'
-import { ProjectContext } from '../../providers/ProjectProvider.tsx'
+import {
+	ContextType,
+	ProjectContext
+} from '../../providers/ProjectProvider.tsx'
 
-export const useProject = () => useContext(ProjectContext)
+export const useProject = () => useContext<ContextType>(ProjectContext)

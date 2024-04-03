@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useMemo } from 'react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
@@ -17,7 +16,7 @@ export function Features() {
 	const {
 		data: features,
 		isLoading
-	}: { features: IFeature[]; isLoading: boolean } = useFeatures(project)
+	}: { data: IFeature[]; isLoading: boolean } = useFeatures(project)
 
 	const FeaturesRows = useMemo(
 		() =>

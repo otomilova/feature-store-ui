@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'

@@ -1,7 +1,4 @@
-import {
-	IEntityResponseEntry,
-	IFeatureTablesResponseEntry
-} from '../types/types'
+import { IFeatureTablesResponseEntry } from '../types/types'
 
 export function extractValueFromSelectObj(obj: Record<string, string>): string {
 	return obj.value
@@ -25,7 +22,7 @@ export function createRequestOptionsFromForm(options: object[]): object {
 }
 
 export function createFormOptionFromResponse(options: object): object[] {
-	return Object.keys(options).map(key => {
+	return Object.keys(options).map((key: string) => {
 		return {
 			key: key,
 			value: options[key]
@@ -107,13 +104,13 @@ export function createCrumbsForEntitiesOverview(name: string) {
 	]
 }
 
-export function createCrumbsForApplyEntity(name: string) {
+export function createCrumbsForApplyEntity() {
 	return [
 		{
 			name: 'ENTITIES',
 			link: '/entities'
 		},
-		
+
 		{
 			name: 'CREATE ENTITY',
 			link: `/entities/create`,
@@ -122,12 +119,11 @@ export function createCrumbsForApplyEntity(name: string) {
 	]
 }
 
-export function getBacklink(location) {
+export function getBacklink(location: string) {
 	return location.substring(0, location.lastIndexOf('/'))
 }
 
 export function calcEntitiesInFTs(
-	entities: IEntityResponseEntry[],
 	featureTables: IFeatureTablesResponseEntry[]
 ): Map<string, number> {
 	return featureTables?.reduce((acc, ft) => {

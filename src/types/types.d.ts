@@ -54,7 +54,7 @@ export interface IApplyFeatureTableRequest {
 export interface IFeatureTableFormData {
 	featureTable: string
 	description?: string
-	entities?: {
+	entities: {
 		label: string
 		value: string
 	}[]
@@ -99,13 +99,19 @@ export interface IFeatureTableFormData {
 	}[]
 	ttlMinutes?: string
 	multiRecord?: boolean
+	metadata?: {
+		createdTimestamp?: string
+		lastUpdatedTimestamp?: string
+		revision?: string
+		hash?: string
+	}
 }
 
 export interface IFeatureTablesResponseEntry {
 	data: {
 		name: string
 		description?: string
-		entities?: string[]
+		entities: string[]
 		features?: IFeature[]
 		labels?: string[]
 		ttlMinutes?: number

@@ -23,7 +23,7 @@ interface ProjectDrawerProps {
 	onClose: () => void
 }
 
-const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ isOpen, onClose }) => {
+const ProjectDrawer = ({ isOpen, onClose }: ProjectDrawerProps) => {
 	const firstField = React.useRef()
 	const {
 		register,

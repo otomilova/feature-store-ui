@@ -1,6 +1,6 @@
 import { Box, Center, Flex, Heading } from '@chakra-ui/react'
 import ApplyEntityForm from './ApplyEntityForm'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import {
 	createCrumbsForApplyEntity,
 	getBacklink
@@ -10,10 +10,10 @@ import Nav from '../../../ui/breadcrumb/Nav'
 import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 
 function ApplyEntity() {
-	const { name }: { name: string } = useParams()
+	//const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
 
-	const crumbs = createCrumbsForApplyEntity(name)
+	const crumbs = createCrumbsForApplyEntity()
 
 	return (
 		<TransitionContainer mt='1.5em' w='100%' h='85vh'>

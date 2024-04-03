@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useMemo } from 'react'
 import 'ag-grid-community/styles/ag-grid.css' // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'
@@ -20,12 +19,9 @@ export function Entities() {
 	const {
 		data: entities,
 		isLoading
-	}: { entities: IEntityResponseEntry[]; isLoading: boolean } =
-		useEntities(project)
+	}: { data: IEntityResponseEntry[]; isLoading: boolean } = useEntities(project)
 
-	const {
-		data: featureTables
-	}: { featureTables: IFeatureTablesResponseEntry[] } =
+	const { data: featureTables }: { data: IFeatureTablesResponseEntry[] } =
 		useFeatureTables(project)
 
 	const EntitiesRows = useMemo(
@@ -35,8 +31,8 @@ export function Entities() {
 					'#': index + 1,
 					Name: entity.data.name,
 					Type: entity.data.valueType,
-					"# of FT's": calcEntitiesInFTs(entities, featureTables)
-						? calcEntitiesInFTs(entities, featureTables).get(entity.data.name)
+					'# of usage': calcEntitiesInFTs(featureTables)
+						? calcEntitiesInFTs(featureTables).get(entity.data.name)
 						: 0 || 0,
 					Labels: entity.data.labels
 				}

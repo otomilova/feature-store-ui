@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
@@ -30,7 +29,6 @@ const CreateTaskForm = ({
 	})
 
 	const onSubmit = data => {
-		console.table(data)
 		data.name = data.alias
 		setTasks([...tasks, data])
 

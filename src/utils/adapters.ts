@@ -32,7 +32,9 @@ export function makeRequestFromFTFormData(
 		return {
 			options: createRequestOptionsFromForm(source.options),
 			alias: source.alias,
-			columns: source.columns?.split(',').map(column => column.trim()),
+			columns: source.columns
+				? source.columns.split(',').map(column => column.trim())
+				: [],
 			format: source.format
 		}
 	})
@@ -92,7 +94,7 @@ export function makeFTFormDataFromResponse(
 			featureTable: createSelectObjFromString(response.data.name)
 		}
 	})
-	const entities = response.data.entities?.map(entity =>
+	const entities = response.data.entities.map(entity =>
 		createSelectObjFromString(entity)
 	)
 
@@ -140,7 +142,8 @@ export function makeFTFormDataFromResponse(
 		sinks: sinks,
 		labels: labels,
 		multiRecord: response.data.multiRecord,
-		ttlMinutes: response.data.ttlMinutes?.toString()
+		ttlMinutes: response.data.ttlMinutes?.toString(),
+		metadata: response.metadata
 	}
 	return data
 }

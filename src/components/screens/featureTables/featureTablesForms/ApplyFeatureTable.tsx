@@ -31,12 +31,12 @@ function ApplyFeatureTable({ action }: { action: string }) {
 					<Nav crumbs={crumbs} />
 
 					<Box
-						overflow={{ md: 'scroll', lg: 'scroll', xl: 'hidden' }}
+						overflow={{ md: 'auto', lg: 'auto', xl: 'hidden' }}
 						w='fit-content'
 						bgColor='brand.300'
 						m='55px'
 						mt={{ md: '2em', lg: '3em', xl: '5em' }}
-						h={{ md: '85vh', lg: '85vh', xl: 'auto' }}
+						h={{ md: '85vh', lg: 'auto', xl: 'auto' }}
 						borderRadius='20px'
 						boxShadow='md'
 						pr={{ md: '35px', lg: '35px', xl: '65px' }}
@@ -54,7 +54,7 @@ function ApplyFeatureTable({ action }: { action: string }) {
 									color='brand.600'
 								>
 									{action === 'edit'
-										? `Edit Feature Table: ${name}`
+										? `Edit Feature Table`
 										: 'Create Feature Table'}
 								</Heading>
 							</Flex>

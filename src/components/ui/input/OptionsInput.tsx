@@ -1,4 +1,3 @@
-import React from 'react'
 import { Center, Flex, Heading, IconButton, Input } from '@chakra-ui/react'
 import { useFieldArray } from 'react-hook-form'
 import { AddIcon, DeleteIcon } from '@chakra-ui/icons'
