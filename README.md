@@ -10,6 +10,11 @@ The Feature Store UI designed to view, modify and create identities used in feat
 - Create, view and modify entities, features and feature tables
 - Search entites, features and feature tables by labels, name or any other criteria
 
+![Sample UI]()
+![Sample UI]()
+![Sample UI]()
+![Sample UI]()
+![Sample UI]()
 
 ## Tech
 
