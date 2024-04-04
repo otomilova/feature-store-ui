@@ -13,7 +13,7 @@ const HeaderHeading = () => {
 			color='gray'
 			m={5}
 		>
-			Feature Mesh
+			Feature Store UI
 		</Heading>
 	)
 }
