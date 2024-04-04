@@ -1,45 +1,76 @@
-# React + TypeScript + Vite
+#  Feature Store UI
+## _Web UI for Feature Stores_
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Feature Store UI is a responsive web UI for Feature Stores. To use it make sure that Feature store you are using is compatible with contracts defined in this project.
+The Feature Store UI designed to view, modify and create identities used in feature store-like systems.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast
-  Refresh
+- Create and switch projects
+- Create, view and modify entities, features and feature tables
+- Search entites, features and feature tables by labels, name or any other criteria
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech
 
-- Configure the top-level `parserOptions` property like this:
+Feature Store UI uses a number of open source projects to work properly:
 
-```js
-export default {
-	// other rules...
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-		project: ['./tsconfig.json', './tsconfig.node.json'],
-		tsconfigRootDir: __dirname,
-	},
-}
+- [React](http://react.dev)
+- [Vite](https://vitejs.dev/)
+- [Chakra UI](https://chakra-ui.com/)
+- [React-hook-form](https://react-hook-form.com/)
+- [React-icons](https://react-icons-v2.vercel.app/)
+- [AG Grid](https://ag-grid.com/)
+- [Tanstack query](https://tanstack.com/query/latest)
+- [Axios](https://axios-http.com/ru/docs/intro)
+- [React router](https://reactrouter.com/en/main)
+- [Framer motion](https://www.framer.com/motion/)
+
+
+## Installation
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+npm i
+VITE_SERVER_URL=your_backend_url or use mock
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked`
-  or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended`
-  & `plugin:react/jsx-runtime` to the `extends` list
+For production environments...
 
-## How to run
+```sh
+npm i
+VITE_SERVER_URL=your_backend_url
+npm run preview
+```
 
-- set VITE_SERVER_URL env variable (either export VITE_SERVER_URL= or through .env)
-- npm run dev / npm run build + npm run preview
+## Docker
 
-## Running on Docker
+Feature Store UI is very easy to install and deploy in a Docker container.
 
-docker build --build-arg VITE_SERVER_URL="{backend_url}" . -t "featuremesh-ui:{version}"
+By default, the Docker will expose port 8080, so change this within the
+Dockerfile if necessary. When ready, simply use the Dockerfile to
+build the image. Docker image requires VITE_SERVER_URL argument to run correctly:
 
-docker run -p 8080:8080 featuremesh-ui:{version}
+```sh
+docker build --build-arg VITE_SERVER_URL=<your_backend_url> -t <youruser>/feature-store-ui:${package.json.version} .
+```
+
+This will create the feature-store-ui image and pull in the necessary dependencies.
+Be sure to swap out `${package.json.version}` with the actual version of Feature Store UI. 
+
+Once done, run the Docker image and map the port to whatever you wish on
+your host. In this example, we simply map port 8000 of the host to
+port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
+
+```sh
+docker run -d -p 8080:8080 --restart=always --name=feature-store-ui <youruser>/feature-store-ui:${package.json.version}
+```
+
+Verify the deployment by navigating to your server address in your preferred browser.
+
+```sh
+127.0.0.1:8080
+```
+
