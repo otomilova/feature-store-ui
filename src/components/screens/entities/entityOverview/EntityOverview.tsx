@@ -41,6 +41,7 @@ function EntityOverview() {
 					<EntityOverviewContent
 						entity={entity}
 						entitiesInFTs={entitiesInFTs}
+						name={name}
 					/>
 				</>
 			)}

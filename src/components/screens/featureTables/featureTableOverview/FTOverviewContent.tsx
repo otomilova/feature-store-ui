@@ -259,16 +259,29 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				<Divider borderColor='brand.400' />
 
 				<Center>
-					<Button
-						size={{ md: 'md', lg: 'md', xl: 'lg' }}
-						colorScheme='button'
-						mt='1.8em'
-						onClick={() => {
-							navigate(`/feature-tables/${name}/edit`)
-						}}
-					>
-						Edit {FEATURE_TABLE_TITLES.title}
-					</Button>
+					<HStack gap='1.2em'>
+						<Button
+							onClick={() => {
+								navigate(`/feature-tables`)
+							}}
+							mt='1.8em'
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
+							colorScheme='blue'
+							variant='outline'
+						>
+							Back to Feature Tables
+						</Button>
+						<Button
+							size={{ md: 'md', lg: 'md', xl: 'lg' }}
+							colorScheme='button'
+							mt='1.8em'
+							onClick={() => {
+								navigate(`/feature-tables/${name}/edit`)
+							}}
+						>
+							Edit {FEATURE_TABLE_TITLES.title}
+						</Button>
+					</HStack>
 				</Center>
 			</Box>
 			<VStack gap='3em'>

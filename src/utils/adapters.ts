@@ -2,6 +2,7 @@ import {
 	IApplyEntityRequest,
 	IApplyFeatureTableRequest,
 	IEntityFormData,
+	IEntityResponseEntry,
 	IFeatureTableFormData,
 	IFeatureTablesResponseEntry,
 	ValueTypes
@@ -152,7 +153,7 @@ export function makeRequestFromEntityFormData(
 	formData: IEntityFormData,
 	project: string
 ) {
-	const labels = formData.labels?.map(label => label.value)
+	const labels = formData.labels?.map(label => extractValueFromSelectObj(label))
 	const valueType = ValueTypes[extractValueFromSelectObj(formData.type)]
 	const request: IApplyEntityRequest = {
 		project: project,
@@ -165,4 +166,19 @@ export function makeRequestFromEntityFormData(
 	}
 
 	return request
+}
+
+export function makeEntityFormDataFromResponse(response: IEntityResponseEntry) {
+	const labels = response.data.labels?.map(label =>
+		createSelectObjFromString(label)
+	)
+	const type = createSelectObjFromString(response.data.valueType.toString())
+
+	const formData: IEntityFormData = {
+		entityName: response.data.name,
+		type: type,
+		description: response.data.description,
+		labels: labels
+	}
+	return formData
 }

@@ -1,7 +1,6 @@
-import React from 'react'
 import { Heading } from '@chakra-ui/react'
 
-const HeaderHeading: React.FC = () => {
+const HeaderHeading = () => {
 	return (
 		<Heading
 			as='h1'

@@ -104,19 +104,34 @@ export function createCrumbsForEntitiesOverview(name: string) {
 	]
 }
 
-export function createCrumbsForApplyEntity() {
-	return [
-		{
-			name: 'ENTITIES',
-			link: '/entities'
-		},
-
-		{
-			name: 'CREATE ENTITY',
-			link: `/entities/create`,
-			isActive: true
-		}
-	]
+export function createCrumbsForApplyEntity(name: string, action: string) {
+	return action === 'edit'
+		? [
+				{
+					name: 'ENTITIES',
+					link: '/entities'
+				},
+				{
+					name: 'ENTITY OVERVIEW',
+					link: `/entities/${name}`
+				},
+				{
+					name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
+					link: '#',
+					isActive: true
+				}
+		  ]
+		: [
+				{
+					name: 'ENTITIES',
+					link: '/entities'
+				},
+				{
+					name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
+					link: '#',
+					isActive: true
+				}
+		  ]
 }
 
 export function getBacklink(location: string) {

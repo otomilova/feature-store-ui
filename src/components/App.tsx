@@ -1,10 +1,9 @@
 import { Box } from '@chakra-ui/react'
-import * as React from 'react'
 import ProjectProvider from '../providers/ProjectProvider'
 import Header from './layout/header/Header'
 import { Outlet } from 'react-router-dom'
 
-const App: React.FC = () => {
+const App = () => {
 	const localData = window.localStorage.getItem('MY_APP_STATE')
 	return (
 		<ProjectProvider>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -24,23 +24,32 @@ import SpinnerLoader from '../../../ui/SpinnerLoader'
 interface ApplyEntityFormProps {
 	id: string
 	backlink: string | undefined
+	action: 'create' | 'edit'
+	entity: IEntityFormData | undefined
 }
 
-const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
+const ApplyEntityForm = ({
+	id,
+	backlink,
+	entity,
+	action
+}: ApplyEntityFormProps) => {
 	const {
 		control,
 		register,
 		handleSubmit,
+		setValue,
 		formState: { errors }
 	} = useForm({
 		mode: 'onChange'
 	})
 
+	const isCreate = action === 'create'
 	const navigate = useNavigate()
 
 	const { project } = useProject()
 
-	const [labels, setLabels] = useState([])
+	const [labels, setLabels] = useState(entity ? entity.labels : [])
 
 	const { mutate, isPending } = useApplyEntity()
 
@@ -57,6 +66,14 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
 
+	useEffect(() => {
+		if (entity) {
+			setValue('entityName', entity.entityName)
+			setValue('type', entity.type)
+			setValue(DESCRIPTION.id, entity.description)
+		}
+	}, [])
+
 	return (
 		<>
 			<form
@@ -69,6 +86,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 					{isPending && <SpinnerLoader />}
 
 					<CustomInput
+						changeable={isCreate}
 						isRequired
 						inputName='Entity Name'
 						inputId='entityName'
@@ -79,7 +97,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 
 					<CustomSelect
 						isRequired
-						changeable={true}
+						changeable={isCreate}
 						control={control}
 						options={SELECT_TYPE_OPTIONS}
 						selectName='Type'
@@ -94,6 +112,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 					/>
 
 					<MultiSelect
+						color='twitter'
 						control={control}
 						tags={labels}
 						setTags={setLabels}
@@ -121,7 +140,7 @@ const ApplyEntityForm = ({ id, backlink }: ApplyEntityFormProps) => {
 							type='submit'
 							colorScheme='button'
 						>
-							Create Entity
+							{isCreate ? 'Create Entity' : 'Apply Changes'}
 						</Button>
 					</Flex>
 				</Center>

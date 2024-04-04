@@ -9,7 +9,7 @@ import {
 	tabs
 } from '../../../../utils/constants.ts'
 
-const NavBar: React.FC = () => {
+const NavBar = () => {
 	const makeIcon = useCallback((component: string, size = '0.7em') => {
 		switch (component) {
 			case FEATURE_TABLES_TITLES.title:

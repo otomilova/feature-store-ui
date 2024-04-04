@@ -5,6 +5,7 @@ import {
 	Divider,
 	Flex,
 	Heading,
+	HStack,
 	Tag,
 	Text
 } from '@chakra-ui/react'
@@ -16,11 +17,13 @@ import { EntitiesIcon } from '../../../ui/icons/EntitiesIcon'
 interface EntityOverviewContentProps {
 	entity: IEntityResponseEntry
 	entitiesInFTs: Map<string, number>
+	name: string
 }
 
 const EntityOverviewContent = ({
 	entity,
-	entitiesInFTs
+	entitiesInFTs,
+	name
 }: EntityOverviewContentProps) => {
 	const navigate = useNavigate()
 
@@ -132,17 +135,29 @@ const EntityOverviewContent = ({
 			</Flex>
 			<Divider borderColor='brand.400' />
 			<Center>
-				<Button
-					onClick={() => {
-						navigate(`/entities`)
-					}}
-					mt='1.8em'
-					size={{ md: 'md', lg: 'md', xl: 'lg' }}
-					colorScheme='blue'
-					variant='outline'
-				>
-					Back to Entities
-				</Button>
+				<HStack gap='1.2em'>
+					<Button
+						onClick={() => {
+							navigate(`/entities`)
+						}}
+						mt='1.8em'
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
+						colorScheme='blue'
+						variant='outline'
+					>
+						Back to Entities
+					</Button>
+					<Button
+						size={{ md: 'md', lg: 'md', xl: 'lg' }}
+						colorScheme='button'
+						mt='1.8em'
+						onClick={() => {
+							navigate(`/entities/${name}/edit`)
+						}}
+					>
+						Edit Entity
+					</Button>
+				</HStack>
 			</Center>
 		</Box>
 	)

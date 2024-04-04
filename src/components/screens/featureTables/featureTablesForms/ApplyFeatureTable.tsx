@@ -11,7 +11,7 @@ import { useProject } from '../../../hooks/useProject'
 import { FTIcon } from '../../../ui/icons/FTIcon'
 import SpinnerLoader from '../../../ui/SpinnerLoader'
 
-function ApplyFeatureTable({ action }: { action: string }) {
+function ApplyFeatureTable({ action }: { action: 'create' | 'edit' }) {
 	const { project } = useProject()
 	const { name }: { name: string } = useParams()
 	const backlink = getBacklink(useLocation().pathname)
@@ -63,15 +63,8 @@ function ApplyFeatureTable({ action }: { action: string }) {
 							<ApplyFeatureTableForm
 								entities={entities}
 								featureTableFormData={featureTableFormData}
-								isLoading={isLoading}
 								backlink={backlink}
 								action={action}
-								defaultValue={[
-									{
-										value: 'driver_performance',
-										label: 'driver_performance'
-									}
-								]}
 								id={'featureTableForm'}
 							/>
 						</Flex>

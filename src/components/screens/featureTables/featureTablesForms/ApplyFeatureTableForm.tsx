@@ -33,8 +33,7 @@ import SpinnerLoader from '../../../ui/SpinnerLoader'
 
 interface ApplyFeatureTableFormProps {
 	id: string
-	action: string
-	isLoading: boolean
+	action: 'create' | 'edit'
 	backlink: string | undefined
 	entities: string[]
 	featureTableFormData: IFeatureTableFormData | undefined
@@ -44,7 +43,6 @@ const ApplyFeatureTableForm = ({
 	id,
 	action,
 	featureTableFormData,
-	isLoading,
 	backlink,
 	entities
 }: ApplyFeatureTableFormProps) => {
@@ -165,7 +163,6 @@ const ApplyFeatureTableForm = ({
 						options={entitiesOptions}
 						selectName={ENTITIES.title}
 						selectId={ENTITIES.id}
-						color='purple'
 					/>
 					<CustomTextarea
 						textareaName={DESCRIPTION.title}
@@ -250,7 +247,7 @@ const ApplyFeatureTableForm = ({
 							Cancel
 						</Button>
 						<Button
-							isLoading={isLoading}
+							isLoading={isPending}
 							size={{ md: 'md', lg: 'md', xl: 'lg' }}
 							type='submit'
 							colorScheme='button'

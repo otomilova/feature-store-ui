@@ -28,11 +28,6 @@ export const DESCRIPTION = {
 	id: 'description'
 }
 
-export const PROJECT = {
-	title: 'Project',
-	id: 'project'
-}
-
 export const LABELS = {
 	title: 'Labels',
 	id: 'labels'

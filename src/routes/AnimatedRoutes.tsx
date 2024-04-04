@@ -35,7 +35,14 @@ const AnimatedRoutes = () => {
 					<Route path='features' element={<Features />} />
 					<Route path='entities' element={<Entities />} />
 					<Route path='entities/:name' element={<EntityOverview />} />
-					<Route path='entities/create' element={<ApplyEntity />} />
+					<Route
+						path='entities/:name/edit'
+						element={<ApplyEntity action='edit' />}
+					/>
+					<Route
+						path='entities/create'
+						element={<ApplyEntity action='create' />}
+					/>
 				</Route>
 			</Routes>
 		</AnimatePresence>
