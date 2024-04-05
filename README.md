@@ -1,14 +1,16 @@
-#  Feature Store UI
+# Feature Store UI
+
 ## _Web UI for Feature Stores_
 
-Feature Store UI is a responsive web UI for Feature Stores. To use it make sure that Feature store you are using is compatible with contracts defined in this project.
+Feature Store UI is a responsive web UI for Feature Stores. To use it make sure that Feature store you are using is
+compatible with contracts defined in this project.
 The Feature Store UI designed to view, modify and create identities used in feature store-like systems.
 
 ## Features
 
 - Create and switch projects
 - Create, view and modify entities, features and feature tables
-- Search entites, features and feature tables by labels, name or any other criteria
+- Search entities, features and feature tables by labels, name or any other criteria
 
 ![Sample UI](https://github.com/otomilova/feature-store-ui/blob/main/samples/createEntity.png)
 ![Sample UI](https://github.com/otomilova/feature-store-ui/blob/main/samples/features.png)
@@ -29,7 +31,6 @@ Feature Store UI uses a number of open source projects to work properly:
 - [Axios](https://axios-http.com/ru/docs/intro)
 - [React router](https://reactrouter.com/en/main)
 - [Framer motion](https://www.framer.com/motion/)
-
 
 ## Installation
 
@@ -62,7 +63,7 @@ docker build --build-arg VITE_SERVER_URL=<your_backend_url> -t <youruser>/featur
 ```
 
 This will create the feature-store-ui image and pull in the necessary dependencies.
-Be sure to swap out `${package.json.version}` with the actual version of Feature Store UI. 
+Be sure to swap out `${package.json.version}` with the actual version of Feature Store UI.
 
 Once done, run the Docker image and map the port to whatever you wish on
 your host. In this example, we simply map port 8000 of the host to
