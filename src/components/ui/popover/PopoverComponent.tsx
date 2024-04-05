@@ -76,7 +76,7 @@ const PopoverComponent = ({ children, item }) => {
 										</Text>
 										:
 										<Text
-											maxW='100%'
+											overflow='auto'
 											m={0}
 											fontSize={{
 												md: '16px',
