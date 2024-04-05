@@ -76,6 +76,7 @@ const PopoverComponent = ({ children, item }) => {
 										</Text>
 										:
 										<Text
+											maxW='100%'
 											m={0}
 											fontSize={{
 												md: '16px',

@@ -11,7 +11,15 @@ import {
 const PopoverPortal = ({ item, children }) => {
 	return (
 		<Portal>
-			<PopoverContent _focus={{ boxShadow: 'md' }}>
+			<PopoverContent
+				_focus={{ boxShadow: 'md' }}
+				w='fit-content'
+				h='fit-content'
+				minW='300px'
+				maxW='450px'
+				maxH='300px'
+				overflow='auto'
+			>
 				<PopoverArrow />
 				<PopoverHeader borderColor='brand.500'>
 					<Heading
