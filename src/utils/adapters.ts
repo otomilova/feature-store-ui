@@ -36,6 +36,7 @@ export function makeRequestFromFTFormData(
 			columns: source.columns
 				? source.columns.split(',').map(column => column.trim())
 				: [],
+			filter: source.filter,
 			format: source.format
 		}
 	})
@@ -55,6 +56,7 @@ export function makeRequestFromFTFormData(
 				? sink.columns?.split(',').map(column => column.trim())
 				: [],
 			format: sink.format,
+			filter: sink.filter,
 			mode: sink.mode,
 			partitionBy: sink.partitionBy
 				? sink.partitionBy?.split(',').map(column => column.trim())
@@ -109,6 +111,7 @@ export function makeFTFormDataFromResponse(
 			alias: source.alias,
 			name: source.alias,
 			columns: source.columns?.join(', '),
+			filter: source.filter,
 			format: source.format
 		}
 	})
@@ -129,6 +132,7 @@ export function makeFTFormDataFromResponse(
 			partitionBy: sink.partitionBy?.join(', '),
 			columns: sink.columns?.join(', '),
 			mode: sink.mode,
+			filter: sink.filter,
 			format: sink.format
 		}
 	})

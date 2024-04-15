@@ -33,7 +33,8 @@ const CreateSinkForm = ({
 			partitionBy: '',
 			columns: '',
 			mode: '',
-			format: ''
+			format: '',
+			filter: ''
 		}
 	})
 
@@ -90,6 +91,13 @@ const CreateSinkForm = ({
 				control={control}
 				inputName='Mode'
 				inputId='mode'
+				errors={errors}
+				register={register}
+			/>
+			<CustomInput
+				control={control}
+				inputName='Filter'
+				inputId='filter'
 				errors={errors}
 				register={register}
 			/>

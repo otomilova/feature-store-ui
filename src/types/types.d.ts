@@ -29,6 +29,7 @@ export interface IApplyFeatureTableRequest {
 				options: object
 				alias: string
 				columns?: string[]
+				filter?: string
 				format: string
 			}[]
 			tasks?: {
@@ -41,6 +42,7 @@ export interface IApplyFeatureTableRequest {
 				partitionBy?: string[]
 				columns?: string[]
 				mode?: string
+				filter?: string
 				format: string
 			}[]
 		}
@@ -76,6 +78,7 @@ export interface IFeatureTableFormData {
 		alias: string
 		name: string
 		columns?: string
+		filter?: string
 		format: string
 	}[]
 	tasks?: {
@@ -90,6 +93,7 @@ export interface IFeatureTableFormData {
 		partitionBy?: string
 		columns?: string
 		mode?: string
+		filter?: string
 		format: string
 	}[]
 
@@ -121,6 +125,7 @@ export interface IFeatureTablesResponseEntry {
 				options: object
 				alias: string
 				columns?: string[]
+				filter?: string
 				format: string
 			}[]
 			tasks?: {
@@ -133,6 +138,7 @@ export interface IFeatureTablesResponseEntry {
 				partitionBy?: string[]
 				columns?: string[]
 				mode?: string
+				filter?: string
 				format: string
 			}[]
 		}

@@ -207,6 +207,25 @@ const PopoverComponent = ({ children, item }) => {
 					</>
 				)}
 
+				{item.filter && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Filter
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.filter}
+						</Text>
+					</>
+				)}
+
 				{item.format && (
 					<>
 						<Heading

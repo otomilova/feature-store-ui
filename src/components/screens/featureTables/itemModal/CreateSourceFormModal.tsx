@@ -31,7 +31,8 @@ const CreateSourceFormModal = ({
 			options: [{ key: '', value: '' }],
 			alias: '',
 			columns: '',
-			format: ''
+			format: '',
+			filter: ''
 		}
 	})
 
@@ -78,6 +79,14 @@ const CreateSourceFormModal = ({
 				errors={errors}
 				register={register}
 				placeholder={'Comma separated columns to select from source'}
+			/>
+
+			<CustomInput
+				control={control}
+				inputName='Filter'
+				inputId='filter'
+				errors={errors}
+				register={register}
 			/>
 
 			<CustomInput
