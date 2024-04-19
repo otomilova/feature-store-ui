@@ -1,4 +1,5 @@
 import {
+	Button,
 	Flex,
 	Heading,
 	Popover,
@@ -7,8 +8,9 @@ import {
 	Text
 } from '@chakra-ui/react'
 import PopoverPortal from './PopoverPortal'
+import * as React from 'react'
 
-const PopoverComponent = ({ children, item }) => {
+const PopoverComponent = ({ children, item, action, removeTag, index }) => {
 	return (
 		<Popover>
 			<PopoverTrigger>{children}</PopoverTrigger>
@@ -59,6 +61,7 @@ const PopoverComponent = ({ children, item }) => {
 						>
 							Options
 						</Heading>
+
 						<Flex direction='column' m={0} mb='0.3em'>
 							{item.options.map((option: { key: string; value: string }) => {
 								return (
@@ -264,6 +267,18 @@ const PopoverComponent = ({ children, item }) => {
 						</Flex>
 					</>
 				)}
+				{action === 'edit' ? (
+					<Flex justifyContent='flex-end'>
+						<Button
+							onClick={() => removeTag(index)}
+							colorScheme='red'
+							mt='0.7em'
+							size={{ md: 'sm', lg: 'sm', xl: 'md' }}
+						>
+							Delete
+						</Button>
+					</Flex>
+				) : null}
 			</PopoverPortal>
 		</Popover>
 	)

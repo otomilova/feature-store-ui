@@ -157,9 +157,9 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					{FEATURES_TITLES.title}
 				</Heading>
 				<Flex gap='10px' mb='1.2em'>
-					{featureTable.features?.map(feature => {
+					{featureTable.features?.map((feature, index) => {
 						return (
-							<PopoverComponent item={feature} key={feature.name}>
+							<PopoverComponent item={feature} key={`${feature.name}-${index}`}>
 								<Tag
 									_hover={{ bgColor: '#C3D5FF', cursor: 'pointer' }}
 									colorScheme='blue'
@@ -185,9 +185,9 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					Sources
 				</Heading>
 				<Flex gap='10px' mb='1.2em'>
-					{featureTable.sources?.map(source => {
+					{featureTable.sources?.map((source, index) => {
 						return (
-							<PopoverComponent item={source} key={source.name}>
+							<PopoverComponent item={source} key={`${source.name}-${index}`}>
 								<Tag
 									_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 									colorScheme='green'
@@ -212,9 +212,9 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					Tasks
 				</Heading>
 				<Flex gap='10px' mb='1.2em'>
-					{featureTable.tasks?.map(task => {
+					{featureTable.tasks?.map((task, index) => {
 						return (
-							<PopoverComponent item={task} key={task.name}>
+							<PopoverComponent item={task} key={`${task.name}-${index}`}>
 								<Tag
 									_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 									colorScheme='green'
@@ -239,9 +239,9 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 					Sinks
 				</Heading>
 				<Flex gap='10px' mb='1.2em'>
-					{featureTable.sinks?.map(sink => {
+					{featureTable.sinks?.map((sink, index) => {
 						return (
-							<PopoverComponent item={sink} key={sink.name}>
+							<PopoverComponent item={sink} key={`${sink.name}-${index}`}>
 								<Tag
 									_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 									colorScheme='green'

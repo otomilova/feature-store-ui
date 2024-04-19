@@ -95,9 +95,8 @@ const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 									closeOnSelect={true}
 									onClick={() => {
 										setProject(`${project}`)
-										if (pathname === '/' || pathname === 'feature-tables')
-											navigate(`/feature-tables`)
-										else navigate(`${pathname}`)
+										navigate(`/feature-tables`)
+
 									}}
 								>
 									{project}

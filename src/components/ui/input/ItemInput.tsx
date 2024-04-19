@@ -7,7 +7,6 @@ import {
 	FormLabel,
 	Heading,
 	Tag,
-	TagCloseButton,
 	TagLabel,
 	useDisclosure
 } from '@chakra-ui/react'
@@ -15,6 +14,7 @@ import { FiPlus } from 'react-icons/fi'
 
 import { Controller } from 'react-hook-form'
 import ModalComponent from '../../screens/featureTables/itemModal/ModalComponent'
+import PopoverComponent from '../popover/PopoverComponent'
 
 const ItemInput = ({
 	control,
@@ -23,6 +23,7 @@ const ItemInput = ({
 	inputName,
 	inputId,
 	id,
+	action,
 	...props
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
@@ -62,14 +63,18 @@ const ItemInput = ({
 						wrap='wrap'
 					>
 						{items?.map((item, index) => (
-							<Tag
-								size={{ md: 'md', lg: 'md', xl: 'lg' }}
-								{...props}
-								key={index}
-							>
-								<TagLabel>{item.name}</TagLabel>
-								<TagCloseButton onClick={() => removeTag(index)} />
-							</Tag>
+							<React.Fragment key={`${item.name}-${index}`}>
+								<PopoverComponent
+									item={item}
+									action={action}
+									index={index}
+									removeTag={removeTag}
+								>
+									<Tag size={{ md: 'md', lg: 'md', xl: 'lg' }} {...props}>
+										<TagLabel>{item.name}</TagLabel>
+									</Tag>
+								</PopoverComponent>
+							</React.Fragment>
 						))}
 						<Button
 							height='25px'

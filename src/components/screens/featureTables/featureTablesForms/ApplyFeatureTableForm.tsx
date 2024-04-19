@@ -172,6 +172,8 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						action={action}
+						key={FEATURES_TITLES.id}
 						_hover={{ bgColor: '#C3D5FF', cursor: 'pointer' }}
 						colorScheme='blue'
 						variant='outline'
@@ -185,6 +187,8 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						action={action}
+						key={SOURCES.id}
 						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 						colorScheme='green'
 						variant='outline'
@@ -198,6 +202,8 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						action={action}
+						key={TASKS.id}
 						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 						colorScheme='green'
 						variant='outline'
@@ -211,6 +217,8 @@ const ApplyFeatureTableForm = ({
 					/>
 
 					<ItemInput
+						action={action}
+						key={SINKS.id}
 						_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 						colorScheme='green'
 						variant='outline'
