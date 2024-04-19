@@ -9,7 +9,7 @@ import {
 	InputGroup,
 	InputLeftElement
 } from '@chakra-ui/react'
-import { FiPlusCircle, FiSearch } from 'react-icons/fi'
+import { FiCopy, FiPlus, FiSearch } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import TableComponent from './TableComponent'
 import TransitionContainer from '../TransitionContainer'
@@ -20,6 +20,7 @@ interface TablePageProps {
 	title: string
 	path: string
 	allowedCreate: boolean
+	allowedClone: boolean
 	Icon: () => JSX.Element
 }
 
@@ -29,6 +30,7 @@ const TablePage = ({
 	title,
 	path,
 	allowedCreate = false,
+	allowedClone = false,
 	Icon
 }: TablePageProps) => {
 	const navigate = useNavigate()
@@ -74,14 +76,28 @@ const TablePage = ({
 					{allowedCreate && (
 						<Button
 							colorScheme='button'
-							leftIcon={<FiPlusCircle />}
+							leftIcon={<FiPlus />}
 							size={{ md: 'sm', lg: 'md', xl: 'lg' }}
 							onClick={() => {
 								navigate(`/${path}/create`)
 							}}
 						>
-							Create new
+							Create
 						</Button>
+					)}
+					{allowedCreate && allowedClone && (
+						<>
+							<Button
+								colorScheme='button'
+								leftIcon={<FiCopy />}
+								size={{ md: 'sm', lg: 'md', xl: 'lg' }}
+								onClick={() => {
+									navigate(`/${path}/clone`)
+								}}
+							>
+								Clone
+							</Button>
+						</>
 					)}
 				</HStack>
 			</Box>

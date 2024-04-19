@@ -10,6 +10,7 @@ import { FeatureTables } from '../components/screens/featureTables/FeatureTables
 import { Features } from '../components/screens/features/Features.tsx'
 import EntityOverview from '../components/screens/entities/entityOverview/EntityOverview.tsx'
 import ApplyEntity from '../components/screens/entities/entitiesForms/ApplyEntity'
+import CloneFeatureTable from '../components/screens/featureTables/featureTablesForms/CloneFeatureTable'
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
@@ -31,6 +32,7 @@ const AnimatedRoutes = () => {
 						path='feature-tables/create'
 						element={<ApplyFeatureTable action='create' />}
 					/>
+					<Route path='feature-tables/clone' element={<CloneFeatureTable />} />
 					<Route path='features/:name' element={<FeatureOverview />} />
 					<Route path='features' element={<Features />} />
 					<Route path='entities' element={<Entities />} />

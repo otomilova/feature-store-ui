@@ -48,6 +48,7 @@ export function FeatureTables() {
 					columns={FTColumnState}
 					title={FEATURE_TABLES_TITLES.title}
 					allowedCreate={true}
+					allowedClone={true}
 					path='feature-tables'
 					Icon={FTIcon}
 				/>

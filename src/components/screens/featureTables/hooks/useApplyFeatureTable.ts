@@ -26,12 +26,13 @@ export const useApplyFeatureTable = () => {
 				isClosable: true
 			})
 		},
-		onError: () => {
+		onError: e => {
 			toast({
 				position: 'top-right',
 				title: 'Error!',
+				description: e.response.data,
 				status: 'error',
-				duration: 4000,
+				duration: 6000,
 				isClosable: true
 			})
 		}

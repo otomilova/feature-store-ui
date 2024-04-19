@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import ProjectDrawer from './projectDrawer/ProjectDrawer'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useProjects } from '../useProjects'
 import Loader from '../../../ui/Loader'
 
@@ -22,8 +22,6 @@ interface HeaderMenuProps {
 
 const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 	const { data: projects, isLoading } = useProjects()
-
-	const { pathname } = useLocation()
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const navigate = useNavigate()
 	return (
@@ -96,7 +94,6 @@ const HeaderMenu = ({ project, setProject }: HeaderMenuProps) => {
 									onClick={() => {
 										setProject(`${project}`)
 										navigate(`/feature-tables`)
-
 									}}
 								>
 									{project}

@@ -24,6 +24,7 @@ export interface IApplyFeatureTableRequest {
 		name: string
 		entities: string[]
 		features?: IFeature[]
+		offlineStorage?: object
 		job: {
 			sources?: {
 				options: object
@@ -56,6 +57,7 @@ export interface IApplyFeatureTableRequest {
 export interface IFeatureTableFormData {
 	featureTable: string
 	description?: string
+	offlineStorage?: object
 	entities: {
 		label: string
 		value: string
@@ -111,38 +113,7 @@ export interface IFeatureTableFormData {
 	}
 }
 
-export interface IFeatureTablesResponseEntry {
-	data: {
-		name: string
-		description?: string
-		entities: string[]
-		features?: IFeature[]
-		labels?: string[]
-		ttlMinutes?: number
-		multiRecord?: boolean
-		job?: {
-			sources?: {
-				options: object
-				alias: string
-				columns?: string[]
-				filter?: string
-				format: string
-			}[]
-			tasks?: {
-				query: string
-				alias: string
-			}[]
-			sinks?: {
-				input: string
-				options: object
-				partitionBy?: string[]
-				columns?: string[]
-				mode?: string
-				filter?: string
-				format: string
-			}[]
-		}
-	}
+export interface IFeatureTablesResponseEntry extends IApplyFeatureTableRequest {
 	metadata: {
 		createdTimestamp?: string
 		lastUpdatedTimestamp?: string

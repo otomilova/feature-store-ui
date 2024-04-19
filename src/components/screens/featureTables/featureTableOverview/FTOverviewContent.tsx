@@ -101,10 +101,19 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 							Time to live
 						</Heading>
 						<HStack>
-							<Badge variant='outline' colorScheme='gray'>
+							<Badge
+								variant='outline'
+								colorScheme='gray'
+								fontSize={{ md: '14px', lg: '16px', xl: '18px' }}
+							>
 								{featureTable.ttlMinutes}
 							</Badge>
-							<Text color='brand.600'>minutes</Text>
+							<Text
+								color='brand.600'
+								fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							>
+								minutes
+							</Text>
 						</HStack>
 					</>
 				)}

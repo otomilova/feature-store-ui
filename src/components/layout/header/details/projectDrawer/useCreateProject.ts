@@ -23,11 +23,12 @@ export const useCreateProject = () => {
 				isClosable: true
 			})
 		},
-		onError: () => {
+		onError: e => {
 			toast({
 				position: 'top-right',
 				title: 'Error!',
 				status: 'error',
+				description: e.response.data,
 				duration: 4000,
 				isClosable: true
 			})

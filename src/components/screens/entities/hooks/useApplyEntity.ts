@@ -25,10 +25,11 @@ export const useApplyEntity = () => {
 				isClosable: true
 			})
 		},
-		onError: () => {
+		onError: e => {
 			toast({
 				position: 'top-right',
 				title: 'Error!',
+				description: e.response.data,
 				status: 'error',
 				duration: 4000,
 				isClosable: true
