@@ -151,3 +151,7 @@ export function calcEntitiesInFTs(
 		return acc
 	}, new Map())
 }
+
+export function isEmpty(obj: object) {
+	return !obj || Object.entries(obj).length === 0
+}

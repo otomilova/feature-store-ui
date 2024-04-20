@@ -79,6 +79,7 @@ const CreateSourceFormModal = ({
 				errors={errors}
 				register={register}
 				placeholder={'Comma separated columns to select from source'}
+				validation={{}}
 			/>
 
 			<CustomInput

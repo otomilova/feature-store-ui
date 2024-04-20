@@ -61,6 +61,7 @@ export function StorageWatched({ control, register, errors }) {
 						errors={errors}
 						register={register}
 						placeholder={'Comma separated columns'}
+						validation={{}}
 					/>
 				</>
 			)}

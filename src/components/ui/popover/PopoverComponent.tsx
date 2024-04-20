@@ -53,7 +53,7 @@ const PopoverComponent = ({ children, item, action, removeTag, index }) => {
 					</>
 				)}
 
-				{item.hiveOptions?.columns && (
+				{item.hiveOptions?.columns.filter(c => c !== '').length > 0 && (
 					<>
 						<Heading
 							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}

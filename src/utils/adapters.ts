@@ -11,7 +11,8 @@ import {
 	createFormOptionFromResponse,
 	createRequestOptionsFromForm,
 	createSelectObjFromString,
-	extractValueFromSelectObj
+	extractValueFromSelectObj,
+	isEmpty
 } from './helpers'
 
 export function makeRequestFromFTFormData(
@@ -139,11 +140,10 @@ export function makeFTFormDataFromResponse(
 			format: sink.format
 		}
 	})
-
 	const offlineStorageObject = { ...response.data.offlineStorage }
-	offlineStorageObject.name = offlineStorageObject?.type
-	const offlineStorage = [offlineStorageObject]
-
+	const offlineStorage = isEmpty(offlineStorageObject)
+		? []
+		: [{ ...offlineStorageObject, name: offlineStorageObject.type }]
 
 	const data: IFeatureTableFormData = {
 		featureTable: response.data.name,
