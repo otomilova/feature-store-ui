@@ -30,7 +30,9 @@ export const useApplyFeatureTable = () => {
 			toast({
 				position: 'top-right',
 				title: 'Error!',
-				description: e.response.data,
+				description: e.response.data.error
+					? e.response.data.error
+					: e.response.data,
 				status: 'error',
 				duration: 6000,
 				isClosable: true

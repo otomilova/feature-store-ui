@@ -13,6 +13,7 @@ import CreateFeatureFormModal from './CreateFeatureFormModal'
 import CreateSourceFormModal from './CreateSourceFormModal'
 import CreateTaskFormModal from './CreateTaskFormModal'
 import CreateSinkFormModal from './CreateSinkFormModal'
+import CreateStorageFormModal from './CreateStorageFormModal'
 
 interface ModalProps {
 	isOpen: boolean
@@ -53,6 +54,15 @@ const ModalComponent: React.FC = ({
 							onClose={onClose}
 							setSources={setItems}
 							sources={items}
+						/>
+					)
+				case 'Storage':
+					return (
+						<CreateStorageFormModal
+							id={id}
+							onClose={onClose}
+							setStorage={setItems}
+							storage={items}
 						/>
 					)
 				case 'Tasks':
@@ -96,7 +106,8 @@ const ModalComponent: React.FC = ({
 				<ModalHeader>
 					<Center>
 						<Heading as='h2' size='l' color='brand.600'>
-							Create {inputName.slice(0, -1)}
+							Create{' '}
+							{inputName.at(-1) === 's' ? inputName.slice(0, -1) : inputName}
 						</Heading>
 					</Center>
 				</ModalHeader>

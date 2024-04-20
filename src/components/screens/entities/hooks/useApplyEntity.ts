@@ -29,7 +29,9 @@ export const useApplyEntity = () => {
 			toast({
 				position: 'top-right',
 				title: 'Error!',
-				description: e.response.data,
+				description: e.response.data.error
+					? e.response.data.error
+					: e.response.data,
 				status: 'error',
 				duration: 4000,
 				isClosable: true

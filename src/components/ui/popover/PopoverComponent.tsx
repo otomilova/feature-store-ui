@@ -33,6 +33,101 @@ const PopoverComponent = ({ children, item, action, removeTag, index }) => {
 						</Text>
 					</>
 				)}
+
+				{item.hiveOptions?.table && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Table
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.hiveOptions?.table}
+						</Text>
+					</>
+				)}
+
+				{item.hiveOptions?.columns && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Columns
+						</Heading>
+
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.hiveOptions?.columns.join(', ')}
+						</Text>
+					</>
+				)}
+
+				{item.fileOptions?.fileFormat && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							Format
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.fileOptions?.fileFormat}
+						</Text>
+					</>
+				)}
+				{item.fileOptions?.fileUrl && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							URL
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.fileOptions?.fileUrl}
+						</Text>
+					</>
+				)}
+				{item.remoteOptions?.remoteUrl && (
+					<>
+						<Heading
+							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
+							color='brand.600'
+							mb='0.1em'
+						>
+							URL
+						</Heading>
+						<Text
+							fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+							mb='0.2em'
+							color='brand.600'
+						>
+							{item.remoteOptions?.remoteUrl}
+						</Text>
+					</>
+				)}
+
 				{item.description && (
 					<>
 						<Heading

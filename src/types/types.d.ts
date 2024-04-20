@@ -18,6 +18,12 @@ export enum ValueTypes {
 	VARIABLE = 'VARIABLE'
 }
 
+export enum StorageTypes {
+	FILE_TYPE = 'FILE_TYPE',
+	HIVE_TYPE = 'HIVE_TYPE',
+	REMOTE_TYPE = 'REMOTE_TYPE'
+}
+
 export interface IApplyFeatureTableRequest {
 	project: string
 	data: {

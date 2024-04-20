@@ -28,7 +28,9 @@ export const useCreateProject = () => {
 				position: 'top-right',
 				title: 'Error!',
 				status: 'error',
-				description: e.response.data,
+				description: e.response.data.error
+					? e.response.data.error
+					: e.response.data,
 				duration: 4000,
 				isClosable: true
 			})

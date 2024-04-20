@@ -85,7 +85,8 @@ const ItemInput = ({
 							leftIcon={<FiPlus />}
 							onClick={onOpen}
 						>
-							Add {inputName.slice(0, -1)}
+							Add{' '}
+							{inputName.at(-1) === 's' ? inputName.slice(0, -1) : inputName}
 						</Button>
 						<ModalComponent
 							isOpen={isOpen}

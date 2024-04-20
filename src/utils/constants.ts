@@ -1,4 +1,4 @@
-import { ValueTypes } from '../types/types.d.ts'
+import { StorageTypes, ValueTypes } from '../types/types.d.ts'
 
 export const FEATURE_TABLE_TITLES = {
 	title: 'Feature Table',
@@ -15,6 +15,12 @@ export const FEATURES_TITLES = {
 	title: 'Features',
 	id: 'features',
 	slug: `features`
+}
+
+export const STORAGE = {
+	title: 'Storage',
+	id: 'storage',
+	slug: `storage`
 }
 
 export const FEATURE_TITLES = {
@@ -65,5 +71,11 @@ export const SINKS = {
 export const SELECT_TYPE_OPTIONS = Object.keys(ValueTypes).map(type => {
 	return { value: type, label: type }
 })
+
+export const SELECT_STORAGE_TYPE_OPTIONS = Object.keys(StorageTypes).map(
+	type => {
+		return { value: type, label: type }
+	}
+)
 
 export const tabs = [FEATURE_TABLES_TITLES, ENTITIES, FEATURES_TITLES]

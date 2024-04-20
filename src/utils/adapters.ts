@@ -29,6 +29,8 @@ export function makeRequestFromFTFormData(
 	const entities = formData.entities.map(entity => entity.value)
 	const labels = formData.labels?.map(label => label.value)
 
+	const offlineStorage = formData.offlineStorage
+
 	const sources = formData.sources?.map(source => {
 		return {
 			options: createRequestOptionsFromForm(source.options),
@@ -70,6 +72,7 @@ export function makeRequestFromFTFormData(
 			name: formData.featureTable,
 			entities: entities,
 			features: features,
+			offlineStorage: offlineStorage,
 			job: {
 				sources: sources,
 				tasks: tasks,
@@ -137,9 +140,15 @@ export function makeFTFormDataFromResponse(
 		}
 	})
 
+	const offlineStorageObject = { ...response.data.offlineStorage }
+	offlineStorageObject.name = offlineStorageObject?.type
+	const offlineStorage = [offlineStorageObject]
+
+
 	const data: IFeatureTableFormData = {
 		featureTable: response.data.name,
 		description: response.data.description,
+		offlineStorage: offlineStorage,
 		entities: entities,
 		features: features,
 		sources: sources,

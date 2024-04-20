@@ -19,6 +19,7 @@ import {
 	LABELS,
 	SINKS,
 	SOURCES,
+	STORAGE,
 	TASKS
 } from '../../../../utils/constants'
 import { makeRequestFromFTFormData } from '../../../../utils/adapters'
@@ -76,6 +77,10 @@ const ApplyFeatureTableForm = ({
 		featureTableFormData ? featureTableFormData.sources : []
 	)
 
+	const [storage, setStorage] = useState(
+		featureTableFormData ? featureTableFormData.offlineStorage : []
+	)
+
 	const [tasks, setTasks] = useState(
 		featureTableFormData ? featureTableFormData.tasks : []
 	)
@@ -93,6 +98,10 @@ const ApplyFeatureTableForm = ({
 	const onSubmit = (formData: IFeatureTableFormData) => {
 		formData.features = features
 		formData.labels = labels
+		if (storage) {
+			formData.offlineStorage = { ...storage[0] }
+			delete formData.offlineStorage.name
+		}
 		formData.sources = sources
 		formData.tasks = tasks
 		formData.sinks = sinks
@@ -184,6 +193,21 @@ const ApplyFeatureTableForm = ({
 						inputName={FEATURES_TITLES.title}
 						inputId={FEATURES_TITLES.id}
 						id={FEATURE_TITLES.modal_id}
+					/>
+
+					<ItemInput
+						action={action}
+						key={STORAGE.id}
+						_hover={{ bgColor: '#C3D5FF', cursor: 'pointer' }}
+						colorScheme='blue'
+						variant='outline'
+						bgColor='#EBF1FF'
+						control={control}
+						items={storage}
+						setItems={setStorage}
+						inputName={STORAGE.title}
+						inputId={STORAGE.id}
+						id='offlineStorage'
 					/>
 
 					<ItemInput

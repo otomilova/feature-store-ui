@@ -16,7 +16,8 @@ import {
 	DESCRIPTION,
 	ENTITIES,
 	FEATURE_TABLE_TITLES,
-	FEATURES_TITLES
+	FEATURES_TITLES,
+	STORAGE
 } from '../../../../utils/constants'
 import PopoverComponent from '../../../ui/popover/PopoverComponent'
 import { useNavigate } from 'react-router-dom'
@@ -178,6 +179,34 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 									key={feature.name}
 								>
 									{feature.name}
+								</Tag>
+							</PopoverComponent>
+						)
+					})}
+				</Flex>
+				<Divider borderColor='brand.400' />
+
+				<Heading
+					fontSize={{ md: '16px', lg: '16px', xl: '18px' }}
+					mt='1.2em'
+					mb='0.3em'
+					color='brand.600'
+				>
+					{STORAGE.title}
+				</Heading>
+				<Flex gap='10px' mb='1.2em'>
+					{featureTable.offlineStorage?.map((storage, index) => {
+						return (
+							<PopoverComponent item={storage} key={`${storage.name}-${index}`}>
+								<Tag
+									_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
+									colorScheme='green'
+									variant='outline'
+									bgColor='green.50'
+									size={{ md: 'md', lg: 'md', xl: 'lg' }}
+									key={storage.name}
+								>
+									{storage.name}
 								</Tag>
 							</PopoverComponent>
 						)
