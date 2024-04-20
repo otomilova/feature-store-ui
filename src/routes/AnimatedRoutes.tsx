@@ -10,7 +10,7 @@ import { FeatureTables } from '../components/screens/featureTables/FeatureTables
 import { Features } from '../components/screens/features/Features.tsx'
 import EntityOverview from '../components/screens/entities/entityOverview/EntityOverview.tsx'
 import ApplyEntity from '../components/screens/entities/entitiesForms/ApplyEntity'
-import CloneFeatureTable from '../components/screens/featureTables/featureTablesForms/CloneFeatureTable'
+import CloneFeatureTable from '../components/screens/featureTables/featureTablesForms/cloneFT/CloneFeatureTable'
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
