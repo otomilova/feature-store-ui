@@ -166,7 +166,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				>
 					{FEATURES_TITLES.title}
 				</Heading>
-				<Flex gap='10px' mb='1.2em'>
+				<Flex gap='10px' mb='1.2em' wrap='wrap'>
 					{featureTable.features?.map((feature, index) => {
 						return (
 							<PopoverComponent item={feature} key={`${feature.name}-${index}`}>
@@ -222,7 +222,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				>
 					Sources
 				</Heading>
-				<Flex gap='10px' mb='1.2em'>
+				<Flex gap='10px' mb='1.2em' wrap='wrap'>
 					{featureTable.sources?.map((source, index) => {
 						return (
 							<PopoverComponent item={source} key={`${source.name}-${index}`}>
@@ -249,7 +249,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				>
 					Tasks
 				</Heading>
-				<Flex gap='10px' mb='1.2em'>
+				<Flex gap='10px' mb='1.2em' wrap='wrap'>
 					{featureTable.tasks?.map((task, index) => {
 						return (
 							<PopoverComponent item={task} key={`${task.name}-${index}`}>
@@ -276,7 +276,7 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				>
 					Sinks
 				</Heading>
-				<Flex gap='10px' mb='1.2em'>
+				<Flex gap='10px' mb='1.2em' wrap='wrap'>
 					{featureTable.sinks?.map((sink, index) => {
 						return (
 							<PopoverComponent item={sink} key={`${sink.name}-${index}`}>
