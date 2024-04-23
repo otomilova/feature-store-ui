@@ -1,12 +1,20 @@
 import { Center, Flex, Heading, IconButton, Input } from '@chakra-ui/react'
 import { useFieldArray } from 'react-hook-form'
 import { AddIcon, DeleteIcon } from '@chakra-ui/icons'
+import { useEffect } from 'react'
 
-const OptionsInput = ({ register, control }) => {
-	const { fields, append, remove } = useFieldArray({
+const OptionsInput = ({ register, control, item }) => {
+	const { fields, append, remove, update } = useFieldArray({
 		control,
 		name: 'options'
 	})
+	useEffect(() => {
+		if (item) {
+			item.options.forEach((option, index) => {
+				update(index, { key: option.key, value: option.value })
+			})
+		}
+	}, [])
 	return (
 		<Flex align='start' m='0' mb='1em' direction='column' w='100%'>
 			<Heading

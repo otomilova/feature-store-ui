@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import CustomSelect from '../../../ui/select/CustomSelect'
@@ -13,7 +13,10 @@ import {
 	SELECT_TYPE_OPTIONS,
 	TYPE
 } from '../../../../utils/constants'
-import { extractValueFromSelectObj } from '../../../../utils/helpers.ts'
+import {
+	createSelectObjFromString,
+	extractValueFromSelectObj
+} from '../../../../utils/helpers.ts'
 import { INPUT_VALIDATION } from '../../../../utils/validation'
 
 interface CreateFeatureFormProps {
@@ -23,20 +26,25 @@ interface CreateFeatureFormProps {
 		features: Array<Pick<IFeatureTableFormData, 'features'>>
 	) => void
 	features: Array<Pick<IFeatureTableFormData, 'features'>>
+	action: 'create' | 'edit'
+	item: object
 }
 
 const CreateFeatureForm = ({
 	id,
 	onClose,
 	setFeatures,
-	features
+	features,
+	action,
+	item
 }: CreateFeatureFormProps) => {
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
+		setValue
 	} = useForm({
 		mode: 'onChange'
 	})
@@ -44,15 +52,23 @@ const CreateFeatureForm = ({
 	const onSubmit = data => {
 		data.type = ValueTypes[extractValueFromSelectObj(data.type)]
 		data.labels = labels
-		setFeatures([...features, data])
+		setFeatures([...features.filter(feature => feature !== item), data])
 		reset()
 		onClose()
 	}
 
-	const [labels, setLabels] = useState([])
+	const [labels, setLabels] = useState(item ? item.labels : [])
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
+
+	useEffect(() => {
+		if (item) {
+			setValue(FEATURE_TITLES.id, item.name)
+			setValue(TYPE.id, createSelectObjFromString(item.type))
+			setValue(DESCRIPTION.id, item.description)
+		}
+	}, [])
 
 	return (
 		<form
@@ -116,7 +132,7 @@ const CreateFeatureForm = ({
 							handleSubmit(onSubmit)()
 						}}
 					>
-						Create Feature
+						{action === 'create' ? `Create Feature` : `Edit Feature`}
 					</Button>
 				</Flex>
 			</Center>

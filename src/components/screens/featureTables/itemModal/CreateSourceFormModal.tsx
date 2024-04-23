@@ -5,26 +5,39 @@ import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
 import OptionsInput from '../../../ui/input/OptionsInput'
 import CustomInput from '../../../ui/input/CustomInput'
 import { IFeatureTableFormData } from '../../../../types/types'
+import { useEffect } from 'react'
+import {
+	ALIAS,
+	COLUMNS,
+	FILTER,
+	FORMAT,
+	OPTIONS
+} from '../../../../utils/constants'
 
 interface CreateSourceFormModalProps {
 	id: string
 	onClose: () => void
 	sources: Array<Pick<IFeatureTableFormData, 'sources'>>
 	setSources: (sources: Array<Pick<IFeatureTableFormData, 'sources'>>) => void
+	action: 'create' | 'edit'
+	item: object
 }
 
 const CreateSourceFormModal = ({
 	id,
 	onClose,
 	setSources,
-	sources
+	sources,
+	action,
+	item
 }: CreateSourceFormModalProps) => {
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
+		setValue
 	} = useForm({
 		mode: 'onChange',
 		defaultValues: {
@@ -38,7 +51,7 @@ const CreateSourceFormModal = ({
 
 	const onSubmit = data => {
 		data.name = data.alias
-		setSources([...sources, data])
+		setSources([...sources.filter(source => source !== item), data])
 		reset()
 		onClose()
 	}
@@ -46,6 +59,15 @@ const CreateSourceFormModal = ({
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
+
+	useEffect(() => {
+		if (item) {
+			setValue(ALIAS.id, item.alias)
+			setValue(COLUMNS.id, item.columns)
+			setValue(FILTER.id, item.filter)
+			setValue(FORMAT.id, item.format)
+		}
+	}, [])
 
 	return (
 		<form
@@ -56,8 +78,9 @@ const CreateSourceFormModal = ({
 		>
 			<Flex gap='10px' direction='row' alignItems='end'>
 				<OptionsInput
+					item={item}
 					control={control}
-					inputName='Options'
+					inputName={OPTIONS.title}
 					errors={errors}
 					register={register}
 				/>
@@ -66,16 +89,16 @@ const CreateSourceFormModal = ({
 			<CustomInput
 				isRequired
 				control={control}
-				inputName='Alias'
-				inputId='alias'
+				inputName={ALIAS.title}
+				inputId={ALIAS.id}
 				errors={errors}
 				register={register}
 				validation={INPUT_VALIDATION_1}
 			/>
 
 			<CustomTextarea
-				textareaName='Columns'
-				textareaId='columns'
+				textareaName={COLUMNS.title}
+				textareaId={COLUMNS.id}
 				errors={errors}
 				register={register}
 				placeholder={'Comma separated columns to select from source'}
@@ -84,8 +107,8 @@ const CreateSourceFormModal = ({
 
 			<CustomInput
 				control={control}
-				inputName='Filter'
-				inputId='filter'
+				inputName={FILTER.title}
+				inputId={FILTER.id}
 				errors={errors}
 				register={register}
 			/>
@@ -93,8 +116,8 @@ const CreateSourceFormModal = ({
 			<CustomInput
 				isRequired
 				control={control}
-				inputName='Format'
-				inputId='format'
+				inputName={FORMAT.title}
+				inputId={FORMAT.id}
 				errors={errors}
 				register={register}
 				validation={INPUT_VALIDATION_1}
@@ -119,7 +142,7 @@ const CreateSourceFormModal = ({
 							handleSubmit(onSubmit)()
 						}}
 					>
-						Create Source
+						{action === 'create' ? `Create Source` : `Edit Source`}
 					</Button>
 				</Flex>
 			</Center>

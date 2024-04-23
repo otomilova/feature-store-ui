@@ -279,7 +279,11 @@ const FtOverviewContent = ({ name, featureTable }: FTOverviewContentProps) => {
 				<Flex gap='10px' mb='1.2em' wrap='wrap'>
 					{featureTable.sinks?.map((sink, index) => {
 						return (
-							<PopoverComponent item={sink} key={`${sink.name}-${index}`}>
+							<PopoverComponent
+								item={sink}
+								key={`${sink.name}-${index}`}
+								index={index}
+							>
 								<Tag
 									_hover={{ bgColor: 'green.100', cursor: 'pointer' }}
 									colorScheme='green'

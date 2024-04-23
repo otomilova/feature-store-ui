@@ -4,33 +4,40 @@ import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
 import { IFeatureTableFormData } from '../../../../types/types'
+import { useEffect } from 'react'
+import { ALIAS, QUERY } from '../../../../utils/constants'
 
 interface CreateTaskFormProps {
 	id: string
 	onClose: () => void
 	setTasks: (tasks: Array<Pick<IFeatureTableFormData, 'tasks'>>) => void
 	tasks: Array<Pick<IFeatureTableFormData, 'tasks'>>
+	action: 'create' | 'edit'
+	item: object
 }
 
 const CreateTaskForm = ({
 	id,
 	onClose,
 	setTasks,
-	tasks
+	tasks,
+	action,
+	item
 }: CreateTaskFormProps) => {
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
+		setValue
 	} = useForm({
 		mode: 'onChange'
 	})
 
 	const onSubmit = data => {
 		data.name = data.alias
-		setTasks([...tasks, data])
+		setTasks([...tasks.filter(task => task !== item), data])
 
 		reset()
 		onClose()
@@ -39,6 +46,13 @@ const CreateTaskForm = ({
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
+
+	useEffect(() => {
+		if (item) {
+			setValue(QUERY.id, item.query)
+			setValue(ALIAS.id, item.alias)
+		}
+	}, [])
 
 	return (
 		<form
@@ -87,7 +101,7 @@ const CreateTaskForm = ({
 							handleSubmit(onSubmit)()
 						}}
 					>
-						Create Task
+						{action === 'create' ? `Create Task` : `Edit Task`}
 					</Button>
 				</Flex>
 			</Center>

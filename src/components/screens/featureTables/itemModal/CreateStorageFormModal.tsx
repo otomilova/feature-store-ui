@@ -6,8 +6,12 @@ import {
 	StorageTypes
 } from '../../../../types/types.d.ts'
 import { SELECT_STORAGE_TYPE_OPTIONS, TYPE } from '../../../../utils/constants'
-import { extractValueFromSelectObj } from '../../../../utils/helpers.ts'
+import {
+	createSelectObjFromString,
+	extractValueFromSelectObj
+} from '../../../../utils/helpers.ts'
 import { StorageWatched } from './StorageWatched'
+import { useEffect } from 'react'
 
 interface CreateStorageFormProps {
 	id: string
@@ -16,13 +20,16 @@ interface CreateStorageFormProps {
 		storage: Array<Pick<IFeatureTableFormData, 'offlineStorage'>>
 	) => void
 	storage: Array<Pick<IFeatureTableFormData, 'offlineStorage'>>
+	action: 'create' | 'edit'
+	item: object
 }
 
 const CreateStorageFormModal = ({
 	id,
 	onClose,
 	setStorage,
-	storage
+	action,
+	item
 }: CreateStorageFormProps) => {
 	const {
 		control,
@@ -41,22 +48,20 @@ const CreateStorageFormModal = ({
 		switch (data.type) {
 			case StorageTypes.FILE_TYPE:
 				data.fileOptions = { fileFormat: fileFormat, fileUrl: fileUrl }
-				delete data.fileUrl
-				delete data.fileFormat
+
 				break
 			case StorageTypes.REMOTE_TYPE:
 				data.remoteOptions = { remoteUrl: remoteUrl }
-				delete data.remoteUrl
+
 				break
 			case StorageTypes.HIVE_TYPE:
 				data.hiveOptions = {
 					table: table,
 					columns: columns?.split(',').map(c => c.trim())
 				}
-				delete data.table
-				delete data.columns
 				break
 		}
+		clearStorageData(data)
 		data.name = data.type
 		setStorage([data])
 		reset()
@@ -66,6 +71,12 @@ const CreateStorageFormModal = ({
 	const checkKeyDown = e => {
 		if (e.key === 'Enter') e.preventDefault()
 	}
+
+	useEffect(() => {
+		if (item) {
+			setValue(TYPE.id, createSelectObjFromString(item.type))
+		}
+	}, [])
 
 	return (
 		<form
@@ -85,7 +96,13 @@ const CreateStorageFormModal = ({
 					/>
 				</Flex>
 			</Flex>
-			<StorageWatched control={control} errors={errors} register={register} />
+			<StorageWatched
+				control={control}
+				errors={errors}
+				register={register}
+				item={item}
+				setValue={setValue}
+			/>
 
 			<Center mt='2em'>
 				<Flex gap='15px'>
@@ -106,7 +123,7 @@ const CreateStorageFormModal = ({
 							handleSubmit(onSubmit)()
 						}}
 					>
-						Create Storage
+						{action === 'create' ? `Create Storage` : `Edit Storage`}
 					</Button>
 				</Flex>
 			</Center>
@@ -115,3 +132,11 @@ const CreateStorageFormModal = ({
 }
 
 export default CreateStorageFormModal
+
+function clearStorageData(data: object) {
+	delete data.fileUrl
+	delete data.fileFormat
+	delete data.table
+	delete data.columns
+	delete data.remoteUrl
+}

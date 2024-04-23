@@ -5,12 +5,25 @@ import {
 	Popover,
 	PopoverTrigger,
 	Tag,
-	Text
+	Text,
+	useDisclosure
 } from '@chakra-ui/react'
 import PopoverPortal from './PopoverPortal'
 import * as React from 'react'
+import ModalComponent from '../../screens/featureTables/itemModal/ModalComponent'
 
-const PopoverComponent = ({ children, item, action, removeTag, index }) => {
+const PopoverComponent = ({
+	children,
+	item,
+	action,
+	removeTag,
+	index,
+	setItems,
+	id,
+	items,
+	inputName
+}) => {
+	const { isOpen, onOpen, onClose } = useDisclosure()
 	return (
 		<Popover>
 			<PopoverTrigger>{children}</PopoverTrigger>
@@ -342,7 +355,7 @@ const PopoverComponent = ({ children, item, action, removeTag, index }) => {
 						</Text>
 					</>
 				)}
-				{item.labels && (
+				{item.labels && item.labels.length > 0 && (
 					<>
 						<Heading
 							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
@@ -363,16 +376,36 @@ const PopoverComponent = ({ children, item, action, removeTag, index }) => {
 					</>
 				)}
 				{action === 'edit' ? (
-					<Flex justifyContent='flex-end'>
-						<Button
-							onClick={() => removeTag(index)}
-							colorScheme='red'
-							mt='0.7em'
-							size={{ md: 'sm', lg: 'sm', xl: 'md' }}
-						>
-							Delete
-						</Button>
-					</Flex>
+					<>
+						<Flex justifyContent='flex-end' gap='0.5em'>
+							<Button
+								onClick={onOpen}
+								colorScheme='button'
+								mt='0.7em'
+								size={{ md: 'sm', lg: 'sm', xl: 'md' }}
+							>
+								Edit
+							</Button>
+							<Button
+								onClick={() => removeTag(index)}
+								colorScheme='red'
+								mt='0.7em'
+								size={{ md: 'sm', lg: 'sm', xl: 'md' }}
+							>
+								Delete
+							</Button>
+						</Flex>
+						<ModalComponent
+							action={action}
+							isOpen={isOpen}
+							onClose={onClose}
+							inputName={inputName}
+							id={id}
+							items={items ? items : []}
+							setItems={setItems}
+							item={item}
+						/>
+					</>
 				) : null}
 			</PopoverPortal>
 		</Popover>

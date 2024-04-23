@@ -66,9 +66,13 @@ const ItemInput = ({
 							<React.Fragment key={`${item.name}-${index}`}>
 								<PopoverComponent
 									item={item}
+									setItems={setItems}
 									action={action}
 									index={index}
 									removeTag={removeTag}
+									inputName={inputName}
+									id={inputId}
+									items={items}
 								>
 									<Tag size={{ md: 'md', lg: 'md', xl: 'lg' }} {...props}>
 										<TagLabel>{item.name}</TagLabel>
@@ -89,6 +93,7 @@ const ItemInput = ({
 							{inputName.at(-1) === 's' ? inputName.slice(0, -1) : inputName}
 						</Button>
 						<ModalComponent
+							action='create'
 							isOpen={isOpen}
 							onClose={onClose}
 							inputName={inputName}

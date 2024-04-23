@@ -29,6 +29,57 @@ export const FEATURE_TITLES = {
 	modal_id: 'modalFeature'
 }
 
+export const ALIAS = {
+	title: 'Alias',
+	id: 'alias'
+}
+
+export const QUERY = {
+	title: 'Query',
+	id: 'query'
+}
+
+export const COLUMNS = {
+	title: 'Columns',
+	id: 'columns'
+}
+export const INPUT = {
+	title: 'Input',
+	id: 'input'
+}
+export const PARTITION_BY = {
+	title: 'Partition By',
+	id: 'partitionBy'
+}
+export const MODE = {
+	title: 'Mode',
+	id: 'mode'
+}
+export const FILTER = {
+	title: 'Filter',
+	id: 'filter'
+}
+export const FORMAT = {
+	title: 'Format',
+	id: 'format',
+	id_fileFormat: 'fileFormat'
+}
+
+export const URL = {
+	title: 'URL',
+	id: 'fileUrl',
+	id_remote: 'remoteUrl'
+}
+
+export const OPTIONS = {
+	title: 'Options',
+	id: 'options'
+}
+
+export const TABLE = {
+	title: 'Table',
+	id: 'table'
+}
 export const DESCRIPTION = {
 	title: 'Description',
 	id: 'description'

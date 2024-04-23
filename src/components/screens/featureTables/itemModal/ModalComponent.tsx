@@ -22,6 +22,8 @@ interface ModalProps {
 	inputName: string
 	items: string[]
 	setItems: (items: string[]) => void
+	action: 'create' | 'edit'
+	item: object
 }
 
 const ModalComponent: React.FC = ({
@@ -30,7 +32,9 @@ const ModalComponent: React.FC = ({
 	onClose,
 	id,
 	items,
-	setItems
+	setItems,
+	action,
+	item
 }: ModalProps) => {
 	const finalRef = React.useRef(null)
 	const initialRef = React.useRef(null)
@@ -41,46 +45,56 @@ const ModalComponent: React.FC = ({
 				case 'Features':
 					return (
 						<CreateFeatureFormModal
+							action={action}
 							id={id}
 							onClose={onClose}
 							setFeatures={setItems}
 							features={items}
+							item={item}
 						/>
 					)
 				case 'Sources':
 					return (
 						<CreateSourceFormModal
+							action={action}
 							id={id}
 							onClose={onClose}
 							setSources={setItems}
 							sources={items}
+							item={item}
 						/>
 					)
 				case 'Storage':
 					return (
 						<CreateStorageFormModal
+							action={action}
 							id={id}
 							onClose={onClose}
 							setStorage={setItems}
 							storage={items}
+							item={item}
 						/>
 					)
 				case 'Tasks':
 					return (
 						<CreateTaskFormModal
+							action={action}
 							id={id}
 							onClose={onClose}
 							setTasks={setItems}
 							tasks={items}
+							item={item}
 						/>
 					)
 				case 'Sinks':
 					return (
 						<CreateSinkFormModal
+							action={action}
 							id={id}
 							onClose={onClose}
 							setSinks={setItems}
 							sinks={items}
+							item={item}
 						/>
 					)
 				default:
@@ -106,8 +120,17 @@ const ModalComponent: React.FC = ({
 				<ModalHeader>
 					<Center>
 						<Heading as='h2' size='l' color='brand.600'>
-							Create{' '}
-							{inputName.at(-1) === 's' ? inputName.slice(0, -1) : inputName}
+							{action === 'create'
+								? `Create ${
+										inputName.at(-1) === 's'
+											? inputName.slice(0, -1)
+											: inputName
+								  }`
+								: `Edit ${
+										inputName.at(-1) === 's'
+											? inputName.slice(0, -1)
+											: inputName
+								  }`}
 						</Heading>
 					</Center>
 				</ModalHeader>
