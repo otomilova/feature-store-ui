@@ -11,6 +11,7 @@ import { Features } from '../components/screens/features/Features.tsx'
 import EntityOverview from '../components/screens/entities/entityOverview/EntityOverview.tsx'
 import ApplyEntity from '../components/screens/entities/entitiesForms/ApplyEntity'
 import CloneFeatureTable from '../components/screens/featureTables/featureTablesForms/cloneFT/CloneFeatureTable'
+import CloneEntity from '../components/screens/entities/entitiesForms/cloneEntity/CloneEntity'
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
@@ -37,6 +38,7 @@ const AnimatedRoutes = () => {
 					<Route path='features' element={<Features />} />
 					<Route path='entities' element={<Entities />} />
 					<Route path='entities/:name' element={<EntityOverview />} />
+					<Route path='entities/clone' element={<CloneEntity />} />
 					<Route
 						path='entities/:name/edit'
 						element={<ApplyEntity action='edit' />}

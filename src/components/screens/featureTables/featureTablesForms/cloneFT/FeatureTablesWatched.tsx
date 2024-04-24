@@ -6,6 +6,7 @@ import { Badge, Text, VStack } from '@chakra-ui/react'
 import CustomSelect from '../../../../ui/select/CustomSelect'
 import { FEATURE_TABLE_TITLES } from '../../../../../utils/constants'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export function FeatureTablesWatched({ control, setValue }) {
 	const fromProject = useWatch({
@@ -52,7 +53,13 @@ export function FeatureTablesWatched({ control, setValue }) {
 					with all of its contents.
 				</Text>
 				<Text fontSize='14px' color='brand.600' as='i'>
-					Make sure all neccessary <Badge colorScheme='twitter'>entities</Badge>{' '}
+					Make sure all neccessary{' '}
+					<Badge colorScheme='twitter'>
+						{' '}
+						<Link to='/entities' target='_blank'>
+							entities
+						</Link>
+					</Badge>{' '}
 					have been created in the target project.
 				</Text>
 			</VStack>

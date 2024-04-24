@@ -111,6 +111,7 @@ const CreateFeatureForm = ({
 				selectId={LABELS.id}
 				setTags={setLabels}
 				tags={labels}
+				color='blue'
 			/>
 
 			<Center mt='2em'>

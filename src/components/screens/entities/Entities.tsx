@@ -63,6 +63,7 @@ export function Entities() {
 
 			{isSuccess && isSuccess2 && (
 				<TablePage
+					allowedClone
 					rows={EntitiesRows}
 					columns={EntitiesColumnState}
 					title='Entities'
