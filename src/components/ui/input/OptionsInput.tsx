@@ -1,18 +1,23 @@
 import { Center, Flex, Heading, IconButton, Input } from '@chakra-ui/react'
 import { useFieldArray } from 'react-hook-form'
 import { AddIcon, DeleteIcon } from '@chakra-ui/icons'
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 const OptionsInput = ({ register, control, item }) => {
-	const { fields, append, remove, update } = useFieldArray({
+	const { fields, append, remove, insert } = useFieldArray({
 		control,
 		name: 'options'
 	})
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (item) {
-			item.options.forEach((option, index) => {
-				update(index, { key: option.key, value: option.value })
-			})
+			remove()
+			insert(
+				0,
+				item.options.map(option => {
+					return { key: option.key, value: option.value }
+				})
+			),
+				{ shouldFocus: false }
 		}
 	}, [])
 	return (

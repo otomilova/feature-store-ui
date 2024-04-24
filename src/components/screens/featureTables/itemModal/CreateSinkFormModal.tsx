@@ -54,6 +54,9 @@ const CreateSinkForm = ({
 
 	const onSubmit = data => {
 		data.name = data.format
+		data.options = data.options.filter(
+			option => option.key !== '' && option.value !== ''
+		)
 		setSinks([...sinks.filter(sink => sink !== item), data])
 		reset()
 		onClose()

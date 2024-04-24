@@ -51,6 +51,9 @@ const CreateSourceFormModal = ({
 
 	const onSubmit = data => {
 		data.name = data.alias
+		data.options = data.options.filter(
+			option => option.key !== '' && option.value !== ''
+		)
 		setSources([...sources.filter(source => source !== item), data])
 		reset()
 		onClose()
