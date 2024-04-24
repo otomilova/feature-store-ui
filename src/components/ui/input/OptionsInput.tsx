@@ -13,7 +13,7 @@ const OptionsInput = ({ register, control, item }) => {
 			remove()
 			insert(
 				0,
-				item.options.map(option => {
+				item.options?.map(option => {
 					return { key: option.key, value: option.value }
 				})
 			),

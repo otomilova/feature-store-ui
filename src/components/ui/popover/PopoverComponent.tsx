@@ -11,6 +11,7 @@ import {
 import PopoverPortal from './PopoverPortal'
 import * as React from 'react'
 import ModalComponent from '../../screens/featureTables/itemModal/ModalComponent'
+import { isEmpty } from '../../../utils/helpers'
 
 const PopoverComponent = ({
 	children,
@@ -160,7 +161,7 @@ const PopoverComponent = ({
 					</>
 				)}
 
-				{item.options && (
+				{!isEmpty(item.options) && (
 					<>
 						<Heading
 							fontSize={{ md: '14px', lg: '14px', xl: '16px' }}
