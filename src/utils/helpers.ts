@@ -33,33 +33,33 @@ export function createFormOptionFromResponse(options: object): object[] {
 export function createCrumbsForApplyFT(action: string, name: string) {
 	return action === 'edit'
 		? [
-				{
-					name: 'FEATURE TABLES',
-					link: '/feature-tables'
-				},
-				{
-					name: 'FEATURE TABLE OVERVIEW',
-					link: `/feature-tables/${name}`
-				},
-				{
-					name:
-						action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
-					link: '#',
-					isActive: true
-				}
-		  ]
+			{
+				name: 'FEATURE TABLES',
+				link: '/feature-tables'
+			},
+			{
+				name: 'FEATURE TABLE OVERVIEW',
+				link: `/feature-tables/${name}`
+			},
+			{
+				name:
+					action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
+				link: '#',
+				isActive: true
+			}
+		]
 		: [
-				{
-					name: 'FEATURE TABLES',
-					link: '/feature-tables'
-				},
-				{
-					name:
-						action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
-					link: '#',
-					isActive: true
-				}
-		  ]
+			{
+				name: 'FEATURE TABLES',
+				link: '/feature-tables'
+			},
+			{
+				name:
+					action === 'edit' ? 'EDIT FEATURE TABLE' : 'CREATE FEATURE TABLE',
+				link: '#',
+				isActive: true
+			}
+		]
 }
 
 export function createCrumbsForFTOverview(name: string) {
@@ -107,31 +107,31 @@ export function createCrumbsForEntitiesOverview(name: string) {
 export function createCrumbsForApplyEntity(name: string, action: string) {
 	return action === 'edit'
 		? [
-				{
-					name: 'ENTITIES',
-					link: '/entities'
-				},
-				{
-					name: 'ENTITY OVERVIEW',
-					link: `/entities/${name}`
-				},
-				{
-					name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
-					link: '#',
-					isActive: true
-				}
-		  ]
+			{
+				name: 'ENTITIES',
+				link: '/entities'
+			},
+			{
+				name: 'ENTITY OVERVIEW',
+				link: `/entities/${name}`
+			},
+			{
+				name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
+				link: '#',
+				isActive: true
+			}
+		]
 		: [
-				{
-					name: 'ENTITIES',
-					link: '/entities'
-				},
-				{
-					name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
-					link: '#',
-					isActive: true
-				}
-		  ]
+			{
+				name: 'ENTITIES',
+				link: '/entities'
+			},
+			{
+				name: action === 'edit' ? 'EDIT ENTITY' : 'CREATE ENTITY',
+				link: '#',
+				isActive: true
+			}
+		]
 }
 
 export function getBacklink(location: string) {
@@ -152,6 +152,8 @@ export function calcEntitiesInFTs(
 	}, new Map())
 }
 
-export function isEmpty(obj: object) {
-	return !obj || Object.entries(obj).length === 0
+export function isEmpty(obj: object | object[] | undefined | null) {
+	if (!obj) return true
+	else if (Array.isArray(obj)) return obj.length === 0
+	else return Object.entries(obj).length === 0
 }
