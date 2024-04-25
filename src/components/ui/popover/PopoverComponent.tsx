@@ -380,20 +380,20 @@ const PopoverComponent = ({
 					<>
 						<Flex justifyContent='flex-end' gap='0.5em'>
 							<Button
-								onClick={onOpen}
-								colorScheme='button'
-								mt='0.7em'
-								size={{ md: 'sm', lg: 'sm', xl: 'md' }}
-							>
-								Edit
-							</Button>
-							<Button
 								onClick={() => removeTag(index)}
 								colorScheme='red'
 								mt='0.7em'
 								size={{ md: 'sm', lg: 'sm', xl: 'md' }}
 							>
 								Delete
+							</Button>
+							<Button
+								onClick={onOpen}
+								colorScheme='button'
+								mt='0.7em'
+								size={{ md: 'sm', lg: 'sm', xl: 'md' }}
+							>
+								Edit
 							</Button>
 						</Flex>
 						<ModalComponent
