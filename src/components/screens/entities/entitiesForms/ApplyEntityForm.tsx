@@ -8,7 +8,7 @@ import { useProject } from '../../../hooks/useProject'
 import {
 	IApplyEntityRequest,
 	IEntityFormData
-} from '../../../../types/types.d.ts'
+} from '../../../../types/types.ts'
 import {
 	DESCRIPTION,
 	LABELS,

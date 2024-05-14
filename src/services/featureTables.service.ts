@@ -2,7 +2,7 @@ import { $axios } from './api.js'
 import {
 	IApplyFeatureTableRequest,
 	IFeatureTablesResponseEntry
-} from '../types/types.d.ts'
+} from '../types/types.ts'
 
 export const getFeatureTables = async (project: string) => {
 	try {

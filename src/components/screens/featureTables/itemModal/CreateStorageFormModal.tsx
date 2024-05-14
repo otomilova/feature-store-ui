@@ -1,10 +1,7 @@
 import { Button, Center, Flex } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import CustomSelect from '../../../ui/select/CustomSelect'
-import {
-	IFeatureTableFormData,
-	StorageTypes
-} from '../../../../types/types.d.ts'
+import { IFeatureTableFormData, StorageTypes } from '../../../../types/types.ts'
 import { SELECT_STORAGE_TYPE_OPTIONS, TYPE } from '../../../../utils/constants'
 import {
 	createSelectObjFromString,

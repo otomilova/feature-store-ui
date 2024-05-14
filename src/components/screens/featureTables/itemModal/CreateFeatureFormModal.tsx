@@ -5,7 +5,7 @@ import CustomSelect from '../../../ui/select/CustomSelect'
 import MultiSelect from '../../../ui/select/MultiSelect'
 import CustomInput from '../../../ui/input/CustomInput'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
-import { IFeatureTableFormData, ValueTypes } from '../../../../types/types.d.ts'
+import { IFeatureTableFormData, ValueTypes } from '../../../../types/types.ts'
 import {
 	DESCRIPTION,
 	FEATURE_TITLES,

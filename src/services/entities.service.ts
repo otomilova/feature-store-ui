@@ -1,5 +1,5 @@
 import { $axios } from './api.js'
-import { IApplyEntityRequest, IEntityResponseEntry } from '../types/types.d.ts'
+import { IApplyEntityRequest, IEntityResponseEntry } from '../types/types.ts'
 
 export const getEntities = async (project: string) => {
 	try {

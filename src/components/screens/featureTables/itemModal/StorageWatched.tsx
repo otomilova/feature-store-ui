@@ -1,7 +1,7 @@
 import { useWatch } from 'react-hook-form'
 import CustomInput from '../../../ui/input/CustomInput'
 import { INPUT_VALIDATION_1 } from '../../../../utils/validation'
-import { StorageTypes } from '../../../../types/types.d.ts'
+import { StorageTypes } from '../../../../types/types.ts'
 import CustomTextarea from '../../../ui/textarea/CustomTextarea'
 import { useEffect } from 'react'
 import { COLUMNS, FORMAT, TABLE, URL } from '../../../../utils/constants'

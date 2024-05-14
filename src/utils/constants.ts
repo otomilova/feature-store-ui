@@ -1,4 +1,4 @@
-import { StorageTypes, ValueTypes } from '../types/types.d.ts'
+import { StorageTypes, ValueTypes } from '../types/types.ts'
 
 export const FEATURE_TABLE_TITLES = {
 	title: 'Feature Table',

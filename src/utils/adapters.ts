@@ -6,7 +6,7 @@ import {
 	IFeatureTableFormData,
 	IFeatureTablesResponseEntry,
 	ValueTypes
-} from '../types/types.d.ts'
+} from '../types/types.ts'
 import {
 	createFormOptionFromResponse,
 	createRequestOptionsFromForm,

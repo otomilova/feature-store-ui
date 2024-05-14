@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useToast } from '@chakra-ui/react'
 
 import { createProject } from '../../../../../services/project.service'
-import { ICreateProjectRequest } from '../../../../../types/types.d.ts'
+import { ICreateProjectRequest } from '../../../../../types/types.ts'
 
 export const useCreateProject = () => {
 	const toast = useToast()

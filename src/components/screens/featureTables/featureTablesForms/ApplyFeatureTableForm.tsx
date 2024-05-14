@@ -9,7 +9,7 @@ import { useProject } from '../../../hooks/useProject'
 import {
 	IApplyFeatureTableRequest,
 	IFeatureTableFormData
-} from '../../../../types/types.d.ts'
+} from '../../../../types/types.ts'
 import {
 	DESCRIPTION,
 	ENTITIES,

@@ -1,5 +1,5 @@
 import { $axios } from './api.js'
-import { ICreateProjectRequest } from '../types/types.js'
+import { ICreateProjectRequest } from '../types/types'
 
 export const getProjects = async () => {
 	try {
