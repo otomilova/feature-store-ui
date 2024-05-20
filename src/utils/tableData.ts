@@ -29,7 +29,7 @@ export const FTColumnState = [
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
 		getQuickFilterText: params => {
-			return getLabelString(params.value?.value)
+			return getLabelString(params.value)
 		},
 		valueFormatter: value => value
 	}
@@ -64,7 +64,7 @@ export const FeaturesColumnState = [
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
 		getQuickFilterText: params => {
-			return getLabelString(params.value?.value)
+			return getLabelString(params.value)
 		},
 		valueFormatter: value => value
 	}
@@ -99,7 +99,7 @@ export const EntitiesColumnState = [
 		autoHeight: true,
 		cellRenderer: 'LabelsColumn',
 		getQuickFilterText: params => {
-			return getLabelString(params.value?.value)
+			return getLabelString(params.value)
 		},
 		valueFormatter: value => value
 	}
