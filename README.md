@@ -10,6 +10,7 @@ The Feature Store UI designed to view, modify and create identities used in feat
 
 - Create and switch projects
 - Create, view and modify entities, features and feature tables
+- Clone entities and feature tables
 - Search entities, features and feature tables by labels, name or any other criteria
 
 ![Sample UI](samples/createEntity.png)
