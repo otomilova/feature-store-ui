@@ -22,6 +22,7 @@ The Feature Store UI designed to view, modify and create identities used in feat
 <img width="1425" alt="editSource" src="https://github.com/otomilova/feature-store-ui/assets/111354368/f3891f5f-9043-4366-87df-cf655e668de7">
 <img width="1414" alt="createFeature" src="https://github.com/otomilova/feature-store-ui/assets/111354368/d9379512-e494-4221-85bb-9f5f2682a631">
 <img width="1424" alt="createFeature2" src="https://github.com/otomilova/feature-store-ui/assets/111354368/95b634c3-eba0-4442-8a40-f3c5e2672566">
+<img width="1426" alt="entitiesPage" src="https://github.com/otomilova/feature-store-ui/assets/111354368/37017a0c-f597-4c7d-a6f6-1661f3ed2b0c">
 
 
 ## Tech
